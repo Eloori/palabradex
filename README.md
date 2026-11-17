@@ -4,6 +4,22 @@
 
 Palabradex ist eine Lese-App für Spanisch: Man liest spannende Kurzgeschichten auf dem passenden Niveau (A1 bis C2), fährt mit der Maus über Wörter (oder tippt auf dem Tablet), sieht die Übersetzung und sammelt jedes neue Wort in seinem **Wortdex**.
 
+## Die Methode
+
+**Lies dich fliessend. Palabradex verbindet eine Geschichte, die man weiterlesen will, mit fünf gut belegten Prinzipien der Sprachlernforschung.**
+
+| Prinzip | Forschung | In Palabradex |
+|---|---|---|
+| Lesen mit 95 bis 98 % bekannten Wörtern | Hu & Nation 2000; Schmitt, Jiang & Grabe 2011 | Lesbarkeitsanzeige pro Kapitel, neue Wörter in kleinen Portionen |
+| Rund 10 Begegnungen pro Wort | Webb 2007; Pellicer-Sánchez & Schmitt 2010; Webb & Chang 2015 | Wiederkehrender Wortschatz über 60 Kapitel, Begegnungszähler auf jeder Karte |
+| Verteiltes Wiederholen | Cepeda et al. 2006 | Spaced Repetition nach 1, 3, 7, 16, 35 und 90 Tagen, fällige Wörter auf der Startseite |
+| Abrufen statt Wiederlesen | Roediger & Karpicke 2006 | Quiz pro Kapitel, Karteikarten, bei gefestigten Wörtern freie Eingabe |
+| Lesen und Hören | Brown, Waring & Donkaewbua 2008; Webb & Chang 2012 | Vorlesen jedes Wortes und jeder Seite |
+
+Lernstand pro Wort: Entdeckt, Vertraut, Gefestigt, Gemeistert (10 Begegnungen und 4 erfolgreiche Wiederholungen).
+
+Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien sind gut erforscht, die App selbst wurde nicht in einer eigenen Studie getestet.
+
 ## Features
 
 - **60 Kapitel auf Niveau A1**, eine durchgehende Geschichte in Barcelona, rund 800 Wörter

@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Palabradex">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="description" content="Palabradex: Spanisch lernen mit Kurzgeschichten. Wörter sammeln, Karten freischalten, Truhen öffnen. Ein Prototyp von Eloori Interactive.">
+<meta name="description" content="Palabradex: Spanisch lernen mit Kurzgeschichten. Lesen auf dem richtigen Niveau, Spaced Repetition und Sammelkarten. Ein Prototyp von Eloori Interactive.">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
@@ -158,7 +158,7 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 @keyframes tout{to{opacity:0;transform:translateY(10px)}}
 
 /* dex */
-#dex{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;background-image:radial-gradient(900px 500px at 0% 0%,#ff5d8f22,transparent 60%),radial-gradient(900px 500px at 100% 0%,#3d7bff22,transparent 60%)}
+#dex{position:fixed;inset:0;z-index:30;background:var(--bg);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background-image:radial-gradient(900px 500px at 0% 0%,#ff5d8f22,transparent 60%),radial-gradient(900px 500px at 100% 0%,#3d7bff22,transparent 60%)}
 .dexin{max-width:1100px;margin:0 auto;padding:20px clamp(14px,4vw,40px) 60px}
 .dexhead{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:10px 0 16px}
 .dexhead h1{font-family:Bungee;font-weight:400;font-size:clamp(28px,4vw,40px)}
@@ -198,6 +198,19 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 .scene .orn{text-align:center;color:var(--mut);letter-spacing:8px;margin:10px 0 14px}
 .ptsline{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;text-align:center}
 .vsel button.buy{opacity:.8;border-style:dashed}.vsel button.cf{border-color:var(--acc);color:var(--acc);opacity:1}
+.cov{font-weight:800;color:var(--cc);background:color-mix(in srgb,var(--cc) 14%,transparent);border-radius:999px;padding:2px 8px}
+.mbar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.mbar i{height:8px;border-radius:4px;background:#ffffff14}.mbar i.on{background:linear-gradient(90deg,#3ddc97,#4da3ff)}
+.trtag{text-align:center;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc);margin-bottom:-4px}
+.typein{display:flex;gap:8px;align-items:center;margin-top:6px}.typein input{flex:1;min-width:0;background:var(--panel2);border:2px solid var(--line);border-radius:12px;padding:13px 14px;color:var(--txt);font:inherit;font-size:18px;outline:0}.typein input:focus{border-color:#5a62a0}
+.tart{font-family:Literata;font-size:18px;color:var(--mut)}
+.accents{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.accents button{width:36px;height:34px;border-radius:9px;background:var(--panel2);border:1px solid var(--line);font-size:16px}
+.rbtn.act{color:var(--rtx);background:#00000014}
+.mlink{color:var(--acc);font-weight:700;text-decoration:underline;text-underline-offset:3px;font-size:inherit}
+.mbox:has(.method){max-width:680px}
+.method small{font-weight:800;letter-spacing:2px;color:var(--acc)}.method h2{font-size:28px;margin:4px 0 8px}.method .lead{color:#d4d7f0;margin-bottom:16px;line-height:1.6}
+.mp{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.mp .mi{flex:none;width:62px;height:62px;border-radius:16px;display:grid;place-items:center;font-family:Bungee;font-size:18px;background:linear-gradient(135deg,#3b2a8a,#7a2361)}
+.mp b{font-size:16px}.mp p{font-size:14px;color:#c9cce6;margin-top:4px;line-height:1.55}.mp .ia span{color:var(--good);font-weight:700}.mp .src{font-size:12px;color:var(--mut);font-style:italic}
+.method .disc{font-size:12px;color:var(--mut);margin:10px 0 16px;border-top:1px solid var(--line);padding-top:12px}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -215,7 +228,7 @@ button.tcg{cursor:pointer}
 .tcg.mini{width:100%;padding:5px;border-radius:11px;box-shadow:0 8px 20px #0008,inset 0 0 0 1px #ffffff55}
 button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .v-normal{--frame:linear-gradient(145deg,#f2f4f9,#a3aabd 40%,#e6e9f1 58%,#7d849a 85%,#c9cedb)}
-.v-holo{--frame:linear-gradient(135deg,#e6f7ff,#a6b4ff 25%,#ffc8f2 45%,#b0fff0 65%,#fff2a8 85%,#e6f7ff);background-size:200% 200%;animation:framemove 6s ease-in-out infinite alternate}
+.v-holo{--frame:linear-gradient(135deg,#eef4ff,#8fb4ff 25%,#dbe8ff 45%,#6f9cf0 65%,#cfe0ff 85%,#eef4ff);background-size:200% 200%;animation:framemove 6s ease-in-out infinite alternate}
 .v-gold{--frame:linear-gradient(145deg,#fff6c4,#d9a42e 30%,#fff1a3 50%,#a87318 72%,#ffe07a)}
 .v-leg{--frame:conic-gradient(from var(--ang),#ff5d8f,#ffcb3d,#3ddc97,#4da3ff,#c46bff,#ff5d8f);animation:angle 4s linear infinite}
 @keyframes angle{to{--ang:360deg}}
@@ -246,7 +259,8 @@ button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .tcg.mini .tcg-bot .rg i{width:4cqw;height:4cqw}
 .tcg .foil,.tcg .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5}
 .tcg .glare{background:radial-gradient(circle at var(--mx,30%) var(--my,20%),#ffffff50,transparent 45%);mix-blend-mode:overlay;opacity:.8}
-.v-holo .foil,.v-leg .foil{background:repeating-linear-gradient(115deg,#ff008440 0%,#fca40040 8%,#ffff0040 16%,#00ff8a40 24%,#00cfff40 32%,#cc4cfa40 40%,#ff008440 48%);background-size:300% 300%;background-position:var(--mx,0%) var(--my,0%);mix-blend-mode:color-dodge;animation:foil 8s linear infinite}
+.v-holo .foil{background:linear-gradient(115deg,transparent 30%,#cfe2ff55 45%,#ffffff70 50%,#cfe2ff55 55%,transparent 70%);background-size:300% 300%;background-position:var(--mx,0%) var(--my,0%);mix-blend-mode:screen;animation:foil 8s linear infinite}
+.v-leg .foil{background:repeating-linear-gradient(115deg,#ff008440 0%,#fca40040 8%,#ffff0040 16%,#00ff8a40 24%,#00cfff40 32%,#cc4cfa40 40%,#ff008440 48%);background-size:300% 300%;background-position:var(--mx,0%) var(--my,0%);mix-blend-mode:color-dodge;animation:foil 8s linear infinite}
 .tcg.tilt .foil{animation:none}
 @keyframes foil{to{background-position:300% 300%}}
 .v-gold .tcg-in{background:linear-gradient(172deg,#6b4710,#1c1306 72%)}
@@ -265,7 +279,7 @@ button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .cardback .tcg-in{background:repeating-conic-gradient(from 0deg at 50% 50%,#ffffff0a 0 10deg,transparent 10deg 20deg),radial-gradient(circle,#3b2a8a,#120a2a);display:grid;place-items:center}
 .cardback .lg{width:40cqw;height:40cqw;border-radius:30%;display:grid;place-items:center;background:conic-gradient(from 200deg,var(--acc),var(--acc2),#7b5cff,var(--acc));font-family:Bungee;font-size:22cqw;color:#111;box-shadow:0 0 12cqw #ff5d8f88}
 .vlabel{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border-radius:999px;padding:4px 10px}
-.vl-holo{background:linear-gradient(90deg,#a6b4ff,#ffc8f2,#b0fff0);color:#1a1033}
+.vl-holo{background:linear-gradient(90deg,#cfe0ff,#8fb4ff,#cfe0ff);color:#1a1033}
 .vl-gold{background:linear-gradient(90deg,#fff1a3,#d9a42e);color:#3a2500}
 .vl-leg{background:linear-gradient(90deg,#ff5d8f,#ffcb3d,#3ddc97,#4da3ff);color:#140a2a}
 .vl-normal{background:#ffffff22;color:#fff}
@@ -428,6 +442,7 @@ input[type=range]{accent-color:var(--acc);width:140px}
   <div class="rbar">
     <button class="rbtn" id="rBack" title="Zurück"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="rt" id="rTitle"></div>
+    <button class="rbtn" id="rTts" title="Seite vorlesen (Lesen und Hören)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button>
     <button class="rbtn txt" id="rAa" title="Schrift und Thema">Aa</button>
     <button class="rbtn" id="rDex" title="Wortdex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h6m6 0h6"/><circle cx="12" cy="12" r="3"/></svg></button>
   </div>
@@ -3056,7 +3071,7 @@ function occ(l){let n=0,c=0;for(const id in STATS){if(STATS[id][l]){n+=STATS[id]
    STATE + SPEICHER
    ============================================================ */
 const LS='palabradex.v1';
-function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
+function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
 let S=defState();
 try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}
 const remote={ref:null,writing:false,pending:false,timer:null};
@@ -3080,6 +3095,8 @@ function merge(a,b){
   for(const id of ids){const x=(a.stories||{})[id]||{},y=(b.stories||{})[id]||{};o.stories[id]={done:!!(x.done||y.done),quiz:Math.max(x.quiz||0,y.quiz||0),read:!!(x.read||y.read),page:(newer===a?x.page:y.page)||0};}
   o.days=[...new Set([...(a.days||[]),...(b.days||[])])].sort().slice(-120);
   for(const src of [a.mast||{},b.mast||{}])for(const k in src)o.mast[k]=Math.max(o.mast[k]||0,src[k]);
+  for(const src of [a.enc||{},b.enc||{}])for(const k in src)o.enc[k]=Math.max(o.enc[k]||0,src[k]);
+  for(const src of [a.srs||{},b.srs||{}])for(const k in src){const x=o.srs[k],y=src[k];if(!x||y.d>x.d)o.srs[k]=y;}
   o.opened=Math.max(a.opened||0,b.opened||0);o.empties=Math.max(a.empties||0,b.empties||0);o.spent=Math.max(a.spent||0,b.spent||0);o.bonusXp=Math.max(a.bonusXp||0,b.bonusXp||0);
   o.upd=Math.max(a.upd||0,b.upd||0);return o;
 }
@@ -3262,7 +3279,7 @@ document.addEventListener('click',e=>{
    ============================================================ */
 let view={name:'home'};let curStory=null;
 function go(v){view=v;hideTip();render();scrollTo(0,0);}
-const FOOT=`<footer class="foot"><span>Ein Prototyp von <b>Eloori Interactive</b></span><a href="mailto:contact@eloori-interactive.com">contact@eloori-interactive.com</a><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a></footer>`;
+const FOOT=`<footer class="foot"><span>Ein Prototyp von <b>Eloori Interactive</b></span><a href="mailto:contact@eloori-interactive.com">contact@eloori-interactive.com</a><a href="#" data-method>Die Methode</a><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a></footer>`;
 function render(){const m=$('#view');if(view.name==='home')m.innerHTML=homeHtml()+FOOT;else if(view.name==='level')m.innerHTML=levelHtml(view.lvl)+FOOT;}
 function lvlStats(c){const st=STORIES.filter(s=>s.lvl===c&&!s.soon);return {n:st.length,done:st.filter(s=>S.stories[s.id]&&S.stories[s.id].done).length};}
 function nextStory(){let prevDone=true;for(const s of STORIES){if(s.soon)return null;const d=S.stories[s.id]&&S.stories[s.id].done;if(!d&&prevDone)return s;prevDone=!!d;}return null;}
@@ -3272,9 +3289,9 @@ function homeHtml(){
   if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Nächstes Kapitel'} &middot; ${ns.lvl} Kapitel ${ns.ch}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`;
   const ch=chestsAvail();
   const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
-  return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen.</p></div>
-  <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div></div>
-  ${chest}${cont}${caught>=4?`<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikarten</small><div class="t">Trainieren mit ${caught} Wörtern</div></div><span class="btn ghost">Start</span></div>`:''}
+  return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
+  <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div><div class="stat"><b>${Object.keys(S.caught).filter(k=>LEX[k]&&mastery(k)>=4).length}</b><span>Wörter gemeistert</span></div></div>
+  ${chest}${cont}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Wiederholen &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
   <div class="grid">${LEVELS.map(L=>{const s=lvlStats(L.c);const lk=!s.n;
     return `<button class="tile ${lk?'locked':''}" data-lvl="${L.c}" style="--c1:${L.c1};--c2:${L.c2}">${lk?'<span class="lock">PRÓXIMAMENTE</span>':''}
     <div class="tile-code">${L.c}</div><div class="tile-name">${L.es}</div><div class="tile-sub">${S.lang==='en'?L.en:L.de}</div>
@@ -3287,7 +3304,7 @@ function levelHtml(c){
     const status=s.soon?'<span class="st">Bald</span>':!unlocked?'<span class="st">Gesperrt</span>':p.done?`<span class="st done">Geschafft ${p.quiz}/4</span>`:p.read?'<span class="st new">Quiz offen</span>':'<span class="st new">Neu</span>';
     return `<button class="chap ${unlocked?'':'locked'}" ${unlocked?`data-open="${s.id}"`:''} style="--c1:${L.c1};--c2:${L.c2}">
       <span class="num">${s.ch}</span><span style="flex:1;min-width:0"><div class="ttl">${esc(unlocked?s.title:'???')}</div><div class="tz">${esc(unlocked||s.soon?tr(s.tz):'Schliesse das vorherige Kapitel ab.')}</div>
-      <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} Wörter bekannt</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}`}</div></span>${status}</button>`;}).join('');
+      <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} Wörter bekannt</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}${covChip(s)}`}</div></span>${status}</button>`;}).join('');
   return `<button class="back" data-home>&larr; Übersicht</button>
   <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${L.es}</div><div style="color:var(--mut)">${S.lang==='en'?L.en:L.de}</div></div></div>
   <div class="chapters">${items||'<p style="color:var(--mut)">Für dieses Niveau folgen bald Geschichten.</p>'}</div>`;
@@ -3297,6 +3314,7 @@ $('#view').addEventListener('click',e=>{
   const o=e.target.closest('[data-open]');if(o){openReader(o.dataset.open);return;}
   if(e.target.closest('[data-chest]')){openChest();return;}
   if(e.target.closest('[data-train]')){openTrain();return;}
+  if(e.target.closest('[data-method]')){openMethod();return;}
   if(e.target.closest('[data-home]'))go({name:'home'});
 });
 $('#goHome').onclick=()=>{closeAllModals();closeReader();closeDex();go({name:'home'});};
@@ -3305,7 +3323,7 @@ $('#goHome').onclick=()=>{closeAllModals();closeReader();closeDex();go({name:'ho
    READER
    ============================================================ */
 const R={page:0,pages:1,step:0};const rd=$('#reader'),vp=$('#rvp'),ct=$('#rct');
-function openReader(id){
+function openReader(id){R.counted=false;stopTts();
   const st=STORIES.find(s=>s.id===id);if(!st||st.soon)return;curStory=st;S.last=id;markDay();
   const p=S.stories[id]||(S.stories[id]={done:false,quiz:0,read:false,page:0});save();updateHud();
   $('#rTitle').textContent=`Capítulo ${st.ch} · ${st.title}`;
@@ -3319,7 +3337,7 @@ function openReader(id){
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>layout(true));
   $('#rQuiz').onclick=()=>openQuiz(st);updateReaderWords();
 }
-function closeReader(){if(rd.classList.contains('hidden'))return;rd.classList.add('hidden');document.body.style.overflow='';hideTip();curStory=null;render();}
+function closeReader(){stopTts();if(rd.classList.contains('hidden'))return;rd.classList.add('hidden');document.body.style.overflow='';hideTip();curStory=null;render();}
 const FONTS=[['literata','Literata',"Literata"],['garamond','Clásica',"'EB Garamond'"],['nunito','Moderna',"Nunito"],['kalam','Manuscrita',"Kalam"]];
 function applyReaderPrefs(){rd.dataset.theme=has(S.theme)?S.theme:'sepia';ct.style.setProperty('--fs',S.fs+'px');
   const f=FONTS.find(x=>x[0]===(has(S.font)?S.font:'literata'))||FONTS[0];ct.style.setProperty('--rf',f[2]);rd.classList.toggle('nomark',!S.mark);}
@@ -3333,8 +3351,9 @@ function layout(keep){
   R.page=Math.max(0,Math.min(R.pages-1,R.page));ct.style.transform=`translateX(${-R.page*R.step}px)`;void ct.offsetWidth;ct.style.transition='';updFoot();
 }
 let pageSaveT=null;
-function goTo(p){p=Math.max(0,Math.min(R.pages-1,p));const changed=p!==R.page;R.page=p;hideTip();ct.style.transform=`translateX(${-p*R.step}px)`;updFoot();
-  if(curStory&&changed){const s=S.stories[curStory.id];s.page=p;if(p===R.pages-1)s.read=true;clearTimeout(pageSaveT);pageSaveT=setTimeout(save,800);}}
+function goTo(p){stopTts();p=Math.max(0,Math.min(R.pages-1,p));const changed=p!==R.page;R.page=p;hideTip();ct.style.transform=`translateX(${-p*R.step}px)`;updFoot();
+  if(curStory&&changed){const s=S.stories[curStory.id];s.page=p;if(p===R.pages-1){s.read=true;countEncounters();}clearTimeout(pageSaveT);pageSaveT=setTimeout(save,800);}}
+function countEncounters(){if(!curStory||R.counted)return;R.counted=true;const m=STATS[curStory.id]||{};S.enc=S.enc||{};for(const l in m)S.enc[l]=(S.enc[l]||0)+m[l];save();}
 function updFoot(){$('#rPage').textContent=(R.page+1)+' / '+R.pages;$('#rProg').style.width=(R.pages>1?R.page/(R.pages-1)*100:100)+'%';}
 function updateReaderWords(){if(!curStory)return;const lem=storyLemmas(curStory);const got=lem.filter(l=>S.caught[l]).length;$('#rWords').textContent=got+'/'+lem.length;const e=$('#rEndWords');if(e)e.textContent=got+' / '+lem.length;}
 let drag=null;
@@ -3425,11 +3444,11 @@ let dexFilter='all',dexTab='dex',dexQ='',dexSort='num';
 const SORTS=[['num','Nummer'],['az','A bis Z'],['rar','Seltenheit'],['var','Beste Variante'],['new','Zuletzt gefangen'],['pow','Poder']];
 const VRANK={normal:0,holo:1,gold:2,leg:3};
 function sortDex(list){const caught=e=>S.caught[e.k]?0:1;const by={num:(a,b)=>a.n-b.n,az:(a,b)=>a.k.localeCompare(b.k,'es'),rar:(a,b)=>rarity(b)-rarity(a)||fr(b)-fr(a),var:(a,b)=>VRANK[bestVar(b.k)]-VRANK[bestVar(a.k)]||rarity(b)-rarity(a),new:(a,b)=>((S.caught[b.k]||{}).t||0)-((S.caught[a.k]||{}).t||0),pow:(a,b)=>power(b)-power(a)}[dexSort];return list.sort((a,b)=>dexSort==='num'?by(a,b):(caught(a)-caught(b)||by(a,b)||a.n-b.n));}
-function openDex(){hideTip();$('#dex').classList.remove('hidden');renderDex();}
-function closeDex(){$('#dex').classList.add('hidden');}
+function openDex(){hideTip();$('#dex').classList.remove('hidden');document.body.style.overflow='hidden';renderDex();}
+function closeDex(){$('#dex').classList.add('hidden');if(rd.classList.contains('hidden'))document.body.style.overflow='';}
 $('#dexBtn').onclick=openDex;$('#chestBtn').onclick=()=>openChest();
 const FILT=[['all','Alle'],['v','Verben'],['n','Nomen'],['adj','Adjektive'],['other','Andere'],['shiny','Unregelmässig']];
-function renderDex(){
+function renderDex(){const _dx=$('#dex'),_st=_dx.scrollTop;requestAnimationFrame(()=>{if(_dx.scrollTop!==_st&&_dx.scrollTop===0)_dx.scrollTop=_st;});
   const all=Object.values(LEX).sort((a,b)=>a.n-b.n);const caught=all.filter(e=>S.caught[e.k]);
   const nSpecial=caught.reduce((a,e)=>a+cardCount(e.k),0),maxSpecial=all.length*3;
   const d=$('#dex');let body='';
@@ -3454,7 +3473,7 @@ function renderDex(){
    <span style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" data-train>Trainieren</button>${chestsAvail()?`<button class="btn" data-chest>Truhe öffnen (${chestsAvail()})</button>`:''}</span></div>
   <div class="tabs"><button data-t="dex" class="${dexTab==='dex'?'on':''}">Wortdex</button><button data-t="col" class="${dexTab==='col'?'on':''}">Colecciones</button><button data-t="alb" class="${dexTab==='alb'?'on':''}">Sammelalbum</button></div>${body}</div>`;
   d.querySelector('[data-x]').onclick=closeDex;
-  d.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{dexTab=b.dataset.t;renderDex();});
+  d.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{dexTab=b.dataset.t;$('#dex').scrollTop=0;renderDex();});
   d.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{dexFilter=b.dataset.f;renderDex();});
   d.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c,b.dataset.v));
   const cb=d.querySelector('[data-chest]');if(cb)cb.onclick=()=>openChest();
@@ -3494,7 +3513,10 @@ function openCard(k,v,opt){
   let ex='';if(c.ex){const fs=Object.keys(FORMS).filter(f=>FORMS[f].l===k);let h=esc(c.ex);
     fs.sort((a,b)=>b.length-a.length).forEach(f=>{h=h.replace(new RegExp('(^|[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ])('+f+')(?![A-Za-zÁÉÍÓÚÜÑáéíóúüñ])','gi'),'$1<mark>$2</mark>');});
     ex=`<div class="sec"><h4>Gefunden in</h4><div class="ex" style="--pc:${pc}">${h}</div></div>`;}
-  const data=`<div class="sec"><h4>Daten</h4><div class="kv"><div><b>${o.n}x</b><span>in ${o.c} ${o.c===1?'Kapitel':'Kapiteln'}</span></div><div><b>${power(e)}</b><span>Poder (Häufigkeit)</span></div>
+  const ms=mastery(k),sr=(S.srs||{})[k],enc=(S.enc||{})[k]||0;
+  const learn=`<div class="sec"><h4>Lernstand <span>${MLEV[ms]}</span></h4><div class="mbar">${[1,2,3,4].map(i=>`<i class="${ms>=i?'on':''}"></i>`).join('')}</div>
+    <div class="kv" style="margin-top:8px"><div><b>${Math.min(enc,99)} / 10</b><span>Begegnungen beim Lesen</span></div><div><b>${sr?(sr.d<=Date.now()?'jetzt':dueTxt(sr.d)):'neu'}</b><span>Nächste Wiederholung</span></div></div></div>`;
+  const data=learn+`<div class="sec"><h4>Daten</h4><div class="kv"><div><b>${o.n}x</b><span>in ${o.c} ${o.c===1?'Kapitel':'Kapiteln'}</span></div><div><b>${power(e)}</b><span>Poder (Häufigkeit)</span></div>
     <div><b>${num(e.n)}</b><span>Wortdex Nummer</span></div><div><b>${new Date(c.t).toLocaleDateString('de-CH')}</b><span>${c.s==='chest'?'aus einer Truhe':st?'gefangen in '+esc(st.title):'gefangen'}</span></div></div></div>`;
   const tabs=[];if(forms)tabs.push(['f','Formen',forms]);tabs.push(['q','Quests',quest]);tabs.push(['i','Infos',ex+data]);
   openModal(`<button class="cvclose" data-close>${XSVG}</button><div class="cv">
@@ -3573,14 +3595,14 @@ function drawColPage(x,W,H,c,o){
   o=o||{};const st=colState(c);pageBg(x,W,H,c.color[1],'#0a0b16');
   const top=H*.045,u=W/100;
   // header band
-  const hb=x.createLinearGradient(0,0,W,0);hb.addColorStop(0,c.color[0]);hb.addColorStop(1,c.color[1]);rr(x,4*u,top,W-8*u,22*u,3*u);x.fillStyle=hb;x.fill();
-  x.save();rr(x,4*u,top,W-8*u,22*u,3*u);x.clip();rays(x,W*.85,top+11*u,60*u,'rgba(255,255,255,.08)',24);x.restore();
+  const hb=x.createLinearGradient(0,0,W,0);hb.addColorStop(0,c.color[0]);hb.addColorStop(1,c.color[1]);rr(x,4*u,top,W-8*u,25*u,3*u);x.fillStyle=hb;x.fill();
+  x.save();rr(x,4*u,top,W-8*u,25*u,3*u);x.clip();rays(x,W*.85,top+11*u,60*u,'rgba(255,255,255,.08)',24);x.restore();
   x.fillStyle='rgba(255,255,255,.75)';x.font=`800 ${2.2*u}px Outfit`;if('letterSpacing' in x)x.letterSpacing=(.5*u)+'px';x.fillText('COLECCIÓN',8*u,top+6.5*u);if('letterSpacing' in x)x.letterSpacing='0px';
-  x.fillStyle='#fff';x.font=`400 ${6.4*u}px Bungee`;x.fillText(c.title.toUpperCase(),8*u,top+14*u);
-  x.font=`500 ${2.3*u}px Outfit`;x.fillStyle='rgba(255,255,255,.9)';wrapText(x,tr(c.intro),8*u,top+19*u,W-30*u,3*u,1);
+  x.fillStyle='#fff';x.font=`400 ${6.4*u}px Bungee`;x.fillText(c.title.toUpperCase(),8*u,top+13.5*u);
+  x.font=`500 ${2.3*u}px Outfit`;x.fillStyle='rgba(255,255,255,.9)';wrapText(x,tr(c.intro),8*u,top+18.6*u,W-30*u,3*u,2);
   x.textAlign='right';x.font=`400 ${4.2*u}px Bungee`;x.fillStyle=st.gold?'#ffe07a':'#fff';x.fillText(st.gold?'ORO':st.have+'/'+st.slots.length,W-8*u,top+14*u);x.textAlign='left';
   // grid 4x3
-  const cols=4,gap=2.6*u,cw=(W-8*u-gap*(cols-1))/cols,chh=cw*88/63,gy=top+26*u;
+  const cols=4,gap=2.6*u,cw=(W-8*u-gap*(cols-1))/cols,chh=cw*88/63,gy=top+28.5*u;
   st.slots.forEach((s,i)=>{const X=4*u+(i%cols)*(cw+gap),Y=gy+Math.floor(i/cols)*(chh+gap*1.4);const e=LEX[s.w];
     if(!s.caught)slotEmpty(x,X,Y,cw,e,'');
     else if(!s.sp){x.save();x.globalAlpha=.32;drawCard(x,e,'normal',X,Y,cw);x.restore();x.save();x.textAlign='center';x.font=`800 ${cw*.07}px Outfit`;x.fillStyle='#fff';rr(x,X+cw*.18,Y+chh/2-cw*.07,cw*.64,cw*.13,cw*.065);x.fillStyle='rgba(0,0,0,.6)';x.fill();x.fillStyle='#fff';x.fillText('FALTA',X+cw/2,Y+chh/2+cw*.025);x.restore();}
@@ -3613,7 +3635,7 @@ function drawAlbumPage(x,W,H,cards,pageNo,total){const u=W/100;pageBg(x,W,H,'#1d
 function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
 async function getPDF(){if(!(window.jspdf&&window.jspdf.jsPDF)){try{await loadScript('vendor/jspdf.umd.min.js');}catch(e){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');}}return window.jspdf.jsPDF;}
 async function saveFile(name,blob){try{if(window.claude&&typeof window.claude.use==='function'){const d=await window.claude.use('downloads');if(d){await d.save({filename:name,data:blob});return true;}}}catch(e){}
-  try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);return true;}catch(e){return false;}}
+  try{const a=document.createElement('a');a.style.display='none';a.rel='noopener';a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);return true;}catch(e){return false;}}
 let pdfBusy=false;
 async function buildPdf(pages,name){if(pdfBusy)return;pdfBusy=true;const t0=toast('PDF wird erstellt...','',8000);
   try{await Promise.all(['400 60px Bungee','italic 400 30px Literata','400 30px Literata','800 30px Outfit','700 30px Outfit','600 30px Outfit','500 30px Outfit'].map(f=>document.fonts.load(f)));
@@ -3652,7 +3674,7 @@ function drawCard(x,e,v,X,Y,W){
   // frame
   x.save();x.shadowColor='rgba(0,0,0,.6)';x.shadowBlur=8*u;x.shadowOffsetY=3*u;rr(x,X,Y,W,H,6*u);
   let fr;if(v==='leg'&&x.createConicGradient){fr=x.createConicGradient(-.6,X+W/2,Y+H/2);['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff','#ff5d8f'].forEach((c,i)=>fr.addColorStop(i/5,c));}
-  else{fr=x.createLinearGradient(X,Y,X+W,Y+H);({normal:['#f2f4f9','#a3aabd','#e6e9f1','#7d849a','#c9cedb'],holo:['#e6f7ff','#a6b4ff','#ffc8f2','#b0fff0','#fff2a8'],gold:['#fff6c4','#d9a42e','#fff1a3','#a87318','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff']})[v].forEach((c,i,a)=>fr.addColorStop(i/(a.length-1),c));}
+  else{fr=x.createLinearGradient(X,Y,X+W,Y+H);({normal:['#f2f4f9','#a3aabd','#e6e9f1','#7d849a','#c9cedb'],holo:['#eef4ff','#8fb4ff','#dbe8ff','#6f9cf0','#cfe0ff'],gold:['#fff6c4','#d9a42e','#fff1a3','#a87318','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff']})[v].forEach((c,i,a)=>fr.addColorStop(i/(a.length-1),c));}
   x.fillStyle=fr;x.fill();x.restore();
   // inner
   x.save();rr(x,IX,IY,IW,IH,3.6*u);x.clip();
@@ -3694,7 +3716,8 @@ function drawCard(x,e,v,X,Y,W){
   x.restore();
   // foil + gloss over whole card
   x.save();rr(x,X,Y,W,H,6*u);x.clip();
-  if(v==='holo'||v==='leg'){const hg=x.createLinearGradient(X,Y,X+W,Y+H);['rgba(255,0,132,.18)','rgba(252,164,0,.18)','rgba(255,255,0,.16)','rgba(0,255,138,.16)','rgba(0,207,255,.18)','rgba(204,76,250,.18)'].forEach((c,i)=>hg.addColorStop(i/5,c));x.globalCompositeOperation='screen';x.fillStyle=hg;x.fillRect(X,Y,W,H);x.globalCompositeOperation='source-over';}
+  if(v==='holo'){const hg=x.createLinearGradient(X,Y,X+W,Y+H);[['rgba(207,226,255,0)',0],['rgba(207,226,255,0)',.3],['rgba(220,235,255,.28)',.48],['rgba(207,226,255,0)',.66],['rgba(207,226,255,0)',1]].forEach(([c,o])=>hg.addColorStop(o,c));x.globalCompositeOperation='screen';x.fillStyle=hg;x.fillRect(X,Y,W,H);x.globalCompositeOperation='source-over';}
+  if(v==='leg'){const hg=x.createLinearGradient(X,Y,X+W,Y+H);['rgba(255,0,132,.18)','rgba(252,164,0,.18)','rgba(255,255,0,.16)','rgba(0,255,138,.16)','rgba(0,207,255,.18)','rgba(204,76,250,.18)'].forEach((c,i)=>hg.addColorStop(i/5,c));x.globalCompositeOperation='screen';x.fillStyle=hg;x.fillRect(X,Y,W,H);x.globalCompositeOperation='source-over';}
   const sh=x.createLinearGradient(X,Y,X+W,Y+H*.7);sh.addColorStop(0,'rgba(255,255,255,0)');sh.addColorStop(.42,'rgba(255,255,255,0)');sh.addColorStop(.5,'rgba(255,255,255,.13)');sh.addColorStop(.58,'rgba(255,255,255,0)');sh.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=sh;x.fillRect(X,Y,W,H);
   x.restore();
   return H;
@@ -3710,7 +3733,7 @@ async function cardPng(e,v){
   x.textAlign='center';x.textBaseline='alphabetic';
   x.font='800 26px Outfit';if('letterSpacing' in x)x.letterSpacing='6px';x.fillStyle='rgba(255,255,255,.65)';x.fillText('PALABRADEX',W/2,92);if('letterSpacing' in x)x.letterSpacing='0px';
   const head={normal:'¡Nueva carta!',holo:'¡Carta holo!',gold:'¡Carta de oro!',leg:'¡LEGENDARIA!'}[v];
-  x.font='400 76px Bungee';const hg=x.createLinearGradient(W/2-300,0,W/2+300,0);({normal:['#ffffff','#c9cedb'],holo:['#a6b4ff','#ffc8f2','#b0fff0'],gold:['#fff1a3','#ffcb3d','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff']})[v].forEach((c,i,a)=>hg.addColorStop(i/(a.length-1),c));
+  x.font='400 76px Bungee';const hg=x.createLinearGradient(W/2-300,0,W/2+300,0);({normal:['#ffffff','#c9cedb'],holo:['#dbe8ff','#8fb4ff','#dbe8ff'],gold:['#fff1a3','#ffcb3d','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff']})[v].forEach((c,i,a)=>hg.addColorStop(i/(a.length-1),c));
   x.fillStyle='rgba(0,0,0,.35)';x.fillText(head,W/2,176);x.fillStyle=hg;x.fillText(head,W/2,170);
   // card
   const cw=600,chh=cw*88/63;x.save();x.translate(W/2,240+chh/2);x.rotate(-.035);drawCard(x,e,v,-cw/2,-chh/2,cw);x.restore();
@@ -3799,41 +3822,88 @@ function openChest(){
 /* ============================================================
    TRAINING (Karteikarten)
    ============================================================ */
+function backfillEnc(){S.enc=S.enc||{};if(Object.keys(S.enc).length)return;for(const id in S.stories){if(!S.stories[id].read)continue;const m=STATS[id]||{};for(const l in m)S.enc[l]=(S.enc[l]||0)+m[l];}}
+const DAY=864e5,SRSI=[0,1,3,7,16,35,90];
+function dueCount(){const now=Date.now();return Object.keys(S.srs||{}).filter(l=>S.caught[l]&&LEX[l]&&S.srs[l].d<=now).length;}
+function newToTrain(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop'&&!(S.srs||{})[l]).length;}
+function dueTxt(d){const n=Math.round((d-Date.now())/DAY);return n<=0?'heute':n===1?'morgen':'in '+n+' Tagen';}
+const MLEV=['Neu','Entdeckt','Vertraut','Gefestigt','Gemeistert'];
+function mastery(l){if(!S.caught[l])return 0;const e=(S.enc||{})[l]||0,b=((S.srs||{})[l]||{}).b||0;if(e>=10&&b>=4)return 4;if(e>=10||b>=3)return 3;if(e>=5||b>=2)return 2;return 1;}
+function srsAnswer(l,ok){S.srs=S.srs||{};const cur=S.srs[l]||{b:0,d:0};const b=ok?Math.min(6,(cur.b||0)+1):1;S.srs[l]={b,d:Date.now()+(ok?SRSI[b]*DAY:10*60*1000)};}
+function covOf(st){const m=STATS[st.id]||{};let t=0,k=0;for(const l in m){t+=m[l];if(S.caught[l])k+=m[l];}return t?k/t:0;}
+function covChip(st){const c=covOf(st)*100,p=Math.floor(c);const [lab,col]=c>=98?['leicht','#3ddc97']:c>=95?['ideal','#ffcb3d']:c>=90?['fordernd','#ff9f1c']:['viel Neues','#ff6b6b'];
+  return `<span class="cov" style="--cc:${col}" title="Anteil bekannter Wörter. Ideal zum Lernen: 95 bis 98 %">${p}% bekannt &middot; ${lab}</span>`;}
 function openTrain(){
   hideTip();const pool=Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop');
   if(pool.length<4){openModal(`<h2>Training</h2><p style="color:var(--mut)">Fange zuerst mindestens 4 Wörter in den Geschichten.</p>`);return;}
-  const N=Math.min(10,pool.length);const left=pool.slice();const picked=[];
-  while(picked.length<N){const w=left.map(l=>1/(1+((S.mast||{})[l]||0)*1.5));const tot=w.reduce((a,b)=>a+b,0);let r=Math.random()*tot,i=0;while(r>w[i]){r-=w[i];i++;}picked.push(left.splice(i,1)[0]);}
-  const rounds=picked.map(l=>{const e=LEX[l];const dir=Math.random()<.5?'es':'tr';
+  const now=Date.now(),srs=S.srs||{};
+  const due=pool.filter(l=>srs[l]&&srs[l].d<=now).sort((a,b)=>srs[a].d-srs[b].d);
+  const fresh=pool.filter(l=>!srs[l]).sort((a,b)=>S.caught[a].t-S.caught[b].t);
+  let picked=due.slice(0,10);if(picked.length<10)picked=picked.concat(fresh.slice(0,10-picked.length));
+  if(picked.length<Math.min(10,pool.length)){const rest=shuffle(pool.filter(l=>!picked.includes(l))).sort((a,b)=>((srs[a]||{}).d||0)-((srs[b]||{}).d||0));picked=picked.concat(rest.slice(0,Math.min(10,pool.length)-picked.length));}
+  picked=shuffle(picked);
+  const rounds=picked.map(l=>{const e=LEX[l];const box=(srs[l]||{}).b||0;const type=box>=3;const dir=type?'type':(Math.random()<.5?'es':'tr');
     const others=shuffle(pool.filter(x=>x!==l&&LEX[x][S.lang]!==e[S.lang]));
     const same=others.filter(x=>LEX[x].p===e.p);const ds=[...new Set([...same,...others])].slice(0,3);
     let extra=shuffle(Object.keys(LEX).filter(x=>x!==l&&!ds.includes(x)&&LEX[x].p!=='prop'));while(ds.length<3)ds.push(extra.pop());
-    return {l,dir,opts:shuffle([l,...ds])};});
+    return {l,dir,opts:shuffle([l,...ds]),wasDue:!!(srs[l]&&srs[l].d<=now)};});
   let i=0,score=0;const wrong=[];
   function show(){const R0=rounds[i],e=LEX[R0.l];let done=false;
+    const art=e.g?(e.g==='m'?'el':'la'):'';
     const prompt=R0.dir==='es'?`<div class="trq"><span class="trw">${esc(e.k)}</span><button class="spk" data-say="${esc(e.k)}">${SPK}</button></div><div class="trh">Was heisst das?</div>`
-      :`<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">Wie heisst das auf Spanisch? ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
-    openModal(`<div class="qprog">${rounds.map((_,j)=>`<i class="${j<i?(rounds[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>${prompt}
-      <div class="qopts trgrid">${R0.opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(R0.dir==='es'?LEX[o][S.lang]:o)}</button>`).join('')}</div>
+      :`<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">${R0.dir==='type'?'Schreib es auf Spanisch (aktives Abrufen)':'Wie heisst das auf Spanisch?'} ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
+    const body=R0.dir==='type'?`<div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Prüfen</button></div><div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div>`
+      :`<div class="qopts trgrid">${R0.opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(R0.dir==='es'?LEX[o][S.lang]:o)}</button>`).join('')}</div>`;
+    openModal(`<div class="qprog">${rounds.map((_,j)=>`<i class="${j<i?(rounds[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>
+      <div class="trtag">${R0.wasDue?'Wiederholung':(srs[R0.l]?'Festigen':'Neu')}</div>${prompt}${body}
       <div class="qfoot"><span class="qfb" id="qfb"></span><button class="btn hidden" id="qnext">${i<rounds.length-1?'Weiter':'Ergebnis'}</button></div>`);
-    const answer=j=>{if(done)return;done=true;const o=R0.opts[j];const ok=o===R0.l;R0.ok=ok;
-      document.querySelectorAll('.qopt').forEach(x=>{x.disabled=true;if(R0.opts[+x.dataset.o]===R0.l)x.classList.add('ok');});
-      if(ok){score++;S.mast[R0.l]=(S.mast[R0.l]||0)+1;}else{document.querySelector(`.qopt[data-o="${j}"]`).classList.add('no');wrong.push(R0.l);}
-      $('#qfb').innerHTML=ok?'<span style="color:var(--good)">¡Correcto!</span>':`<span style="color:var(--bad)">${esc(e.k)} = ${esc(e[S.lang])}</span>`;
-      if(R0.dir==='tr'||ok)speak(e.k);
-      const nx=()=>{i++;i<rounds.length?show():finish();};$('#qnext').classList.remove('hidden');$('#qnext').onclick=nx;
-      if(ok)setTimeout(()=>{if(document.getElementById('qnext')&&rounds[i]===R0)nx();},900);};
-    document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
-    trainKey=ev=>{if(/^[1-4]$/.test(ev.key))answer(+ev.key-1);else if(ev.key==='Enter'&&done){const n=$('#qnext');if(n)n.click();}};
+    const finishAns=(ok,msg)=>{R0.ok=ok;if(ok){score++;S.mast[R0.l]=(S.mast[R0.l]||0)+1;}else wrong.push(R0.l);srsAnswer(R0.l,ok);
+      $('#qfb').innerHTML=msg||(ok?'<span style="color:var(--good)">¡Correcto!</span>':`<span style="color:var(--bad)">${esc(e.k)} = ${esc(e[S.lang])}</span>`);
+      speak(e.k);const nx=()=>{i++;i<rounds.length?show():finish();};$('#qnext').classList.remove('hidden');$('#qnext').onclick=nx;
+      if(ok)setTimeout(()=>{if(document.getElementById('qnext')&&rounds[i]===R0)nx();},1100);};
+    if(R0.dir==='type'){const inp=$('#tIn');setTimeout(()=>inp.focus(),50);
+      document.querySelectorAll('.accents [data-ch]').forEach(b=>b.onclick=()=>{inp.value+=b.dataset.ch;inp.focus();});
+      const check=()=>{if(done)return;const v=inp.value.trim().toLowerCase().replace(/^(el|la|los|las)\s+/,'');if(!v)return;done=true;inp.disabled=true;
+        const exact=v===e.k.toLowerCase(),close=norm(v)===norm(e.k);
+        if(exact)finishAns(true);else if(close)finishAns(true,`<span style="color:var(--good)">¡Correcto!</span> <span style="color:var(--mut)">Achte auf den Akzent: <b>${esc(e.k)}</b></span>`);
+        else finishAns(false,`<span style="color:var(--bad)">Richtig: <b>${esc((art?art+' ':'')+e.k)}</b></span>`);};
+      $('#tOk').onclick=check;trainKey=ev=>{if(ev.key==='Enter'){if(done){const n=$('#qnext');if(n)n.click();}else check();}};}
+    else{const answer=j=>{if(done)return;done=true;const o=R0.opts[j];const ok=o===R0.l;
+        document.querySelectorAll('.qopt').forEach(x=>{x.disabled=true;if(R0.opts[+x.dataset.o]===R0.l)x.classList.add('ok');});
+        if(!ok)document.querySelector(`.qopt[data-o="${j}"]`).classList.add('no');finishAns(ok);};
+      document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
+      trainKey=ev=>{if(/^[1-4]$/.test(ev.key))answer(+ev.key-1);else if(ev.key==='Enter'&&done){const n=$('#qnext');if(n)n.click();}};}
   }
-  function finish(){markDay();save();updateHud();trainKey=null;
+  function finish(){markDay();save();updateHud();trainKey=null;render();const d=dueCount();
     openModal(`<div class="qres"><div class="big">${score}/${rounds.length}</div><p>${score===rounds.length?'¡Perfecto!':score>=rounds.length*.7?'¡Muy bien!':'Weiter üben, das wird!'}</p>
-      ${wrong.length?`<div style="text-align:left;margin:10px 0"><div style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--mut);margin-bottom:6px">NOCHMAL ANSCHAUEN</div>${[...new Set(wrong)].map(l=>`<button class="quest" style="width:100%" data-card="${esc(l)}"><span class="qt"><b>${esc(l)}</b> &middot; ${esc(LEX[l][S.lang])}</span></button>`).join('')}</div>`:''}
-      <p style="font-size:13px">Jedes Wort, das du 3x richtig hast, erfüllt eine Quest.</p>
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px"><button class="btn ghost" data-close>Fertig</button><button class="btn" id="tagain">Nochmal</button></div></div>`);
+      ${wrong.length?`<div style="text-align:left;margin:10px 0"><div style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--mut);margin-bottom:6px">KOMMT IN 10 MINUTEN NOCHMAL</div>${[...new Set(wrong)].map(l=>`<button class="quest" style="width:100%" data-card="${esc(l)}"><span class="qt"><b>${esc(l)}</b> &middot; ${esc(LEX[l][S.lang])}</span></button>`).join('')}</div>`:''}
+      <p style="font-size:13px">Richtige Wörter kommen erst wieder, kurz bevor du sie vergisst: nach 1, 3, 7, 16, 35 und 90 Tagen. ${d?`Noch ${d} fällig.`:'Für heute ist alles fällige wiederholt.'}</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px"><button class="btn ghost" data-close>Fertig</button><button class="btn" id="tagain">${d?'Weiter wiederholen':'Nochmal üben'}</button></div></div>`);
     $('#tagain').onclick=openTrain;}
   show();
 }
+
+/* ---------- Vorlesen (Lesen und Hören) ---------- */
+let ttsOn=false;
+function stopTts(){try{speechSynthesis.cancel();}catch(e){}ttsOn=false;const b=document.getElementById('rTts');if(b)b.classList.remove('act');}
+function speakPage(){if(ttsOn){stopTts();return;}const vr=vp.getBoundingClientRect();
+  const parts=[...ct.querySelectorAll('.chead h2, p')].filter(p=>{const r=p.getBoundingClientRect();return r.right>vr.left+4&&r.left<vr.right-4;}).map(p=>p.textContent.replace(/[«»]/g,'')).filter(Boolean);
+  if(!parts.length)return;ttsOn=true;$('#rTts').classList.add('act');
+  try{speechSynthesis.cancel();parts.forEach((t,i)=>{const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';const v=voices.find(v=>v.lang==='es-ES')||voices.find(v=>/^es/.test(v.lang));if(v)u.voice=v;u.rate=.85;if(i===parts.length-1)u.onend=()=>stopTts();speechSynthesis.speak(u);});}catch(e){stopTts();}}
+
+/* ---------- Die Methode ---------- */
+function openMethod(){pushModal();
+  const P=[['98','Lesen auf dem richtigen Niveau','Man versteht einen Text gut, wenn man 95 bis 98 % der Wörter kennt. Darunter wird Lesen zur Qual, darüber lernt man kaum Neues.','Jedes Kapitel zeigt dir, wie viel Prozent der Wörter du schon kennst. Neue Wörter kommen in kleinen Portionen, der Rest ist bekannt.','Hu & Nation 2000; Schmitt, Jiang & Grabe 2011'],
+   ['10x','Jedes Wort im Kontext wiederholen','Wörter lernt man schrittweise. Nach rund 10 Begegnungen in verschiedenen Sätzen sitzt ein Wort meist deutlich besser.','Die Geschichten bauen aufeinander auf und wiederholen Wörter über viele Kapitel. Jede Karte zeigt deine Begegnungen.','Webb 2007; Pellicer-Sánchez & Schmitt 2010; Webb & Chang 2015'],
+   ['1·3·7','Wiederholen, kurz bevor du vergisst','Verteiltes Lernen schlägt Pauken. Abstände, die mit der Zeit wachsen, halten Wissen am längsten.','Das Training plant jedes Wort neu: nach 1, 3, 7, 16, 35 und 90 Tagen. Auf der Startseite siehst du, was heute fällig ist.','Cepeda et al. 2006 (Meta-Analyse, 317 Experimente)'],
+   ['?','Abrufen statt wiederlesen','Sich aktiv an etwas zu erinnern, festigt es stärker als erneutes Lesen. Etwas Anstrengung ist dabei gewollt.','Quiz nach jedem Kapitel und Karteikarten. Sitzt ein Wort, musst du es selbst schreiben statt nur auszuwählen.','Roediger & Karpicke 2006; Karpicke & Roediger 2007'],
+   ['♪','Lesen und gleichzeitig hören','Wer liest und dabei zuhört, lernt Wörter und ihre Aussprache zusammen.','Jedes Wort und jede Seite kannst du dir vorlesen lassen.','Webb & Chang 2012, 2015; Brown, Waring & Donkaewbua 2008']];
+  openModal(`<div class="method"><small>DIE PALABRADEX METHODE</small><h2>Lesen, das hängen bleibt</h2>
+   <p class="lead">Palabradex verbindet fünf der am besten belegten Prinzipien der Sprachlernforschung mit einer Geschichte, die man weiterlesen will. Du lernst nebenbei, weil du wissen willst, wie es weitergeht.</p>
+   ${P.map(x=>`<div class="mp"><span class="mi">${x[0]}</span><div><b>${x[1]}</b><p>${x[2]}</p><p class="ia"><span>In Palabradex:</span> ${x[3]}</p><p class="src">${x[4]}</p></div></div>`).join('')}
+   <p class="disc">Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien sind gut erforscht, die App selbst wurde nicht in einer eigenen Studie getestet.</p>
+   <div style="text-align:center"><button class="btn" data-close>Los geht's</button></div></div>`);}
+$('#rTts')&&($('#rTts').onclick=speakPage);
 
 /* ============================================================
    QUIZ
@@ -3876,12 +3946,12 @@ function openQuiz(st){
 /* ============================================================
    START
    ============================================================ */
-function refreshAll(){updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
+function refreshAll(){backfillEnc();updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
 let installEvt=null;addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();installEvt=ev;});
 function isStandalone(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/claude|anthropic/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{});}catch(e){}
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});}catch(e){}
-lastLevel=levelOf(xp());lastChests=chestsAvail();updateHud();render();
+backfillEnc();lastLevel=levelOf(xp());lastChests=chestsAvail();updateHud();render();
 initRemote();
 </script>
 </body>
