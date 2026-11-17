@@ -50,13 +50,13 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 .btn.ghost{background:var(--panel2);color:var(--txt);box-shadow:none;border:1px solid var(--line)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
 @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
-.tile{position:relative;text-align:left;border-radius:22px;padding:22px;min-height:190px;overflow:hidden;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:0 10px 30px #00000055,inset 0 1px 0 #ffffff33;transition:transform .2s,box-shadow .2s;isolation:isolate}
+.tile{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:22px;padding:22px;min-height:190px;overflow:hidden;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:0 10px 30px #00000055,inset 0 1px 0 #ffffff33;transition:transform .2s,box-shadow .2s;isolation:isolate}
 .tile::before{content:"";position:absolute;inset:-40%;background:repeating-conic-gradient(from 0deg,#ffffff10 0 10deg,transparent 10deg 20deg);z-index:-1;animation:spin 60s linear infinite}
 .tile:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 18px 40px #00000077}
 .tile-code{font-family:Bungee;font-size:clamp(44px,6vw,62px);line-height:1;color:#fff;text-shadow:0 4px 0 #00000033}
 .tile-name{font-weight:800;font-size:18px;margin-top:10px;color:#fff}
 .tile-sub{font-size:13px;color:#ffffffcc}
-.tile-meta{position:absolute;left:22px;right:22px;bottom:18px;font-size:12px;color:#fff;font-weight:600}
+.tile-meta{margin-top:auto;padding-top:14px;font-size:12px;color:#fff;font-weight:600}
 .tile-meta .bar{margin-top:6px;height:6px;background:#00000033;border-radius:6px;overflow:hidden}
 .tile-meta .bar i{display:block;height:100%;background:#fff;border-radius:6px}
 .tile.locked{filter:saturate(.35) brightness(.7)}
@@ -3088,7 +3088,7 @@ $('#view').addEventListener('click',e=>{
   if(e.target.closest('[data-train]')){openTrain();return;}
   if(e.target.closest('[data-home]'))go({name:'home'});
 });
-$('#goHome').onclick=()=>{closeModal();closeReader();closeDex();go({name:'home'});};
+$('#goHome').onclick=()=>{closeAllModals();closeReader();closeDex();go({name:'home'});};
 
 /* ============================================================
    READER
@@ -3156,8 +3156,11 @@ let rsT=null;addEventListener('resize',()=>{clearTimeout(rsT);rsT=setTimeout(()=
    MODAL + EINSTELLUNGEN
    ============================================================ */
 let modalLock=false,trainKey=null;
+let mstack=[];
+function pushModal(){const m=$('#modal');if(m.classList.contains('hidden')||!m.firstChild)return;const frag=document.createDocumentFragment();while(m.firstChild)frag.appendChild(m.firstChild);mstack.push({frag,trainKey,quizOpen});trainKey=null;}
+function closeAllModals(){mstack=[];modalLock=false;closeModal();}
 function openModal(html,raw){const m=$('#modal');m.innerHTML=raw?html:`<div class="mbox"><button class="mclose" data-close>${XSVG}</button>${html}</div>`;m.classList.remove('hidden');}
-function closeModal(){if(modalLock)return;trainKey=null;$('#modal').classList.add('hidden');$('#modal').innerHTML='';hideTip();quizOpen=false;}
+function closeModal(){if(modalLock)return;if(mstack.length){const st=mstack.pop();const m=$('#modal');m.innerHTML='';m.appendChild(st.frag);trainKey=st.trainKey;quizOpen=st.quizOpen;hideTip();return;}trainKey=null;$('#modal').classList.add('hidden');$('#modal').innerHTML='';hideTip();quizOpen=false;}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal'||e.target.closest('[data-close]'))closeModal();});
 const THEMES=[['papel','Papel','#fbfaf6','#22201c'],['sepia','Sepia','#f4ecd8','#3b2f1e'],['noche','Noche','#111317','#d9d5cc'],['mar','Mar','#e9f3f6','#11324a']];
 function lockTag(id){const r=REWARDS.find(r=>r.id===id);return has(id)?'':`<span class="lv">Nv.${r.lv}</span>`;}
@@ -3236,6 +3239,7 @@ function renderDex(){
 function openCard(k,v){
   const e=LEX[k];if(!e)return;const c=S.caught[k];
   if(!c){toast('Dieses Wort hast du noch nicht gefangen');return;}
+  pushModal();
   const owned=['normal',...['holo','gold','leg'].filter(x=>S.cards[k]&&S.cards[k][x])];v=v&&owned.includes(v)?v:bestVar(k);
   const [pn,pc]=POS[e.p];const fl=formsList(e);const got=S.forms[k]||[];
   let forms='';
@@ -3260,11 +3264,74 @@ function openCard(k,v){
       <div class="ctabs">${tabs.map((t,i)=>`<button data-tab="${t[0]}" class="${i?'':'on'}">${t[1]}</button>`).join('')}</div>
       ${tabs.map((t,i)=>`<div class="tabc ${i?'hidden':''}" data-tc="${t[0]}">${t[2]}</div>`).join('')}</div>
     <div class="cv-card"><div id="cvC">${tcgHtml(e,v,{tilt:1})}</div>
-      <div class="vsel">${VORDER.map(x=>{const ok=owned.includes(x);return `<button class="${x===v?'on':''} ${ok?'':'lk'}" data-vv="${x}"><i style="background:${VAR[x][1]}"></i>${ok?VAR[x][0]:'???'}</button>`;}).join('')}</div></div></div>`,true);
+      <div class="vsel">${VORDER.map(x=>{const ok=owned.includes(x);return `<button class="${x===v?'on':''} ${ok?'':'lk'}" data-vv="${x}"><i style="background:${VAR[x][1]}"></i>${ok?VAR[x][0]:'???'}</button>`;}).join('')}</div><button class="btn" id="shareB">${SHR} Karte teilen</button></div></div>`,true);
+  let curV=v;$('#shareB').onclick=()=>shareCard(e,curV);
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('[data-tc]').forEach(x=>x.classList.toggle('hidden',x.dataset.tc!==b.dataset.tab));});
   bindTilt($('#modal'));
   document.querySelectorAll('[data-vv]').forEach(b=>b.onclick=()=>{if(!owned.includes(b.dataset.vv))return toast('Diese Variante findest du nur in Truhen');
-    $('#cvC').innerHTML=tcgHtml(e,b.dataset.vv,{tilt:1});bindTilt($('#modal'));document.querySelectorAll('[data-vv]').forEach(x=>x.classList.toggle('on',x===b));});
+    curV=b.dataset.vv;$('#cvC').innerHTML=tcgHtml(e,b.dataset.vv,{tilt:1});bindTilt($('#modal'));document.querySelectorAll('[data-vv]').forEach(x=>x.classList.toggle('on',x===b));});
+}
+
+/* ============================================================
+   TEILEN
+   ============================================================ */
+const SHR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
+const SITE='https://eloori.github.io/palabradex/';
+function siteUrl(){return /^https?:/.test(location.protocol)&&!/claude|anthropic|localhost/.test(location.hostname)?location.origin+location.pathname:SITE;}
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function wrapText(c,t,x,y,maxW,lh,maxL){const ws=t.split(' ');let line='',n=0;for(const w of ws){const test=line?line+' '+w:w;if(c.measureText(test).width>maxW&&line){c.fillText(line,x,y);y+=lh;n++;line=w;if(n>=maxL-1){const rest=ws.slice(ws.indexOf(w)).join(' ');let l=rest;while(c.measureText(l+'…').width>maxW&&l.length)l=l.slice(0,-1);if(l!==rest)l+='…';c.fillText(l,x,y);return;}}else line=test;}if(line)c.fillText(line,x,y);}
+function rays(c,cx,cy,R,col,n){c.save();c.fillStyle=col;for(let i=0;i<n;i++){const a=i*2*Math.PI/n,b=a+Math.PI/n;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));c.lineTo(cx+R*Math.cos(b),cy+R*Math.sin(b));c.closePath();c.fill();}c.restore();}
+async function cardPng(e,v){
+  try{await Promise.all(['400 60px Bungee','400 30px Literata','italic 400 30px Literata','800 30px Outfit'].map(f=>document.fonts.load(f)));}catch(err){}
+  const W=1080,H=1350,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  const [pn,pc,pc2]=POS[e.p];const [rn,rc]=RAR[rarity(e)];
+  const bg=x.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#1b1440');bg.addColorStop(1,'#0c0e1a');x.fillStyle=bg;x.fillRect(0,0,W,H);
+  rays(x,W/2,H*.42,1400,v==='gold'?'#ffcb3d14':v==='leg'?'#ff5d8f14':'#ffffff0a',36);
+  const cw=720,ch=1006,cx=(W-cw)/2,cy=90;
+  x.save();x.shadowColor='#000c';x.shadowBlur=60;x.shadowOffsetY=24;rr(x,cx,cy,cw,ch,44);
+  let fr;if(v==='leg'&&x.createConicGradient){fr=x.createConicGradient(0,cx+cw/2,cy+ch/2);['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff','#ff5d8f'].forEach((col,i)=>fr.addColorStop(i/5,col));}
+  else{fr=x.createLinearGradient(cx,cy,cx+cw,cy+ch);const st={normal:['#f2f4f9','#a3aabd','#e6e9f1','#7d849a'],holo:['#e6f7ff','#a6b4ff','#ffc8f2','#b0fff0'],gold:['#fff6c4','#d9a42e','#fff1a3','#a87318'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff']}[v];st.forEach((col,i)=>fr.addColorStop(i/3,col));}
+  x.fillStyle=fr;x.fill();x.restore();
+  const ix=cx+22,iy=cy+22,iw=cw-44,ih=ch-44;rr(x,ix,iy,iw,ih,28);
+  const inner=x.createLinearGradient(ix,iy,ix,iy+ih);if(v==='gold'){inner.addColorStop(0,'#6b4710');inner.addColorStop(.7,'#1c1306');}else if(v==='leg'){inner.addColorStop(0,'#3b1a7a');inner.addColorStop(.7,'#0b0820');}else{inner.addColorStop(0,pc2);inner.addColorStop(.7,'#121428');}
+  x.fillStyle=inner;x.fill();x.save();rr(x,ix,iy,iw,ih,28);x.clip();
+  if(v==='leg'||v==='gold'){x.fillStyle='#ffffff';for(let i=0;i<60;i++){x.globalAlpha=Math.random()*.6;x.beginPath();x.arc(ix+Math.random()*iw,iy+Math.random()*ih,Math.random()*2.2+.5,0,7);x.fill();}x.globalAlpha=1;}
+  const p=36;x.textBaseline='alphabetic';
+  x.fillStyle=v==='gold'?'#ffe7a0':'#fff';x.font='400 54px Bungee';x.fillText(e.k,ix+p,iy+88);
+  x.textAlign='right';x.font='800 24px Outfit';x.fillStyle='#ffffffcc';x.fillText('PODER',ix+iw-p-70,iy+84);x.font='400 52px Bungee';x.fillStyle='#fff';x.fillText(String(power(e)),ix+iw-p,iy+88);x.textAlign='left';
+  const ax=ix+p,ay=iy+120,aw=iw-2*p,ah=400;rr(x,ax-8,ay-8,aw+16,ah+16,18);x.fillStyle=v==='gold'?'#fff3b0':'#ffffffdd';x.fill();
+  x.save();rr(x,ax,ay,aw,ah,12);x.clip();const ag=x.createLinearGradient(ax,ay,ax+aw,ay+ah);
+  if(v==='gold'){ag.addColorStop(0,'#e8b647');ag.addColorStop(1,'#7a4f0c');}else if(v==='leg'){ag.addColorStop(0,'#7a1a5a');ag.addColorStop(1,'#1a3b7a');}else{ag.addColorStop(0,pc);ag.addColorStop(1,pc2);}
+  x.fillStyle=ag;x.fillRect(ax,ay,aw,ah);rays(x,ax+aw/2,ay+ah*.55,900,'#ffffff20',40);
+  const rg=x.createRadialGradient(ax+aw/2,ay+ah*.55,10,ax+aw/2,ay+ah*.55,aw*.5);rg.addColorStop(0,'#ffffff88');rg.addColorStop(1,'#ffffff00');x.fillStyle=rg;x.fillRect(ax,ay,aw,ah);
+  if(v==='holo'||v==='leg'){const hg=x.createLinearGradient(ax,ay,ax+aw,ay+ah);['#ff008433','#fca40033','#ffff0033','#00ff8a33','#00cfff33','#cc4cfa33'].forEach((col,i)=>hg.addColorStop(i/5,col));x.fillStyle=hg;x.fillRect(ax,ay,aw,ah);}
+  const word=e.k.toUpperCase();let fs=150;x.font=`400 ${fs}px Bungee`;while(x.measureText(word).width>aw-60&&fs>40){fs-=6;x.font=`400 ${fs}px Bungee`;}
+  x.save();x.translate(ax+aw/2,ay+ah/2+fs*.35);x.transform(1,0,-.12,1,0,0);x.textAlign='center';x.lineJoin='round';
+  x.fillStyle='#1a1033';x.fillText(word,0,fs*.09);x.lineWidth=fs*.1;x.strokeStyle='#1a1033';x.strokeText(word,0,0);x.fillStyle='#fff';x.fillText(word,0,0);x.restore();x.restore();
+  let y=ay+ah+40;rr(x,ax,y,aw,52,8);x.fillStyle='#ffffff22';x.fill();x.font='800 24px Outfit';x.fillStyle='#fff';x.fillText(pn.toUpperCase(),ax+18,y+35);x.textAlign='right';x.fillText(num(e.n),ax+aw-18,y+35);x.textAlign='left';
+  y+=110;x.font='800 54px Outfit';x.fillStyle=v==='gold'?'#ffe7a0':'#fff';wrapText(x,e[S.lang],ax,y,aw,60,1);
+  y+=30;x.fillStyle='#ffffff33';x.fillRect(ax,y,aw,2);y+=50;
+  x.font='italic 400 30px Literata';x.fillStyle='#ffffffcc';if(e.f)wrapText(x,tr(e.f),ax,y,aw,42,4);
+  const by=iy+ih-34;x.font='800 22px Outfit';x.fillStyle=rc;x.save();x.translate(ax+10,by-8);x.rotate(Math.PI/4);x.fillRect(-8,-8,16,16);x.restore();
+  x.fillStyle='#ffffffbb';x.fillText(rn.toUpperCase(),ax+32,by);x.textAlign='right';x.fillText(VAR[v][0].toUpperCase(),ax+aw,by);x.textAlign='left';
+  x.restore();
+  x.textAlign='center';x.font='400 46px Bungee';x.fillStyle='#fff';x.fillText('PALABRADEX',W/2,H-118);
+  x.font='500 28px Outfit';x.fillStyle='#ffcb3d';x.fillText(S.lang==='en'?'Learn Spanish with short stories':'Spanisch lernen mit Kurzgeschichten',W/2,H-72);
+  x.font='500 24px Outfit';x.fillStyle='#9aa0c3';x.fillText(siteUrl().replace(/^https?:\/\//,'').replace(/\/$/,''),W/2,H-34);
+  return new Promise(r=>c.toBlob(r,'image/png'));
+}
+function shareText(e,v){const vn=v==='normal'?'':VAR[v][0]+' ';return `Schau mal, meine ${vn}Karte «${e.k.toUpperCase()}» (${e[S.lang]}) in Palabradex! Spanisch lernen mit Kurzgeschichten: ${siteUrl()}`;}
+async function shareCard(e,v){
+  hideTip();let blob;try{blob=await cardPng(e,v);}catch(err){blob=null;}
+  const text=shareText(e,v);
+  if(blob&&navigator.canShare){try{const file=new File([blob],'palabradex-'+e.k+'.png',{type:'image/png'});if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text});return;}}catch(err){if(err&&err.name==='AbortError')return;}}
+  const url=blob?URL.createObjectURL(blob):'';pushModal();
+  openModal(`<h2>Karte teilen</h2>${url?`<img src="${url}" alt="Karte ${esc(e.k)}" style="width:100%;border-radius:14px;display:block;margin-bottom:10px">`:''}
+   <p style="color:var(--mut);font-size:13px;margin-bottom:12px">Bild speichern (Rechtsklick oder lange drücken) und dann in WhatsApp senden. Oder direkt den Text mit Link teilen.</p>
+   <div style="display:flex;gap:8px;flex-wrap:wrap">${url?`<a class="btn ghost" href="${url}" download="palabradex-${esc(e.k)}.png">Bild speichern</a>`:''}
+   <a class="btn" href="https://wa.me/?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a>
+   <button class="btn ghost" id="cpyB">Text kopieren</button></div>`);
+  $('#cpyB').onclick=async()=>{try{await navigator.clipboard.writeText(text);toast('Text kopiert');}catch(err){toast('Kopieren nicht möglich');}};
 }
 
 /* ============================================================
@@ -3314,11 +3381,12 @@ function openChest(){
         <div class="rev" id="rev" style="opacity:0;transition:opacity .4s"><span class="vlabel vl-${res.v}">${res.type==='new'?'Neues Wort':VAR[res.v][0]}</span>
         <div class="big">${res.type==='new'?'¡Nueva palabra!':res.v==='leg'?'¡LEGENDARIA!':res.v==='gold'?'¡Carta de oro!':'¡Carta holo!'}</div>
         <p>${res.type==='new'?`<b>${esc(e.k)}</b> = ${esc(e[S.lang])}. Du triffst es bald in einer Geschichte.`:`Spezialkarte für <b>${esc(e.k)}</b>`}</p>
-        <div class="acts">${chestsAvail()?`<button class="btn ghost" id="cnext">Nächste Truhe (${chestsAvail()})</button>`:''}<button class="btn ghost" id="cview">Karte ansehen</button><button class="btn" data-close>Fertig</button></div></div>`);
+        <div class="acts">${chestsAvail()?`<button class="btn ghost" id="cnext">Nächste Truhe (${chestsAvail()})</button>`:''}<button class="btn ghost" id="cshare">${SHR} Teilen</button><button class="btn ghost" id="cview">Karte ansehen</button><button class="btn" data-close>Fertig</button></div></div>`);
         bindTilt(w);
         setTimeout(()=>{$('#flip').classList.add('show');},500);
         setTimeout(()=>{$('#rev').style.opacity=1;if(res.v==='leg'||res.v==='gold')confetti();},1300);
         $('#cview').onclick=()=>{modalLock=false;openCard(res.l,res.v);};
+        $('#cshare').onclick=()=>{modalLock=false;shareCard(e,res.v);};
         const nx=$('#cnext');if(nx)nx.onclick=()=>{modalLock=false;openChest();};
       }
       modalLock=false;updateHud();render();if(!$('#dex').classList.contains('hidden'))renderDex();
