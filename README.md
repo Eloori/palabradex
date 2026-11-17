@@ -13,7 +13,8 @@ Palabradex ist eine Lese-App für Spanisch: Man liest spannende Kurzgeschichten 
 - **Verbformen freischalten**, sobald man sie in einer Geschichte findet
 - **Quiz** nach jedem Kapitel, **Karteikarten-Training** und **Quests**
 - **XP, Level, Truhen** und freischaltbare Lesethemen und Schriften
-- Läuft komplett im Browser, Fortschritt bleibt lokal auf dem Gerät (mit Export und Import)
+- Installierbar als Web App (PWA) auf Mac, iPhone und Android, funktioniert offline
+- Läuft komplett im Browser, Fortschritt wird automatisch lokal gespeichert (Export und Import für Gerätewechsel)
 
 ## Technik
 

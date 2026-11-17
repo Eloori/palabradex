@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Palabradex</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="theme-color" content="#0c0e1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Palabradex">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="description" content="Palabradex: Spanisch lernen mit Kurzgeschichten. Wörter sammeln, Karten freischalten, Truhen öffnen. Ein Prototyp von Eloori Interactive.">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
@@ -3184,8 +3191,16 @@ function openSettings(){
   openModal(`<h2>Einstellungen</h2>
   <div class="row"><span><span class="lbl">Übersetzung</span><small>Sprache der Übersetzungen und Fakten</small></span><div class="seg"><button data-lang="de" class="${S.lang==='de'?'on':''}">Deutsch</button><button data-lang="en" class="${S.lang==='en'?'on':''}">English</button></div></div>
   ${prefRows()}<div class="row">${syncHtml()}</div>
+  <div class="row" id="instRow"><span><span class="lbl">Als App installieren</span><small id="instTxt"></small></span><button class="btn" id="instB" style="padding:8px 12px;display:none">Installieren</button></div>
   <div class="row"><span><span class="lbl">Sicherung</span><small>Fortschritt als Datei speichern oder auf einem anderen Gerät laden</small></span><span style="display:flex;gap:8px"><button class="btn ghost" id="expB" style="padding:8px 12px">Export</button><label class="btn ghost" style="padding:8px 12px;cursor:pointer">Import<input type="file" id="impF" accept=".json,application/json" hidden></label></span></div>
   <div class="row"><button class="danger" id="rst">Fortschritt zurücksetzen</button></div>`);
+  (function(){const t=$('#instTxt'),b=$('#instB');const ua=navigator.userAgent;
+    if(isStandalone()){t.textContent='Läuft als App. Dein Fortschritt wird automatisch gespeichert.';return;}
+    if(!/^https?:$/.test(location.protocol)||/claude|anthropic/.test(location.hostname)){$('#instRow').remove();return;}
+    if(installEvt){b.style.display='';b.onclick=async()=>{installEvt.prompt();await installEvt.userChoice;installEvt=null;closeModal();};t.textContent='Eigenes Fenster im Dock, funktioniert offline.';}
+    else if(/iPhone|iPad/.test(ua))t.textContent='Teilen-Symbol, dann «Zum Home-Bildschirm».';
+    else if(/Safari/.test(ua)&&!/Chrome|Chromium|Edg/.test(ua))t.textContent='In Safari: Menü «Ablage», dann «Zum Dock hinzufügen».';
+    else t.textContent='Über das Installieren-Symbol in der Adressleiste oder das Browsermenü.';})();
   $('#expB').onclick=()=>{try{const b=new Blob([JSON.stringify(S)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='palabradex-'+today()+'.json';document.body.appendChild(a);a.click();a.remove();}catch(e){toast('Export hier nicht möglich');}};
   $('#impF').onchange=ev=>{const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d.caught!=='object')throw 0;S=merge(S,d);save();flushRemote();refreshAll();closeModal();toast('Fortschritt geladen');}catch(e){toast('Datei nicht lesbar');}};r.readAsText(f);};
   bindPrefControls();
@@ -3522,6 +3537,10 @@ function openQuiz(st){
    START
    ============================================================ */
 function refreshAll(){updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
+let installEvt=null;addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();installEvt=ev;});
+function isStandalone(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/claude|anthropic/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{});}catch(e){}
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});}catch(e){}
 lastLevel=levelOf(xp());lastChests=chestsAvail();updateHud();render();
 initRemote();
 </script>
