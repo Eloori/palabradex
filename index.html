@@ -167,6 +167,8 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 .tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;width:max-content;margin-bottom:14px}
 .tabs button{padding:8px 16px;border-radius:10px;font-weight:700;color:var(--mut)}
 .tabs button.on{background:linear-gradient(135deg,var(--acc),#ff9f1c);color:#1a1200}
+.dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
+.dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
 .dsearch:focus-within{border-color:#5a62a0}
 .dsearch input{flex:1;background:none;border:0;outline:0;color:var(--txt);font:inherit;font-size:15px;padding:12px 0}
@@ -3220,7 +3222,10 @@ $('#lvBtn').onclick=openRewards;
 /* ============================================================
    WORTDEX + SAMMELALBUM
    ============================================================ */
-let dexFilter='all',dexTab='dex',dexQ='';
+let dexFilter='all',dexTab='dex',dexQ='',dexSort='num';
+const SORTS=[['num','Nummer'],['az','A bis Z'],['rar','Seltenheit'],['var','Beste Variante'],['new','Zuletzt gefangen'],['pow','Poder']];
+const VRANK={normal:0,holo:1,gold:2,leg:3};
+function sortDex(list){const caught=e=>S.caught[e.k]?0:1;const by={num:(a,b)=>a.n-b.n,az:(a,b)=>a.k.localeCompare(b.k,'es'),rar:(a,b)=>rarity(b)-rarity(a)||fr(b)-fr(a),var:(a,b)=>VRANK[bestVar(b.k)]-VRANK[bestVar(a.k)]||rarity(b)-rarity(a),new:(a,b)=>((S.caught[b.k]||{}).t||0)-((S.caught[a.k]||{}).t||0),pow:(a,b)=>power(b)-power(a)}[dexSort];return list.sort((a,b)=>dexSort==='num'?by(a,b):(caught(a)-caught(b)||by(a,b)||a.n-b.n));}
 function openDex(){hideTip();$('#dex').classList.remove('hidden');renderDex();}
 function closeDex(){$('#dex').classList.add('hidden');}
 $('#dexBtn').onclick=openDex;$('#chestBtn').onclick=()=>openChest();
@@ -3231,6 +3236,7 @@ function renderDex(){
   const d=$('#dex');let body='';
   if(dexTab==='dex'){
     body=`<div class="dsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="dexQ" type="search" autocomplete="off" placeholder="Suchen: Wort, Form, Übersetzung oder Nummer" value="${esc(dexQ)}"></div>
+    <label class="dsort">Sortieren <select id="dexS">${SORTS.map(([k,n])=>`<option value="${k}" ${dexSort===k?'selected':''}>${n}</option>`).join('')}</select></label>
     <div class="filters">${FILT.map(([k,n])=>`<button class="chip ${dexFilter===k?'on':''}" data-f="${k}">${n}</button>`).join('')}</div>
     <div class="dgrid" id="dGrid"></div>`;
   }else{
@@ -3249,14 +3255,14 @@ function renderDex(){
   d.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c,b.dataset.v));
   const cb=d.querySelector('[data-chest]');if(cb)cb.onclick=()=>openChest();
   d.querySelector('[data-train]').onclick=()=>openTrain();
-  const qi=d.querySelector('#dexQ');if(qi){fillDexGrid();qi.oninput=()=>{dexQ=qi.value;fillDexGrid();};}
+  const qi=d.querySelector('#dexQ');if(qi){fillDexGrid();qi.oninput=()=>{dexQ=qi.value;fillDexGrid();};d.querySelector('#dexS').onchange=ev=>{dexSort=ev.target.value;fillDexGrid();};}
 }
 const norm=t=>String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 function dexMatch(e,q){if(!q)return true;const n=q.replace(/^#/,'');if(/^\d+$/.test(n))return e.n===+n;
   if(!S.caught[e.k])return false;if(norm(e.k).includes(q)||norm(e.de).includes(q)||norm(e.en).includes(q))return true;
   const fl=formsList(e);return !!(fl&&fl.some(x=>norm(x.f).includes(q)));}
 function fillDexGrid(){const g=$('#dGrid');if(!g)return;const q=norm(dexQ.trim());
-  const list=Object.values(LEX).sort((a,b)=>a.n-b.n).filter(e=>(dexFilter==='all'||(dexFilter==='other'?!['v','n','adj'].includes(e.p):dexFilter==='shiny'?isShiny(e):e.p===dexFilter))&&dexMatch(e,q));
+  const list=sortDex(Object.values(LEX).filter(e=>(dexFilter==='all'||(dexFilter==='other'?!['v','n','adj'].includes(e.p):dexFilter==='shiny'?isShiny(e):e.p===dexFilter))&&dexMatch(e,q)));
   g.innerHTML=list.length?list.map(e=>S.caught[e.k]?tcgHtml(e,bestVar(e.k),{mini:1,btn:1}):`<div class="tcg mini unk"><div class="tcg-in"><span class="no">${num(e.n)}</span><span class="q">?</span></div></div>`).join(''):`<div class="empty" style="grid-column:1/-1">Kein gefangenes Wort passt zu «${esc(dexQ)}».</div>`;
   g.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c));}
 
