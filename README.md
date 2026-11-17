@@ -13,12 +13,15 @@ Palabradex ist eine Lese-App für Spanisch: Man liest spannende Kurzgeschichten 
 - **Verbformen freischalten**, sobald man sie in einer Geschichte findet
 - **Quiz** nach jedem Kapitel, **Karteikarten-Training** und **Quests**
 - **XP, Level, Truhen** und freischaltbare Lesethemen und Schriften
+- **Colecciones**: 11 Themenseiten mit festen Karten, Bonusszenen aus Sicht anderer Figuren, Goldseiten und Sammlerrang
+- **Puntos** zum gezielten Kaufen fehlender Spezialkarten
+- **PDF Export** für Colecciones und das persönliche Sammelalbum, Teilen von Karten und Seiten als Bild
 - Installierbar als Web App (PWA) auf Mac, iPhone und Android, funktioniert offline
 - Läuft komplett im Browser, Fortschritt wird automatisch lokal gespeichert (Export und Import für Gerätewechsel)
 
 ## Technik
 
-Eine einzige statische Seite (`index.html`) ohne Build-Schritt, ohne Tracking, ohne externe Anfragen. Schriften liegen lokal in `fonts/` (SIL Open Font License).
+Eine einzige statische Seite (`index.html`) ohne Build-Schritt, ohne Tracking, ohne externe Anfragen. Schriften liegen lokal in `fonts/` (SIL Open Font License), PDF Erzeugung mit [jsPDF](https://github.com/parallax/jsPDF) lokal in `vendor/` (MIT License).
 
 Lokal testen: `index.html` im Browser öffnen oder `python3 -m http.server` im Ordner starten.
 

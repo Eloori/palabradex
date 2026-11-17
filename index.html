@@ -167,6 +167,37 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 .tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;width:max-content;margin-bottom:14px}
 .tabs button{padding:8px 16px;border-radius:10px;font-weight:700;color:var(--mut)}
 .tabs button.on{background:linear-gradient(135deg,var(--acc),#ff9f1c);color:#1a1200}
+.albbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.ptsbadge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid #ffcb3d55;border-radius:999px;padding:7px 14px;font-weight:800;color:var(--acc)}
+.coin{width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff6c4,#ffcb3d 45%,#c8861a);color:#3a2500;font-family:Bungee;font-size:11px;box-shadow:0 0 8px #ffcb3d66}
+.btn:disabled{opacity:.4;cursor:default;transform:none}
+.colgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.colt{position:relative;text-align:left;border-radius:20px;padding:18px;min-height:150px;display:flex;flex-direction:column;gap:6px;overflow:hidden;background:linear-gradient(140deg,var(--c1),var(--c2));box-shadow:0 10px 26px #0006;transition:transform .2s;isolation:isolate}
+.colt::before{content:"";position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg,#ffffff0e 0 9deg,transparent 9deg 18deg);z-index:-1}
+.colt:hover{transform:translateY(-3px)}
+.colt .ct{font-family:Bungee;font-size:22px;color:#fff;line-height:1.05}
+.colt .cs{font-weight:800;font-size:13px;color:#fff;background:#00000033;border-radius:999px;padding:3px 10px;width:max-content}
+.colt .cdots{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto}.colt .cdots i{width:12px;height:12px;border-radius:3px;transform:rotate(45deg)}
+.colt .cr{font-size:12px;color:#ffffffcc}
+.colt.done{box-shadow:0 0 0 2px #3ddc97,0 10px 26px #0006}.colt.gold{box-shadow:0 0 0 3px #ffcb3d,0 0 30px #ffcb3d66}
+.colv{position:relative;width:100%;max-width:880px;background:var(--panel);border:1px solid var(--line);border-radius:24px;overflow:hidden;animation:rise .35s cubic-bezier(.2,1.2,.4,1)}
+.colh{padding:24px 26px;background:linear-gradient(120deg,var(--c1),var(--c2));color:#fff;position:relative}
+.colh small{font-weight:800;letter-spacing:2px;opacity:.8}.colh h2{font-family:Bungee;font-weight:400;font-size:34px;margin:2px 0 6px}.colh p{opacity:.9;max-width:560px}
+.colh .cs{position:absolute;right:24px;top:24px;font-weight:800;background:#00000033;border-radius:999px;padding:5px 12px;font-size:13px}
+.colslots{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:20px 22px}
+@media (max-width:700px){.colslots{grid-template-columns:repeat(3,1fr)}}
+.slot{display:flex;flex-direction:column;gap:6px;align-items:center;cursor:pointer}.slot .sl{font-size:11px;font-weight:700;color:var(--mut);text-align:center}
+.slot.miss .tcg{opacity:.38;filter:grayscale(.6)}.slot.miss .sl{color:#ffb4c6}
+.colr{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 22px 16px}@media (max-width:700px){.colr{grid-template-columns:1fr}}
+.rw{background:var(--panel2);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mut)}.rw b{color:var(--txt);font-size:15px}
+.rw.ok{box-shadow:inset 0 0 0 2px #3ddc97}.rw .btn{width:max-content;margin-top:4px}
+.colact{display:flex;gap:10px;justify-content:flex-end;padding:0 22px 22px;flex-wrap:wrap}
+.mbox:has(.scene){max-width:660px}
+.scene small{font-weight:800;letter-spacing:2px;color:var(--c1)}.scene h2{margin-top:4px}.scene .who{font-style:italic;color:var(--mut);margin-bottom:14px}
+.scene p{font-family:Literata;font-size:18px;line-height:1.7;margin-bottom:12px}.scene p.note{font-style:italic;color:#ffe9a8;padding-left:14px;border-left:3px solid var(--c1)}
+.scene .orn{text-align:center;color:var(--mut);letter-spacing:8px;margin:10px 0 14px}
+.ptsline{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;text-align:center}
+.vsel button.buy{opacity:.8;border-style:dashed}.vsel button.cf{border-color:var(--acc);color:var(--acc);opacity:1}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -1404,6 +1435,33 @@ F('fotógrafa','fotógrafo','Fotografin','photographer (f)');F('cajera','cajero'
 F('regalo','regalo','Geschenk; ich schenke','present; I give');F('pez','pez','Fisch','fish');
 
 Object.assign(LEX.nieto,{af:1});
+
+/* Wortschatz Colecciones (Bonusszenen) */
+(function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;const A=(k,p,de,en,fde,fen,x)=>W(k,p,n++,de,en,fde,fen,x);
+const m=fr=>({g:'m',fr}),f=fr=>({g:'f',fr}),af=o=>Object.assign({af:1},o);
+A('conversación','n','Gespräch','conversation','Mehrzahl: conversaciones.','Plural: conversaciones.',f(55));
+A('novio','n','Freund (Partner); Bräutigam','boyfriend; groom','Novia = Freundin oder Braut. Los novios = das Brautpaar.','Novia = girlfriend or bride.',af({g:'m',fr:55}));
+A('producto','n','Produkt','product','Productos del mercado = Marktprodukte.','Productos del mercado = market produce.',m(55));
+A('mapa','n','Karte (Landkarte)','map','Endet auf a, ist aber männlich: el mapa.','Ends in a but is masculine: el mapa.',m(60));
+A('llamar','v','rufen; anrufen; klopfen','to call; to knock','Llamar a la puerta = an die Tür klopfen. Llamarse = heissen.','Llamar a la puerta = to knock at the door.',{noforms:1,fr:35});
+A('romántico','adj','romantisch','romantic','Gleich wie im Deutschen.','Same as in English.',af({fr:65}));
+A('horrible','adj','schrecklich','horrible','Gleiche Form für er und sie.','Same form for both genders.',{fr:60});
+A('divertido','adj','lustig','fun, funny','¡Qué divertido! = Wie lustig!','¡Qué divertido! = What fun!',af({fr:55}));
+A('alumno','n','Schüler','pupil, student','Weiblich: alumna.','Feminine: alumna.',af({g:'m',fr:55}));
+A('perder','v','verlieren; verpassen','to lose; to miss','Das e wird zu ie: pierdo. Perder el tren = den Zug verpassen.','The e changes to ie: pierdo.',{conj:['pierdo','pierdes','pierde','perdemos','perdéis','pierden'],irr:[0,1,2,5],fr:45});
+A('ritmo','n','Rhythmus','rhythm','Tener ritmo = Rhythmusgefühl haben.','Tener ritmo = to have rhythm.',m(60));
+A('encontrar','v','finden','to find','Das o wird zu ue: encuentro.','The o changes to ue: encuentro.',{conj:['encuentro','encuentras','encuentra','encontramos','encontráis','encuentran'],irr:[0,1,2,5],fr:35});
+A('tanto','det','so viel','so much','Tanto amor = so viel Liebe.','Tanto amor = so much love.',af({fr:30}));
+A('verbo','n','Verb','verb','Genau das, was du gerade lernst.','Exactly what you are learning.',m(70));
+A('rebelde','adj','rebellisch','rebellious','Gleiche Form für er und sie.','Same form for both genders.',{fr:70});
+A('adolescente','n','Jugendlicher','teenager','Gleiche Form für er und sie.','Same form for both genders.',m(65));
+A('pizarra','n','Wandtafel','blackboard','Pizarra digital = Smartboard.','Pizarra digital = smartboard.',f(75));
+A('ellos','pron','sie (Mehrzahl)','they','Weiblich: ellas.','Feminine: ellas.',{fr:20});
+A('vecino','n','Nachbar','neighbour','Weiblich: vecina.','Feminine: vecina.',af({g:'m',fr:55}));
+A('repente','n','de repente = plötzlich','de repente = suddenly','Kommt fast nur in de repente vor.','Almost only used in de repente.',m(65));
+})();
+FORMS.teresa={name:true,de:'Teresa, Besitzerin des Kleiderladens',en:'Teresa, owner of the clothes shop'};
+F('diga','decir','sagen Sie','say (formal)');F('leyendo','leer','lesend','reading');F('secreta','secreto','geheim','secret (feminine)');
 
 Object.assign(LEX.el,{forms:['el','la','los','las']});Object.assign(LEX.un,{forms:['un','una','unos','unas']});Object.assign(LEX.este,{forms:['este','esta','estos','estas']});Object.assign(LEX.mi,{forms:['mi','mi','mis','mis']});Object.assign(LEX.otro,{af:1});Object.assign(LEX.primero,{af:1});
 F('pregunta','pregunta','Frage; fragt','question; asks');F('preguntas','preguntar','du fragst; Fragen','you ask; questions');
@@ -2812,6 +2870,146 @@ const STORIES_A1_ARC3=[
   ]}
 ];
 
+const COLS=[
+ {id:'llave',title:'La llave azul',color:['#3b82f6','#1e3a8a'],
+  intro:{de:'Alles beginnt mit einem Schlüssel, einem Zettel und einer Stimme in der Nacht.',en:'It all starts with a key, a note and a voice in the night.'},
+  words:['llave','puerta','azul','radio','foto','nota','carta','secreto','voz','noche','misterio','calle'],
+  scene:{title:'La noche de Ana',who:{de:'Ana, in Zürich, einen Abend bevor Mia nach Barcelona reist',en:'Ana, in Zurich, the night before Mia leaves for Barcelona'},paras:[
+   'Es una noche de septiembre en Zúrich. Mi nieta Mia duerme en su habitación. Mañana viaja a Barcelona.',
+   'Su maleta está abierta en el salón. Yo no duermo. Abro mi caja secreta.',
+   'Dentro hay una carta vieja, una foto y dos llaves azules. Una llave es para mí. La otra es para Joan. Cincuenta años en una caja.',
+   'Tomo un papel y escribo una nota pequeña:',
+   {t:'«Hola, Mia. La puerta azul está en la calle del Sol, número siete. Esta noche, a las doce.»',cls:'note'},
+   'Mis manos tienen miedo. Pongo la llave de Joan y la nota en la maleta, debajo de un libro. Cierro la maleta.',
+   'Miro por la ventana. No hay luna. Pienso en una voz. Una voz joven, en una tienda de radios.',
+   '«Perdón, Mia», digo en silencio. «Tú vas a abrir la puerta. Yo no puedo. Todavía no.»'
+  ]}},
+ {id:'familia',title:'Familia',color:['#ec4899','#831843'],
+  intro:{de:'Grosseltern, Eltern, Geschwister, Cousins: in Spanien isst die ganze Familie zusammen.',en:'Grandparents, parents, siblings, cousins: in Spain the whole family eats together.'},
+  words:['familia','abuela','abuelo','madre','padre','mamá','hermana','hermano','hijo','tío','primo','nieto'],
+  scene:{title:'Laia y su familia',who:{de:'Laia, Leos Schwester, beim Sonntagsessen',en:'Laia, Leo\'s sister, at Sunday lunch'},paras:[
+   'Me llamo Laia. Tengo dieciséis años y mi familia es un caos.',
+   'Cada domingo comemos en casa de mi madre. Mi padre cocina carne. Mi madre dice que la carne está muy seca. Mi padre dice que no. Cada domingo, la misma conversación.',
+   'Mi hermano Leo llega tarde. Siempre llega tarde. Mi tío Jordi habla de fútbol. Mi primo Marc habla de su boda. Mi abuelo Joan no habla. Mi abuelo mira la ventana.',
+   'Pero ahora mi abuelo es diferente. Ahora mi abuelo sonríe. Ahora hay una abuela nueva en la mesa: Ana. Y hay una chica de Suiza que se llama Mia.',
+   'Mia es la novia de mi hermano. Bueno, todavía no. Pero yo soy inteligente. Yo sé estas cosas.',
+   'Mi madre me mira. «Laia, ¿qué piensas?»',
+   '«Nada, mamá», digo. Y como mi postre. Una familia es un caos. Pero es mi caos.'
+  ]}},
+ {id:'comida',title:'Comida',color:['#f97316','#7c2d12'],
+  intro:{de:'Pan con tomate, Paella, Tortilla: in Spanien redet man beim Essen über das nächste Essen.',en:'Pan con tomate, paella, tortilla: in Spain people talk about the next meal while eating.'},
+  words:['pan','tomate','queso','paella','arroz','sopa','helado','chocolate','tortilla','café','fruta','pescado'],
+  scene:{title:'El secreto de Pau',who:{de:'Pau, Mias Mitbewohner und Koch',en:'Pau, Mia\'s flatmate and cook'},paras:[
+   'Me llamo Pau. Soy cocinero. Para mí, la comida es más importante que el dinero. Bueno, casi.',
+   'Mi abuela es de Valencia. Ella hace la mejor paella del mundo. Arroz, pollo, conejo y mucho tiempo. Nunca pescado. ¡Nunca!',
+   'En el restaurante, los turistas piden paella con pescado. Yo cocino la paella con pescado. Pero en mi corazón, lloro un poco.',
+   'En casa, para Marta y Mia, cocino de todo: sopa cuando están enfermas, tortilla los domingos, pan con tomate cada mañana.',
+   'Mia trae chocolate de Suiza. Es muy bueno. Pero no digo nada. Un cocinero de Valencia no dice que el chocolate suizo es mejor que el helado de su barrio.',
+   'Mi secreto es simple. La comida buena tiene tres cosas: producto bueno, tiempo y amor. Y un poco de aceite de oliva. Bueno, mucho aceite de oliva.'
+  ]}},
+ {id:'barcelona',title:'Barcelona',color:['#eab308','#713f12'],
+  intro:{de:'Plätze, Märkte, Strand und ein Drache: Leos Barcelona.',en:'Squares, markets, beach and a dragon: Leo\'s Barcelona.'},
+  words:['plaza','mercado','playa','mar','metro','iglesia','parque','barrio','dragón','torre','montaña','ciudad'],
+  scene:{title:'El plan de Leo',who:{de:'Leo, in der Nacht, als er das Spiel für Mia plant',en:'Leo, the night he plans the game for Mia'},paras:[
+   'Es diciembre. Son las dos de la noche. Estoy en mi habitación con un mapa de Barcelona.',
+   'Quiero enseñar mi ciudad a Mia. Pero soy tímido. No sé hablar de cosas importantes. Entonces, un juego.',
+   'Primero, el dragón del parque de Gaudí. Mia tiene que ver los colores. Después, la iglesia con las torres. Después, mi barrio favorito, Gracia. Y al final, la montaña mágica, el Tibidabo. Desde allí se ve todo: la playa, el mar, el metro, las plazas.',
+   'Laia entra sin llamar. «¿Qué haces?»',
+   '«Nada.»',
+   'Laia mira el mapa. Mira mis notas. Sonríe. «Leo, esto es muy romántico. Y muy raro.»',
+   '«¿Me ayudas?»',
+   '«Claro», dice Laia. «Pero yo escribo las tarjetas. Tu letra es horrible.»'
+  ]}},
+ {id:'cuerpo',title:'El cuerpo',color:['#f43f5e','#881337'],
+  intro:{de:'Kopf, Hände, Füsse: beim Salsa braucht man alles gleichzeitig.',en:'Head, hands, feet: salsa needs all of them at once.'},
+  words:['cuerpo','cabeza','cara','ojo','boca','pelo','mano','brazo','pierna','pie','corazón','garganta'],
+  scene:{title:'La clase de Rafa',who:{de:'Rafa, der Salsalehrer aus Kuba',en:'Rafa, the salsa teacher from Cuba'},paras:[
+   'Me llamo Rafa. Soy de Cuba y bailo desde los cinco años. Ahora tengo una escuela de baile en Barcelona.',
+   'Los martes, la clase es muy divertida. Hay una chica suiza que se llama Mia. Mia tiene una cabeza muy inteligente. Pero su cuerpo no escucha a su cabeza.',
+   'Su pie derecho va a la izquierda. Su brazo va arriba cuando la música va abajo. Pero Mia sonríe siempre. Y eso es lo más importante.',
+   'Yo digo a mis alumnos: «La salsa no está en la cabeza. No está en los pies. Está aquí.» Y pongo la mano en el corazón.',
+   'Mia me mira con los ojos grandes. Cierra los ojos. Escucha la música. Y por un momento, solo un momento, baila. Baila de verdad.',
+   'Después pierde el ritmo y se ríe. Pero yo lo veo. Esta chica tiene salsa en el corazón.'
+  ]}},
+ {id:'ropa',title:'Ropa',color:['#a855f7','#4c1d95'],
+  intro:{de:'Ein Vintage Laden in Gràcia und eine blaue Jacke mit Geheimnis.',en:'A vintage shop in Gràcia and a blue jacket with a secret.'},
+  words:['ropa','camisa','camiseta','jersey','pantalón','falda','vestido','chaqueta','abrigo','zapato','bota','gafas'],
+  scene:{title:'La chaqueta azul',who:{de:'Teresa, die Besitzerin des Kleiderladens in der calle Verdi',en:'Teresa, owner of the clothes shop on calle Verdi'},paras:[
+   'Me llamo Teresa. Tengo una tienda de ropa vieja en la calle Verdi. Vestidos, camisas, zapatos, abrigos de otros años.',
+   'Un día de enero, entra un chico joven. Lleva gafas de sol, en enero. Muy raro.',
+   '«Hola», dice. «Necesito su ayuda. Una chica va a venir. Busca algo azul. ¿Usted tiene una chaqueta azul?»',
+   'Busco en mi tienda. Al final encuentro una chaqueta azul, vieja y muy bonita.',
+   'El chico pone un papel en el bolsillo de la chaqueta. «Para ella», dice. «Por favor, no diga nada.»',
+   'Dos días después, entra una chica. Pelo largo, botas negras, ojos nerviosos. «Busco algo azul», dice.',
+   'Yo sonrío. En treinta años de tienda, nunca vendo una chaqueta con tanto amor dentro.'
+  ]}},
+ {id:'tiempo',title:'Las estaciones',color:['#14b8a6','#134e4a'],
+  intro:{de:'Sonne, Regen, Schnee: fünfzig Winter warten.',en:'Sun, rain, snow: fifty winters of waiting.'},
+  words:['sol','luna','lluvia','nieve','viento','nube','calor','frío','primavera','verano','otoño','invierno'],
+  scene:{title:'Cincuenta inviernos',who:{de:'Joan, über die Jahre, in denen er gewartet hat',en:'Joan, about the years he spent waiting'},paras:[
+   'Cada noche, a las doce, voy a la casa azul. En primavera, cuando hay flores en la calle. En verano, cuando hace calor y la gente cena en los balcones.',
+   'En otoño, cuando hay viento y las nubes son grises. Y en invierno, cuando hace frío y la lluvia cae en la puerta.',
+   'En Barcelona no hay nieve. Pero en mi corazón, cada invierno, hay mucha nieve.',
+   'Pongo la radio en la mesa. Digo: «Ana, ¿estás ahí?» Nadie contesta. Cincuenta veranos. Cincuenta inviernos. Nadie.',
+   'Mi hija dice: «Papá, ¿por qué vas a la casa azul cada noche?» Yo no digo nada.',
+   'Una noche de septiembre, hay luna. Pongo la radio en la mesa. Digo: «¿Hola?»',
+   'Y una voz de chica contesta: «¿Hola? ¿Quién es?»',
+   'Esa noche, por primera vez en cincuenta años, el invierno termina.'
+  ]}},
+ {id:'verbos',title:'Los rebeldes',color:['#ef4444','#7f1d1d'],
+  intro:{de:'Die wichtigsten Verben halten sich an keine Regel. Genau deshalb muss man sie kennen.',en:'The most important verbs follow no rules. That\'s exactly why you need them.'},
+  words:['ser','estar','ir','tener','hacer','decir','poder','querer','venir','saber','ver','dar'],
+  scene:{title:'La clase de Carmen',who:{de:'Carmen, Mias Spanischlehrerin',en:'Carmen, Mia\'s Spanish teacher'},paras:[
+   'Me llamo Carmen. Soy profesora de español. Hoy la clase habla de los verbos rebeldes.',
+   '«¿Por qué rebeldes?», pregunta un estudiante.',
+   '«Porque no quieren seguir las reglas», digo. «Ser, estar, ir, tener... Son como adolescentes.»',
+   'Escribo en la pizarra: yo soy, yo voy, yo tengo, yo hago, yo digo. Los estudiantes me miran con miedo.',
+   '«Tranquilos», digo. «Los verbos rebeldes son difíciles. Pero son los más importantes. Con ellos podéis decir todo: quién sois, dónde estáis, qué queréis.»',
+   'Mia levanta la mano. «Profesora, ¿cómo aprendo todo esto?»',
+   '«Leyendo», digo. «Una historia, y otra, y otra. Los rebeldes vienen solos. Un día, sin pensar, dices: voy, tengo, sé. Y ya está.»',
+   'Mia sonríe. Creo que ella ya sabe.'
+  ]}},
+ {id:'sentimientos',title:'Sentimientos',color:['#8b5cf6','#3b1a7a'],
+  intro:{de:'Angst, Liebe, Freude: manche Wörter spürt man, bevor man sie versteht.',en:'Fear, love, joy: some words you feel before you understand them.'},
+  words:['miedo','amor','feliz','triste','nervioso','cansado','contento','sorpresa','cariño','beso','sonrisa','felicidad'],
+  scene:{title:'La noche del hospital',who:{de:'Joan, in der Nacht, als Ana auf ihn wartet',en:'Joan, the night Ana waits for him'},paras:[
+   'Es la noche de la carta. Son las once. Estoy en el hospital. Mi madre está en la cama, muy enferma.',
+   'En mi bolsillo no hay nada. No tengo la carta de Ana. No sé nada de la puerta azul. No sé nada de las doce.',
+   'Mi madre me mira. «Joan, estás triste.»',
+   '«No, mamá. Estoy cansado.»',
+   '«Estás nervioso. Es por la chica de la tienda, ¿verdad? La chica que canta.»',
+   'No digo nada. Mi madre sonríe. Es una sonrisa pequeña, con mucho cariño.',
+   '«El amor es así», dice. «Siempre llega tarde o temprano. Muchas veces tarde.»',
+   'A las doce, en la calle del Sol, una chica espera delante de una puerta azul. Y yo no lo sé. Cincuenta años sin saber.',
+   'Pero mi madre tiene razón. El amor llega. Tarde, pero llega.'
+  ]}},
+ {id:'musica',title:'Música y fiesta',color:['#d4a73a','#713f12'],
+  intro:{de:'Gitarren, Konzerte und eine Nacht mit Feuer am Strand.',en:'Guitars, concerts and a night with fire on the beach.'},
+  words:['música','guitarra','canción','concierto','cantar','bailar','baile','salsa','fiesta','escenario','fuego','estrella'],
+  scene:{title:'La primera canción',who:{de:'Joan, mit zweiundzwanzig, in der Radiowerkstatt',en:'Joan, aged twenty-two, in the radio shop'},paras:[
+   'Tengo veintidós años. Es tarde y la tienda de radios está cerrada. Estoy solo con mi guitarra.',
+   'Escucho la radio. Es música de otro país, con mucho ritmo. Pero yo quiero otra cosa. Quiero una canción para Ana.',
+   'Ana canta cada día en la tienda. Ella no sabe que yo escucho. Su voz es como una estrella en el cielo de la noche.',
+   'Toco la guitarra. Una nota. Otra nota. Despacio. Escribo en un papel: «Una chica, una llave, una puerta azul.»',
+   'La canción es lenta. Es simple. No es para un escenario. No es para un concierto. Es para una persona.',
+   'Muchos años después, mi nieto Leo toca esta canción en un bar del Born. Y Ana canta.',
+   'Pero esta noche, en la tienda, nadie escucha. Solo yo, mi guitarra y un sueño.'
+  ]}},
+ {id:'casa',title:'En casa',color:['#22c55e','#14532d'],
+  intro:{de:'Ein Zimmer mit Balkon, ein Sofa und Mitbewohner, die zur Familie werden.',en:'A room with a balcony, a sofa and flatmates who become family.'},
+  words:['casa','piso','habitación','cocina','baño','salón','cama','mesa','silla','ventana','balcón','sofá'],
+  scene:{title:'Una habitación libre',who:{de:'Marta, bevor Mia in die WG einzieht',en:'Marta, before Mia moves into the flat'},paras:[
+   'Me llamo Marta. Soy enfermera y vivo en un piso de la calle Verdi con Pau.',
+   'Nuestro piso es viejo. La cocina es pequeña, el baño es más pequeño. Pero el salón tiene un sofá grande y muchas plantas. Y hay una habitación libre, con balcón.',
+   'Un día, Laia, la hermana de Leo, me escribe: «Marta, tengo una amiga para tu habitación. Bueno, no es mi amiga. Es la chica de mi hermano. Bueno, todavía no.»',
+   'Me río. Laia es mi vecina desde siempre. Es como mi hermana pequeña.',
+   'Preparo la habitación. Pongo una cama nueva, una mesa, una silla al lado de la ventana. Y flores en el balcón.',
+   'Pau me mira. «¿Flores? ¿Para una chica que no conocemos?»',
+   '«Las flores son importantes», digo. «Una casa no es solo un piso. Una casa son las personas.»',
+   'Una semana después, Mia entra con sus cajas y su cámara vieja. Y el piso, de repente, es una casa.'
+  ]}}
+];
+
 STORIES.push(...STORIES_A1_ARC3.map(s=>Object.assign({id:'a1-'+s.ch,lvl:'A1'},s)));
 const POS={v:['verbo','#ef4444','#7f1d1d'],n:['sustantivo','#3b82f6','#1e3a8a'],adj:['adjetivo','#22c55e','#14532d'],adv:['adverbio','#eab308','#713f12'],
  pron:['pronombre','#a855f7','#4c1d95'],art:['artículo','#64748b','#1e293b'],det:['determinante','#14b8a6','#134e4a'],prep:['preposición','#94a3b8','#334155'],
@@ -2858,7 +3056,7 @@ function occ(l){let n=0,c=0;for(const id in STATS){if(STATS[id][l]){n+=STATS[id]
    STATE + SPEICHER
    ============================================================ */
 const LS='palabradex.v1';
-function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},stories:{},days:[],opened:0,bonusXp:0,last:null,upd:0};}
+function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
 let S=defState();
 try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}
 const remote={ref:null,writing:false,pending:false,timer:null};
@@ -2882,7 +3080,7 @@ function merge(a,b){
   for(const id of ids){const x=(a.stories||{})[id]||{},y=(b.stories||{})[id]||{};o.stories[id]={done:!!(x.done||y.done),quiz:Math.max(x.quiz||0,y.quiz||0),read:!!(x.read||y.read),page:(newer===a?x.page:y.page)||0};}
   o.days=[...new Set([...(a.days||[]),...(b.days||[])])].sort().slice(-120);
   for(const src of [a.mast||{},b.mast||{}])for(const k in src)o.mast[k]=Math.max(o.mast[k]||0,src[k]);
-  o.opened=Math.max(a.opened||0,b.opened||0);o.bonusXp=Math.max(a.bonusXp||0,b.bonusXp||0);
+  o.opened=Math.max(a.opened||0,b.opened||0);o.empties=Math.max(a.empties||0,b.empties||0);o.spent=Math.max(a.spent||0,b.spent||0);o.bonusXp=Math.max(a.bonusXp||0,b.bonusXp||0);
   o.upd=Math.max(a.upd||0,b.upd||0);return o;
 }
 let syncOk=false;
@@ -2939,7 +3137,7 @@ function streak(){const set=new Set(S.days);let d=new Date(),n=0;if(!set.has(tod
 function bestStreak(){const ds=[...S.days].sort();let best=0,run=0,prev=null;for(const k of ds){const d=new Date(k+'T12:00:00');if(prev&&Math.round((d-prev)/864e5)===1)run++;else run=1;best=Math.max(best,run);prev=d;}return best;}
 function chestSources(){const q=questTotals().n;return {story:doneStories().length,quest:Math.floor(q/10),streak:Math.floor(bestStreak()/3),level:levelOf(xp())-1,qn:q};}
 function chestsAvail(){const c=chestSources();return Math.max(0,c.story+c.quest+c.streak+c.level-(S.opened||0));}
-let lastLevel=null,lastChests=null;
+let lastLevel=null,lastChests=null,lastColsDone=null;
 function updateHud(){
   const x=xp(),l=levelOf(x);const lo=LV[l-1]??0,hi=nextLv(l);
   $('#lvNum').textContent='Nv. '+l;$('#xpFill').style.width=Math.min(100,(x-lo)/(hi-lo)*100)+'%';$('#xpTxt').textContent=x+' XP';
@@ -2948,7 +3146,8 @@ function updateHud(){
   if(lastLevel!==null&&l>lastLevel){const rw=REWARDS.filter(r=>r.lv>lastLevel&&r.lv<=l);
     toast(`<b>¡Nivel ${l}!</b><span>+1 Truhe${rw.length?' &middot; Freigeschaltet: '+rw.map(r=>r.de).join(', '):''}</span>`,'big',4500);}
   else if(lastChests!==null&&ch>lastChests&&!quizOpen){toast(`<span class="gem" style="background:var(--acc)">+1</span><span>Neue <b>Truhe</b> verdient!</span>`);}
-  lastLevel=l;lastChests=ch;
+  const cc=colsDone();if(lastColsDone!==null){if(cc.done>lastColsDone.done)toast(`<b>¡Colección completa!</b><span>Escena extra freigeschaltet &middot; +${PTS_COL} Puntos</span>`,'big',4500);else if(cc.gold>lastColsDone.gold)toast(`<b>¡Colección de oro!</b><span>Neuer Titel &middot; +${PTS_GOLD} Puntos</span>`,'big',4500);}
+  lastColsDone=cc;lastLevel=l;lastChests=ch;
 }
 
 /* ============================================================
@@ -3239,22 +3438,29 @@ function renderDex(){
     <label class="dsort">Sortieren <select id="dexS">${SORTS.map(([k,n])=>`<option value="${k}" ${dexSort===k?'selected':''}>${n}</option>`).join('')}</select></label>
     <div class="filters">${FILT.map(([k,n])=>`<button class="chip ${dexFilter===k?'on':''}" data-f="${k}">${n}</button>`).join('')}</div>
     <div class="dgrid" id="dGrid"></div>`;
+  }else if(dexTab==='col'){
+    body=colsHtml();
   }else{
-    const owned=[];for(const e of caught)for(const v of ['leg','gold','holo'])if(S.cards[e.k]&&S.cards[e.k][v])owned.push([e,v]);
-    body=owned.length?`<div class="dgrid">${owned.map(([e,v])=>tcgHtml(e,v,{mini:1,btn:1}).replace('data-c=','data-v="'+v+'" data-c=')).join('')}</div>`:
-      `<div class="empty">Noch keine Spezialkarten. Öffne Truhen, um Holo, Oro und Legendaria Karten zu finden.</div>`;
+    const owned=albumCards();
+    body=`<div class="albbar"><label class="dsort">Sortieren <select id="albS">${ALBSORT.map(([k,n])=>`<option value="${k}" ${albSort===k?'selected':''}>${n}</option>`).join('')}</select></label>
+      <span class="ptsbadge">${PCOIN} ${pts()} Puntos</span><button class="btn" id="albPdf" ${owned.length?'':'disabled'}>${PDFI} Album als PDF</button></div>`+
+      (owned.length?`<div class="dgrid">${owned.map(([e,v])=>tcgHtml(e,v,{mini:1,btn:1}).replace('data-c=','data-v="'+v+'" data-c=')).join('')}</div>`:
+      `<div class="empty">Noch keine Spezialkarten. Öffne Truhen oder kaufe Karten mit Puntos, um Holo, Oro und Legendaria Karten zu sammeln.</div>`);
   }
   d.innerHTML=`<div class="dexin"><button class="back" data-x>&larr; Zurück</button>
   <div class="dexhead">${dexTab==='dex'?`<div class="ring" style="--p:${caught.length/all.length*100}"><span>${Math.round(caught.length/all.length*100)}%</span></div><div><h1>Wortdex</h1><div style="color:var(--mut)">${caught.length} von ${all.length} Wörtern gefangen</div></div>`
+   :dexTab==='col'?(()=>{const cd=colsDone();return `<div class="ring" style="--p:${cd.done/COLS.length*100}"><span>${cd.done}/${COLS.length}</span></div><div><h1>Colecciones</h1><div style="color:var(--mut)">Rang: <b style="color:var(--acc)">${rankName(cd.done)}</b> &middot; ${cd.done} von ${COLS.length} Seiten komplett</div></div>`;})()
    :`<div class="ring" style="--p:${nSpecial/maxSpecial*100}"><span>${nSpecial}</span></div><div><h1>Sammelalbum</h1><div style="color:var(--mut)">${nSpecial} von ${maxSpecial} Spezialkarten</div></div>`}
    <span style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" data-train>Trainieren</button>${chestsAvail()?`<button class="btn" data-chest>Truhe öffnen (${chestsAvail()})</button>`:''}</span></div>
-  <div class="tabs"><button data-t="dex" class="${dexTab==='dex'?'on':''}">Wortdex</button><button data-t="alb" class="${dexTab==='alb'?'on':''}">Sammelalbum</button></div>${body}</div>`;
+  <div class="tabs"><button data-t="dex" class="${dexTab==='dex'?'on':''}">Wortdex</button><button data-t="col" class="${dexTab==='col'?'on':''}">Colecciones</button><button data-t="alb" class="${dexTab==='alb'?'on':''}">Sammelalbum</button></div>${body}</div>`;
   d.querySelector('[data-x]').onclick=closeDex;
   d.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{dexTab=b.dataset.t;renderDex();});
   d.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{dexFilter=b.dataset.f;renderDex();});
   d.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c,b.dataset.v));
   const cb=d.querySelector('[data-chest]');if(cb)cb.onclick=()=>openChest();
   d.querySelector('[data-train]').onclick=()=>openTrain();
+  if(dexTab==='col')bindCols(d);
+  const as=d.querySelector('#albS');if(as){as.onchange=ev=>{albSort=ev.target.value;renderDex();};d.querySelector('#albPdf').onclick=()=>albumPdf();}
   const qi=d.querySelector('#dexQ');if(qi){fillDexGrid();qi.oninput=()=>{dexQ=qi.value;fillDexGrid();};d.querySelector('#dexS').onchange=ev=>{dexSort=ev.target.value;fillDexGrid();};}
 }
 const norm=t=>String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -3269,10 +3475,10 @@ function fillDexGrid(){const g=$('#dGrid');if(!g)return;const q=norm(dexQ.trim()
 /* ============================================================
    KARTENANSICHT (geteilt)
    ============================================================ */
-function openCard(k,v){
+function openCard(k,v,opt){
   const e=LEX[k];if(!e)return;const c=S.caught[k];
   if(!c){toast('Dieses Wort hast du noch nicht gefangen');return;}
-  pushModal();
+  if(!(opt&&opt.replace))pushModal();
   const owned=['normal',...['holo','gold','leg'].filter(x=>S.cards[k]&&S.cards[k][x])];v=v&&owned.includes(v)?v:bestVar(k);
   const [pn,pc]=POS[e.p];const fl=formsList(e);const got=S.forms[k]||[];
   let forms='';
@@ -3297,13 +3503,139 @@ function openCard(k,v){
       <div class="ctabs">${tabs.map((t,i)=>`<button data-tab="${t[0]}" class="${i?'':'on'}">${t[1]}</button>`).join('')}</div>
       ${tabs.map((t,i)=>`<div class="tabc ${i?'hidden':''}" data-tc="${t[0]}">${t[2]}</div>`).join('')}</div>
     <div class="cv-card"><div id="cvC">${tcgHtml(e,v,{tilt:1})}</div>
-      <div class="vsel">${VORDER.map(x=>{const ok=owned.includes(x);return `<button class="${x===v?'on':''} ${ok?'':'lk'}" data-vv="${x}"><i style="background:${VAR[x][1]}"></i>${ok?VAR[x][0]:'???'}</button>`;}).join('')}</div><button class="btn" id="shareB">${SHR} Karte teilen</button></div></div>`,true);
+      <div class="vsel">${VORDER.map(x=>{const ok=owned.includes(x);return `<button class="${x===v?'on':''} ${ok?'':'lk buy'}" data-vv="${x}"><i style="background:${VAR[x][1]}"></i>${ok?VAR[x][0]:VAR[x][0]+' &middot; '+PRICE[x]+' P'}</button>`;}).join('')}</div>
+      <div class="ptsline">${PCOIN} ${pts()} Puntos${colOf(k)?` &middot; Teil der Colección <b>${esc(colOf(k).title)}</b>`:''}</div>
+      <button class="btn" id="shareB">${SHR} Karte teilen</button></div></div>`,true);
   let curV=v;$('#shareB').onclick=()=>shareCard(e,curV);
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('[data-tc]').forEach(x=>x.classList.toggle('hidden',x.dataset.tc!==b.dataset.tab));});
   bindTilt($('#modal'));
-  document.querySelectorAll('[data-vv]').forEach(b=>b.onclick=()=>{if(!owned.includes(b.dataset.vv))return toast('Diese Variante findest du nur in Truhen');
+  document.querySelectorAll('[data-vv]').forEach(b=>b.onclick=()=>{const vv=b.dataset.vv;if(!owned.includes(vv)){
+      if(pts()<PRICE[vv])return toast(`Dafür brauchst du ${PRICE[vv]} Puntos. Du hast ${pts()}.`);
+      if(!b.dataset.cf){b.dataset.cf=1;b.classList.add('cf');b.innerHTML=`Kaufen für ${PRICE[vv]} P?`;return;}
+      buyVariant(k,vv);openCard(k,vv,{replace:true});return;}
     curV=b.dataset.vv;$('#cvC').innerHTML=tcgHtml(e,b.dataset.vv,{tilt:1});bindTilt($('#modal'));document.querySelectorAll('[data-vv]').forEach(x=>x.classList.toggle('on',x===b));});
 }
+
+/* ============================================================
+   PUNTOS, COLECCIONES, ALBUM
+   ============================================================ */
+const PRICE={holo:120,gold:300,leg:1200};
+const PTS_CHEST=15,PTS_EMPTY=60,PTS_COL=100,PTS_GOLD=250;
+const PCOIN='<span class="coin">P</span>';
+const PDFI='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>';
+function colState(c){const slots=c.words.map(w=>{const caught=!!S.caught[w],sp=caught&&cardCount(w)>0;return {w,caught,sp,v:caught?bestVar(w):null};});
+  const have=slots.filter(x=>x.sp).length;return {slots,have,complete:have===slots.length,gold:slots.every(x=>x.v==='gold'||x.v==='leg')};}
+function colsDone(){let done=0,gold=0;for(const c of COLS){const st=colState(c);if(st.complete)done++;if(st.gold)gold++;}return {done,gold};}
+function colOf(w){return COLS.find(c=>c.words.includes(w));}
+const RANKS=[[0,'Novato'],[1,'Coleccionista'],[3,'Experto'],[6,'Maestro'],[10,'Leyenda']];
+function rankName(n){let r=RANKS[0][1];for(const [t,name] of RANKS)if(n>=t)r=name;return r;}
+function ptsEarned(){const cd=colsDone();return (S.opened||0)*PTS_CHEST+(S.empties||0)*PTS_EMPTY+cd.done*PTS_COL+cd.gold*PTS_GOLD;}
+function pts(){return Math.max(0,ptsEarned()-(S.spent||0));}
+function buyVariant(k,v){if(!S.caught[k]||pts()<PRICE[v])return false;S.spent=(S.spent||0)+PRICE[v];(S.cards[k]||(S.cards[k]={}))[v]=Date.now();markDay();save();updateHud();if(!$('#dex').classList.contains('hidden'))renderDex();toast(`<span class="gem" style="background:${VAR[v][1]}">${VAR[v][0][0]}</span><span><b>${esc(k)}</b> als ${VAR[v][0]} gekauft</span>`);if(v==='leg'||v==='gold')confetti();return true;}
+function colsHtml(){
+  return `<div class="albbar"><span class="ptsbadge">${PCOIN} ${pts()} Puntos</span><span class="mut" style="font-size:13px;color:var(--mut)">Puntos gibt es für jede Truhe, volle Seiten und Goldseiten. Fehlende Spezialkarten kannst du in der Kartenansicht kaufen.</span><button class="btn" id="colPdf" style="margin-left:auto">${PDFI} Colecciones als PDF</button></div>
+  <div class="colgrid">${COLS.map(c=>{const st=colState(c);return `<button class="colt ${st.complete?'done':''} ${st.gold?'gold':''}" data-col="${c.id}" style="--c1:${c.color[0]};--c2:${c.color[1]}">
+    <span class="ct">${esc(c.title)}</span><span class="cs">${st.gold?'Oro':st.complete?'Komplett':st.have+' / '+st.slots.length}</span>
+    <span class="cdots">${st.slots.map(x=>`<i style="background:${x.sp?VAR[x.v][1]:x.caught?'#ffffff40':'#ffffff14'}"></i>`).join('')}</span>
+    <span class="cr">${st.complete?'Escena extra freigeschaltet':'Belohnung: Escena extra'}</span></button>`;}).join('')}</div>`;}
+function bindCols(d){d.querySelectorAll('[data-col]').forEach(b=>b.onclick=()=>openCol(b.dataset.col));const p=d.querySelector('#colPdf');if(p)p.onclick=()=>colsPdf();}
+function openCol(id,opt){
+  const c=COLS.find(x=>x.id===id);const st=colState(c);if(!(opt&&opt.replace))pushModal();
+  openModal(`<button class="cvclose" data-close>${XSVG}</button><div class="colv" style="--c1:${c.color[0]};--c2:${c.color[1]}">
+   <div class="colh"><small>COLECCIÓN</small><h2>${esc(c.title)}</h2><p>${esc(tr(c.intro))}</p><span class="cs">${st.gold?'Colección de oro':st.complete?'Komplett':st.have+' / '+st.slots.length+' Spezialkarten'}</span></div>
+   <div class="colslots">${st.slots.map(x=>{const e=LEX[x.w];
+     if(!x.caught)return `<div class="slot"><div class="tcg mini unk"><div class="tcg-in"><span class="no">${num(e.n)}</span><span class="q">?</span></div></div><span class="sl">noch nicht gefangen</span></div>`;
+     if(!x.sp)return `<div class="slot miss" data-c="${esc(x.w)}">${tcgHtml(e,'normal',{mini:1})}<span class="sl">Spezialkarte fehlt</span></div>`;
+     return `<div class="slot" data-c="${esc(x.w)}">${tcgHtml(e,x.v,{mini:1})}<span class="sl">${VAR[x.v][0]}</span></div>`;}).join('')}</div>
+   <div class="colr"><div class="rw ${st.complete?'ok':''}"><b>Escena extra: ${esc(c.scene.title)}</b><span>${st.complete?esc(tr(c.scene.who)):'Sammle alle 12 Karten als Spezialkarte (Holo, Oro oder Legendaria).'}</span>${st.complete?'<button class="btn" id="sceneB">Lesen</button>':''}</div>
+   <div class="rw ${st.gold?'ok':''}"><b>${st.gold?'Titel: Maestro de '+esc(c.title):'Goldseite'}</b><span>${st.gold?'Alle Karten in Oro oder Legendaria.':'Alle 12 Karten in Oro oder Legendaria: goldener Rahmen und +'+PTS_GOLD+' Puntos.'}</span></div></div>
+   <div class="colact"><button class="btn ghost" id="colShare">${SHR} Seite teilen</button><button class="btn ghost" id="colPdf1">${PDFI} Seite als PDF</button></div></div>`,true);
+  document.querySelectorAll('.colv [data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c));
+  const sb=$('#sceneB');if(sb)sb.onclick=()=>openScene(c);
+  $('#colShare').onclick=()=>shareCol(c);$('#colPdf1').onclick=()=>colsPdf([c]);
+}
+function openScene(c){pushModal();
+  openModal(`<div class="scene" style="--c1:${c.color[0]}"><small>ESCENA EXTRA &middot; ${esc(c.title.toUpperCase())}</small><h2>${esc(c.scene.title)}</h2><p class="who">${esc(tr(c.scene.who))}</p>
+    ${c.scene.paras.map(x=>typeof x==='string'?`<p>${markup(x)}</p>`:`<p class="${x.cls}">${markup(x.t)}</p>`).join('')}
+    <div class="orn">&middot; &middot; &middot;</div><div style="text-align:center"><button class="btn" data-close>Zurück zur Colección</button></div></div>`);}
+const ALBSORT=[['var','Variante (Legendaria zuerst)'],['num','Nummer'],['az','A bis Z'],['rar','Seltenheit'],['pos','Wortart'],['new','Neueste zuerst']];
+let albSort='var';
+function albumCards(){const out=[];for(const e of Object.values(LEX))if(S.caught[e.k])for(const v of ['leg','gold','holo'])if(S.cards[e.k]&&S.cards[e.k][v])out.push([e,v]);
+  const by={var:(a,b)=>VRANK[b[1]]-VRANK[a[1]]||a[0].n-b[0].n,num:(a,b)=>a[0].n-b[0].n||VRANK[b[1]]-VRANK[a[1]],az:(a,b)=>a[0].k.localeCompare(b[0].k,'es')||VRANK[b[1]]-VRANK[a[1]],rar:(a,b)=>rarity(b[0])-rarity(a[0])||VRANK[b[1]]-VRANK[a[1]],pos:(a,b)=>a[0].p.localeCompare(b[0].p)||a[0].n-b[0].n,new:(a,b)=>(S.cards[b[0].k][b[1]]||0)-(S.cards[a[0].k][a[1]]||0)}[albSort];
+  return out.sort(by);}
+
+/* ---------- Zeichnen fuer PDF und Teilen ---------- */
+function wrapAll(x,t,X,y,maxW,lh){const ws=String(t).split(' ');let line='';for(const w of ws){const test=line?line+' '+w:w;if(x.measureText(test).width>maxW&&line){x.fillText(line,X,y);y+=lh;line=w;}else line=test;}if(line){x.fillText(line,X,y);y+=lh;}return y;}
+function pageBg(x,W,H,c1,c2){const g=x.createRadialGradient(W/2,H*.35,50,W/2,H*.35,H);g.addColorStop(0,c1);g.addColorStop(1,c2);x.fillStyle=g;x.fillRect(0,0,W,H);rays(x,W/2,H*.35,H*1.3,'rgba(255,255,255,.035)',36);}
+function slotEmpty(x,X,Y,W,e,label){const H=W*88/63;x.save();rr(x,X,Y,W,H,W*.06);x.fillStyle='rgba(255,255,255,.04)';x.fill();x.setLineDash([W*.04,W*.03]);x.lineWidth=Math.max(2,W*.01);x.strokeStyle='rgba(255,255,255,.22)';x.stroke();x.setLineDash([]);
+  x.textAlign='center';x.fillStyle='rgba(255,255,255,.16)';x.font=`400 ${W*.3}px Bungee`;x.fillText('?',X+W/2,Y+H/2+W*.1);x.font=`800 ${W*.07}px Outfit`;x.fillStyle='rgba(255,255,255,.4)';x.fillText(num(e.n),X+W/2,Y+W*.14);if(label){x.font=`700 ${W*.06}px Outfit`;x.fillText(label,X+W/2,Y+H-W*.08);}x.textAlign='left';x.restore();}
+function drawColPage(x,W,H,c,o){
+  o=o||{};const st=colState(c);pageBg(x,W,H,c.color[1],'#0a0b16');
+  const top=H*.045,u=W/100;
+  // header band
+  const hb=x.createLinearGradient(0,0,W,0);hb.addColorStop(0,c.color[0]);hb.addColorStop(1,c.color[1]);rr(x,4*u,top,W-8*u,22*u,3*u);x.fillStyle=hb;x.fill();
+  x.save();rr(x,4*u,top,W-8*u,22*u,3*u);x.clip();rays(x,W*.85,top+11*u,60*u,'rgba(255,255,255,.08)',24);x.restore();
+  x.fillStyle='rgba(255,255,255,.75)';x.font=`800 ${2.2*u}px Outfit`;if('letterSpacing' in x)x.letterSpacing=(.5*u)+'px';x.fillText('COLECCIÓN',8*u,top+6.5*u);if('letterSpacing' in x)x.letterSpacing='0px';
+  x.fillStyle='#fff';x.font=`400 ${6.4*u}px Bungee`;x.fillText(c.title.toUpperCase(),8*u,top+14*u);
+  x.font=`500 ${2.3*u}px Outfit`;x.fillStyle='rgba(255,255,255,.9)';wrapText(x,tr(c.intro),8*u,top+19*u,W-30*u,3*u,1);
+  x.textAlign='right';x.font=`400 ${4.2*u}px Bungee`;x.fillStyle=st.gold?'#ffe07a':'#fff';x.fillText(st.gold?'ORO':st.have+'/'+st.slots.length,W-8*u,top+14*u);x.textAlign='left';
+  // grid 4x3
+  const cols=4,gap=2.6*u,cw=(W-8*u-gap*(cols-1))/cols,chh=cw*88/63,gy=top+26*u;
+  st.slots.forEach((s,i)=>{const X=4*u+(i%cols)*(cw+gap),Y=gy+Math.floor(i/cols)*(chh+gap*1.4);const e=LEX[s.w];
+    if(!s.caught)slotEmpty(x,X,Y,cw,e,'');
+    else if(!s.sp){x.save();x.globalAlpha=.32;drawCard(x,e,'normal',X,Y,cw);x.restore();x.save();x.textAlign='center';x.font=`800 ${cw*.07}px Outfit`;x.fillStyle='#fff';rr(x,X+cw*.18,Y+chh/2-cw*.07,cw*.64,cw*.13,cw*.065);x.fillStyle='rgba(0,0,0,.6)';x.fill();x.fillStyle='#fff';x.fillText('FALTA',X+cw/2,Y+chh/2+cw*.025);x.restore();}
+    else drawCard(x,e,s.v,X,Y,cw);});
+  const by=gy+3*chh+2*gap*1.4+3*u;
+  if(o.footer!==false){x.textAlign='center';x.font=`700 ${2.4*u}px Outfit`;x.fillStyle=st.complete?'#3ddc97':'rgba(255,255,255,.55)';
+    x.fillText(st.complete?('Escena extra desbloqueada: '+c.scene.title):'Escena extra: completa la colección',W/2,Math.min(by,H-7*u));
+    x.font=`600 ${1.9*u}px Outfit`;x.fillStyle='rgba(255,255,255,.45)';x.fillText(o.foot||('PALABRADEX · '+siteUrl().replace(/^https?:\/\//,'').replace(/\/$/,'')),W/2,H-3*u);x.textAlign='left';}
+}
+function drawScenePage(x,W,H,c){const u=W/100;pageBg(x,W,H,'#1b1440','#0a0b16');
+  x.fillStyle=c.color[0];rr(x,8*u,8*u,14*u,1*u,.5*u);x.fill();
+  x.font=`800 ${2*u}px Outfit`;x.fillStyle='rgba(255,255,255,.6)';x.fillText('ESCENA EXTRA · '+c.title.toUpperCase(),8*u,14*u);
+  x.font=`400 ${5.4*u}px Bungee`;x.fillStyle='#fff';x.fillText(c.scene.title.toUpperCase(),8*u,21*u);
+  x.font=`italic 400 ${2.3*u}px Literata`;x.fillStyle='rgba(255,255,255,.6)';let y=wrapAll(x,tr(c.scene.who),8*u,26*u,W-16*u,3.2*u)+2*u;
+  for(const p of c.scene.paras){const t=typeof p==='string'?p:p.t;const note=typeof p!=='string';
+    x.font=`${note?'italic ':''}400 ${2.55*u}px Literata`;x.fillStyle=note?'#ffe9a8':'rgba(255,255,255,.9)';y=wrapAll(x,t,note?10*u:8*u,y,W-(note?20:16)*u,3.9*u)+1.8*u;}
+  x.textAlign='center';x.font=`600 ${1.9*u}px Outfit`;x.fillStyle='rgba(255,255,255,.45)';x.fillText('PALABRADEX',W/2,H-3*u);x.textAlign='left';}
+function drawCover(x,W,H,title,sub,lines){const u=W/100;pageBg(x,W,H,'#3a2a7a','#0a0b16');rays(x,W/2,H*.42,H,'rgba(255,203,61,.05)',30);
+  x.textAlign='center';x.font=`800 ${2.4*u}px Outfit`;if('letterSpacing' in x)x.letterSpacing=(.8*u)+'px';x.fillStyle='rgba(255,255,255,.7)';x.fillText('PALABRADEX',W/2,H*.3);if('letterSpacing' in x)x.letterSpacing='0px';
+  const g=x.createLinearGradient(W*.2,0,W*.8,0);['#ffcb3d','#ff5d8f','#7b5cff'].forEach((c,i)=>g.addColorStop(i/2,c));x.font=`400 ${10*u}px Bungee`;x.fillStyle='rgba(0,0,0,.35)';x.fillText(title,W/2,H*.4+.8*u);x.fillStyle=g;x.fillText(title,W/2,H*.4);
+  x.font=`600 ${3*u}px Outfit`;x.fillStyle='#fff';x.fillText(sub,W/2,H*.46);
+  x.font=`500 ${2.4*u}px Outfit`;x.fillStyle='rgba(255,255,255,.7)';lines.forEach((l,i)=>x.fillText(l,W/2,H*.56+i*4*u));
+  x.font=`600 ${1.9*u}px Outfit`;x.fillStyle='rgba(255,255,255,.45)';x.fillText(siteUrl().replace(/^https?:\/\//,'').replace(/\/$/,''),W/2,H-4*u);x.textAlign='left';}
+function drawAlbumPage(x,W,H,cards,pageNo,total){const u=W/100;pageBg(x,W,H,'#1d1846','#0a0b16');
+  const cols=3,gap=3.2*u,cw=(W-12*u-gap*2)/cols,chh=cw*88/63,gy=(H-(3*chh+2*gap))/2-1*u;
+  cards.forEach(([e,v],i)=>{drawCard(x,e,v,6*u+(i%cols)*(cw+gap),gy+Math.floor(i/cols)*(chh+gap),cw);});
+  x.textAlign='center';x.font=`600 ${1.8*u}px Outfit`;x.fillStyle='rgba(255,255,255,.4)';x.fillText(`PALABRADEX · ${pageNo} / ${total}`,W/2,H-2.6*u);x.textAlign='left';}
+
+/* ---------- PDF ---------- */
+function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
+async function getPDF(){if(!(window.jspdf&&window.jspdf.jsPDF)){try{await loadScript('vendor/jspdf.umd.min.js');}catch(e){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');}}return window.jspdf.jsPDF;}
+async function saveFile(name,blob){try{if(window.claude&&typeof window.claude.use==='function'){const d=await window.claude.use('downloads');if(d){await d.save({filename:name,data:blob});return true;}}}catch(e){}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);return true;}catch(e){return false;}}
+let pdfBusy=false;
+async function buildPdf(pages,name){if(pdfBusy)return;pdfBusy=true;const t0=toast('PDF wird erstellt...','',8000);
+  try{await Promise.all(['400 60px Bungee','italic 400 30px Literata','400 30px Literata','800 30px Outfit','700 30px Outfit','600 30px Outfit','500 30px Outfit'].map(f=>document.fonts.load(f)));
+    const jsPDF=await getPDF();const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4',compress:true});
+    const W=1240,H=1754;const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+    for(let i=0;i<pages.length;i++){x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,W,H);x.textAlign='left';pages[i](x,W,H);if(i)doc.addPage();doc.addImage(c.toDataURL('image/jpeg',.9),'JPEG',0,0,210,297,undefined,'FAST');await new Promise(r=>setTimeout(r,0));}
+    const ok=await saveFile(name,doc.output('blob'));toast(ok?'PDF bereit':'Download hier nicht möglich');}
+  catch(e){toast('PDF konnte nicht erstellt werden');}
+  pdfBusy=false;}
+function colsPdf(list){list=list||COLS;const cd=colsDone();const pages=[];
+  if(list.length>1)pages.push((x,W,H)=>drawCover(x,W,H,'COLECCIONES',`Rang: ${rankName(cd.done)}`,[`${cd.done} von ${COLS.length} Seiten komplett`,`${cd.gold} Goldseiten`,new Date().toLocaleDateString('de-CH')]));
+  for(const c of list){pages.push((x,W,H)=>drawColPage(x,W,H,c));if(colState(c).complete)pages.push((x,W,H)=>drawScenePage(x,W,H,c));}
+  buildPdf(pages,list.length>1?'palabradex-colecciones.pdf':'palabradex-'+list[0].id+'.pdf');}
+function albumPdf(){const cards=albumCards();if(!cards.length)return toast('Noch keine Spezialkarten');const per=9,total=Math.ceil(cards.length/per);
+  const n=v=>cards.filter(c=>c[1]===v).length;const pages=[(x,W,H)=>drawCover(x,W,H,'MI ÁLBUM',`${cards.length} Spezialkarten`,[`Legendaria: ${n('leg')}   ·   Oro: ${n('gold')}   ·   Holo: ${n('holo')}`,new Date().toLocaleDateString('de-CH')])];
+  for(let i=0;i<total;i++){const chunk=cards.slice(i*per,i*per+per);pages.push((x,W,H)=>drawAlbumPage(x,W,H,chunk,i+1,total));}
+  buildPdf(pages,'palabradex-album.pdf');}
+async function shareCol(c){try{await Promise.all(['400 60px Bungee','800 30px Outfit','500 30px Outfit'].map(f=>document.fonts.load(f)));}catch(e){}
+  const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;drawColPage(cv.getContext('2d'),W,H,c,{});
+  const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const st=colState(c);
+  const text=`Meine Colección «${c.title}» in Palabradex: ${st.have}/${st.slots.length} Spezialkarten${st.gold?', alles in Gold!':''}. Spanisch lernen mit Kurzgeschichten: ${siteUrl()}`;
+  shareBlob(blob,'palabradex-'+c.id+'.png',text,'Colección teilen');}
 
 /* ============================================================
    TEILEN
@@ -3391,12 +3723,14 @@ async function cardPng(e,v){
 function shareText(e,v){const vn=v==='normal'?'':VAR[v][0]+' ';return `Schau mal, meine ${vn}Karte «${e.k.toUpperCase()}» (${e[S.lang]}) in Palabradex! Spanisch lernen mit Kurzgeschichten: ${siteUrl()}`;}
 async function shareCard(e,v){
   hideTip();let blob;try{blob=await cardPng(e,v);}catch(err){blob=null;}
-  const text=shareText(e,v);
-  if(blob&&navigator.canShare){try{const file=new File([blob],'palabradex-'+e.k+'.png',{type:'image/png'});if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text});return;}}catch(err){if(err&&err.name==='AbortError')return;}}
+  shareBlob(blob,'palabradex-'+e.k+'.png',shareText(e,v),'Karte teilen');
+}
+async function shareBlob(blob,fname,text,title){
+  if(blob&&navigator.canShare){try{const file=new File([blob],fname,{type:'image/png'});if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text});return;}}catch(err){if(err&&err.name==='AbortError')return;}}
   const url=blob?URL.createObjectURL(blob):'';pushModal();
-  openModal(`<h2>Karte teilen</h2>${url?`<img src="${url}" alt="Karte ${esc(e.k)}" style="width:100%;border-radius:14px;display:block;margin-bottom:10px">`:''}
+  openModal(`<h2>${title}</h2>${url?`<img src="${url}" alt="${esc(title)}" style="width:100%;border-radius:14px;display:block;margin-bottom:10px">`:''}
    <p style="color:var(--mut);font-size:13px;margin-bottom:12px">Bild speichern (Rechtsklick oder lange drücken) und dann in WhatsApp senden. Oder direkt den Text mit Link teilen.</p>
-   <div style="display:flex;gap:8px;flex-wrap:wrap">${url?`<a class="btn ghost" href="${url}" download="palabradex-${esc(e.k)}.png">Bild speichern</a>`:''}
+   <div style="display:flex;gap:8px;flex-wrap:wrap">${url?`<a class="btn ghost" href="${url}" download="${esc(fname)}">Bild speichern</a>`:''}
    <a class="btn" href="https://wa.me/?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">WhatsApp</a>
    <button class="btn ghost" id="cpyB">Text kopieren</button></div>`);
   $('#cpyB').onclick=async()=>{try{await navigator.clipboard.writeText(text);toast('Text kopiert');}catch(err){toast('Kopieren nicht möglich');}};
@@ -3425,7 +3759,7 @@ function drawChest(){
   if(!res){const r2=r<.55?.55+Math.random()*.45:r;const tier=r2<.85?'holo':r2<.97?'gold':'leg';
     for(const t of [tier,'holo','gold','leg']){const pool=Object.keys(S.caught).filter(l=>LEX[l]&&!(S.cards[l]&&S.cards[l][t]));
       if(pool.length){const l=pick(pool);(S.cards[l]||(S.cards[l]={}))[t]=Date.now();res={type:'var',l,v:t};break;}}}
-  if(!res){S.bonusXp=(S.bonusXp||0)+20;res={type:'xp'};}
+  if(!res){S.empties=(S.empties||0)+1;res={type:'xp'};}
   S.opened=(S.opened||0)+1;markDay();save();return res;
 }
 function confetti(){const c=document.createElement('div');c.className='confetti';const cols=['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff'];
@@ -3443,7 +3777,7 @@ function openChest(){
     setTimeout(()=>{ch.classList.add('gone');},1250);
     setTimeout(()=>{ch.remove();$('#chint').remove();document.querySelector('.ccount').remove();
       const w=document.querySelector('.chestwrap');
-      if(res.type==='xp'){w.insertAdjacentHTML('beforeend',`<div class="rev"><div class="big">+20 XP</div><p>Du hast schon alle Karten! Bonus XP.</p><div class="acts"><button class="btn" data-close>Fertig</button></div></div>`);}
+      if(res.type==='xp'){w.insertAdjacentHTML('beforeend',`<div class="rev"><div class="big">+${PTS_EMPTY+PTS_CHEST} Puntos</div><p>Diese Truhe hat nichts Neues. Dafür bekommst du Puntos, um gezielt Karten zu kaufen.</p><div class="acts"><button class="btn" data-close>Fertig</button></div></div>`);}
       else{const e=LEX[res.l];
         w.insertAdjacentHTML('beforeend',`<div class="flip enter" id="flip"><div class="inner"><div class="face">${tcgHtml(e,res.v,{tilt:1})}</div><div class="face bk"><div class="tcg cardback"><div class="tcg-in"><div class="lg">P</div></div></div></div></div></div>
         <div class="rev" id="rev" style="opacity:0;transition:opacity .4s"><span class="vlabel vl-${res.v}">${res.type==='new'?'Neues Wort':VAR[res.v][0]}</span>
