@@ -3520,7 +3520,7 @@ function openCard(k,v,opt){
    PUNTOS, COLECCIONES, ALBUM
    ============================================================ */
 const PRICE={holo:120,gold:300,leg:1200};
-const PTS_CHEST=15,PTS_EMPTY=60,PTS_COL=100,PTS_GOLD=250;
+const PTS_CHEST=5,PTS_EMPTY=20,PTS_COL=100,PTS_GOLD=250;
 const PCOIN='<span class="coin">P</span>';
 const PDFI='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>';
 function colState(c){const slots=c.words.map(w=>{const caught=!!S.caught[w],sp=caught&&cardCount(w)>0;return {w,caught,sp,v:caught?bestVar(w):null};});
@@ -3533,7 +3533,7 @@ function ptsEarned(){const cd=colsDone();return (S.opened||0)*PTS_CHEST+(S.empti
 function pts(){return Math.max(0,ptsEarned()-(S.spent||0));}
 function buyVariant(k,v){if(!S.caught[k]||pts()<PRICE[v])return false;S.spent=(S.spent||0)+PRICE[v];(S.cards[k]||(S.cards[k]={}))[v]=Date.now();markDay();save();updateHud();if(!$('#dex').classList.contains('hidden'))renderDex();toast(`<span class="gem" style="background:${VAR[v][1]}">${VAR[v][0][0]}</span><span><b>${esc(k)}</b> als ${VAR[v][0]} gekauft</span>`);if(v==='leg'||v==='gold')confetti();return true;}
 function colsHtml(){
-  return `<div class="albbar"><span class="ptsbadge">${PCOIN} ${pts()} Puntos</span><span class="mut" style="font-size:13px;color:var(--mut)">Puntos gibt es für jede Truhe, volle Seiten und Goldseiten. Fehlende Spezialkarten kannst du in der Kartenansicht kaufen.</span><button class="btn" id="colPdf" style="margin-left:auto">${PDFI} Colecciones als PDF</button></div>
+  return `<div class="albbar"><span class="ptsbadge">${PCOIN} ${pts()} Puntos</span><span class="mut" style="font-size:13px;color:var(--mut)">Puntos: 5 pro Truhe, +20 wenn eine Truhe nichts Neues bringt, +100 pro volle Seite, +250 pro Goldseite. Fehlende Spezialkarten kannst du in der Kartenansicht kaufen.</span><button class="btn" id="colPdf" style="margin-left:auto">${PDFI} Colecciones als PDF</button></div>
   <div class="colgrid">${COLS.map(c=>{const st=colState(c);return `<button class="colt ${st.complete?'done':''} ${st.gold?'gold':''}" data-col="${c.id}" style="--c1:${c.color[0]};--c2:${c.color[1]}">
     <span class="ct">${esc(c.title)}</span><span class="cs">${st.gold?'Oro':st.complete?'Komplett':st.have+' / '+st.slots.length}</span>
     <span class="cdots">${st.slots.map(x=>`<i style="background:${x.sp?VAR[x.v][1]:x.caught?'#ffffff40':'#ffffff14'}"></i>`).join('')}</span>
