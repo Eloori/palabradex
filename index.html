@@ -275,6 +275,7 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .chip{padding:7px 14px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--mut)}
 .chip.on{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+.dslot{aspect-ratio:63/88;min-width:0}.dslot>.tcg{width:100%}
 .dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
 .empty{color:var(--mut);background:var(--panel);border:1px dashed var(--line);border-radius:16px;padding:24px;text-align:center}
 
@@ -3767,8 +3768,16 @@ function dexMatch(e,q){if(!q)return true;const n=q.replace(/^#/,'');if(/^\d+$/.t
   const fl=formsList(e);return !!(fl&&fl.some(x=>norm(x.f).includes(q)));}
 function fillDexGrid(){const g=$('#dGrid');if(!g)return;const q=norm(dexQ.trim());
   const list=sortDex(Object.values(LEX).filter(e=>(dexFilter==='all'||(dexFilter==='other'?!['v','n','adj'].includes(e.p):dexFilter==='shiny'?isShiny(e):e.p===dexFilter))&&dexMatch(e,q)));
-  g.innerHTML=list.length?list.map(e=>S.caught[e.k]?tcgHtml(e,bestVar(e.k),{mini:1,btn:1}):`<div class="tcg mini unk"><div class="tcg-in"><span class="no">${num(e.n)}</span><span class="q">?</span></div></div>`).join(''):`<div class="empty" style="grid-column:1/-1">Kein gefangenes Wort passt zu «${esc(dexQ)}».</div>`;
-  g.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c));}
+  if(dexIO){dexIO.disconnect();dexIO=null;}
+  if(!list.length){g.innerHTML=`<div class="empty" style="grid-column:1/-1">Kein gefangenes Wort passt zu «${esc(dexQ)}».</div>`;return;}
+  const cardOf=e=>S.caught[e.k]?tcgHtml(e,bestVar(e.k),{mini:1,btn:1}):`<div class="tcg mini unk"><div class="tcg-in"><span class="no">${num(e.n)}</span><span class="q">?</span></div></div>`;
+  g.innerHTML=list.map((e,i)=>`<div class="dslot" data-i="${i}">${i<24?cardOf(e):''}</div>`).join('');
+  const fill=el=>{if(el.firstChild)return;el.innerHTML=cardOf(list[+el.dataset.i]);const b=el.querySelector('[data-c]');if(b)b.onclick=()=>openCard(b.dataset.c);};
+  g.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>openCard(b.dataset.c));
+  if(!('IntersectionObserver' in window)){g.querySelectorAll('.dslot').forEach(fill);return;}
+  dexIO=new IntersectionObserver(ents=>{for(const en of ents){if(en.isIntersecting)fill(en.target);else if(en.target.firstChild)en.target.innerHTML='';}},{root:$('#dex'),rootMargin:'900px 0px'});
+  g.querySelectorAll('.dslot').forEach(el=>dexIO.observe(el));}
+let dexIO=null;
 
 /* ============================================================
    KARTENANSICHT (geteilt)
