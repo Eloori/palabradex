@@ -10,9 +10,9 @@ Palabradex ist eine Lese-App für Spanisch: Man liest spannende Kurzgeschichten 
 
 | Prinzip | Forschung | In Palabradex |
 |---|---|---|
-| Lesen mit 95 bis 98 % bekannten Wörtern | Hu & Nation 2000; Schmitt, Jiang & Grabe 2011 | Lesbarkeitsanzeige pro Kapitel, neue Wörter in kleinen Portionen |
+| Lesen mit 95 bis 98 % bekannten Wörtern | Hu & Nation 2000; Schmitt, Jiang & Grabe 2011 | Lesbarkeitsanzeige pro Kapitel, Tagebucheinträge (Diario de Mia) bereiten schwierige Kapitel vor |
 | Rund 10 Begegnungen pro Wort | Webb 2007; Pellicer-Sánchez & Schmitt 2010; Webb & Chang 2015 | Wiederkehrender Wortschatz über 60 Kapitel, Begegnungszähler auf jeder Karte |
-| Verteiltes Wiederholen | Cepeda et al. 2006 | Spaced Repetition nach 1, 3, 7, 16, 35 und 90 Tagen, fällige Wörter auf der Startseite |
+| Verteiltes Wiederholen | Cepeda et al. 2006 | Karteikasten mit 6 Fächern (1, 3, 7, 16, 35, 90 Tage), 5 Schlüsselwörter nach jedem Kapitel |
 | Abrufen statt Wiederlesen | Roediger & Karpicke 2006 | Quiz pro Kapitel, Karteikarten, bei gefestigten Wörtern freie Eingabe |
 | Lesen und Hören | Brown, Waring & Donkaewbua 2008; Webb & Chang 2012 | Vorlesen jedes Wortes und jeder Seite |
 

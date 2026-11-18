@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Palabradex</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
@@ -211,6 +211,47 @@ main{max-width:1100px;margin:0 auto;padding:28px clamp(14px,4vw,40px) 60px}
 .mp{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.mp .mi{flex:none;width:62px;height:62px;border-radius:16px;display:grid;place-items:center;font-family:Bungee;font-size:18px;background:linear-gradient(135deg,#3b2a8a,#7a2361)}
 .mp b{font-size:16px}.mp p{font-size:14px;color:#c9cce6;margin-top:4px;line-height:1.55}.mp .ia span{color:var(--good);font-weight:700}.mp .src{font-size:12px;color:var(--mut);font-style:italic}
 .method .disc{font-size:12px;color:var(--mut);margin:10px 0 16px;border-top:1px solid var(--line);padding-top:12px}
+.top{padding-top:calc(14px + env(safe-area-inset-top))}
+html.standalone .top{padding-top:calc(22px + env(safe-area-inset-top))}
+.rbar{padding-top:calc(12px + env(safe-area-inset-top))}html.standalone .rbar{padding-top:calc(22px + env(safe-area-inset-top))}
+html.standalone #dex{padding-top:calc(10px + env(safe-area-inset-top))}
+html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
+.rfoot{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.rwrap{touch-action:pan-y}
+.chap.inter{padding:12px 18px;background:color-mix(in srgb,var(--panel) 70%,transparent);border-style:dashed}
+.chap.inter .num{width:44px;height:44px;border-radius:12px;background:#ffffff10;border:1px dashed #ffffff40;color:var(--mut);margin:0 6px}
+.chap.inter .ttl{font-size:17px;font-style:italic}
+.chap.cur{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in srgb,var(--acc) 35%,transparent)}
+.btn.gold{background:linear-gradient(135deg,#fff1a3,#e0a21b);color:#2a1a00}
+.eacts,.dacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:.6em}
+.dacts{margin-top:16px}
+.kk{font-weight:800;letter-spacing:2px;color:var(--acc);font-size:11px}
+.mbox:has(.kwrap){max-width:760px}
+.kwrap h2{font-size:26px;margin:2px 0 6px}.klead{color:#c9cce6;font-size:14px;line-height:1.55;margin-bottom:14px}
+.kbox{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:10px 10px 12px;border-radius:16px;background:linear-gradient(180deg,#9a6a3e,#6e4527);box-shadow:inset 0 2px 0 #ffffff30,inset 0 -4px 0 #00000040,0 10px 30px #0006}
+.kfach{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:132px;border-radius:9px;background:linear-gradient(#2a170b,#3d2312);box-shadow:inset 0 6px 10px #0008;padding:0 0 6px;transition:transform .15s}
+.kfach:hover{transform:translateY(-2px)}.kfach.sel{outline:2px solid var(--fc);outline-offset:1px}
+.kcards{position:relative;width:78%;height:78px;margin-bottom:-14px}
+.kcards i{position:absolute;left:0;right:0;bottom:0;height:62px;border-radius:4px;background:#f7f0de;border-top:5px solid var(--fc);box-shadow:0 -1px 0 #0002,0 2px 3px #0004;transform:translateY(calc(var(--i)*-4px)) rotate(calc((var(--i) - 4)*.6deg))}
+.kfront{position:relative;z-index:2;width:92%;border-radius:6px;padding:5px 2px 4px;text-align:center;background:linear-gradient(#c08a52,#93623a);color:#2a1608;box-shadow:inset 0 1px 0 #ffffff50,0 2px 4px #0006}
+.kfront b{display:block;font-family:Bungee;font-size:18px;line-height:1.1}.kfront small{display:block;font-size:10px;font-weight:800;letter-spacing:.5px;color:var(--fc);filter:brightness(.55)}
+.kdue{position:absolute;top:6px;right:6px;z-index:3;background:#ff3b5c;color:#fff;font-style:normal;font-size:11px;font-weight:800;border-radius:999px;padding:1px 7px;box-shadow:0 2px 6px #0007}
+.klegend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 2px 4px;font-size:11.5px;color:var(--mut)}.klegend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.kstats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.kstats div{background:var(--panel2);border-radius:12px;padding:10px;text-align:center}.kstats b{display:block;font-family:Bungee;font-size:20px}.kstats span{font-size:11.5px;color:var(--mut)}
+.kacts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
+.khint{color:var(--mut);font-size:13px;text-align:center}
+.kltitle{font-size:12px;font-weight:800;letter-spacing:.5px;color:var(--fc);margin:4px 0 8px}
+.klist{display:grid;gap:6px;max-height:260px;overflow:auto}
+.krow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel2);border-radius:10px;padding:9px 12px;text-align:left}
+.krow .kw b{font-family:Literata;font-size:16px;margin-right:8px}.krow .kw span{color:var(--mut);font-size:13px}
+.krow .kr{display:flex;gap:10px;font-size:12px;color:var(--mut);flex:none}.kreps{color:var(--txt);font-weight:700}.kdn{color:#ff6b6b;font-weight:800}
+.fchip{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;color:#111;background:var(--fc)}
+.trtag .trreps{font-size:11px;color:var(--mut);letter-spacing:0;text-transform:none;font-weight:600}
+.fmove{display:block;margin-top:6px;font-size:12.5px;color:var(--mut)}
+.trtitle{text-align:center;font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.kmoved{font-size:14px}
+.kwchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}.kwchip{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--mut)}.kwchip b{display:block;font-family:Literata;font-size:17px;color:var(--txt)}
+@media(max-width:560px){.kfach{min-height:108px}.kcards{height:62px}.kcards i{height:48px}.kfront b{font-size:15px}.kstats{grid-template-columns:repeat(2,1fr)}}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -1477,6 +1518,8 @@ A('repente','n','de repente = plötzlich','de repente = suddenly','Kommt fast nu
 })();
 FORMS.teresa={name:true,de:'Teresa, Besitzerin des Kleiderladens',en:'Teresa, owner of the clothes shop'};
 F('diga','decir','sagen Sie','say (formal)');F('leyendo','leer','lesend','reading');F('secreta','secreto','geheim','secret (feminine)');
+(function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;
+W('diario','n',n++,'Tagebuch; täglich','diary; daily','Mi diario = mein Tagebuch. Als Adjektiv: täglich.','Mi diario = my diary. As adjective: daily.',{g:'m',fr:70});})();
 
 Object.assign(LEX.el,{forms:['el','la','los','las']});Object.assign(LEX.un,{forms:['un','una','unos','unas']});Object.assign(LEX.este,{forms:['este','esta','estos','estas']});Object.assign(LEX.mi,{forms:['mi','mi','mis','mis']});Object.assign(LEX.otro,{af:1});Object.assign(LEX.primero,{af:1});
 F('pregunta','pregunta','Frage; fragt','question; asks');F('preguntas','preguntar','du fragst; Fragen','you ask; questions');
@@ -3026,6 +3069,207 @@ const COLS=[
 ];
 
 STORIES.push(...STORIES_A1_ARC3.map(s=>Object.assign({id:'a1-'+s.ch,lvl:'A1'},s)));
+const DIARIO=[
+ {before:3,title:'Diario: la primera noche',
+  tz:{de:'Mias Tagebuch: Sie kann nicht schlafen und schreibt auf, was passiert ist.',en:'Mia\'s diary: she can\'t sleep and writes down what happened.'},
+  paras:[
+   'Hola, diario. Soy yo, Mia. Es mi primer día en Barcelona. Es de noche y no duermo.',
+   'Estoy en mi cama. Estoy muy cansada, pero no duermo.',
+   'Mi piso es pequeño, pero bonito. Desde la ventana veo el mar. Y veo la noche.',
+   'La llave está en la mesa. La foto también. Miro la llave. Miro la foto.',
+   'Tengo miedo. Pero también tengo una pregunta. Y quiero la respuesta.',
+   'Hoy tengo una llave azul, una nota y una foto vieja. Y hay una voz. Una voz que sabe mi nombre.',
+   'La voz es de una radio. Una radio vieja y azul. La radio habla. Habla español.',
+   'Yo hablo poco español. Muy poco. Pero escucho mucho.',
+   'Miro la foto otra vez. En la foto hay una calle y una chica. La chica soy yo. Pero la foto es muy vieja.',
+   '¿Quién es la chica? ¿Qué calle es? No sé. No sé nada.',
+   'Mañana busco la calle de la foto. Mañana busco una respuesta.',
+   'En mi calle hay un bar pequeño. Mañana tomo un café en el bar. Un café grande. Un café muy bueno.',
+   'Y en el bar hablo con la gente. Con mi poco español.',
+   'Ahora no quiero preguntas. Solo quiero dormir. Solo un poco.',
+   {t:'Buenas noches, Barcelona.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Qué escribe Mia?',o:['Un diario.','Una nota.','Un libro.']},
+   {q:'¿Duerme Mia?',o:['No, no duerme.','Sí, duerme mucho.','Sí, en el bar.']},
+   {q:'¿Qué busca Mia mañana?',o:['La calle de la foto.','Una radio.','Una maleta.']},
+   {q:'¿Qué toma Mia mañana en el bar?',o:['Un café.','Una llave.','Una foto.']}
+  ]},
+ {before:5,title:'Diario: Ana',
+  tz:{de:'Mias Tagebuch: Ana Vidal. Ein Name, den sie kennt. Oder doch nicht?',en:'Mia\'s diary: Ana Vidal. A name she knows. Or does she?'},
+  paras:[
+   'Hola, diario. Hoy conozco a Joan, el abuelo de Leo. Es un hombre viejo y simpático. Tiene el pelo blanco y los ojos azules.',
+   'Joan conoce a la chica de la foto. Se llama Ana. Ana Vidal.',
+   'Leo es el chico del bar. Es joven y simpático, y habla muy rápido. Joan habla despacio. Su voz es bonita.',
+   'En la plaza del Sol hay mucha gente y mucho sol. Pero yo solo miro a Joan.',
+   'Mi abuela se llama Ana. Pero mi abuela vive en Suiza. Siempre en Suiza. ¿Siempre?',
+   '¿Qué sé yo de mi abuela? Poco. Muy poco.',
+   'Mi familia es pequeña: mi madre, mi padre, mi abuela y yo. Y mi madre sabe mucho de mi abuela.',
+   'Tengo una pregunta para mi madre. ¿Hablo con mamá por teléfono? No. Por teléfono mamá habla mucho y yo no digo nada.',
+   'Un mensaje. Un mensaje es bueno. Escribo despacio.',
+   'Pero primero espero. Espero un minuto. Espero diez minutos.',
+   'Miro la llave azul en mi mano. Miro la foto. Y sé una cosa: en mi familia hay un secreto.',
+   'Mañana escribo un mensaje a mamá.'
+  ],
+  quiz:[
+   {q:'¿Quién conoce a la chica de la foto?',o:['Joan.','La madre de Mia.','Leo.']},
+   {q:'¿Dónde vive la abuela de Mia?',o:['En Suiza.','En Barcelona.','En el bar.']},
+   {q:'¿Qué escribe Mia mañana?',o:['Un mensaje a su madre.','Una nota a Leo.','Un libro.']},
+   {q:'¿Qué hay en la familia de Mia?',o:['Un secreto.','Una radio.','Un bar.']}
+  ]},
+ {before:7,title:'Diario: fruta roja',
+  tz:{de:'Mias Tagebuch: Rote Früchte, gelbe Früchte und ein Markt, den sie noch nicht kennt.',en:'Mia\'s diary: red fruit, yellow fruit and a market she doesn\'t know yet.'},
+  paras:[
+   'Hola, diario. Hoy es lunes. Son las siete de la mañana y no duermo mucho.',
+   'La radio dice: busca a Rosa en el mercado. Rosa tiene fruta roja y fruta amarilla.',
+   'Pero ¿qué mercado? En Barcelona hay muchos mercados. Leo sabe dónde está el mercado. Leo sabe mucho de Barcelona.',
+   'En mi calle hay un gato negro. Me mira con sus ojos verdes. Yo miro al gato. El gato no dice nada.',
+   '¿Fruta roja? Fresas. ¿Fruta amarilla? Plátanos. ¿Y fruta naranja? Naranjas, claro.',
+   'Ahora escribo una nota para el mercado. Quiero comprar algo. Y en el mercado hablo con la gente.',
+   {t:'Pan, queso, fresas, plátanos, naranjas.',cls:'note'},
+   'Tengo veinte euros. ¿Es mucho? ¿Es poco? No sé.',
+   'En el mercado hay mucha gente. Hay muchas mujeres y muchos hombres. Y todo tiene color: rojo, amarillo, naranja, verde.',
+   'Rosa es una mujer. ¿Es vieja? ¿Es joven? No sé nada de Rosa. Solo su nombre.',
+   'Para una mujer vieja no digo «tú». Digo «usted». «¿Es usted Rosa?»',
+   'Tres palabras en español. Bueno. Digo las tres palabras muchas veces: «¿Es usted Rosa? ¿Es usted Rosa?»',
+   'Ahora tomo mi café y salgo. Tengo una llave. Y quiero la segunda.'
+  ],
+  quiz:[
+   {q:'¿A qué hora escribe Mia?',o:['A las siete de la mañana.','A las doce de la noche.','A las diez.']},
+   {q:'¿Qué fruta es roja?',o:['La fresa.','El plátano.','La naranja.']},
+   {q:'¿Qué quiere comprar Mia?',o:['Pan, queso y fruta.','Una radio.','Una llave.']},
+   {q:'¿Qué dice Mia a una mujer vieja?',o:['«Usted».','«Tú».','«Hola, chica».']}
+  ]},
+ {before:9,title:'Diario: el amor de Ana',
+  tz:{de:'Mias Tagebuch: Ein Brief, eine verbotene Liebe und ein Gedanke an die Uni.',en:'Mia\'s diary: a letter, a forbidden love and a thought about university.'},
+  paras:[
+   'Hola, diario. Hoy abro la carta de Ana. Una carta de amor. Una carta muy vieja.',
+   'Ana tiene veinte años y trabaja en una tienda de radios. Su padre no quiere al chico de la carta. ¿Por qué? Porque es pobre.',
+   'Porque es pobre. Pobre Ana.',
+   'Esta noche la carta está en mi mesa, con la llave y la foto. «Querido amor», dice la carta. Pero no hay otro nombre.',
+   'Hoy es lunes. Mañana es martes. Los martes por la tarde no hay universidad. Estudio en casa.',
+   'Sí, diario: no estoy en Barcelona por la llave. Estoy aquí para estudiar. Estudio economía en la universidad.',
+   'Pero hoy no estudio. Hoy miro la carta. Miro la letra bonita de Ana.',
+   'Leo trabaja en el bar. ¿Trabaja mucho? ¿Estudia? ¿Tiene familia? No sé. Sé muy poco de Leo.',
+   'Ella, Ana, tiene un secreto. Y Joan también tiene un secreto. Seguro.',
+   'Mañana por la tarde voy al bar. Hablo con Leo. Y pregunto. Pregunto mucho.'
+  ],
+  quiz:[
+   {q:'¿Qué abre Mia hoy?',o:['Una carta de amor.','Un libro.','Un mensaje de Leo.']},
+   {q:'¿Por qué no quiere el padre de Ana al chico?',o:['Porque es pobre.','Porque es de Suiza.','Porque no trabaja.']},
+   {q:'¿Qué estudia Mia?',o:['Economía.','Música.','Español.']},
+   {q:'¿Qué día va Mia al bar?',o:['El martes por la tarde.','El lunes por la noche.','Nunca.']}
+  ]},
+ {before:12,title:'Diario: la pregunta',
+  tz:{de:'Mias Tagebuch: Joans Geschichte lässt sie nicht los. Draussen wird es grau.',en:'Mia\'s diary: Joan\'s story stays with her. Outside everything turns grey.'},
+  paras:[
+   'Hola, diario. Son las tres de la mañana. Hace frío en mi piso. Mucho frío.',
+   'Pienso en Joan. Pienso en Ana. Pienso en una noche de hace cincuenta años.',
+   'Esta noche, en la cocina de Joan, nadie tiene sueño. Joan habla despacio. Leo no dice nada. Yo escucho.',
+   'Joan no va a la puerta azul porque su madre está en el hospital. Ana se va a Suiza. Y nadie sabe nada. Nadie.',
+   'No entiendo. ¿Por qué no escribe Joan? ¿Por qué no escribe Ana? Bueno, sí entiendo: no tienen dirección.',
+   'Ahora Joan tiene ochenta años y una pregunta: ¿todavía tienes la llave?',
+   'Es una pregunta para mi abuela. Pero alguien tiene que preguntar. Y ese alguien soy yo.',
+   'Miro por la ventana. Todo está gris. Mañana va a llover. Seguro.',
+   'Tengo frío. No como nada desde la mañana. En casa solo hay un poco de pan.',
+   'Quiero una sopa caliente. Una sopa caliente y una buena idea.',
+   'Mañana no salgo de la cama. Mañana pienso. Solo pienso.'
+  ],
+  quiz:[
+   {q:'¿Qué hora es?',o:['Las tres de la mañana.','Las doce del día.','Las siete de la tarde.']},
+   {q:'¿Qué pregunta tiene Joan?',o:['¿Todavía tienes la llave?','¿Dónde está la radio?','¿Quién es Mia?']},
+   {q:'¿Qué dice Mia de mañana?',o:['Va a llover.','Hay mucha luz.','Mia va a Suiza.']},
+   {q:'¿Qué quiere Mia ahora?',o:['Una sopa caliente.','Un café frío.','Una foto.']}
+  ]},
+ {before:14,title:'Diario: tres días',
+  tz:{de:'Mias Tagebuch: Die Grossmutter braucht Zeit. Mia zählt die Tage.',en:'Mia\'s diary: her grandmother needs time. Mia counts the days.'},
+  paras:[
+   {t:'Miércoles.',cls:'note'},
+   'Mi abuela dice: «Mañana hablamos». Pero hoy es miércoles y no hay mensaje. Nada. Miro el teléfono cada minuto.',
+   {t:'Jueves.',cls:'note'},
+   'No hay mensaje. Voy a la universidad, pero en clase no escucho nada. Pienso en mi abuela. Pienso en Joan.',
+   'Por la tarde estoy en el bar con Leo. Leo dice: «Mia, tienes que estar tranquila. Tu abuela necesita tiempo. Cincuenta años es mucho tiempo.»',
+   'Tranquila. Sí, claro.',
+   'Joan también espera. Joan espera cincuenta años. Yo solo espero tres días. ¿Por qué no estoy tranquila?',
+   {t:'Viernes.',cls:'note'},
+   'No hay mensaje. Hoy hace calor. Mucho calor. En Suiza hace frío ahora, pero en Barcelona hace sol.',
+   'Leo tiene una idea: «Mañana vamos a la playa. Comemos paella en un restaurante y después un helado. Un helado de chocolate.»',
+   '¿La playa? ¿Ahora? Bueno. ¿Por qué no?',
+   'Esta noche escribo poco. Estoy cansada de esperar. Quiero estar feliz. Un día. Solo un día.'
+  ],
+  quiz:[
+   {q:'¿Qué espera Mia?',o:['Un mensaje de su abuela.','Una carta de Joan.','Un libro.']},
+   {q:'¿Qué dice Leo el jueves?',o:['Tienes que estar tranquila.','Tienes que ir a Suiza.','Tienes que estudiar.']},
+   {q:'¿Qué tiempo hace el viernes?',o:['Hace calor.','Hace mucho frío.','Llueve.']},
+   {q:'¿Qué idea tiene Leo?',o:['Ir a la playa.','Ir al mercado.','Ir al hospital.']}
+  ]},
+ {before:21,title:'Diario: doce uvas',
+  tz:{de:'Mias Tagebuch: Das Jahr geht zu Ende. Leo erklärt ihr eine seltsame spanische Tradition.',en:'Mia\'s diary: the year is ending. Leo explains a strange Spanish tradition.'},
+  paras:[
+   'Hola, diario. Es diciembre, el último mes del año. Un año difícil, pero muy bonito.',
+   'Hoy Leo me dice una cosa. Aquí, la última noche del año, a las doce, hay doce campanadas.',
+   'Con cada campanada comes una uva. Doce campanadas, doce uvas. Una uva para cada mes del año nuevo.',
+   '«¿Doce uvas en un minuto? ¡Es imposible!», digo.',
+   '«No es imposible. Es difícil. Es un juego», dice Leo. «Y si comes las doce uvas, tienes suerte todo el año.»',
+   'Suerte. Necesito mucha suerte para el año nuevo.',
+   'La casa azul tiene luz, flores y música. Mi abuela canta y Joan escucha la radio. Leo toca la guitarra. Laia habla mucho, como siempre.',
+   'Mi madre está en Zúrich, pero mi madre también viene a Barcelona. Todos juntos en la casa azul.',
+   'Y hay ropa especial: ropa roja. Mi abuela tiene un vestido rojo. Yo tengo una camisa roja. Bueno, es más naranja que roja.',
+   'Mi abuela hace un plato especial para la noche. No sé qué plato. Es un secreto, dice.',
+   'Ahora estoy en la cocina. Tengo doce uvas en un plato. Empiezo: una, dos, tres...',
+   'Tres uvas. Solo tres. Es muy difícil. Mañana empiezo otra vez.'
+  ],
+  quiz:[
+   {q:'¿Qué mes es?',o:['Diciembre, el último mes.','El primer mes del año.','Mia no sabe.']},
+   {q:'¿Qué comes con cada campanada?',o:['Una uva.','Una sopa.','Un helado.']},
+   {q:'¿Qué tienes si comes las doce uvas?',o:['Suerte.','Frío.','Miedo.']},
+   {q:'¿De qué color es la ropa especial?',o:['Roja.','Azul.','Negra.']}
+  ]},
+ {before:24,title:'Diario: a la derecha',
+  tz:{de:'Mias Tagebuch: Bus, Metro, links, rechts. Mia lernt, sich in Barcelona zu bewegen.',en:'Mia\'s diary: bus, metro, left, right. Mia learns to get around Barcelona.'},
+  paras:[
+   'Hola, diario. Barcelona es grande. Muy grande. Pero ahora conozco un poco Barcelona.',
+   'Mi piso está cerca del mar. El centro no está lejos: camino veinte minutos y estoy en el centro.',
+   'Para ir a la universidad tomo el metro. A veces tomo el autobús. En el autobús veo las calles, la gente, el mar.',
+   'Desde mi ventana veo una montaña. En la montaña hay árboles y un parque.',
+   'Hoy una señora me pregunta en la calle: «¿Dónde está la iglesia?»',
+   'Y yo sé la respuesta. «Todo recto. Después, a la derecha. No, no: a la izquierda.»',
+   'La señora sonríe. Yo también. ¡Una turista habla con una turista!',
+   'Me gusta Barcelona. Me gusta el mar, me gusta el sol y me gusta la gente.',
+   'En Barcelona hay iglesias muy altas, con torres muy altas. Y hay muchos turistas, claro.',
+   'Mañana voy con Leo a un parque en la montaña. Leo dice que allí vive un dragón. ¿Un dragón? Sí, claro, Leo.',
+   'Vamos en autobús. Yo miro a la derecha y a la izquierda. Y Leo mira su teléfono.'
+  ],
+  quiz:[
+   {q:'¿Dónde está el piso de Mia?',o:['Cerca del mar.','Lejos del centro.','En la montaña.']},
+   {q:'¿Cómo va Mia a la universidad?',o:['En metro o en autobús.','Con su abuela.','No va.']},
+   {q:'¿Qué busca la señora?',o:['La iglesia.','El mar.','Un dragón.']},
+   {q:'¿Qué dice Leo del parque?',o:['Que allí vive un dragón.','Que no hay árboles.','Que está en Suiza.']}
+  ]},
+ {before:26,title:'Diario: frío en enero',
+  tz:{de:'Mias Tagebuch: Im Januar ist es kalt, und Mias Jacke ist viel zu klein.',en:'Mia\'s diary: January is cold, and Mia\'s jacket is far too small.'},
+  paras:[
+   'Hola, diario. Es enero y hace frío. Sí, en Barcelona también hace frío.',
+   'Mi chaqueta es vieja. Tengo la chaqueta desde los quince años. Ahora es pequeña y muy estrecha.',
+   'Necesito una chaqueta nueva. Y zapatos nuevos. Mis zapatos son para el sol, no para el frío.',
+   'Laia, la hermana de Leo, conoce una tienda de ropa en su barrio. Dice que la mujer de la tienda es mayor y muy simpática.',
+   '«Te ayudo», dice Laia. «Primero pruebas la chaqueta. Si te queda bien, la compras.»',
+   '¿Mi talla? No sé mi talla aquí. En Suiza es otra talla.',
+   'En mi maleta de Suiza hay ropa para el sol. No hay ropa para el frío.',
+   'Leo dice: «¿Frío? ¡En Barcelona no hace frío!» Leo es de Barcelona. Para él, nada es frío.',
+   'Laia tiene gafas grandes y una sonrisa grande. Es mi amiga. Mi primera amiga en Barcelona.',
+   'Mañana vamos en metro. No, en tren. Laia dice que en tren es más rápido.',
+   'Una chaqueta nueva. Con bolsillos grandes. Para mis llaves, claro.'
+  ],
+  quiz:[
+   {q:'¿Qué necesita Mia?',o:['Una chaqueta nueva.','Una maleta nueva.','Un piso nuevo.']},
+   {q:'¿Cómo es la chaqueta vieja?',o:['Pequeña y estrecha.','Grande y nueva.','Roja y bonita.']},
+   {q:'¿Quién conoce una tienda de ropa?',o:['Laia.','Joan.','La abuela.']},
+   {q:'¿Para qué quiere Mia bolsillos grandes?',o:['Para sus llaves.','Para su teléfono.','Para sus gafas.']}
+  ]}
+];
+
+if(typeof DIARIO!=='undefined')for(const d of DIARIO){const i=STORIES.findIndex(s=>s.lvl==='A1'&&s.ch===d.before);STORIES.splice(i,0,Object.assign({id:'a1-d'+d.before,lvl:'A1',ch:d.before-1,inter:true,diff:1},d));}
 const POS={v:['verbo','#ef4444','#7f1d1d'],n:['sustantivo','#3b82f6','#1e3a8a'],adj:['adjetivo','#22c55e','#14532d'],adv:['adverbio','#eab308','#713f12'],
  pron:['pronombre','#a855f7','#4c1d95'],art:['artículo','#64748b','#1e293b'],det:['determinante','#14b8a6','#134e4a'],prep:['preposición','#94a3b8','#334155'],
  conj:['conjunción','#ec4899','#831843'],num:['número','#f97316','#7c2d12'],int:['interjección','#f43f5e','#881337'],prop:['nombre propio','#d4a73a','#713f12']};
@@ -3159,7 +3403,7 @@ function updateHud(){
   const x=xp(),l=levelOf(x);const lo=LV[l-1]??0,hi=nextLv(l);
   $('#lvNum').textContent='Nv. '+l;$('#xpFill').style.width=Math.min(100,(x-lo)/(hi-lo)*100)+'%';$('#xpTxt').textContent=x+' XP';
   $('#streakN').textContent=streak();$('#dexN').textContent=Object.keys(S.caught).filter(k=>LEX[k]).length;
-  const ch=chestsAvail();$('#chestN').textContent=ch;$('#chestBtn').classList.toggle('has',ch>0);
+  const ch=chestsAvail();$('#chestN').textContent=ch;if(curStory)endActs();$('#chestBtn').classList.toggle('has',ch>0);
   if(lastLevel!==null&&l>lastLevel){const rw=REWARDS.filter(r=>r.lv>lastLevel&&r.lv<=l);
     toast(`<b>¡Nivel ${l}!</b><span>+1 Truhe${rw.length?' &middot; Freigeschaltet: '+rw.map(r=>r.de).join(', '):''}</span>`,'big',4500);}
   else if(lastChests!==null&&ch>lastChests&&!quizOpen){toast(`<span class="gem" style="background:var(--acc)">+1</span><span>Neue <b>Truhe</b> verdient!</span>`);}
@@ -3188,7 +3432,11 @@ function markup(text){
     return out+esc(s.slice(i));}).join('');
 }
 let voices=[];try{const lv=()=>voices=speechSynthesis.getVoices();lv();speechSynthesis.onvoiceschanged=lv;}catch(e){}
-function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';const v=voices.find(v=>v.lang==='es-ES')||voices.find(v=>/^es/.test(v.lang));if(v)u.voice=v;u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function mkUtt(t){const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';u.rate=IOS?.9:.85;u.volume=1;if(!voices.length)try{voices=speechSynthesis.getVoices();}catch(e){}
+  const v=voices.find(v=>v.lang==='es-ES'||v.lang==='es_ES')||voices.find(v=>/^es/i.test(v.lang));if(v)u.voice=v;return u;}
+function speak(t){try{const ss=speechSynthesis;if(ss.speaking||ss.pending)ss.cancel();if(ss.paused)ss.resume();ss.speak(mkUtt(t));}catch(e){}}
+const PEN='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
 const SPK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>';
 const XSVG='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>';
 const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M5 12l5 5L20 7"/></svg>';
@@ -3266,7 +3514,7 @@ document.addEventListener('pointerover',e=>{if(e.pointerType!=='mouse')return;co
 document.addEventListener('pointerout',e=>{if(e.pointerType!=='mouse')return;const w=e.target.closest&&(e.target.closest('.w')||e.target.closest('#tip'));
   if(w){clearTimeout(hovT);clearTimeout(hideT);hideT=setTimeout(hideTip,220);}});
 let lastPT='mouse',suppressClick=false;
-document.addEventListener('pointerdown',e=>{lastPT=e.pointerType;if(!e.target.closest('#tip')&&!e.target.closest('.w')&&tipFor&&lastPT!=='mouse'&&!e.target.closest('#rvp'))hideTip();},true);
+document.addEventListener('pointerdown',e=>{lastPT=e.pointerType;if(!e.target.closest('#tip')&&!e.target.closest('.w')&&tipFor&&lastPT!=='mouse'&&!e.target.closest('.rwrap'))hideTip();},true);
 document.addEventListener('click',e=>{
   const say=e.target.closest('[data-say]');if(say){speak(say.dataset.say);return;}
   const cd=e.target.closest('[data-card]');if(cd){hideTip();openCard(cd.dataset.card);return;}
@@ -3278,33 +3526,37 @@ document.addEventListener('click',e=>{
    VIEWS
    ============================================================ */
 let view={name:'home'};let curStory=null;
-function go(v){view=v;hideTip();render();scrollTo(0,0);}
+function go(v){view=v;hideTip();render();scrollTo(0,0);
+  if(v.name==='level')requestAnimationFrame(()=>{const cur=(S.last&&STORIES.find(s=>s.id===S.last&&s.lvl===v.lvl&&!isDone(s)))||nextStory();const el=cur&&document.getElementById('ch-'+cur.id);
+    if(el){el.classList.add('cur');const y=el.getBoundingClientRect().top+scrollY-innerHeight*.28;if(y>0)scrollTo(0,y);}});}
 const FOOT=`<footer class="foot"><span>Ein Prototyp von <b>Eloori Interactive</b></span><a href="mailto:contact@eloori-interactive.com">contact@eloori-interactive.com</a><a href="#" data-method>Die Methode</a><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a></footer>`;
 function render(){const m=$('#view');if(view.name==='home')m.innerHTML=homeHtml()+FOOT;else if(view.name==='level')m.innerHTML=levelHtml(view.lvl)+FOOT;}
 function lvlStats(c){const st=STORIES.filter(s=>s.lvl===c&&!s.soon);return {n:st.length,done:st.filter(s=>S.stories[s.id]&&S.stories[s.id].done).length};}
-function nextStory(){let prevDone=true;for(const s of STORIES){if(s.soon)return null;const d=S.stories[s.id]&&S.stories[s.id].done;if(!d&&prevDone)return s;prevDone=!!d;}return null;}
+function isDone(s){return !!(s&&S.stories[s.id]&&S.stories[s.id].done);}
+function storyUnlocked(s){if(s.soon)return false;const L=STORIES.filter(x=>x.lvl===s.lvl&&!x.soon);const i=L.indexOf(s);if(i<=0||isDone(s)||isDone(L[i-1]))return true;return L.slice(i+1).some(isDone);}
+function nextStory(){const L=STORIES.filter(s=>!s.soon);let last=-1;L.forEach((s,i)=>{if(isDone(s))last=i;});for(let i=last+1;i<L.length;i++)if(!isDone(L[i]))return L[i];return null;}
 function homeHtml(){
   const caught=Object.keys(S.caught).filter(k=>LEX[k]).length,total=Object.keys(LEX).length;
   let cont='';const ns=(S.last&&STORIES.find(s=>s.id===S.last&&!(S.stories[s.id]&&S.stories[s.id].done)))||nextStory();
-  if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Nächstes Kapitel'} &middot; ${ns.lvl} Kapitel ${ns.ch}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`;
+  if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Als Nächstes'} &middot; ${ns.lvl} ${chLabel(ns)}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`;
   const ch=chestsAvail();
   const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
   return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
   <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div><div class="stat"><b>${Object.keys(S.caught).filter(k=>LEX[k]&&mastery(k)>=4).length}</b><span>Wörter gemeistert</span></div></div>
-  ${chest}${cont}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Wiederholen &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
+  ${chest}${cont}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
   <div class="grid">${LEVELS.map(L=>{const s=lvlStats(L.c);const lk=!s.n;
     return `<button class="tile ${lk?'locked':''}" data-lvl="${L.c}" style="--c1:${L.c1};--c2:${L.c2}">${lk?'<span class="lock">PRÓXIMAMENTE</span>':''}
     <div class="tile-code">${L.c}</div><div class="tile-name">${L.es}</div><div class="tile-sub">${S.lang==='en'?L.en:L.de}</div>
     <div class="tile-meta">${lk?'Geschichten folgen':`${s.done} / ${s.n} Kapitel`}<div class="bar"><i style="width:${s.n?s.done/s.n*100:0}%"></i></div></div></button>`;}).join('')}</div>`;
 }
 function levelHtml(c){
-  const L=LEVELS.find(l=>l.c===c);const st=STORIES.filter(s=>s.lvl===c);let prevDone=true;
-  const items=st.map(s=>{const p=S.stories[s.id]||{};const unlocked=prevDone&&!s.soon;prevDone=!!p.done;
+  const L=LEVELS.find(l=>l.c===c);const st=STORIES.filter(s=>s.lvl===c);
+  const items=st.map(s=>{const p=S.stories[s.id]||{};const unlocked=storyUnlocked(s);
     const lem=s.soon?[]:storyLemmas(s);const got=lem.filter(l=>S.caught[l]).length;
     const status=s.soon?'<span class="st">Bald</span>':!unlocked?'<span class="st">Gesperrt</span>':p.done?`<span class="st done">Geschafft ${p.quiz}/4</span>`:p.read?'<span class="st new">Quiz offen</span>':'<span class="st new">Neu</span>';
-    return `<button class="chap ${unlocked?'':'locked'}" ${unlocked?`data-open="${s.id}"`:''} style="--c1:${L.c1};--c2:${L.c2}">
-      <span class="num">${s.ch}</span><span style="flex:1;min-width:0"><div class="ttl">${esc(unlocked?s.title:'???')}</div><div class="tz">${esc(unlocked||s.soon?tr(s.tz):'Schliesse das vorherige Kapitel ab.')}</div>
-      <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} Wörter bekannt</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}${covChip(s)}`}</div></span>${status}</button>`;}).join('');
+    return `<button class="chap ${unlocked?'':'locked'} ${s.inter?'inter':''}" id="ch-${s.id}" ${unlocked?`data-open="${s.id}"`:''} style="--c1:${L.c1};--c2:${L.c2}">
+      <span class="num">${s.inter?PEN:s.ch}</span><span style="flex:1;min-width:0"><div class="ttl">${esc(unlocked?s.title:'???')}</div><div class="tz">${esc(unlocked||s.soon?tr(s.tz):'Schliesse das vorherige Kapitel ab.')}</div>
+      <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} im Wortdex</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}${covChip(s)}`}</div></span>${status}</button>`;}).join('');
   return `<button class="back" data-home>&larr; Übersicht</button>
   <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${L.es}</div><div style="color:var(--mut)">${S.lang==='en'?L.en:L.de}</div></div></div>
   <div class="chapters">${items||'<p style="color:var(--mut)">Für dieses Niveau folgen bald Geschichten.</p>'}</div>`;
@@ -3326,16 +3578,16 @@ const R={page:0,pages:1,step:0};const rd=$('#reader'),vp=$('#rvp'),ct=$('#rct');
 function openReader(id){R.counted=false;stopTts();
   const st=STORIES.find(s=>s.id===id);if(!st||st.soon)return;curStory=st;S.last=id;markDay();
   const p=S.stories[id]||(S.stories[id]={done:false,quiz:0,read:false,page:0});save();updateHud();
-  $('#rTitle').textContent=`Capítulo ${st.ch} · ${st.title}`;
-  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; Capítulo ${st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
+  $('#rTitle').textContent=st.inter?st.title.replace(/^Diario: /,'Diario · '):`Capítulo ${st.ch} · ${st.title}`;
+  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; ${st.inter?'Diario de Mia':'Capítulo '+st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
     st.paras.map(x=>typeof x==='string'?`<p>${markup(x)}</p>`:`<p class="${x.cls}">${markup(x.t)}</p>`).join('')+
-    `<div class="endcard"><div class="fin">Fin del capítulo ${st.ch}</div><div class="wc" id="rEndWords"></div><p>Wörter aus diesem Kapitel in deinem Wortdex</p>
-     <p>${p.done?'Kapitel geschafft. Du kannst das Quiz für ein besseres Ergebnis wiederholen.':'Beantworte mindestens 3 von 4 Fragen richtig. Dann gibt es eine Truhe und das nächste Kapitel.'}</p>
-     <button class="btn" id="rQuiz">${p.done?'Quiz wiederholen':'Quiz starten'}</button><span id="rMark"></span></div>`;
+    `<div class="endcard"><div class="fin">${st.inter?'Fin del diario':'Fin del capítulo '+st.ch}</div><div class="wc" id="rEndWords"></div><p>Wörter aus diesem Kapitel in deinem Wortdex</p>
+     <p id="rEndTxt"></p>
+     <div class="eacts" id="rEndActs"></div><span id="rMark"></span></div>`;
   rd.classList.remove('hidden');document.body.style.overflow='hidden';applyReaderPrefs();
   R.page=p.page||0;R.pages=1;requestAnimationFrame(()=>layout(false));
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>layout(true));
-  $('#rQuiz').onclick=()=>openQuiz(st);updateReaderWords();
+  endActs();updateReaderWords();
 }
 function closeReader(){stopTts();if(rd.classList.contains('hidden'))return;rd.classList.add('hidden');document.body.style.overflow='';hideTip();curStory=null;render();}
 const FONTS=[['literata','Literata',"Literata"],['garamond','Clásica',"'EB Garamond'"],['nunito','Moderna',"Nunito"],['kalam','Manuscrita',"Kalam"]];
@@ -3356,18 +3608,18 @@ function goTo(p){stopTts();p=Math.max(0,Math.min(R.pages-1,p));const changed=p!=
 function countEncounters(){if(!curStory||R.counted)return;R.counted=true;const m=STATS[curStory.id]||{};S.enc=S.enc||{};for(const l in m)S.enc[l]=(S.enc[l]||0)+m[l];save();}
 function updFoot(){$('#rPage').textContent=(R.page+1)+' / '+R.pages;$('#rProg').style.width=(R.pages>1?R.page/(R.pages-1)*100:100)+'%';}
 function updateReaderWords(){if(!curStory)return;const lem=storyLemmas(curStory);const got=lem.filter(l=>S.caught[l]).length;$('#rWords').textContent=got+'/'+lem.length;const e=$('#rEndWords');if(e)e.textContent=got+' / '+lem.length;}
-let drag=null;
-vp.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,t:e.pointerType,moved:false};});
-vp.addEventListener('pointermove',e=>{if(!drag||drag.t==='mouse')return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+let drag=null;const rwrap=rd.querySelector('.rwrap');
+rwrap.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,t:e.pointerType,moved:false};});
+rwrap.addEventListener('pointermove',e=>{if(!drag||drag.t==='mouse')return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
   if(!drag.moved&&Math.abs(dx)>10&&Math.abs(dx)>Math.abs(dy)){drag.moved=true;hideTip();}
   if(drag.moved){ct.style.transition='none';ct.style.transform=`translateX(${-R.page*R.step+dx*.9}px)`;}});
 function endDrag(e){if(!drag)return;const d=drag;drag=null;ct.style.transition='';const dx=e.clientX-d.x,dy=e.clientY-d.y;
   if(d.moved){suppressClick=true;setTimeout(()=>suppressClick=false,350);if(Math.abs(dx)>50)goTo(R.page+(dx<0?1:-1));else goTo(R.page);return;}
   if(e.type==='pointercancel'||Math.abs(dx)>8||Math.abs(dy)>8)return;
   if(e.target.closest('.w')||e.target.closest('button'))return;
-  if(tipFor&&d.t!=='mouse'){hideTip();return;}
-  const r=vp.getBoundingClientRect(),rx=(e.clientX-r.left)/r.width;if(rx<.3)goTo(R.page-1);else if(rx>.7)goTo(R.page+1);}
-vp.addEventListener('pointerup',endDrag);vp.addEventListener('pointercancel',endDrag);
+  if(d.t!=='mouse'){hideTip();return;}
+  if(!e.target.closest('#rvp'))return;const r=vp.getBoundingClientRect(),rx=(e.clientX-r.left)/r.width;if(rx<.3)goTo(R.page-1);else if(rx>.7)goTo(R.page+1);}
+rwrap.addEventListener('pointerup',endDrag);rwrap.addEventListener('pointercancel',endDrag);
 let wheelT=0;
 vp.addEventListener('wheel',e=>{const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;e.preventDefault();if(Math.abs(d)<12)return;const now=Date.now();if(now-wheelT<550)return;wheelT=now;goTo(R.page+(d>0?1:-1));},{passive:false});
 document.addEventListener('keydown',e=>{
@@ -3515,7 +3767,7 @@ function openCard(k,v,opt){
     ex=`<div class="sec"><h4>Gefunden in</h4><div class="ex" style="--pc:${pc}">${h}</div></div>`;}
   const ms=mastery(k),sr=(S.srs||{})[k],enc=(S.enc||{})[k]||0;
   const learn=`<div class="sec"><h4>Lernstand <span>${MLEV[ms]}</span></h4><div class="mbar">${[1,2,3,4].map(i=>`<i class="${ms>=i?'on':''}"></i>`).join('')}</div>
-    <div class="kv" style="margin-top:8px"><div><b>${Math.min(enc,99)} / 10</b><span>Begegnungen beim Lesen</span></div><div><b>${sr?(sr.d<=Date.now()?'jetzt':dueTxt(sr.d)):'neu'}</b><span>Nächste Wiederholung</span></div></div></div>`;
+    <div class="kv" style="margin-top:8px"><div><b>${Math.min(enc,99)} / 10</b><span>Begegnungen beim Lesen</span></div><div><b>${sr?(sr.d<=Date.now()?'jetzt':dueTxt(sr.d)):'neu'}</b><span>Nächste Wiederholung</span></div><div><b>${sr?'Fach '+sr.b:'Neu'}</b><span>Karteikasten</span></div><div><b>${sr?(sr.r||0)+'&times;':'0&times;'}</b><span>wiederholt${sr&&sr.r?', '+(sr.c||0)+' richtig':''}</span></div></div></div>`;
   const data=learn+`<div class="sec"><h4>Daten</h4><div class="kv"><div><b>${o.n}x</b><span>in ${o.c} ${o.c===1?'Kapitel':'Kapiteln'}</span></div><div><b>${power(e)}</b><span>Poder (Häufigkeit)</span></div>
     <div><b>${num(e.n)}</b><span>Wortdex Nummer</span></div><div><b>${new Date(c.t).toLocaleDateString('de-CH')}</b><span>${c.s==='chest'?'aus einer Truhe':st?'gefangen in '+esc(st.title):'gefangen'}</span></div></div></div>`;
   const tabs=[];if(forms)tabs.push(['f','Formen',forms]);tabs.push(['q','Quests',quest]);tabs.push(['i','Infos',ex+data]);
@@ -3829,43 +4081,77 @@ function newToTrain(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!==
 function dueTxt(d){const n=Math.round((d-Date.now())/DAY);return n<=0?'heute':n===1?'morgen':'in '+n+' Tagen';}
 const MLEV=['Neu','Entdeckt','Vertraut','Gefestigt','Gemeistert'];
 function mastery(l){if(!S.caught[l])return 0;const e=(S.enc||{})[l]||0,b=((S.srs||{})[l]||{}).b||0;if(e>=10&&b>=4)return 4;if(e>=10||b>=3)return 3;if(e>=5||b>=2)return 2;return 1;}
-function srsAnswer(l,ok){S.srs=S.srs||{};const cur=S.srs[l]||{b:0,d:0};const b=ok?Math.min(6,(cur.b||0)+1):1;S.srs[l]={b,d:Date.now()+(ok?SRSI[b]*DAY:10*60*1000)};}
-function covOf(st){const m=STATS[st.id]||{};let t=0,k=0;for(const l in m){t+=m[l];if(S.caught[l])k+=m[l];}return t?k/t:0;}
-function covChip(st){const c=covOf(st)*100,p=Math.floor(c);const [lab,col]=c>=98?['leicht','#3ddc97']:c>=95?['ideal','#ffcb3d']:c>=90?['fordernd','#ff9f1c']:['viel Neues','#ff6b6b'];
-  return `<span class="cov" style="--cc:${col}" title="Anteil bekannter Wörter. Ideal zum Lernen: 95 bis 98 %">${p}% bekannt &middot; ${lab}</span>`;}
-function openTrain(){
-  hideTip();const pool=Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop');
-  if(pool.length<4){openModal(`<h2>Training</h2><p style="color:var(--mut)">Fange zuerst mindestens 4 Wörter in den Geschichten.</p>`);return;}
-  const now=Date.now(),srs=S.srs||{};
+function covOf(st){const m=STATS[st.id]||{};const enc=S.enc||{};let t=0,k=0;for(const l in m){t+=m[l];if(S.caught[l]||enc[l]||(LEX[l]&&LEX[l].p==='prop'))k+=m[l];}return t?k/t:0;}
+function covChip(st){if(STORIES.filter(s=>!s.soon)[0]===st&&!isDone(st))return `<span class="cov" style="--cc:#4da3ff">Einstieg &middot; alles neu</span>`;const c=covOf(st)*100,p=Math.floor(c);const [lab,col]=c>=98?['leicht','#3ddc97']:c>=94?['ideal','#4da3ff']:c>=88?['gut machbar','#ffcb3d']:c>=80?['fordernd','#ff9f1c']:['viel Neues','#ff6b6b'];
+  return `<span class="cov" style="--cc:${col}" title="Anteil der Wörter, die du schon gelesen oder gefangen hast. Ideal: 95 bis 98 %">${p}% bekannt &middot; ${lab}</span>`;}
+function srsAnswer(l,ok){S.srs=S.srs||{};const cur=S.srs[l]||{b:0,d:0,r:0,c:0};const from=cur.b||0;const b=ok?Math.min(6,from+1):1;S.srs[l]={b,d:Date.now()+(ok?SRSI[b]*DAY:10*60*1000),r:(cur.r||0)+1,c:(cur.c||0)+(ok?1:0)};return {from,to:b};}
+const FACH=[['Neu','#9aa0c3'],['Fach 1','#ff6b6b'],['Fach 2','#ff9f1c'],['Fach 3','#ffcb3d'],['Fach 4','#3ddc97'],['Fach 5','#4da3ff'],['Fach 6','#c46bff']];
+const FACHT=['noch nie geübt','jeden Tag','alle 3 Tage','jede Woche','alle 16 Tage','alle 5 Wochen','alle 3 Monate'];
+function trainPool(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop');}
+function fachOf(l){return ((S.srs||{})[l]||{}).b||0;}
+function openTrain(){openBox();}
+function openBox(sel){
+  hideTip();const pool=trainPool();
+  if(pool.length<4){openModal(`<h2>Karteikasten</h2><p style="color:var(--mut)">Fange zuerst mindestens 4 Wörter in den Geschichten.</p>`);return;}
+  const now=Date.now(),srs=S.srs||{};const F=[0,1,2,3,4,5,6].map(f=>pool.filter(l=>fachOf(l)===f));
+  const due=pool.filter(l=>srs[l]&&srs[l].d<=now).length,fresh=F[0].length;
+  const reps=Object.values(srs).reduce((a,x)=>a+(x.r||0),0);
+  const fachHtml=F.map((ws,f)=>{const n=ws.length,dn=f?ws.filter(l=>srs[l].d<=now).length:0;const k=Math.min(7,Math.ceil(n/3));
+    return `<button class="kfach ${sel===f?'sel':''}" data-f="${f}" style="--fc:${FACH[f][1]}">${dn?`<i class="kdue">${dn}</i>`:''}
+      <span class="kcards">${Array.from({length:k},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</span>
+      <span class="kfront"><b>${n}</b><small>${f?f:'Neu'}</small></span></button>`;}).join('');
+  openModal(`<div class="kwrap"><small class="kk">KARTEIKASTEN &middot; SPACED REPETITION</small><h2>Dein Gedächtnistrainer</h2>
+    <p class="klead">Weisst du ein Wort, wandert es ein Fach weiter und kommt erst später wieder. Vergisst du es, geht es zurück in Fach 1. So übst du genau das, was du sonst vergessen würdest.</p>
+    <div class="kbox">${fachHtml}</div>
+    <div class="klegend">${[1,2,3,4,5,6].map(f=>`<span><i style="background:${FACH[f][1]}"></i>${f}: ${FACHT[f]}</span>`).join('')}</div>
+    <div class="kstats"><div><b>${due}</b><span>heute fällig</span></div><div><b>${fresh}</b><span>neu</span></div><div><b>${reps}</b><span>Wiederholungen</span></div><div><b>${F[6].length}</b><span>in Fach 6</span></div></div>
+    <div class="kacts">${due?`<button class="btn" id="kDue">Fällige wiederholen (${Math.min(due,15)})</button>`:''}${fresh?`<button class="btn ${due?'ghost':''}" id="kNew">Neue Wörter lernen (${Math.min(fresh,10)})</button>`:''}<button class="btn ghost" id="kFree">Freies Training</button></div>
+    <div id="klist">${sel!=null?boxList(F[sel],sel):'<p class="khint">Tippe auf ein Fach, um seine Wörter zu sehen.</p>'}</div></div>`);
+  document.querySelectorAll('.kfach').forEach(b=>b.onclick=()=>{const f=+b.dataset.f;document.querySelectorAll('.kfach').forEach(x=>x.classList.toggle('sel',x===b));$('#klist').innerHTML=boxList(F[f],f);});
+  const go2=(m)=>()=>startTrain(m);
+  $('#kDue')&&($('#kDue').onclick=go2('due'));$('#kNew')&&($('#kNew').onclick=go2('new'));$('#kFree').onclick=go2('free');
+}
+function boxList(ws,f){const srs=S.srs||{};if(!ws.length)return `<p class="khint">${f?'Dieses Fach ist leer.':'Keine neuen Wörter. Fange neue in den Geschichten.'}</p>`;
+  const now=Date.now();ws=ws.slice().sort((a,b)=>f?srs[a].d-srs[b].d:S.caught[b].t-S.caught[a].t);
+  return `<div class="kltitle" style="--fc:${FACH[f][1]}">${FACH[f][0]} &middot; ${FACHT[f]} &middot; ${ws.length} ${ws.length===1?'Wort':'Wörter'}</div><div class="klist">${ws.map(l=>{const x=srs[l],e=LEX[l];
+    return `<button class="krow" data-card="${esc(l)}"><span class="kw"><b>${esc(l)}</b><span>${esc(e[S.lang])}</span></span><span class="kr">${x?`<span class="kreps">${x.r||0}&times; geübt</span><span class="${x.d<=now?'kdn':''}">${x.d<=now?'fällig':dueTxt(x.d)}</span>`:'<span>neu</span>'}</span></button>`;}).join('')}</div>`;}
+function startTrain(mode){const pool=trainPool(),now=Date.now(),srs=S.srs||{};let picked;
   const due=pool.filter(l=>srs[l]&&srs[l].d<=now).sort((a,b)=>srs[a].d-srs[b].d);
   const fresh=pool.filter(l=>!srs[l]).sort((a,b)=>S.caught[a].t-S.caught[b].t);
-  let picked=due.slice(0,10);if(picked.length<10)picked=picked.concat(fresh.slice(0,10-picked.length));
-  if(picked.length<Math.min(10,pool.length)){const rest=shuffle(pool.filter(l=>!picked.includes(l))).sort((a,b)=>((srs[a]||{}).d||0)-((srs[b]||{}).d||0));picked=picked.concat(rest.slice(0,Math.min(10,pool.length)-picked.length));}
-  picked=shuffle(picked);
-  const rounds=picked.map(l=>{const e=LEX[l];const box=(srs[l]||{}).b||0;const type=box>=3;const dir=type?'type':(Math.random()<.5?'es':'tr');
-    const others=shuffle(pool.filter(x=>x!==l&&LEX[x][S.lang]!==e[S.lang]));
+  if(mode==='due')picked=due.slice(0,15);
+  else if(mode==='new')picked=fresh.slice(0,10);
+  else picked=shuffle(pool).sort((a,b)=>fachOf(a)-fachOf(b)).slice(0,10);
+  if(!picked.length){openBox();return;}
+  runTrain(shuffle(picked),{title:mode==='due'?'Wiederholung':mode==='new'?'Neue Wörter':'Freies Training',free:mode==='free'});}
+function runTrain(picked,opt){
+  opt=opt||{};hideTip();const pool=trainPool().concat(picked.filter(l=>!S.caught[l]));const srs=S.srs||{};const now=Date.now();
+  const rounds=picked.map(l=>{const e=LEX[l];const box=fachOf(l);const type=box>=3&&!opt.noType;const dir=type?'type':(Math.random()<.5?'es':'tr');
+    const others=shuffle(pool.filter(x=>x!==l&&LEX[x]&&LEX[x][S.lang]!==e[S.lang]&&LEX[x].p!=='prop'));
     const same=others.filter(x=>LEX[x].p===e.p);const ds=[...new Set([...same,...others])].slice(0,3);
     let extra=shuffle(Object.keys(LEX).filter(x=>x!==l&&!ds.includes(x)&&LEX[x].p!=='prop'));while(ds.length<3)ds.push(extra.pop());
-    return {l,dir,opts:shuffle([l,...ds]),wasDue:!!(srs[l]&&srs[l].d<=now)};});
-  let i=0,score=0;const wrong=[];
+    return {l,dir,box,opts:shuffle([l,...ds]),wasDue:!!(srs[l]&&srs[l].d<=now)};});
+  let i=0,score=0;const wrong=[],moves=[];
   function show(){const R0=rounds[i],e=LEX[R0.l];let done=false;
     const art=e.g?(e.g==='m'?'el':'la'):'';
     const prompt=R0.dir==='es'?`<div class="trq"><span class="trw">${esc(e.k)}</span><button class="spk" data-say="${esc(e.k)}">${SPK}</button></div><div class="trh">Was heisst das?</div>`
-      :`<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">${R0.dir==='type'?'Schreib es auf Spanisch (aktives Abrufen)':'Wie heisst das auf Spanisch?'} ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
-    const body=R0.dir==='type'?`<div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Prüfen</button></div><div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div>`
+      :`<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">${R0.dir==='type'?'Schreib es auf Spanisch':'Wie heisst das auf Spanisch?'} ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
+    const body=R0.dir==='type'?`<div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Prüfen</button></div><div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div>`
       :`<div class="qopts trgrid">${R0.opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(R0.dir==='es'?LEX[o][S.lang]:o)}</button>`).join('')}</div>`;
-    openModal(`<div class="qprog">${rounds.map((_,j)=>`<i class="${j<i?(rounds[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>
-      <div class="trtag">${R0.wasDue?'Wiederholung':(srs[R0.l]?'Festigen':'Neu')}</div>${prompt}${body}
+    const fc=FACH[R0.box];
+    openModal(`${opt.title?`<div class="trtitle">${esc(opt.title)}</div>`:''}<div class="qprog">${rounds.map((_,j)=>`<i class="${j<i?(rounds[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>
+      <div class="trtag"><span class="fchip" style="--fc:${fc[1]}">${fc[0]}</span>${(srs[R0.l]||{}).r?` <span class="trreps">${srs[R0.l].r}&times; geübt</span>`:''}</div>${prompt}${body}
       <div class="qfoot"><span class="qfb" id="qfb"></span><button class="btn hidden" id="qnext">${i<rounds.length-1?'Weiter':'Ergebnis'}</button></div>`);
-    const finishAns=(ok,msg)=>{R0.ok=ok;if(ok){score++;S.mast[R0.l]=(S.mast[R0.l]||0)+1;}else wrong.push(R0.l);srsAnswer(R0.l,ok);
-      $('#qfb').innerHTML=msg||(ok?'<span style="color:var(--good)">¡Correcto!</span>':`<span style="color:var(--bad)">${esc(e.k)} = ${esc(e[S.lang])}</span>`);
+    const finishAns=(ok,msg)=>{R0.ok=ok;if(ok){score++;S.mast[R0.l]=(S.mast[R0.l]||0)+1;}else wrong.push(R0.l);
+      let mv=null;if(!opt.free||!srs[R0.l]||srs[R0.l].d<=Date.now()||!ok){mv=srsAnswer(R0.l,ok);moves.push(mv);}
+      const mvTxt=mv?(ok?`<span class="fmove"><span class="fchip" style="--fc:${FACH[mv.from][1]}">${FACH[mv.from][0]}</span> &rarr; <span class="fchip" style="--fc:${FACH[mv.to][1]}">${FACH[mv.to][0]}</span> wieder ${dueTxt(S.srs[R0.l].d)}</span>`:`<span class="fmove">zurück in <span class="fchip" style="--fc:${FACH[1][1]}">Fach 1</span> &middot; gleich nochmal</span>`):'';
+      $('#qfb').innerHTML=(msg||(ok?'<span style="color:var(--good)">¡Correcto!</span>':`<span style="color:var(--bad)">${esc(e.k)} = ${esc(e[S.lang])}</span>`))+mvTxt;
       speak(e.k);const nx=()=>{i++;i<rounds.length?show():finish();};$('#qnext').classList.remove('hidden');$('#qnext').onclick=nx;
-      if(ok)setTimeout(()=>{if(document.getElementById('qnext')&&rounds[i]===R0)nx();},1100);};
+      if(ok)setTimeout(()=>{if(document.getElementById('qnext')&&rounds[i]===R0)nx();},1500);};
     if(R0.dir==='type'){const inp=$('#tIn');setTimeout(()=>inp.focus(),50);
       document.querySelectorAll('.accents [data-ch]').forEach(b=>b.onclick=()=>{inp.value+=b.dataset.ch;inp.focus();});
       const check=()=>{if(done)return;const v=inp.value.trim().toLowerCase().replace(/^(el|la|los|las)\s+/,'');if(!v)return;done=true;inp.disabled=true;
         const exact=v===e.k.toLowerCase(),close=norm(v)===norm(e.k);
-        if(exact)finishAns(true);else if(close)finishAns(true,`<span style="color:var(--good)">¡Correcto!</span> <span style="color:var(--mut)">Achte auf den Akzent: <b>${esc(e.k)}</b></span>`);
+        if(exact)finishAns(true);else if(close)finishAns(true,`<span style="color:var(--good)">¡Correcto!</span> <span style="color:var(--mut)">Akzent: <b>${esc(e.k)}</b></span>`);
         else finishAns(false,`<span style="color:var(--bad)">Richtig: <b>${esc((art?art+' ':'')+e.k)}</b></span>`);};
       $('#tOk').onclick=check;trainKey=ev=>{if(ev.key==='Enter'){if(done){const n=$('#qnext');if(n)n.click();}else check();}};}
     else{const answer=j=>{if(done)return;done=true;const o=R0.opts[j];const ok=o===R0.l;
@@ -3874,28 +4160,62 @@ function openTrain(){
       document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
       trainKey=ev=>{if(/^[1-4]$/.test(ev.key))answer(+ev.key-1);else if(ev.key==='Enter'&&done){const n=$('#qnext');if(n)n.click();}};}
   }
-  function finish(){markDay();save();updateHud();trainKey=null;render();const d=dueCount();
+  function finish(){markDay();save();updateHud();trainKey=null;render();
+    const up=moves.filter(m=>m.to>m.from).length,down=moves.filter(m=>m.to<=m.from&&m.to===1&&m.from!==0).length;
+    if(opt.onDone){opt.onDone(score,rounds);return;}
+    const d=dueCount();
     openModal(`<div class="qres"><div class="big">${score}/${rounds.length}</div><p>${score===rounds.length?'¡Perfecto!':score>=rounds.length*.7?'¡Muy bien!':'Weiter üben, das wird!'}</p>
+      ${moves.length?`<p class="kmoved"><b style="color:var(--good)">${up}</b> ${up===1?'Wort ist':'Wörter sind'} ein Fach weiter${down?`, <b style="color:var(--bad)">${down}</b> zurück in Fach 1`:''}.</p>`:''}
       ${wrong.length?`<div style="text-align:left;margin:10px 0"><div style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--mut);margin-bottom:6px">KOMMT IN 10 MINUTEN NOCHMAL</div>${[...new Set(wrong)].map(l=>`<button class="quest" style="width:100%" data-card="${esc(l)}"><span class="qt"><b>${esc(l)}</b> &middot; ${esc(LEX[l][S.lang])}</span></button>`).join('')}</div>`:''}
-      <p style="font-size:13px">Richtige Wörter kommen erst wieder, kurz bevor du sie vergisst: nach 1, 3, 7, 16, 35 und 90 Tagen. ${d?`Noch ${d} fällig.`:'Für heute ist alles fällige wiederholt.'}</p>
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px"><button class="btn ghost" data-close>Fertig</button><button class="btn" id="tagain">${d?'Weiter wiederholen':'Nochmal üben'}</button></div></div>`);
-    $('#tagain').onclick=openTrain;}
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" id="tbox">Zum Karteikasten</button><button class="btn" id="tagain">${d?'Weiter wiederholen ('+d+')':'Fertig'}</button></div></div>`);
+    $('#tbox').onclick=()=>openBox();$('#tagain').onclick=d?()=>startTrain('due'):()=>closeModal();}
   show();
 }
+function keyWords(st,n){n=n||5;const m=STATS[st.id]||{};const L=STORIES.filter(s=>!s.soon);const idx=L.indexOf(st);const before=new Set();
+  for(let j=0;j<idx;j++)for(const l in STATS[L[j].id]||{})before.add(l);
+  const tot=l=>{let t=0;for(const id in STATS)t+=STATS[id][l]||0;return t;};
+  const sc=l=>(before.has(l)?0:1000)+Math.min(tot(l),60)*2+m[l]*5-fachOf(l)*400;
+  return Object.keys(m).filter(l=>LEX[l]&&LEX[l].p!=='prop').sort((a,b)=>sc(b)-sc(a)).slice(0,n);}
+function keyRound(st){const ws=keyWords(st,5);ws.forEach(l=>{if(!S.caught[l])S.caught[l]={t:Date.now(),ex:'',s:'key'};});save();
+  openModal(`<div class="qres"><small class="kk">SCHLÜSSELWÖRTER</small><div class="big" style="font-size:30px;margin:6px 0">Die 5 wichtigsten Wörter</div>
+    <p>Diese Wörter kommen in den nächsten Kapiteln oft vor. Übe sie jetzt kurz, dann landen sie in deinem Karteikasten und kommen zur richtigen Zeit wieder.</p>
+    <div class="kwchips">${ws.map(l=>`<span class="kwchip"><b>${esc(l)}</b>${esc(LEX[l][S.lang])}</span>`).join('')}</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap"><button class="btn ghost" id="kSkip">Überspringen</button><button class="btn" id="kGo">Los geht's</button></div></div>`);
+  $('#kSkip').onclick=()=>chapterDone(st,null);
+  $('#kGo').onclick=()=>runTrain(shuffle(ws),{title:'Schlüsselwörter',noType:true,onDone:(sc,r)=>chapterDone(st,{score:sc,n:r.length})});}
+function storyAfter(st){const L=STORIES.filter(s=>!s.soon);return L[L.indexOf(st)+1]||null;}
+function chLabel(s){return s.inter?'Diario de Mia':'Kapitel '+s.ch;}
+function chapterDone(st,k){const nx=storyAfter(st);const ch=chestsAvail();
+  openModal(`<div class="qres"><div class="big" style="font-size:30px">${st.inter?'¡Diario terminado!':'¡Capítulo completado!'}</div>
+    ${k?`<p>Schlüsselwörter: <b>${k.score}/${k.n}</b> richtig. Sie sind jetzt in deinem Karteikasten.</p>`:''}
+    ${ch?`<p style="color:var(--acc);font-weight:700">${ch===1?'Eine Truhe wartet':ch+' Truhen warten'} auf dich.</p>`:''}
+    <div class="dacts">${ch?`<button class="btn gold" id="dChest">Truhe öffnen</button>`:''}${nx&&!nx.soon?`<button class="btn" id="dNext">Weiter: ${esc(chLabel(nx))} &rarr;</button>`:''}<button class="btn ghost" id="dList">Kapitelübersicht</button></div></div>`);
+  $('#dChest')&&($('#dChest').onclick=()=>{closeAllModals();openChest();});
+  $('#dNext')&&($('#dNext').onclick=()=>{closeAllModals();openReader(nx.id);});
+  $('#dList').onclick=()=>{closeAllModals();closeReader();go({name:'level',lvl:st.lvl});};
+  endActs();}
+function endActs(){const box=document.getElementById('rEndActs');if(!box||!curStory)return;const st=curStory,p=S.stories[st.id]||{};const nx=storyAfter(st),ch=chestsAvail();
+  const tx=document.getElementById('rEndTxt');if(tx)tx.textContent=p.done?'Geschafft. Weiter geht es mit dem nächsten Text.':'Beantworte mindestens 3 von 4 Fragen richtig. Dann gibt es eine Truhe und den nächsten Text.';
+  box.innerHTML=p.done?`${ch?`<button class="btn gold" id="eChest">Truhe öffnen (${ch})</button>`:''}${nx&&!nx.soon?`<button class="btn" id="eNext">Weiter: ${esc(chLabel(nx))} &rarr;</button>`:''}<button class="btn ghost" id="rQuiz">Quiz wiederholen</button>`
+    :`<button class="btn" id="rQuiz">Quiz starten</button>`;
+  $('#rQuiz').onclick=()=>openQuiz(st);
+  $('#eChest')&&($('#eChest').onclick=()=>openChest());
+  $('#eNext')&&($('#eNext').onclick=()=>openReader(nx.id));}
 
 /* ---------- Vorlesen (Lesen und Hören) ---------- */
-let ttsOn=false;
-function stopTts(){try{speechSynthesis.cancel();}catch(e){}ttsOn=false;const b=document.getElementById('rTts');if(b)b.classList.remove('act');}
+let ttsOn=false,ttsTok=0;
+function stopTts(){const was=ttsOn;ttsOn=false;ttsTok++;try{if(was||speechSynthesis.speaking)speechSynthesis.cancel();}catch(e){}const b=document.getElementById('rTts');if(b)b.classList.remove('act');}
 function speakPage(){if(ttsOn){stopTts();return;}const vr=vp.getBoundingClientRect();
-  const parts=[...ct.querySelectorAll('.chead h2, p')].filter(p=>{const r=p.getBoundingClientRect();return r.right>vr.left+4&&r.left<vr.right-4;}).map(p=>p.textContent.replace(/[«»]/g,'')).filter(Boolean);
-  if(!parts.length)return;ttsOn=true;$('#rTts').classList.add('act');
-  try{speechSynthesis.cancel();parts.forEach((t,i)=>{const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';const v=voices.find(v=>v.lang==='es-ES')||voices.find(v=>/^es/.test(v.lang));if(v)u.voice=v;u.rate=.85;if(i===parts.length-1)u.onend=()=>stopTts();speechSynthesis.speak(u);});}catch(e){stopTts();}}
+  const parts=[...ct.querySelectorAll('.chead h2, p')].filter(p=>{const r=p.getBoundingClientRect();return r.right>vr.left+4&&r.left<vr.right-4;}).map(p=>p.textContent.replace(/[«»]/g,'').trim()).filter(Boolean);
+  if(!parts.length)return;ttsOn=true;$('#rTts').classList.add('act');let k=0;const tok=++ttsTok;
+  const nextPart=()=>{if(!ttsOn||tok!==ttsTok)return;if(k>=parts.length){stopTts();return;}const u=mkUtt(parts[k++]);u.onend=()=>setTimeout(nextPart,120);u.onerror=()=>stopTts();try{speechSynthesis.speak(u);}catch(e){stopTts();}};
+  try{const ss=speechSynthesis;if(ss.speaking||ss.pending)ss.cancel();if(ss.paused)ss.resume();}catch(e){}nextPart();}
 
 /* ---------- Die Methode ---------- */
 function openMethod(){pushModal();
-  const P=[['98','Lesen auf dem richtigen Niveau','Man versteht einen Text gut, wenn man 95 bis 98 % der Wörter kennt. Darunter wird Lesen zur Qual, darüber lernt man kaum Neues.','Jedes Kapitel zeigt dir, wie viel Prozent der Wörter du schon kennst. Neue Wörter kommen in kleinen Portionen, der Rest ist bekannt.','Hu & Nation 2000; Schmitt, Jiang & Grabe 2011'],
+  const P=[['98','Lesen auf dem richtigen Niveau','Man versteht einen Text gut, wenn man 95 bis 98 % der Wörter kennt. Darunter wird Lesen zur Qual, darüber lernt man kaum Neues.','Jedes Kapitel zeigt dir, wie viel Prozent der Wörter du schon kennst. Vor schwierigen Kapiteln bereitet ein kurzer Tagebucheintrag von Mia die neuen Wörter vor.','Hu & Nation 2000; Schmitt, Jiang & Grabe 2011'],
    ['10x','Jedes Wort im Kontext wiederholen','Wörter lernt man schrittweise. Nach rund 10 Begegnungen in verschiedenen Sätzen sitzt ein Wort meist deutlich besser.','Die Geschichten bauen aufeinander auf und wiederholen Wörter über viele Kapitel. Jede Karte zeigt deine Begegnungen.','Webb 2007; Pellicer-Sánchez & Schmitt 2010; Webb & Chang 2015'],
-   ['1·3·7','Wiederholen, kurz bevor du vergisst','Verteiltes Lernen schlägt Pauken. Abstände, die mit der Zeit wachsen, halten Wissen am längsten.','Das Training plant jedes Wort neu: nach 1, 3, 7, 16, 35 und 90 Tagen. Auf der Startseite siehst du, was heute fällig ist.','Cepeda et al. 2006 (Meta-Analyse, 317 Experimente)'],
+   ['1·3·7','Wiederholen, kurz bevor du vergisst','Verteiltes Lernen schlägt Pauken. Abstände, die mit der Zeit wachsen, halten Wissen am längsten.','Dein Karteikasten hat 6 Fächer: nach 1, 3, 7, 16, 35 und 90 Tagen kommt ein Wort wieder. Nach jedem Kapitel landen die 5 wichtigsten Wörter direkt darin.','Cepeda et al. 2006 (Meta-Analyse, 317 Experimente)'],
    ['?','Abrufen statt wiederlesen','Sich aktiv an etwas zu erinnern, festigt es stärker als erneutes Lesen. Etwas Anstrengung ist dabei gewollt.','Quiz nach jedem Kapitel und Karteikarten. Sitzt ein Wort, musst du es selbst schreiben statt nur auszuwählen.','Roediger & Karpicke 2006; Karpicke & Roediger 2007'],
    ['♪','Lesen und gleichzeitig hören','Wer liest und dabei zuhört, lernt Wörter und ihre Aussprache zusammen.','Jedes Wort und jede Seite kannst du dir vorlesen lassen.','Webb & Chang 2012, 2015; Brown, Waring & Donkaewbua 2008']];
   openModal(`<div class="method"><small>DIE PALABRADEX METHODE</small><h2>Lesen, das hängen bleibt</h2>
@@ -3928,17 +4248,16 @@ function openQuiz(st){
     const score=res.filter(Boolean).length,pass=score>=3;const p=S.stories[st.id];
     p.quiz=Math.max(p.quiz||0,score);p.read=true;if(pass)p.done=true;markDay();save();
     const gain=xp()-xp0;updateHud();const newCh=chestsAvail()-ch0;
-    const next=STORIES.find(s=>s.lvl===st.lvl&&s.ch===st.ch+1);
+    const next=storyAfter(st);
     openModal(`<div class="qres"><div class="big">${score}/${qs.length}</div>
      <p>${pass?(score===4?'¡Perfecto! Alles richtig.':'¡Muy bien! Bestanden.'):'Fast! Du brauchst 3 von 4. Lies die Geschichte nochmal und versuch es erneut.'}</p>
      ${gain>0?`<div class="xpgain">+${gain} XP</div>`:''}
      ${newCh>0?`<p style="color:var(--acc);font-weight:700">Du hast ${newCh===1?'eine Truhe':newCh+' Truhen'} verdient!</p>`:''}
-     ${pass&&next?`<p>${next.soon?'Das nächste Kapitel erscheint bald.':'Kapitel '+next.ch+' ist jetzt freigeschaltet!'}</p>`:''}
-     <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">${pass?`${chestsAvail()?'<button class="btn" id="qchest">Truhe öffnen</button>':''}<button class="btn ghost" id="qdone">Fertig</button>`:'<button class="btn ghost" id="qdone">Nochmal lesen</button><button class="btn" id="qretry">Nochmal versuchen</button>'}</div></div>`);
+     ${pass&&next?`<p>${next.soon?'Das nächste Kapitel erscheint bald.':esc(chLabel(next))+' ist jetzt freigeschaltet!'}</p>`:''}
+     <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">${pass?`<button class="btn" id="qkey">Weiter: 5 Schlüsselwörter</button>`:'<button class="btn ghost" id="qdone">Nochmal lesen</button><button class="btn" id="qretry">Nochmal versuchen</button>'}</div></div>`);
     quizOpen=false;
-    const dn=$('#qdone');if(dn)dn.onclick=()=>{closeModal();if(pass){closeReader();go({name:'level',lvl:st.lvl});}else goTo(0);};
+    const dn=$('#qdone');if(dn)dn.onclick=()=>{closeModal();goTo(0);};const qk=$('#qkey');if(qk)qk.onclick=()=>keyRound(st);endActs();
     const rt=$('#qretry');if(rt)rt.onclick=()=>openQuiz(st);
-    const qc=$('#qchest');if(qc)qc.onclick=()=>{closeReader();go({name:'level',lvl:st.lvl});openChest();};
   }
   show();
 }
@@ -3947,6 +4266,7 @@ function openQuiz(st){
    START
    ============================================================ */
 function refreshAll(){backfillEnc();updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
+try{if(isStandalone())document.documentElement.classList.add('standalone');}catch(e){}
 let installEvt=null;addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();installEvt=ev;});
 function isStandalone(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/claude|anthropic/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{});}catch(e){}
