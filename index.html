@@ -267,6 +267,13 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 @keyframes lshk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .lmiss{text-align:center;font-size:12px;color:var(--mut);margin-top:6px}.lmiss i,.lmiss s{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:5px;background:#ff6b6b}.lmiss s{background:#ffffff22}
 .membar{height:6px;background:#ffffff14;border-radius:4px;overflow:hidden;margin-top:14px}.membar i{display:block;height:100%;background:var(--acc);animation:memb 3.2s linear forwards}@keyframes memb{from{width:100%}to{width:0}}
+.mtabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-6px 0 18px}
+.mtabs button{text-align:left;padding:12px 16px;border-radius:14px;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.mtabs button b{font-size:15px}.mtabs button span{font-size:12px;color:var(--mut)}
+.mtabs button.on{background:linear-gradient(120deg,color-mix(in srgb,var(--acc) 22%,var(--panel)),var(--panel));border-color:var(--acc)}
+.histlock{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--panel);border:1px dashed var(--line);margin-bottom:14px}
+.histlock b{display:block;margin-bottom:4px}.histlock span{color:var(--mut);font-size:14px;line-height:1.5}
+.cont.hist{background:linear-gradient(120deg,#5a2a12,#2a1d4a)}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -1537,6 +1544,258 @@ FORMS.teresa={name:true,de:'Teresa, Besitzerin des Kleiderladens',en:'Teresa, ow
 F('diga','decir','sagen Sie','say (formal)');F('leyendo','leer','lesend','reading');F('secreta','secreto','geheim','secret (feminine)');
 (function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;
 W('diario','n',n++,'Tagebuch; täglich','diary; daily','Mi diario = mein Tagebuch. Als Adjektiv: täglich.','Mi diario = my diary. As adjective: daily.',{g:'m',fr:70});})();
+
+/* Wortschatz Historia A1, Kapitel 1 bis 20 */
+(function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;const A=(k,p,de,en,fde,fen,x)=>{if(LEX[k])return;W(k,p,n++,de,en,fde,fen,x);};
+const m=fr=>({g:'m',fr}),f=fr=>({g:'f',fr}),af=o=>Object.assign({af:1},o);
+// Eigennamen
+A('Europa','prop','Europa','Europe','Der Kontinent ist nach einer Figur aus der griechischen Sage benannt.','The continent is named after a figure from Greek myth.',{fr:40});
+A('Roma','prop','Rom','Rome','Von Roma kommt romano. Und von romano kommt romántico.','From Roma comes romano. And from romano comes romántico.',{fr:45});
+A('África','prop','Afrika','Africa','Nur 14 Kilometer trennen Spanien und Afrika bei Gibraltar.','Only 14 kilometres separate Spain and Africa at Gibraltar.',{fr:50});
+// 1-2
+A('millón','num','Million','million','Mehrzahl: millones. Un millón de años = eine Million Jahre.','Plural: millones. Un millón de años = a million years.',{fr:45});
+A('norte','n','Norden','north','Norte, sur, este, oeste: die vier Himmelsrichtungen.','Norte, sur, este, oeste: the four directions.',m(45));
+A('cueva','n','Höhle','cave','Ali Baba und die vierzig Räuber leben auf Spanisch in una cueva.','Ali Baba\'s forty thieves live in una cueva.',f(60));
+A('humano','adj','menschlich; Mensch','human','Los humanos = die Menschen. Ser humano = Mensch.','Los humanos = humans. Ser humano = human being.',af({fr:50}));
+A('hueso','n','Knochen','bone','Auch: Kern einer Frucht. El hueso de la aceituna.','Also: a fruit stone. El hueso de la aceituna.',m(65));
+A('científico','n','Wissenschaftler','scientist','Weiblich: la científica. La ciencia = die Wissenschaft.','Feminine: la científica. La ciencia = science.',af({g:'m',fr:60}));
+A('tierra','n','Erde, Land','earth, land','Mit grossem T: la Tierra, unser Planet.','With a capital T: la Tierra, our planet.',f(40));
+A('animal','n','Tier','animal','Gleich wie auf Deutsch, aber Mehrzahl: animales.','Same as in English. Plural: animales.',m(40));
+// 3-4
+A('techo','n','Decke, Dach','ceiling, roof','Unter dem gleichen Dach: bajo el mismo techo.','Under the same roof: bajo el mismo techo.',m(55));
+A('arriba','adv','oben, nach oben','up, upstairs','Gegenteil: abajo. ¡Manos arriba! = Hände hoch!','Opposite: abajo. ¡Manos arriba! = Hands up!',{fr:50});
+A('abajo','adv','unten, nach unten','down, downstairs','Gegenteil: arriba.','Opposite: arriba.',{fr:55});
+A('gritar','v','schreien','to shout','Un grito = ein Schrei.','Un grito = a shout.',{fr:55});
+A('buey','n','Ochse','ox','Mehrzahl: bueyes.','Plural: bueyes.',m(85));
+A('pintado','adj','bemalt, gemalt','painted','Von pintar (malen). Recién pintado = frisch gestrichen.','From pintar (to paint). Recién pintado = wet paint.',af({fr:65}));
+A('bisonte','n','Bison','bison','Die Bisons von Altamira gehören zur berühmtesten Steinzeitkunst der Welt.','The Altamira bison are among the most famous Stone Age art in the world.',m(90));
+A('vaca','n','Kuh','cow','La vaca dice: mu.','La vaca says: mu.',f(60));
+A('enorme','adj','riesig','huge','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:55}));
+A('pintura','n','Malerei, Gemälde; Farbe','painting; paint','Pintura bedeutet auch die Farbe im Topf.','Pintura also means the paint in the tin.',f(55));
+A('creer','v','glauben','to believe','Creo que sí = ich glaube schon.','Creo que sí = I think so.',{fr:35});
+A('imposible','adj','unmöglich','impossible','Gegenteil: posible.','Opposite: posible.',af({fr:50}));
+A('mentira','n','Lüge','lie','Decir una mentira = lügen. ¡Parece mentira! = Unglaublich!','Decir una mentira = to lie. ¡Parece mentira! = Unbelievable!',f(55));
+A('cazar','v','jagen','to hunt','La caza = die Jagd. Ein Jäger: un cazador.','La caza = the hunt. A hunter: un cazador.',{conj:['cazo','cazas','caza','cazamos','cazáis','cazan'],fr:70});
+A('caballo','n','Pferd','horse','A caballo = zu Pferd.','A caballo = on horseback.',m(50));
+A('ciervo','n','Hirsch','deer','Weiblich: la cierva.','Feminine: la cierva.',m(80));
+A('quizás','adv','vielleicht','maybe','Auch: quizá. Beides ist richtig.','Also: quizá. Both are correct.',{fr:45});
+A('magia','n','Magie, Zauberei','magic','Un mago = ein Zauberer.','Un mago = a magician.',f(65));
+A('lámpara','n','Lampe','lamp','Betont auf der ersten Silbe: LÁM-pa-ra.','Stressed on the first syllable: LÁM-pa-ra.',f(65));
+A('copia','n','Kopie','copy','Copiar = kopieren, abschreiben.','Copiar = to copy.',f(60));
+A('museo','n','Museum','museum','Der Prado in Madrid ist eines der berühmtesten Museen der Welt.','The Prado in Madrid is one of the most famous museums in the world.',m(45));
+// 5-6
+A('hielo','n','Eis (gefroren)','ice','Eis zum Essen ist helado.','Ice cream is helado.',m(60));
+A('grupo','n','Gruppe','group','Un grupo de música = eine Band.','Un grupo de música = a band.',m(45));
+A('río','n','Fluss','river','Der längste Fluss Spaniens ist der Tajo.','The longest river in Spain is the Tajo.',m(45));
+A('carne','n','Fleisch','meat','Weiblich: la carne.','Feminine: la carne.',f(45));
+A('pez','n','Fisch (lebend)','fish (alive)','Im Wasser: el pez. Auf dem Teller: el pescado.','In the water: el pez. On the plate: el pescado.',m(55));
+A('bosque','n','Wald','forest','Un bosque pequeño heisst auch arboleda.','A small wood is also called arboleda.',m(55));
+A('ropa','n','Kleidung','clothes','Immer Einzahl: la ropa = die Kleider.','Always singular: la ropa = clothes.',f(45));
+A('piel','n','Haut; Fell, Leder','skin; fur, leather','Una chaqueta de piel = eine Lederjacke.','Una chaqueta de piel = a leather jacket.',f(60));
+A('dar','v','geben','to give','Unregelmässig: doy. Dar las gracias = danken.','Irregular: doy. Dar las gracias = to thank.',{conj:['doy','das','da','damos','dais','dan'],irr:[0],fr:25});
+A('calor','n','Wärme, Hitze','heat, warmth','Hace calor = es ist heiss. Männlich: el calor.','Hace calor = it is hot. Masculine: el calor.',m(45));
+A('cocinar','v','kochen','to cook','La cocina = die Küche.','La cocina = the kitchen.',{fr:50});
+A('tomate','n','Tomate','tomato','Pan con tomate ist ein katalanischer Klassiker.','Pan con tomate is a Catalan classic.',m(55));
+A('aprender','v','lernen','to learn','Aprender a + Infinitiv: aprendo a nadar.','Aprender a + infinitive: aprendo a nadar.',{fr:35});
+A('cultivar','v','anbauen, bebauen','to grow, to farm','Cultivar la tierra = das Land bebauen.','Cultivar la tierra = to farm the land.',{fr:70});
+A('plantar','v','pflanzen','to plant','Una planta = eine Pflanze.','Una planta = a plant.',{fr:65});
+A('trigo','n','Weizen','wheat','Aus Weizen macht man harina (Mehl) und pan.','From wheat you make harina (flour) and pan.',m(70));
+A('cabra','n','Ziege','goat','Estar como una cabra = verrückt sein.','Estar como una cabra = to be crazy.',f(65));
+A('oveja','n','Schaf','sheep','Una oveja negra = ein schwarzes Schaf.','Una oveja negra = a black sheep.',f(65));
+A('comida','n','Essen','food','Auch: Mittagessen. La comida es a las dos.','Also: lunch. La comida es a las dos.',f(35));
+A('campo','n','Feld; Land','field; countryside','Vivir en el campo = auf dem Land leben. Campo de fútbol = Fussballplatz.','Vivir en el campo = to live in the country. Campo de fútbol = football pitch.',m(40));
+A('ya','adv','schon; jetzt','already; now','Ya no = nicht mehr. Ya no viven en cuevas.','Ya no = no longer. Ya no viven en cuevas.',{fr:25});
+A('construir','v','bauen','to build','Das i wird zu y: construyo, construye.','The i becomes y: construyo, construye.',{conj:['construyo','construyes','construye','construimos','construís','construyen'],irr:[0,1,2,5],fr:50});
+A('nacer','v','geboren werden','to be born','Nur yo ist besonders: nazco.','Only yo is special: nazco.',{conj:['nazco','naces','nace','nacemos','nacéis','nacen'],irr:[0],fr:45});
+A('pueblo','n','Dorf; Volk','village; people','Zwei Bedeutungen: ein Dorf und ein Volk.','Two meanings: a village and a people.',m(40));
+A('plato','n','Teller; Gericht','plate; dish','Primer plato = Vorspeise.','Primer plato = first course.',m(45));
+A('herramienta','n','Werkzeug','tool','Auch digital: una herramienta = ein Tool.','Also digital: una herramienta = a tool.',f(70));
+A('leche','n','Milch','milk','Café con leche = Milchkaffee. Weiblich: la leche.','Café con leche = coffee with milk. Feminine: la leche.',f(45));
+// 7
+A('sur','n','Süden','south','Andalucía liegt im Süden.','Andalucía is in the south.',m(45));
+A('muerto','adj','tot; Toter','dead; dead person','Von morir. El Día de los Muertos ist ein mexikanisches Fest.','From morir. El Día de los Muertos is a Mexican festival.',af({fr:50}));
+A('dolmen','n','Dolmen','dolmen','Mehrzahl: dólmenes. Der Dolmen de Menga ist UNESCO-Welterbe.','Plural: dólmenes. The Dolmen of Menga is a UNESCO World Heritage site.',m(90));
+A('pirámide','n','Pyramide','pyramid','Weiblich: la pirámide.','Feminine: la pirámide.',f(75));
+A('pesar','v','wiegen','to weigh','A pesar de = trotz.','A pesar de = despite.',{fr:60});
+A('coche','n','Auto','car','In Lateinamerika sagt man oft carro.','In Latin America people often say carro.',m(40));
+A('mover','v','bewegen','to move','Das o wird zu ue: muevo, mueven.','The o becomes ue: muevo, mueven.',{conj:['muevo','mueves','mueve','movemos','movéis','mueven'],irr:[0,1,2,5],fr:50});
+A('máquina','n','Maschine','machine','Máquina de café = Kaffeemaschine.','Máquina de café = coffee machine.',f(55));
+A('dibujar','v','zeichnen','to draw','Un dibujo = eine Zeichnung.','Un dibujo = a drawing.',{fr:60});
+A('forma','n','Form','shape, form','Estar en forma = fit sein.','Estar en forma = to be fit.',f(45));
+A('mismo','adj','gleich, selbe','same','Lo mismo = dasselbe. Yo mismo = ich selbst.','Lo mismo = the same thing. Yo mismo = myself.',af({fr:30}));
+// 8
+A('cambiar','v','ändern, wechseln','to change','Cambiar dinero = Geld wechseln.','Cambiar dinero = to change money.',{fr:40});
+A('quinientos','num','fünfhundert','five hundred','Unregelmässig: nicht cincocientos, sondern quinientos.','Irregular: not cincocientos but quinientos.',{forms:['quinientos','quinientas','quinientos','quinientas'],fr:55});
+A('íbero','adj','iberisch; Iberer','Iberian','Die Iberische Halbinsel heisst nach ihnen.','The Iberian Peninsula is named after them.',af({fr:80}));
+A('península','n','Halbinsel','peninsula','Península Ibérica = Spanien und Portugal zusammen.','Península Ibérica = Spain and Portugal together.',f(75));
+A('ibérico','adj','iberisch','Iberian','Jamón ibérico ist der berühmteste Schinken Spaniens.','Jamón ibérico is Spain\'s most famous ham.',af({fr:70}));
+A('exacto','adj','genau','exact','¡Exacto! = Genau!','¡Exacto! = Exactly!',af({fr:50}));
+A('rey','n','König','king','Mehrzahl: reyes. Los Reyes Magos = die Heiligen Drei Könige.','Plural: reyes. Los Reyes Magos = the Three Kings.',m(45));
+A('ciudad','n','Stadt','city','Weiblich, wie alle Wörter auf -dad.','Feminine, like all words ending in -dad.',f(35));
+A('muro','n','Mauer','wall','Die Wand im Haus ist la pared.','A wall inside a house is la pared.',m(60));
+A('enemigo','n','Feind','enemy','Gegenteil: amigo.','Opposite: amigo.',af({g:'m',fr:55}));
+A('metal','n','Metall','metal','Männlich: el metal.','Masculine: el metal.',m(60));
+A('espada','n','Schwert','sword','Auch eine Spielkartenfarbe im spanischen Kartenspiel.','Also a suit in the Spanish deck of cards.',f(65));
+A('propio','adj','eigen','own','Su propia casa = sein eigenes Haus.','Su propia casa = his own house.',af({fr:45}));
+A('entender','v','verstehen','to understand','Das e wird zu ie: entiendo.','The e becomes ie: entiendo.',{conj:['entiendo','entiendes','entiende','entendemos','entendéis','entienden'],irr:[0,1,2,5],fr:35});
+A('sonido','n','Klang, Laut','sound','Von sonar (klingen).','From sonar (to sound).',m(55));
+A('lengua','n','Sprache; Zunge','language; tongue','Zwei Bedeutungen, wie im Deutschen früher: Zunge und Sprache.','Two meanings: tongue and language.',f(45));
+A('misterio','n','Geheimnis, Rätsel','mystery','Misterioso = geheimnisvoll.','Misterioso = mysterious.',m(60));
+A('famoso','adj','berühmt','famous','Una persona famosa = eine berühmte Person.','Una persona famosa = a famous person.',af({fr:45}));
+// 9
+A('repente','adv','plötzlich (de repente)','suddenly (de repente)','Nur in der Wendung: de repente.','Only in the phrase: de repente.',{fr:55});
+A('cabeza','n','Kopf','head','Dolor de cabeza = Kopfweh.','Dolor de cabeza = headache.',f(45));
+A('dama','n','Dame','lady','Las damas = auch das Brettspiel Dame.','Las damas = also the board game draughts.',f(65));
+A('elegante','adj','elegant','elegant','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:60}));
+A('enseñar','v','zeigen; unterrichten','to show; to teach','Zwei Bedeutungen: Te enseño la foto. Enseño español.','Two meanings: Te enseño la foto. Enseño español.',{fr:45});
+A('rueda','n','Rad','wheel','Rueda de prensa = Pressekonferenz.','Rueda de prensa = press conference.',f(60));
+A('lado','n','Seite','side','Al lado de = neben.','Al lado de = next to.',m(40));
+A('joya','n','Schmuckstück','jewel','Auch übertragen: eine Perle, ein Schatz.','Also figurative: a gem, a treasure.',f(65));
+A('volver','v','zurückkehren','to return','Das o wird zu ue: vuelvo, vuelve.','The o becomes ue: vuelvo, vuelve.',{conj:['vuelvo','vuelves','vuelve','volvemos','volvéis','vuelven'],irr:[0,1,2,5],fr:35});
+A('lejos','adv','weit weg','far','Gegenteil: cerca.','Opposite: cerca.',{fr:45});
+// 10
+A('oeste','n','Westen','west','Las películas del oeste = Western-Filme.','Las películas del oeste = westerns.',m(60));
+A('celta','n','Kelte; keltisch','Celt; Celtic','Gleich für männlich und weiblich: un celta, una celta.','Same for both genders: un celta, una celta.',m(80));
+A('centro','n','Zentrum, Mitte','centre','El centro de la ciudad = die Innenstadt.','El centro de la ciudad = the city centre.',m(45));
+A('parecido','adj','ähnlich','similar','Von parecer (scheinen, ähneln).','From parecer (to seem, to resemble).',af({fr:55}));
+A('todavía','adv','noch','still, yet','Todavía no = noch nicht.','Todavía no = not yet.',{fr:35});
+A('castro','n','keltisches Dorf (Castro)','Celtic hill fort','Typisch für Galicien und Asturien.','Typical of Galicia and Asturias.',m(90));
+A('redondo','adj','rund','round','Un número redondo = eine runde Zahl.','Un número redondo = a round number.',af({fr:60}));
+A('celtíbero','adj','keltiberisch','Celtiberian','Celta + íbero.','Celta + íbero.',af({fr:90}));
+A('fácil','adj','einfach, leicht','easy','Gegenteil: difícil. Mehrzahl: fáciles.','Opposite: difícil. Plural: fáciles.',af({fr:40}));
+A('fuerte','adj','stark','strong','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:45}));
+A('libre','adj','frei','free','Frei im Sinne von nicht besetzt oder unabhängig. Gratis heisst gratis.','Free as in not taken or independent. Free of charge is gratis.',af({fr:45}));
+A('libertad','n','Freiheit','freedom','Weiblich, wie alle Wörter auf -tad.','Feminine, like all words ending in -tad.',f(55));
+A('pronto','adv','bald','soon','¡Hasta pronto! = Bis bald!','¡Hasta pronto! = See you soon!',{fr:40});
+A('llegar','v','ankommen','to arrive','Llegar a = ankommen in.','Llegar a = to arrive in.',{fr:30});
+// 11
+A('raro','adj','seltsam; selten','strange; rare','Raro heisst beides: seltsam und selten. Wie die Raro-Karten.','Raro means both strange and rare. Like the Raro cards.',af({fr:50}));
+A('reino','n','Königreich','kingdom','El Reino Unido = das Vereinigte Königreich.','El Reino Unido = the United Kingdom.',m(60));
+A('rico','adj','reich; lecker','rich; tasty','¡Qué rico! = Wie lecker!','¡Qué rico! = How tasty!',af({fr:40}));
+A('oro','n','Gold','gold','Wie die Oro-Karten in deinem Wortdex.','Like the Oro cards in your Wortdex.',m(50));
+A('plata','n','Silber','silver','In Lateinamerika heisst plata auch Geld.','In Latin America plata also means money.',f(55));
+A('griego','adj','griechisch; Grieche','Greek','Esto me suena a griego = Das kommt mir spanisch vor.','Esto me suena a griego = It\'s all Greek to me.',af({fr:65}));
+A('según','prep','laut, gemäss','according to','Según Joan = laut Joan.','Según Joan = according to Joan.',{fr:45});
+A('ciento','num','hundert (vor anderen Zahlen)','hundred (before numbers)','Cien allein, ciento vor Zahlen: ciento veinte.','Cien alone, ciento before numbers: ciento veinte.',{fr:50});
+A('leyenda','n','Legende','legend','Auch die Legende einer Karte.','Also the legend of a map.',f(60));
+A('desaparecer','v','verschwinden','to disappear','Nur yo ist besonders: desaparezco.','Only yo is special: desaparezco.',{conj:['desaparezco','desapareces','desaparece','desaparecemos','desaparecéis','desaparecen'],irr:[0],fr:60});
+A('bajo','prep','unter','under','Auch Adjektiv: klein, niedrig.','Also an adjective: short, low.',{fr:45});
+A('perdido','adj','verloren','lost','Von perder. Estoy perdido = ich habe mich verirrt.','From perder. Estoy perdido = I am lost.',af({fr:55}));
+// 12
+A('barco','n','Schiff, Boot','ship, boat','En barco = mit dem Schiff.','En barco = by boat.',m(50));
+A('comerciante','n','Händler','merchant','El comercio = der Handel.','El comercio = trade.',m(65));
+A('aceite','n','Öl','oil','Aceite de oliva: Spanien produziert fast die Hälfte des Olivenöls der Welt.','Aceite de oliva: Spain produces almost half of the world\'s olive oil.',m(50));
+A('tela','n','Stoff','fabric','Una tela roja = ein roter Stoff.','Una tela roja = a red fabric.',f(65));
+A('isla','n','Insel','island','Las Islas Canarias, las Islas Baleares.','The Canary Islands, the Balearic Islands.',f(50));
+A('fundar','v','gründen','to found','La fundación = die Gründung, die Stiftung.','La fundación = the founding, the foundation.',{fr:65});
+A('traer','v','bringen','to bring','Nur yo ist besonders: traigo.','Only yo is special: traigo.',{conj:['traigo','traes','trae','traemos','traéis','traen'],irr:[0],fr:40});
+A('alfabeto','n','Alphabet','alphabet','Das spanische Alphabet hat einen eigenen Buchstaben: ñ.','The Spanish alphabet has its own letter: ñ.',m(70));
+A('sin','prep','ohne','without','Sin azúcar = ohne Zucker.','Sin azúcar = without sugar.',{fr:30});
+A('fenicio','adj','phönizisch; Phönizier','Phoenician','Unser Alphabet stammt letztlich von den Phöniziern ab.','Our alphabet ultimately comes from the Phoenicians.',af({fr:85}));
+// 13
+A('costa','n','Küste','coast','La Costa Brava liegt nördlich von Barcelona.','The Costa Brava is north of Barcelona.',f(55));
+A('tranquilo','adj','ruhig','calm','¡Tranquilo! = Keine Sorge!','¡Tranquilo! = Don\'t worry!',af({fr:45}));
+A('Cristo','prop','Christus','Christ','Antes de Cristo (a. C.) = vor Christus.','Antes de Cristo (a. C.) = before Christ (BC).',{fr:60});
+A('significar','v','bedeuten','to mean','¿Qué significa...? = Was bedeutet...?','¿Qué significa...? = What does... mean?',{conj:['significo','significas','significa','significamos','significáis','significan'],fr:50});
+A('estatua','n','Statue','statue','Weiblich: la estatua.','Feminine: la estatua.',f(65));
+A('dios','n','Gott','god','Mehrzahl: dioses. ¡Dios mío! = Mein Gott!','Plural: dioses. ¡Dios mío! = My God!',m(45));
+A('medicina','n','Medizin','medicine','Auch: das Medikament.','Also: medication.',f(55));
+A('sentarse','v','sich setzen','to sit down','Das e wird zu ie: me siento.','The e becomes ie: me siento.',{conj:['me siento','te sientas','se sienta','nos sentamos','os sentáis','se sientan'],irr:[0,1,2,5],fr:45});
+A('cuidado','n','Vorsicht','care, caution','¡Cuidado! = Achtung!','¡Cuidado! = Watch out!',m(45));
+A('guerra','n','Krieg','war','Gegenteil: la paz.','Opposite: la paz.',f(45));
+// 14
+A('viajar','v','reisen','to travel','Un viaje = eine Reise.','Un viaje = a trip.',{fr:45});
+A('soldado','n','Soldat','soldier','Von sueldo (Lohn): ein Soldat wird bezahlt.','From sueldo (pay): a soldier gets paid.',m(55));
+A('cartaginés','adj','karthagisch; Karthager','Carthaginian','Mehrzahl: cartagineses.','Plural: cartagineses.',{forms:['cartaginés','cartaginesa','cartagineses','cartaginesas'],fr:90});
+A('cuál','pron','welche, welcher','which','Mit Akzent als Fragewort: ¿cuál?','With an accent as a question word: ¿cuál?',{fr:35});
+A('historiador','n','Historiker','historian','Weiblich: la historiadora.','Feminine: la historiadora.',af({g:'m',fr:70}));
+A('sentido','n','Sinn','sense, meaning','Tener sentido = Sinn ergeben.','Tener sentido = to make sense.',m(45));
+A('elefante','n','Elefant','elephant','Weiblich: la elefanta.','Feminine: la elefanta.',m(75));
+// 15
+A('general','n','General','general','Auch Adjektiv: allgemein. En general = im Allgemeinen.','Also an adjective: general. En general = in general.',m(50));
+A('gran','adj','gross (vor Nomen)','great','Vor Nomen wird grande zu gran: un gran rey.','Before nouns grande becomes gran: un gran rey.',{fr:30});
+A('atacar','v','angreifen','to attack','Un ataque = ein Angriff.','Un ataque = an attack.',{fr:60});
+A('enfadado','adj','verärgert, wütend','angry','Enfadarse = sich ärgern.','Enfadarse = to get angry.',af({fr:55}));
+A('loco','adj','verrückt','crazy','¡Estás loco! = Du bist verrückt!','¡Estás loco! = You are crazy!',af({fr:45}));
+A('pie','n','Fuss','foot','A pie = zu Fuss.','A pie = on foot.',m(45));
+A('ejército','n','Armee, Heer','army','Betonung auf dem e in der Mitte: e-JÉR-ci-to.','Stress on the middle e: e-JÉR-ci-to.',m(60));
+A('cruzar','v','überqueren','to cross','Cruzar la calle = die Strasse überqueren.','Cruzar la calle = to cross the street.',{conj:['cruzo','cruzas','cruza','cruzamos','cruzáis','cruzan'],fr:55});
+A('morir','v','sterben','to die','Das o wird zu ue: muero, muere.','The o becomes ue: muero, muere.',{conj:['muero','mueres','muere','morimos','morís','mueren'],irr:[0,1,2,5],fr:45});
+A('ganar','v','gewinnen; verdienen','to win; to earn','Ganar dinero = Geld verdienen.','Ganar dinero = to earn money.',{fr:40});
+A('batalla','n','Schlacht','battle','Weiblich: la batalla.','Feminine: la batalla.',f(60));
+A('mientras','conj','während','while','Mientras duermo = während ich schlafe.','Mientras duermo = while I sleep.',{fr:45});
+A('enviar','v','schicken','to send','Mit Akzent: envío, envías, envía.','With an accent: envío, envías, envía.',{conj:['envío','envías','envía','enviamos','enviáis','envían'],irr:[0,1,2,5],fr:50});
+// 16
+A('luchar','v','kämpfen','to fight','La lucha = der Kampf.','La lucha = the fight.',{fr:55});
+A('contra','prep','gegen','against','Barça contra Madrid = el clásico.','Barça contra Madrid = el clásico.',{fr:40});
+A('final','n','Ende; Finale','end; final','Al final = am Ende.','Al final = in the end.',m(45));
+A('quedarse','v','bleiben','to stay','Me quedo en casa = ich bleibe zu Hause.','Me quedo en casa = I stay at home.',{conj:['me quedo','te quedas','se queda','nos quedamos','os quedáis','se quedan'],fr:40});
+A('seiscientos','num','sechshundert','six hundred','Passt sich an: seiscientas personas.','It agrees: seiscientas personas.',{forms:['seiscientos','seiscientas','seiscientos','seiscientas'],fr:60});
+A('romano','adj','römisch; Römer','Roman','Los números romanos: I, II, III, IV.','Roman numerals: I, II, III, IV.',af({fr:55}));
+A('necesitar','v','brauchen','to need','Necesito ayuda = ich brauche Hilfe.','Necesito ayuda = I need help.',{fr:35});
+A('contento','adj','zufrieden, froh','happy, glad','Estar contento = zufrieden sein.','Estar contento = to be happy.',af({fr:45}));
+A('doscientos','num','zweihundert','two hundred','Passt sich an: doscientas fotos.','It agrees: doscientas fotos.',{forms:['doscientos','doscientas','doscientos','doscientas']});
+// 17
+A('furioso','adj','wütend','furious','Stärker als enfadado.','Stronger than enfadado.',af({fr:65}));
+A('mejor','adj','besser; beste','better; best','El mejor = der Beste.','El mejor = the best.',{fr:30});
+A('alrededor','adv','herum, ringsum','around','Alrededor de = um... herum.','Alrededor de = around.',{fr:55});
+A('kilómetro','n','Kilometer','kilometre','Abkürzung: km.','Abbreviation: km.',m(55));
+A('entrar','v','hineingehen','to enter','Entrar en = hineingehen in.','Entrar en = to go into.',{fr:40});
+A('plan','n','Plan','plan','¿Tienes planes? = Hast du Pläne?','¿Tienes planes? = Do you have plans?',m(50));
+A('hambre','n','Hunger','hunger','Weiblich, aber el hambre. Tengo hambre = ich habe Hunger.','Feminine, but el hambre. Tengo hambre = I am hungry.',f(45));
+A('mes','n','Monat','month','Mehrzahl: meses.','Plural: meses.',m(40));
+A('momento','n','Moment','moment','Un momento = einen Moment.','Un momento = one moment.',m(35));
+A('caer','v','fallen','to fall','Nur yo ist besonders: caigo.','Only yo is special: caigo.',{conj:['caigo','caes','cae','caemos','caéis','caen'],irr:[0],fr:50});
+A('numantino','adj','numantinisch','Numantine','Una defensa numantina = Widerstand bis zum Letzten.','Una defensa numantina = resistance to the last.',af({fr:90}));
+A('preferir','v','vorziehen, lieber mögen','to prefer','Das e wird zu ie: prefiero.','The e becomes ie: prefiero.',{conj:['prefiero','prefieres','prefiere','preferimos','preferís','prefieren'],irr:[0,1,2,5],fr:50});
+A('antes','adv','vorher; früher','before','Antes de Cristo = vor Christus.','Antes de Cristo = before Christ.',{fr:30});
+A('esclavo','n','Sklave','slave','Weiblich: la esclava.','Feminine: la esclava.',af({g:'m',fr:70}));
+A('defensa','n','Verteidigung','defence','Im Fussball: die Abwehr.','In football: the defence.',f(60));
+// 18
+A('entre','prep','zwischen','between','Entre tú y yo = unter uns.','Entre tú y yo = between you and me.',{fr:30});
+A('pastor','n','Hirte','shepherd','Pastor alemán = Deutscher Schäferhund.','Pastor alemán = German shepherd dog.',af({g:'m',fr:70}));
+A('cuidar','v','pflegen, hüten','to look after','Cuidar a los niños = auf die Kinder aufpassen.','Cuidar a los niños = to look after the children.',{fr:50});
+A('tras','prep','nach, hinter','after, behind','Batalla tras batalla = Schlacht um Schlacht.','Batalla tras batalla = battle after battle.',{fr:60});
+A('peligroso','adj','gefährlich','dangerous','El peligro = die Gefahr.','El peligro = danger.',af({fr:55}));
+A('usar','v','benutzen','to use','Usar el teléfono = das Telefon benutzen.','Usar el teléfono = to use the phone.',{fr:40});
+A('dinero','n','Geld','money','Immer Einzahl: el dinero.','Always singular: el dinero.',m(35));
+A('pagar','v','bezahlen','to pay','¿Puedo pagar con tarjeta? = Kann ich mit Karte zahlen?','¿Puedo pagar con tarjeta? = Can I pay by card?',{fr:40});
+A('matar','v','töten','to kill','Matar el tiempo = die Zeit totschlagen.','Matar el tiempo = to kill time.',{fr:55});
+A('horror','n','Schrecken','horror','¡Qué horror! = Wie schrecklich!','¡Qué horror! = How awful!',m(60));
+A('cuando','conj','wenn, als','when','Ohne Akzent. Als Fragewort: ¿cuándo?','No accent. As a question word: ¿cuándo?',{fr:25});
+A('pedir','v','bitten, bestellen','to ask for, to order','Das e wird zu i: pido.','The e becomes i: pido.',{conj:['pido','pides','pide','pedimos','pedís','piden'],irr:[0,1,2,5],fr:40});
+A('traidor','n','Verräter','traitor','Weiblich: la traidora.','Feminine: la traidora.',af({g:'m',fr:75}));
+A('frase','n','Satz','sentence','Weiblich: la frase.','Feminine: la frase.',f(50));
+A('héroe','n','Held','hero','Weiblich: la heroína.','Feminine: la heroína.',m(60));
+// 19
+A('noticia','n','Nachricht','piece of news','Las noticias = die Nachrichten im Fernsehen.','Las noticias = the news on TV.',f(45));
+A('latín','n','Latein','Latin','Sprachen sind männlich und klein geschrieben: el latín.','Languages are masculine and lower case: el latín.',m(65));
+A('alemán','adj','deutsch; Deutsch','German','Auch die Schweizer sprechen alemán.','Swiss people speak alemán too.',{forms:['alemán','alemana','alemanes','alemanas'],fr:50});
+A('siglo','n','Jahrhundert','century','Siglo XXI = 21. Jahrhundert, mit römischen Zahlen.','Siglo XXI = 21st century, in Roman numerals.',m(45));
+A('camino','n','Weg','way, path','El Camino de Santiago = der Jakobsweg.','El Camino de Santiago = the Way of St James.',m(45));
+A('puente','n','Brücke','bridge','Auch: ein langes Wochenende mit Brückentag.','Also: a long weekend with a bridge day.',m(55));
+A('pasar','v','vorbeigehen; passieren','to pass; to happen','¿Qué pasa? = Was ist los?','¿Qué pasa? = What\'s up?',{fr:30});
+A('acueducto','n','Aquädukt','aqueduct','Das Aquädukt von Segovia hält ohne Mörtel.','The Segovia aqueduct stands without mortar.',m(85));
+A('llevar','v','tragen; bringen','to carry; to wear','Llevar una chaqueta = eine Jacke tragen.','Llevar una chaqueta = to wear a jacket.',{fr:35});
+A('hispano','adj','hispanisch','Hispanic','Von Hispania, dem römischen Namen Spaniens.','From Hispania, the Roman name for Spain.',af({fr:65}));
+A('algunos','det','einige','some','Weiblich: algunas.','Feminine: algunas.',{forms:['alguno','alguna','algunos','algunas'],fr:35});
+A('emperador','n','Kaiser','emperor','Weiblich: la emperatriz.','Feminine: la emperatriz.',m(65));
+// 20
+A('catedral','n','Kathedrale','cathedral','Barcelonas Kathedrale steht im Barrio Gótico.','Barcelona\'s cathedral stands in the Barrio Gótico.',f(60));
+A('patio','n','Innenhof','courtyard','Typisch für Häuser in Andalusien.','Typical of houses in Andalusia.',m(60));
+A('barrio','n','Stadtviertel','neighbourhood','Barrio Gótico = das gotische Viertel.','Barrio Gótico = the Gothic Quarter.',m(50));
+A('gótico','adj','gotisch','Gothic','Von den Goten, einem germanischen Volk.','From the Goths, a Germanic people.',af({fr:75}));
+A('estrecho','adj','eng','narrow','Auch: die Meerenge. El Estrecho de Gibraltar.','Also: a strait. El Estrecho de Gibraltar.',af({fr:60}));
+A('cuatro','num','vier','four','Las cuatro = vier Uhr.','Las cuatro = four o\'clock.',{fr:25});
+A('columna','n','Säule; Wirbelsäule','column','Columna vertebral = Wirbelsäule.','Columna vertebral = spine.',f(60));
+A('templo','n','Tempel','temple','El Templo de Augusto liegt im Barrio Gótico.','The Temple of Augustus is in the Barrio Gótico.',m(65));
+A('increíble','adj','unglaublich','incredible','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:50}));
+A('pared','n','Wand','wall','Die Wand im Haus. Die Mauer draussen ist el muro.','The wall inside. A wall outside is el muro.',f(50));
+})();
+F('bueyes','buey','Ochsen','oxen');F('dólmenes','dolmen','Dolmen (Mehrzahl)','dolmens');F('dioses','dios','Götter','gods');
+F('reyes','rey','Könige','kings');F('millones','millón','Millionen','millions');F('cartagineses','cartaginés','Karthager','Carthaginians');
+F('celtas','celta','Kelten','Celts');F('ríos','río','Flüsse','rivers');F('miles','mil','Tausende','thousands');
+(function(){const N={'altamira':{name:true,de:'Altamira, Höhle mit Steinzeitmalereien in Kantabrien',en:'Altamira, cave with Stone Age paintings in Cantabria'},'atapuerca':{name:true,de:'Atapuerca, Fundstätte der ältesten Menschen Westeuropas',en:'Atapuerca, site of the oldest humans in Western Europe'},'burgos':{name:true,de:'Burgos, Stadt in Kastilien',en:'Burgos, city in Castile'},'cantabria':{name:true,de:'Kantabrien, Region im Norden',en:'Cantabria, region in the north'},'marcelino':{name:true,de:'Marcelino Sanz de Sautuola, Entdecker von Altamira',en:'Marcelino Sanz de Sautuola, discoverer of Altamira'},'maría':{name:true,de:'María, seine Tochter (8 Jahre)',en:'María, his daughter (aged 8)'},'antequera':{name:true,de:'Antequera, Stadt in Andalusien mit Dolmen',en:'Antequera, Andalusian town with dolmens'},'málaga':{name:true,de:'Málaga, Stadt an der Südküste',en:'Málaga, city on the south coast'},'egipto':{name:true,de:'Egipto = Ägypten',en:'Egipto = Egypt'},'elche':{name:true,de:'Elche, Stadt bei Alicante',en:'Elche, town near Alicante'},'alicante':{name:true,de:'Alicante, Stadt an der Ostküste',en:'Alicante, city on the east coast'},'parís':{name:true,de:'París = Paris',en:'París = Paris'},'francia':{name:true,de:'Francia = Frankreich',en:'Francia = France'},'madrid':{name:true,de:'Madrid, Hauptstadt Spaniens',en:'Madrid, capital of Spain'},'irlanda':{name:true,de:'Irlanda = Irland',en:'Irlanda = Ireland'},'galicia':{name:true,de:'Galicien, Region im Nordwesten',en:'Galicia, region in the northwest'},'tartessos':{name:true,de:'Tartessos, verschwundenes Reich im Süden',en:'Tartessos, vanished kingdom in the south'},'argantonio':{name:true,de:'Argantonio, legendärer König von Tartessos',en:'Argantonio, legendary king of Tartessos'},'mediterráneo':{name:true,de:'Mittelmeer',en:'the Mediterranean'},'líbano':{name:true,de:'Líbano = Libanon',en:'Líbano = Lebanon'},'gadir':{name:true,de:'Gadir, phönizischer Name von Cádiz',en:'Gadir, Phoenician name of Cádiz'},'cádiz':{name:true,de:'Cádiz, eine der ältesten Städte Europas',en:'Cádiz, one of the oldest cities in Europe'},'empúries':{name:true,de:'Empúries, griechische Stadt an der Costa Brava',en:'Empúries, Greek city on the Costa Brava'},'emporion':{name:true,de:'Emporion, griechisch für Markt',en:'Emporion, Greek for market'},'asclepio':{name:true,de:'Asklepios, griechischer Gott der Medizin',en:'Asclepius, Greek god of medicine'},'cartago':{name:true,de:'Cartago = Karthago',en:'Cartago = Carthage'},'túnez':{name:true,de:'Túnez = Tunesien',en:'Túnez = Tunisia'},'cartagena':{name:true,de:'Cartagena, Hafenstadt im Südosten',en:'Cartagena, port city in the southeast'},'qart':{name:true,de:'Qart Hadasht, punisch: neue Stadt',en:'Qart Hadasht, Punic: new city'},'hadasht':{name:true,de:'Qart Hadasht, punisch: neue Stadt',en:'Qart Hadasht, Punic: new city'},'aníbal':{name:true,de:'Aníbal = Hannibal, Feldherr Karthagos',en:'Aníbal = Hannibal, Carthaginian general'},'sagunto':{name:true,de:'Sagunto, Stadt bei Valencia',en:'Sagunto, town near Valencia'},'valencia':{name:true,de:'Valencia, Stadt an der Ostküste',en:'Valencia, city on the east coast'},'alpes':{name:true,de:'Alpes = Alpen',en:'Alpes = the Alps'},'pirineos':{name:true,de:'Pirineos = Pyrenäen',en:'Pirineos = the Pyrenees'},'hispania':{name:true,de:'Hispania, römischer Name Spaniens',en:'Hispania, Roman name for Spain'},'numancia':{name:true,de:'Numancia = Numantia, Stadt bei Soria',en:'Numancia = Numantia, city near Soria'},'soria':{name:true,de:'Soria, Stadt in Kastilien',en:'Soria, city in Castile'},'escipión':{name:true,de:'Escipión = Scipio, römischer Feldherr',en:'Escipión = Scipio, Roman general'},'lusitania':{name:true,de:'Lusitanien, römische Provinz im Westen',en:'Lusitania, Roman province in the west'},'portugal':{name:true,de:'Portugal',en:'Portugal'},'viriato':{name:true,de:'Viriato = Viriathus, lusitanischer Anführer',en:'Viriato = Viriathus, Lusitanian leader'},'segovia':{name:true,de:'Segovia, Stadt mit römischem Aquädukt',en:'Segovia, city with a Roman aqueduct'},'sevilla':{name:true,de:'Sevilla, Hauptstadt Andalusiens',en:'Seville, capital of Andalusia'},'trajano':{name:true,de:'Trajano = Trajan, römischer Kaiser',en:'Trajano = Trajan, Roman emperor'},'augusto':{name:true,de:'Augusto = Augustus, erster römischer Kaiser',en:'Augusto = Augustus, first Roman emperor'},'augusta':{name:true,de:'Vía Augusta, Römerstrasse',en:'Vía Augusta, Roman road'},'vía':{name:true,de:'Vía Augusta, Römerstrasse',en:'Vía Augusta, Roman road'},'barcino':{name:true,de:'Barcino, römischer Name Barcelonas',en:'Barcino, Roman name for Barcelona'},'paradís':{name:true,de:'Carrer del Paradís, Gasse im Barrio Gótico',en:'Carrer del Paradís, lane in the Gothic Quarter'},'barça':{name:true,de:'Barça, der FC Barcelona',en:'Barça, FC Barcelona'},'aqua':{name:true,de:'aqua, lateinisch: Wasser',en:'aqua, Latin: water'},'noctem':{name:true,de:'noctem, lateinisch: Nacht',en:'noctem, Latin: night'},'oculum':{name:true,de:'oculum, lateinisch: Auge',en:'oculum, Latin: eye'}};for(const k in N)if(!FORMS[k])FORMS[k]=N[k];})();
 
 Object.assign(LEX.el,{forms:['el','la','los','las']});Object.assign(LEX.un,{forms:['un','una','unos','unas']});Object.assign(LEX.este,{forms:['este','esta','estos','estas']});Object.assign(LEX.mi,{forms:['mi','mi','mis','mis']});Object.assign(LEX.otro,{af:1});Object.assign(LEX.primero,{af:1});
 F('pregunta','pregunta','Frage; fragt','question; asks');F('preguntas','preguntar','du fragst; Fragen','you ask; questions');
@@ -3286,7 +3545,467 @@ const DIARIO=[
   ]}
 ];
 
-if(typeof DIARIO!=='undefined')for(const d of DIARIO){const i=STORIES.findIndex(s=>s.lvl==='A1'&&s.ch===d.before);STORIES.splice(i,0,Object.assign({id:'a1-d'+d.before,lvl:'A1',ch:d.before-1,inter:true,diff:1},d));}
+const HIST_A1=[
+ {ch:1,title:'Las historias de Joan',diff:1,
+  tz:{de:'Joan bietet Mia an, ihr jeden Dienstag eine Geschichte über Spanien zu erzählen.',en:'Joan offers to tell Mia a story about Spain every Tuesday.'},
+  paras:[
+   'Es martes. Estoy en el bar de Leo con Joan, el abuelo de Leo. Joan toma un café. Yo también.',
+   '«Mia, ¿qué sabes de la historia de España?», pregunta Joan.',
+   '«Poco. Muy poco», digo. «Sé que Barcelona es muy vieja. Y sé que el sol es muy bueno.»',
+   'Joan sonríe. «España tiene una historia muy larga. Muy, muy larga. De miles de años.»',
+   '«¿Miles de años?»',
+   '«Sí. Y yo conozco muchas historias. Leo libros de historia toda mi vida.»',
+   '«¿Me cuentas una historia?», pregunto.',
+   '«Una no. Muchas. Cada martes, una historia. Empezamos por el principio. Hace mucho, mucho tiempo.»',
+   '«¿Y cuándo es el principio?»',
+   'Joan mira por la ventana, al mar. «Hace más de un millón de años», dice.',
+   '«¿Un millón?», digo. «¡Es mucho tiempo!»',
+   '«Sí. Y la primera historia empieza en una montaña, en el norte de España. Se llama Atapuerca.»',
+   '«¿Y qué hay en la montaña?»',
+   'Joan termina su café. «Eso, Mia, es la historia del martes que viene.»'
+  ],
+  quiz:[
+   {q:'¿Dónde están Mia y Joan?',o:['En el bar de Leo.','En la universidad.','En una montaña.']},
+   {q:'¿Qué quiere contar Joan?',o:['La historia de España.','La historia de su familia.','Un secreto.']},
+   {q:'¿Cuándo cuenta Joan una historia?',o:['Cada martes.','Cada día.','Nunca.']},
+   {q:'¿Dónde empieza la primera historia?',o:['En una montaña en el norte.','En el mar.','En Barcelona.']}
+  ]},
+ {ch:2,title:'Atapuerca',diff:1,
+  tz:{de:'In einem Berg im Norden liegen die ältesten Menschenknochen Europas.',en:'Inside a mountain in the north lie the oldest human bones in Europe.'},
+  paras:[
+   'Es martes otra vez. Joan tiene un libro en la mano. En el libro hay una foto: una montaña verde.',
+   '«Esta es Atapuerca», dice Joan. «Está en el norte de España, cerca de Burgos. Dentro de la montaña hay cuevas.»',
+   '«¿Cuevas?»',
+   '«Sí. Una cueva es como una casa en la montaña. Una casa de piedra, oscura y fría.»',
+   '«¿Y quién vive en las cuevas?»',
+   '«Hoy, nadie. Pero hace mucho tiempo, allí viven personas. Los primeros humanos de Europa.»',
+   'Joan abre el libro. En otra foto hay un hueso. Un hueso muy viejo.',
+   '«En Atapuerca, los científicos encuentran huesos. Huesos de humanos. Algunos tienen más de un millón de años.»',
+   '«¿Un millón de años? ¿Y cómo saben eso?»',
+   '«Los científicos estudian los huesos y la tierra. Es su trabajo», dice Joan. «Y en 2022 encuentran algo especial: una parte de una cara. ¡La cara más vieja de Europa!»',
+   'Miro la foto. Es solo un hueso. Pero es una cara. Una persona. Hace más de un millón de años.',
+   '«¿Cómo es su vida?», pregunto.',
+   '«Difícil», dice Joan. «Hace frío. Hay animales muy grandes. No hay casas, no hay pan, no hay cafés.»',
+   '«¿No hay cafés? ¡Qué vida tan difícil!», digo. Joan ríe.'
+  ],
+  quiz:[
+   {q:'¿Dónde está Atapuerca?',o:['En el norte de España.','En Barcelona.','En el mar.']},
+   {q:'¿Qué hay dentro de la montaña?',o:['Cuevas.','Un bar.','Una tienda.']},
+   {q:'¿Qué encuentran los científicos?',o:['Huesos de humanos.','Una llave.','Una radio.']},
+   {q:'¿Cómo es la vida hace un millón de años?',o:['Difícil.','Muy fácil.','Como hoy.']}
+  ]},
+ {ch:3,title:'Una niña en la cueva',diff:1,
+  tz:{de:'1879: Ein achtjähriges Mädchen schaut in einer Höhle nach oben und entdeckt etwas Unglaubliches.',en:'1879: an eight-year-old girl looks up in a cave and discovers something incredible.'},
+  paras:[
+   '«Hoy, una historia con una niña», dice Joan. «Una niña de ocho años. Se llama María.»',
+   '«¿Y dónde vive María?»',
+   '«En el norte de España, en Cantabria. Es el año 1879. Su padre se llama Marcelino. Marcelino estudia cosas muy viejas: piedras, huesos, cuevas.»',
+   '«Un día, Marcelino y María van a una cueva. La cueva se llama Altamira.»',
+   '«Marcelino busca huesos en la tierra. Mira abajo, siempre abajo. Pero María es pequeña. Ella mira arriba.»',
+   '«¿Arriba? ¿Y qué ve?»',
+   'Joan habla despacio. «En el techo de la cueva hay animales. Animales rojos y negros. Grandes y bonitos. María grita: ¡Papá, mira! ¡Bueyes pintados!»',
+   '«¿Bueyes?»',
+   '«Ella piensa que son bueyes. Pero no son bueyes. Son bisontes. Un bisonte es un animal grande, como una vaca enorme.»',
+   '«¿Y quién pinta los bisontes?»',
+   '«Esa es la pregunta. Marcelino dice: son pinturas muy, muy viejas. De los primeros humanos. Pero muchas personas no le creen. Dicen: es imposible. ¡Es mentira!»',
+   '«¿Y es mentira?»',
+   'Joan sonríe. «La respuesta, el martes que viene.»'
+  ],
+  quiz:[
+   {q:'¿Quién es María?',o:['Una niña de ocho años.','La madre de Mia.','Una profesora.']},
+   {q:'¿Dónde mira María?',o:['Arriba, al techo.','Abajo, a la tierra.','Por la ventana.']},
+   {q:'¿Qué hay en el techo?',o:['Animales pintados.','Una llave.','Fotos.']},
+   {q:'¿Qué dicen muchas personas?',o:['Que es mentira.','Que es bonito.','Que es de Joan.']}
+  ]},
+ {ch:4,title:'Los pintores de Altamira',diff:1,
+  tz:{de:'Wer malte die Bisons, und wie malt man in einer dunklen Höhle?',en:'Who painted the bison, and how do you paint in a dark cave?'},
+  paras:[
+   '«No es mentira», dice Joan. «Las pinturas son de verdad. Y son muy viejas: tienen más de catorce mil años.»',
+   '«¿Catorce mil años? ¿Y quién las pinta?»',
+   '«Personas como tú y como yo. Viven en cuevas y cazan animales: bisontes, caballos, ciervos.»',
+   '«¿Y por qué pintan?»',
+   '«Nadie lo sabe. Es un secreto de la historia. Quizás por magia. Quizás para contar historias. Quizás porque es bonito.»',
+   '«¿Y cómo pintan en una cueva oscura? No hay luz.»',
+   '«Con fuego», dice Joan. «Tienen lámparas de piedra con fuego. Y los colores vienen de la tierra: rojo, negro, amarillo.»',
+   '«En otras cuevas de España también hay manos pintadas. Manos de hace más de treinta mil años.»',
+   '«¿Manos? ¿Por qué manos?»',
+   '«Quizás es como un nombre. Como decir: yo estoy aquí.»',
+   'Miro mi mano. Pienso en una mano roja en una cueva oscura. Hace treinta mil años, una persona dice: yo estoy aquí.',
+   '«Hoy, la cueva de Altamira está cerrada», dice Joan. «Pero hay una copia de la cueva en un museo. Allí puedes ver los bisontes.»',
+   '«Entonces voy», digo. «Un día voy a ver los bisontes.»'
+  ],
+  quiz:[
+   {q:'¿Qué edad tienen las pinturas?',o:['Más de catorce mil años.','Cien años.','Veinte años.']},
+   {q:'¿Qué animales pintan?',o:['Bisontes, caballos y ciervos.','Gatos y peces.','Vacas y cabras.']},
+   {q:'¿Qué usan para tener luz en la cueva?',o:['Fuego.','El sol.','La luna.']},
+   {q:'¿Dónde puedes ver hoy los bisontes?',o:['En una copia de la cueva, en un museo.','En Barcelona.','En el bar de Leo.']}
+  ]},
+ {ch:5,title:'El fuego y el frío',diff:1,
+  tz:{de:'Eiszeit: Wie leben Menschen vor zwanzigtausend Jahren?',en:'Ice age: how do people live twenty thousand years ago?'},
+  paras:[
+   'Hoy hace frío en Barcelona. Joan lleva una chaqueta grande.',
+   '«¿Frío?», dice Joan. «Esto no es frío. Hace veinte mil años, sí hace frío. Mucho frío. Es el tiempo del hielo.»',
+   '«¿Hay hielo en España?»',
+   '«En las montañas, mucho. Y en invierno, nieve por todas partes. Los humanos tienen que vivir con el frío.»',
+   '«¿Y cómo viven?»',
+   '«En grupos pequeños. Una familia, dos familias. Veinte o treinta personas. Viven en cuevas o cerca de los ríos.»',
+   '«Los hombres y las mujeres cazan juntos. Comen carne de ciervo, de caballo, de bisonte. También comen peces del río y fruta del bosque.»',
+   '«¿Y la ropa?»',
+   '«Ropa de piel de animal. Y fuego, siempre fuego. El fuego es la vida: da luz, da calor y cocina la carne.»',
+   '«Por la noche, todos están cerca del fuego. Hablan, comen, escuchan historias.»',
+   '«Como nosotros», digo. «Tú cuentas historias y yo escucho.»',
+   'Joan ríe. «Sí. Pero nosotros tenemos café.»'
+  ],
+  quiz:[
+   {q:'¿Cómo es el tiempo hace veinte mil años?',o:['Hace mucho frío.','Hace mucho calor.','Hace sol todo el año.']},
+   {q:'¿Cómo viven los humanos?',o:['En grupos pequeños.','En ciudades grandes.','Solos.']},
+   {q:'¿Qué comen?',o:['Carne, peces y fruta.','Pan y queso.','Solo pan.']},
+   {q:'¿Qué da el fuego?',o:['Luz y calor.','Agua.','Ropa.']}
+  ]},
+ {ch:6,title:'El pan y las cabras',diff:1,
+  tz:{de:'Vor über siebentausend Jahren lernen die Menschen, das Land zu bebauen.',en:'Over seven thousand years ago, people learn to farm the land.'},
+  paras:[
+   '«Hoy hablamos de pan», dice Joan, y toma un poco de pan con tomate.',
+   '«¿Pan? ¿Hay pan en la historia?»',
+   '«Claro. El pan es muy importante. Hace más de siete mil años, en España, las personas aprenden algo nuevo.»',
+   '«¿Qué aprenden?»',
+   '«Aprenden a cultivar la tierra. Plantan trigo y hacen pan. Y tienen animales en casa: cabras y ovejas.»',
+   '«Ahora no tienen que buscar comida todo el día. Ahora la comida está aquí, en el campo.»',
+   '«Entonces ya no viven en cuevas.»',
+   '«No. Construyen casas. Casas pequeñas, juntas. Así nacen los primeros pueblos.»',
+   '«Y en los pueblos hacen cosas nuevas: platos de tierra, ropa, herramientas de piedra.»',
+   'Pienso en el mercado de Rosa: pan, queso, fruta. Todo empieza aquí. Hace siete mil años.',
+   '«Joan, una pregunta: ¿el queso también es tan viejo?»',
+   '«Casi», dice Joan. «Con la leche de las cabras, sí.»'
+  ],
+  quiz:[
+   {q:'¿Qué aprenden las personas hace siete mil años?',o:['A cultivar la tierra.','A pintar.','A escribir.']},
+   {q:'¿Qué animales tienen en casa?',o:['Cabras y ovejas.','Bisontes.','Caballos.']},
+   {q:'¿Dónde viven ahora?',o:['En casas, en pueblos.','En cuevas.','En el bosque.']},
+   {q:'¿Qué hacen con el trigo?',o:['Pan.','Ropa.','Fuego.']}
+  ]},
+ {ch:7,title:'Las casas de los muertos',diff:2,
+  tz:{de:'In Antequera stehen Steinbauten, die älter sind als die Pyramiden.',en:'In Antequera stand stone buildings older than the pyramids.'},
+  paras:[
+   '«¿Conoces Antequera?», pregunta Joan. «Es un pueblo en el sur, cerca de Málaga.»',
+   '«No. ¿Qué hay allí?»',
+   '«Casas de piedra. Pero no son casas para vivir. Son casas para los muertos.»',
+   '«¿Para los muertos?»',
+   '«Sí. Se llaman dólmenes. Son muy viejos: tienen casi seis mil años. Son más viejos que las pirámides de Egipto.»',
+   '«¿Y cómo son?»',
+   '«Enormes. Las piedras son muy grandes. Una piedra del techo pesa más que cien coches.»',
+   '«¿Y cómo mueven esas piedras? No tienen máquinas.»',
+   '«Con mucha gente, mucho trabajo y mucho tiempo. Es otro secreto de la historia.»',
+   'Joan dibuja una montaña en un papel. «Desde un dolmen ves esta montaña. Tiene la forma de una cara. La cara de un hombre que duerme.»',
+   '«¿Una cara en la montaña?»',
+   '«Sí. Y la puerta del dolmen mira a la montaña. Las personas de entonces miran la misma montaña que nosotros hoy.»',
+   'Me gusta esa idea. Una montaña que mira la historia. Seis mil años.'
+  ],
+  quiz:[
+   {q:'¿Para qué son los dólmenes?',o:['Para los muertos.','Para vivir.','Para cocinar.']},
+   {q:'¿Cómo son las piedras?',o:['Enormes.','Pequeñas.','Azules.']},
+   {q:'¿Qué forma tiene la montaña?',o:['La cara de un hombre que duerme.','Un bisonte.','Una mano.']},
+   {q:'¿Dónde está Antequera?',o:['En el sur, cerca de Málaga.','En el norte.','Cerca de Barcelona.']}
+  ]},
+ {ch:8,title:'Los íberos',diff:2,
+  tz:{de:'Die Iberer haben eigene Buchstaben. Lesen kann man sie, verstehen nicht.',en:'The Iberians have their own letters. You can read them, but not understand them.'},
+  paras:[
+   '«Ahora la historia cambia», dice Joan. «Hace unos dos mil quinientos años, en el este y en el sur de España viven los íberos.»',
+   '«¿Íberos? ¿Como la península Ibérica?»',
+   '«Exacto. El nombre viene de ellos. Los íberos no son un pueblo. Son muchos pueblos. Cada pueblo tiene su ciudad y su rey.»',
+   '«¿Ciudades de verdad?»',
+   '«Sí. Ciudades pequeñas, en lo alto de una montaña, con un muro de piedra. Desde allí ven a los enemigos.»',
+   '«Los íberos cultivan la tierra, pero también trabajan el metal. Hacen espadas muy buenas. Y tienen muchos caballos.»',
+   '«¿Y saben escribir?»',
+   '«Sí. Tienen sus propias letras. Hoy podemos leer las letras... pero no entendemos las palabras.»',
+   '«¿Cómo? ¿Puedes leer, pero no entender?»',
+   '«Exacto. Leemos los sonidos, pero la lengua de los íberos es un misterio. Nadie sabe qué dicen.»',
+   'Pienso en mis primeros días en Barcelona. Escucho español, pero no entiendo nada. Como los íberos para nosotros.',
+   '«Y la mujer más famosa de los íberos», dice Joan, «es una mujer de piedra.»'
+  ],
+  quiz:[
+   {q:'¿Dónde viven los íberos?',o:['En el este y en el sur de España.','En el norte.','En Suiza.']},
+   {q:'¿Dónde están sus ciudades?',o:['En lo alto de una montaña.','En el mar.','En cuevas.']},
+   {q:'¿Qué hacen muy bien?',o:['Espadas de metal.','Pan con tomate.','Radios.']},
+   {q:'¿Qué es un misterio?',o:['La lengua de los íberos.','El nombre de Joan.','El color del mar.']}
+  ]},
+ {ch:9,title:'La Dama de Elche',diff:2,
+  tz:{de:'1897 findet ein Junge auf einem Feld einen steinernen Frauenkopf.',en:'In 1897 a boy finds a woman\'s stone head in a field.'},
+  paras:[
+   '«Es el año 1897, en Elche, cerca de Alicante», dice Joan. «Un chico joven trabaja en el campo. De repente, encuentra una piedra con cara.»',
+   '«¿Una piedra con cara?»',
+   '«Una cabeza de mujer. Una mujer de piedra, muy elegante. Hoy la llamamos la Dama de Elche.»',
+   'Joan me enseña una foto en su teléfono. La mujer tiene los ojos tranquilos. En la cabeza lleva dos ruedas grandes, una a cada lado.',
+   '«¿Qué son las ruedas?»',
+   '«Quizás joyas. Quizás el pelo. Nadie lo sabe seguro.»',
+   '«¿Y qué edad tiene?»',
+   '«Unos dos mil quinientos años. Es íbera.»',
+   '«Y tiene una historia triste: en el mismo año, 1897, un museo de París la compra. La Dama vive más de cuarenta años en Francia.»',
+   '«¿Y ahora?»',
+   '«Vuelve a España en 1941. Ahora está en un museo en Madrid.»',
+   'Miro otra vez la foto. Una mujer de piedra, sola, lejos de su casa. Un poco como yo.'
+  ],
+  quiz:[
+   {q:'¿Quién encuentra la Dama?',o:['Un chico joven.','María.','Joan.']},
+   {q:'¿Qué lleva la Dama en la cabeza?',o:['Dos ruedas grandes.','Una llave.','Una foto.']},
+   {q:'¿Dónde está la Dama más de cuarenta años?',o:['En Francia.','En Elche.','En Suiza.']},
+   {q:'¿Dónde está hoy?',o:['En un museo en Madrid.','En Barcelona.','En el campo.']}
+  ]},
+ {ch:10,title:'Los celtas',diff:2,
+  tz:{de:'Im Norden und Westen leben die Kelten in runden Steinhäusern.',en:'In the north and west, the Celts live in round stone houses.'},
+  paras:[
+   '«Los íberos viven en el este y en el sur. ¿Y en el norte y en el oeste?», pregunto.',
+   '«Allí viven otros pueblos: los celtas», dice Joan. «Vienen del centro de Europa.»',
+   '«¿Celtas? ¿Como en Irlanda?»',
+   '«Sí, parecidos. En Galicia, en el norte, todavía hay pueblos celtas de piedra. Se llaman castros. Las casas son redondas.»',
+   '«¿Redondas? ¡Qué bonito!»',
+   '«Y en el centro de España, los íberos y los celtas viven juntos. Por eso los llamamos celtíberos.»',
+   '«Celta más íbero: celtíbero. Es fácil.»',
+   '«Son fuertes y libres», dice Joan. «Muy libres. Para ellos, la libertad es lo más importante.»',
+   '«¿Por qué dices eso?»',
+   '«Porque pronto llegan otros pueblos a España. Y los celtíberos no quieren a nadie en su tierra.»',
+   '«¿Quién llega?»',
+   'Joan mira el mar por la ventana. «Ellos llegan por allí. Por el mar.»'
+  ],
+  quiz:[
+   {q:'¿Dónde viven los celtas?',o:['En el norte y en el oeste.','En el sur.','En el este.']},
+   {q:'¿Cómo son las casas de los castros?',o:['Redondas, de piedra.','Altas, de metal.','Pequeñas, de papel.']},
+   {q:'¿Quiénes son los celtíberos?',o:['Íberos y celtas juntos.','Personas de Irlanda.','Personas de Suiza.']},
+   {q:'¿Qué es lo más importante para ellos?',o:['La libertad.','El café.','La música.']}
+  ]},
+ {ch:11,title:'Tartessos, el reino de la plata',diff:2,
+  tz:{de:'Ein reiches Königreich im Süden verschwindet spurlos.',en:'A rich kingdom in the south disappears without a trace.'},
+  paras:[
+   '«Antes del mar, una historia rara», dice Joan. «Un reino muy rico en el sur. Se llama Tartessos.»',
+   '«¿Rico? ¿Con oro?»',
+   '«Con oro y, sobre todo, con plata. En sus montañas hay mucho metal.»',
+   '«Los griegos escriben sobre Tartessos. Dicen que tiene un rey muy famoso: Argantonio.»',
+   '«¿Y qué tiene de especial?»',
+   '«Según los griegos, vive ciento veinte años. Y es rey durante ochenta años.»',
+   '«¡Ciento veinte años! ¿Es verdad?»',
+   'Joan ríe. «Seguro que no. Es una leyenda. Pero es una leyenda bonita.»',
+   '«¿Y dónde está Tartessos hoy?»',
+   '«Esa es la gran pregunta. Un día, Tartessos desaparece. Nadie sabe por qué. Y nadie sabe dónde está su ciudad.»',
+   '«¿Nadie? ¿Todavía no?»',
+   '«Todavía no. Muchos científicos la buscan. Quizás está bajo la tierra, cerca de un río. Quizás bajo el mar.»',
+   '«Una ciudad perdida», digo. «Me gusta.»'
+  ],
+  quiz:[
+   {q:'¿Dónde está Tartessos?',o:['En el sur.','En el norte.','Cerca de Barcelona.']},
+   {q:'¿Qué hay en sus montañas?',o:['Mucho metal.','Mucha nieve.','Muchas cuevas pintadas.']},
+   {q:'¿Qué dicen los griegos de Argantonio?',o:['Que vive ciento veinte años.','Que es pobre.','Que no es rey.']},
+   {q:'¿Qué sabemos de la ciudad de Tartessos?',o:['Nadie sabe dónde está.','Está en Madrid.','Es muy pequeña.']}
+  ]},
+ {ch:12,title:'Barcos del este',diff:2,
+  tz:{de:'Die Phönizier kommen übers Meer, gründen Cádiz und bringen die Buchstaben mit.',en:'The Phoenicians arrive by sea, found Cádiz and bring the letters with them.'},
+  paras:[
+   '«Hace unos tres mil años, llegan barcos al sur de España», dice Joan. «Barcos de un pueblo de comerciantes: los fenicios.»',
+   '«¿De dónde vienen?»',
+   '«De muy lejos. Del este del mar Mediterráneo, del Líbano de hoy.»',
+   '«¿Y qué quieren?»',
+   '«Quieren la plata de Tartessos. Los fenicios compran y venden de todo: plata, aceite, vino, telas de muchos colores.»',
+   '«Y en una isla del sur fundan una ciudad: Gadir. Hoy se llama Cádiz.»',
+   '«¿Cádiz tiene tres mil años?»',
+   '«Sí. Es una de las ciudades más viejas de Europa.»',
+   '«Los fenicios traen muchas cosas nuevas a España. Y algo muy importante: las letras.»',
+   '«¿Las letras?»',
+   '«Sí. Escriben con un alfabeto. Los íberos ven las letras de los fenicios... y hacen sus propias letras.»',
+   '«Entonces, sin los fenicios, ¿no hay letras íberas?»',
+   '«Quizás no. Un barco puede cambiar la historia.»'
+  ],
+  quiz:[
+   {q:'¿Cómo llegan los fenicios?',o:['En barco.','A pie.','En tren.']},
+   {q:'¿Qué quieren los fenicios?',o:['La plata de Tartessos.','Las cuevas.','Los bisontes.']},
+   {q:'¿Cómo se llama hoy Gadir?',o:['Cádiz.','Barcelona.','Madrid.']},
+   {q:'¿Qué traen los fenicios?',o:['Las letras.','El fuego.','Los caballos.']}
+  ]},
+ {ch:13,title:'Una ciudad griega',diff:2,
+  tz:{de:'Mia und Leo besuchen Empúries, eine griechische Stadt am Meer.',en:'Mia and Leo visit Empúries, a Greek city by the sea.'},
+  paras:[
+   'El sábado voy con Leo a Empúries. Está en la costa, a dos horas de Barcelona.',
+   'Desde el tren veo el mar, azul y tranquilo. Leo duerme. Yo tengo un libro de Joan en la mano.',
+   'Empúries es una ciudad muy vieja, al lado del mar. Hoy solo hay piedras, calles y muros. Pero las calles son de verdad. Son calles de hace dos mil quinientos años.',
+   'Leo lee un papel: «La fundan los griegos, más o menos en el año 575 antes de Cristo. Empúries viene de una palabra griega: Emporion. Significa mercado.»',
+   '«¿Mercado?», digo. «Como el mercado de Rosa.»',
+   '«Sí, pero con barcos», dice Leo. «Aquí llegan los barcos griegos. Compran y venden con los íberos.»',
+   'En un museo pequeño hay una estatua blanca. Es un dios griego: Asclepio, el dios de la medicina.',
+   '«Encuentran la estatua en 1909, en muchas partes», lee Leo.',
+   'Me siento en una piedra y miro el mar. Los griegos ven el mismo mar. Los mismos colores.',
+   'Saco una foto para Joan. Él contesta en un minuto: «¡Muy bien, Mia! Pero cuidado. Pronto llegan otros barcos. Barcos de guerra.»'
+  ],
+  quiz:[
+   {q:'¿Con quién va Mia a Empúries?',o:['Con Leo.','Con Joan.','Sola.']},
+   {q:'¿Qué significa Emporion?',o:['Mercado.','Mar.','Ciudad vieja.']},
+   {q:'¿Quién es Asclepio?',o:['El dios de la medicina.','Un rey íbero.','Un amigo de Leo.']},
+   {q:'¿Qué escribe Joan?',o:['Que pronto llegan barcos de guerra.','Que está cansado.','Que no quiere fotos.']}
+  ]},
+ {ch:14,title:'Cartago',diff:2,
+  tz:{de:'Karthago will Spanien. Und eine Legende verbindet die Familie Barca mit Barcelona.',en:'Carthage wants Spain. And a legend links the Barca family to Barcelona.'},
+  paras:[
+   '«Hoy viajamos a África», dice Joan. «A una ciudad grande y rica: Cartago.»',
+   '«¿Cartago? ¿Dónde está?»',
+   '«En el norte de África, en Túnez de hoy. Es una ciudad de los fenicios. Pero ahora es muy fuerte y quiere más tierra.»',
+   '«¿Y qué tierra quiere?»',
+   '«España. Por la plata, por los metales, por los soldados.»',
+   '«Una familia de Cartago es muy importante aquí: la familia Barca. En el año 227 antes de Cristo, los cartagineses fundan una ciudad nueva en el sur. La llaman Qart Hadasht: ciudad nueva.»',
+   '«¿Y hoy?»',
+   '«Hoy se llama Cartagena.»',
+   '«¡Cartago, Cartagena! Claro.»',
+   'Joan sonríe. «Y hay una leyenda: la familia Barca funda otra ciudad, en el norte. ¿Sabes cuál?»',
+   '«¿Barca...?», digo. Y entonces entiendo. «¿Barcelona?»',
+   '«Eso dice la leyenda. Pero es solo una leyenda. Los historiadores no están seguros.»',
+   '«Barca, Barcelona, Barça», dice Leo desde la barra. «¡Todo tiene sentido!»',
+   'Joan ríe. «El martes, el hijo más famoso de la familia Barca. Y sus elefantes.»'
+  ],
+  quiz:[
+   {q:'¿Dónde está Cartago?',o:['En el norte de África.','En el norte de España.','En Suiza.']},
+   {q:'¿Qué quiere Cartago?',o:['Tierra en España.','Un museo.','Una cueva.']},
+   {q:'¿Cómo se llama hoy Qart Hadasht?',o:['Cartagena.','Cádiz.','Barcelona.']},
+   {q:'¿Qué dice la leyenda?',o:['Que la familia Barca funda Barcelona.','Que Joan es de Cartago.','Que no hay elefantes.']}
+  ]},
+ {ch:15,title:'Aníbal y los elefantes',diff:3,
+  tz:{de:'Hannibal zieht mit Elefanten über die Pyrenäen und die Alpen nach Italien.',en:'Hannibal marches with elephants over the Pyrenees and the Alps to Italy.'},
+  paras:[
+   '«El hijo se llama Aníbal», dice Joan. «Es un general muy inteligente. Y su gran enemigo es Roma.»',
+   '«¿Roma? ¿La ciudad de Italia?»',
+   '«Sí. En este tiempo, Roma y Cartago son las dos ciudades más fuertes del Mediterráneo. Y las dos lo quieren todo.»',
+   '«En el año 219 antes de Cristo, Aníbal ataca Sagunto, una ciudad íbera amiga de Roma. Sagunto está cerca de Valencia.»',
+   '«Y Roma está enfadada.»',
+   '«Muy enfadada. Así empieza una guerra enorme. Y Aníbal tiene una idea loca: ir a Italia a pie.»',
+   '«¿A pie? ¿Desde España?»',
+   '«Sí. Con un ejército enorme. Miles de soldados, miles de caballos... y treinta y siete elefantes.»',
+   '«¿Elefantes? ¿En las montañas?»',
+   '«Sí. Cruzan los Pirineos y después los Alpes, con nieve y mucho frío. Muchos soldados mueren. Muchos elefantes también.»',
+   'Pienso en un elefante en la nieve. Un animal de África, en la nieve de los Alpes. Pobre elefante.',
+   '«¿Y gana Aníbal?»',
+   '«Gana muchas batallas en Italia. Pero mientras él está en Italia, Roma hace algo inteligente. Envía un ejército... a España.»'
+  ],
+  quiz:[
+   {q:'¿Quién es el gran enemigo de Aníbal?',o:['Roma.','Los íberos.','Los griegos.']},
+   {q:'¿Qué ciudad ataca Aníbal?',o:['Sagunto.','Barcelona.','Cádiz.']},
+   {q:'¿Cómo va Aníbal a Italia?',o:['A pie, por las montañas.','En barco.','En tren.']},
+   {q:'¿Qué animales lleva?',o:['Elefantes.','Bisontes.','Cabras.']}
+  ]},
+ {ch:16,title:'Llegan los romanos',diff:3,
+  tz:{de:'218 vor Christus landen die Römer in Empúries. Und sie bleiben sechshundert Jahre.',en:'In 218 BC the Romans land at Empúries. And they stay for six hundred years.'},
+  paras:[
+   '«En el año 218 antes de Cristo llegan los romanos», dice Joan. «¿Y sabes dónde?»',
+   '«¿Dónde?»',
+   '«En Empúries. En tu ciudad griega.»',
+   '«¡No! ¿En Empúries? Yo estoy allí el sábado.»',
+   '«Exacto. Los romanos llegan en barcos, con muchos soldados. Quieren luchar contra Cartago aquí, en España.»',
+   '«La guerra es larga. Doce años. Pero al final, Roma gana. Los cartagineses tienen que salir de España.»',
+   '«Entonces, ¿los romanos vuelven a casa?»',
+   'Joan ríe. «No. Los romanos no vuelven. Se quedan. Se quedan seiscientos años.»',
+   '«¿Seiscientos años?»',
+   '«Sí. Para ellos, España es Hispania. Una tierra rica: plata, oro, trigo, aceite, vino. Todo lo que Roma necesita.»',
+   '«¿Y los íberos y los celtas? ¿Qué piensan?»',
+   '«No están contentos. Muchos pueblos luchan contra Roma. Durante doscientos años.»',
+   '«¿Doscientos años de guerra?»',
+   '«Sí. Y una ciudad lucha más que todas. Se llama Numancia.»'
+  ],
+  quiz:[
+   {q:'¿Dónde llegan los romanos?',o:['A Empúries.','A Cádiz.','A Madrid.']},
+   {q:'¿Quién gana la guerra?',o:['Roma.','Cartago.','Los íberos.']},
+   {q:'¿Vuelven los romanos a casa?',o:['No, se quedan seiscientos años.','Sí, en un año.','Sí, a Cartago.']},
+   {q:'¿Cómo llaman los romanos a España?',o:['Hispania.','Gadir.','Emporion.']}
+  ]},
+ {ch:17,title:'Numancia',diff:3,
+  tz:{de:'Eine kleine Stadt hält Rom zwanzig Jahre lang stand.',en:'A small city holds out against Rome for twenty years.'},
+  paras:[
+   '«Numancia es una ciudad celtíbera, en el centro de España, cerca de Soria», dice Joan. «Está en lo alto de una montaña pequeña.»',
+   '«Durante veinte años, los romanos atacan Numancia. Y durante veinte años, Numancia gana.»',
+   '«¿Una ciudad pequeña contra Roma?»',
+   '«Sí. Roma está furiosa. Entonces envía a su mejor general: Escipión.»',
+   '«¿Y qué hace Escipión?»',
+   '«No ataca. Espera. Construye un muro alrededor de la ciudad. Un muro de nueve kilómetros. Nadie puede salir y nadie puede entrar.»',
+   '«¿Y la comida?»',
+   '«Ese es el plan. Sin comida, la ciudad tiene hambre. Mucha hambre. Durante meses.»',
+   'Joan está en silencio un momento. Después dice: «En el año 133 antes de Cristo, Numancia cae. Muchos numantinos prefieren morir antes que vivir como esclavos de Roma.»',
+   'No digo nada. Es una historia muy triste.',
+   '«Hoy, en España, decimos: una defensa numantina», dice Joan. «Significa luchar hasta el final.»',
+   '«Como tú con tus historias», digo. «Nunca terminas.»',
+   'Joan sonríe un poco. «Exacto.»'
+  ],
+  quiz:[
+   {q:'¿Qué es Numancia?',o:['Una ciudad celtíbera.','Un general romano.','Un río.']},
+   {q:'¿Qué construye Escipión?',o:['Un muro alrededor de la ciudad.','Un barco.','Una casa.']},
+   {q:'¿Por qué tiene hambre la ciudad?',o:['Porque nadie puede entrar con comida.','Porque no hay pan en España.','Porque es invierno.']},
+   {q:'¿Qué significa una defensa numantina?',o:['Luchar hasta el final.','Ir a la playa.','Hablar mucho.']}
+  ]},
+ {ch:18,title:'Viriato, el pastor',diff:3,
+  tz:{de:'Ein Hirte kämpft acht Jahre gegen Rom. Am Ende verraten ihn seine Freunde.',en:'A shepherd fights Rome for eight years. In the end his friends betray him.'},
+  paras:[
+   '«Ahora una historia del oeste», dice Joan. «De Lusitania, entre España y Portugal de hoy.»',
+   '«Allí hay un hombre que se llama Viriato. No es rey. No es general. Es pastor: cuida ovejas en las montañas.»',
+   '«¿Un pastor contra Roma?»',
+   '«Sí. Viriato conoce muy bien las montañas. Ataca rápido y desaparece. Los romanos no lo encuentran nunca.»',
+   '«Durante ocho años, Viriato gana batalla tras batalla. Roma no entiende cómo un pastor puede ser tan peligroso.»',
+   '«¿Y al final?»',
+   '«Al final, Roma no puede ganar con soldados. Entonces usa el dinero. Paga a tres amigos de Viriato.»',
+   '«¡No!»',
+   '«Sí. Una noche, mientras Viriato duerme, los tres amigos lo matan.»',
+   '«¡Qué horror! ¿Y Roma paga?»',
+   '«Dice la leyenda que no. Cuando los tres van a pedir su dinero, los romanos dicen: Roma no paga a traidores.»',
+   'Pienso un momento. «Es una frase muy famosa, ¿no?»',
+   '«Muy famosa. En España y en Portugal, Viriato es un héroe.»'
+  ],
+  quiz:[
+   {q:'¿Qué trabajo tiene Viriato?',o:['Es pastor.','Es rey.','Es general romano.']},
+   {q:'¿Por qué los romanos no encuentran a Viriato?',o:['Porque conoce muy bien las montañas.','Porque vive en el mar.','Porque está en Roma.']},
+   {q:'¿Cómo muere Viriato?',o:['Sus tres amigos lo matan.','En una batalla en Roma.','Muy viejo, en casa.']},
+   {q:'¿Qué dicen los romanos a los traidores?',o:['Roma no paga a traidores.','Gracias, amigos.','Aquí está el dinero.']}
+  ]},
+ {ch:19,title:'Hablas latín (casi)',diff:3,
+  tz:{de:'Spanisch kommt vom Latein. Und die Römer bauen Strassen, Brücken und Aquädukte.',en:'Spanish comes from Latin. And the Romans build roads, bridges and aqueducts.'},
+  paras:[
+   '«Hoy, una buena noticia», dice Joan. «Tú hablas latín.»',
+   '«¿Yo? No. Hablo un poco de español. Y alemán.»',
+   '«El español viene del latín, la lengua de los romanos. Mira.»',
+   'Joan escribe en un papel: aqua, noctem, oculum.',
+   '«Aqua es agua. Noctem es noche. Oculum es ojo», dice. «El latín cambia poco a poco, durante muchos siglos. Y un día es español.»',
+   '«¡Entonces sí hablo un poco de latín!»',
+   '«Exacto. Y los romanos no traen solo la lengua. Construyen caminos, puentes y ciudades. Un camino romano va desde los Pirineos hasta Cádiz: la Vía Augusta. Y pasa por Barcelona.»',
+   '«¿Por Barcelona?»',
+   '«Sí. Y en Segovia hay un acueducto romano. Lleva agua a la ciudad. Tiene casi dos mil años y todavía está allí.»',
+   '«Y los hispanos, ¿son romanos ahora?»',
+   '«Poco a poco, sí. Hablan latín y viven en ciudades romanas. Y algunos llegan muy alto. Trajano nace en Hispania, cerca de Sevilla. Y es emperador de Roma.»',
+   '«¿Un emperador de Roma, de España?»',
+   '«Sí. Es el primer emperador que no nace en Italia.»'
+  ],
+  quiz:[
+   {q:'¿De dónde viene el español?',o:['Del latín.','Del griego.','De la lengua íbera.']},
+   {q:'¿Qué es aqua en español?',o:['Agua.','Noche.','Ojo.']},
+   {q:'¿Qué hay en Segovia?',o:['Un acueducto romano.','Una cueva pintada.','Un dolmen.']},
+   {q:'¿Quién es Trajano?',o:['Un emperador de Roma que nace en Hispania.','Un pastor.','Un general de Cartago.']}
+  ]},
+ {ch:20,title:'Barcino',diff:3,
+  tz:{de:'Mitten in Barcelona findet Mia vier römische Säulen. Ende des ersten Teils.',en:'In the middle of Barcelona, Mia finds four Roman columns. End of part one.'},
+  paras:[
+   'Hoy no voy al bar. Joan me envía un mensaje: «Ve a la calle Paradís, detrás de la catedral. Entra en el patio. Y mira arriba.»',
+   'Camino por el barrio Gótico. Las calles son estrechas y oscuras. Busco la calle Paradís. Es pequeña, muy pequeña.',
+   'Entro en un patio. Y allí, dentro de una casa vieja, hay cuatro columnas enormes. Columnas romanas.',
+   'Miro arriba, como María en Altamira. Las columnas son muy altas. Tienen dos mil años.',
+   'En la pared hay un papel: «Templo de Augusto. Siglo I antes de Cristo. Barcino.»',
+   'Barcino. Así se llama Barcelona en tiempos de los romanos. Una ciudad pequeña, con un muro alrededor y cuatro puertas.',
+   'En el templo, los romanos hablan con sus dioses y con el emperador Augusto. Aquí, en mi ciudad. Cerca de mi piso.',
+   'Escribo a Joan: «Estoy aquí. Es increíble.»',
+   'Joan contesta: «Barcelona tiene más de dos mil años, Mia. Cada piedra tiene una historia. Y tú ahora conoces el principio.»',
+   'Toco una columna. Está fría. Pienso en María y los bisontes, en la Dama de Elche, en Viriato, en los elefantes en la nieve.',
+   'Escribo otra vez: «¿Y el martes que viene?»',
+   'Joan contesta: «El martes que viene, Roma empieza a caer.»',
+   {t:'Fin de la primera parte',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Qué hay en el patio?',o:['Cuatro columnas romanas.','Una cueva.','Un bar.']},
+   {q:'¿Cómo se llama Barcelona en tiempos de los romanos?',o:['Barcino.','Gadir.','Emporion.']},
+   {q:'¿Con quién hablan los romanos en el templo?',o:['Con sus dioses y el emperador.','Con los fenicios.','Con Joan.']},
+   {q:'¿Qué tiene cada piedra de Barcelona, según Joan?',o:['Una historia.','Un número.','Un secreto de Mia.']}
+  ]}
+];
+
+if(typeof HIST_A1!=='undefined')STORIES.push(...HIST_A1.map(s=>Object.assign({id:'h1-'+s.ch,lvl:'A1',mode:'hist'},s)));
+if(typeof DIARIO!=='undefined')for(const d of DIARIO){const i=STORIES.findIndex(s=>s.lvl==='A1'&&!s.mode&&s.ch===d.before);STORIES.splice(i,0,Object.assign({id:'a1-d'+d.before,lvl:'A1',ch:d.before-1,inter:true,diff:1},d));}
 const POS={v:['verbo','#ef4444','#7f1d1d'],n:['sustantivo','#3b82f6','#1e3a8a'],adj:['adjetivo','#22c55e','#14532d'],adv:['adverbio','#eab308','#713f12'],
  pron:['pronombre','#a855f7','#4c1d95'],art:['artículo','#64748b','#1e293b'],det:['determinante','#14b8a6','#134e4a'],prep:['preposición','#94a3b8','#334155'],
  conj:['conjunción','#ec4899','#831843'],num:['número','#f97316','#7c2d12'],int:['interjección','#f43f5e','#881337'],prop:['nombre propio','#d4a73a','#713f12']};
@@ -3554,18 +4273,24 @@ document.addEventListener('click',e=>{
    ============================================================ */
 let view={name:'home'};let curStory=null;
 function go(v){view=v;hideTip();render();scrollTo(0,0);
-  if(v.name==='level')requestAnimationFrame(()=>{const cur=(S.last&&STORIES.find(s=>s.id===S.last&&s.lvl===v.lvl&&!isDone(s)))||nextStory();const el=cur&&document.getElementById('ch-'+cur.id);
+  if(v.name==='level')requestAnimationFrame(()=>{const md=v.mode||'story';const cur=(S.last&&STORIES.find(s=>s.id===S.last&&s.lvl===v.lvl&&modeOf(s)===md&&!isDone(s)))||nextStory(md);const el=cur&&document.getElementById('ch-'+cur.id);
     if(el){el.classList.add('cur');const y=el.getBoundingClientRect().top+scrollY-innerHeight*.28;if(y>0)scrollTo(0,y);}});}
 const FOOT=`<footer class="foot"><span>Ein Prototyp von <b>Eloori Interactive</b></span><a href="mailto:contact@eloori-interactive.com">contact@eloori-interactive.com</a><a href="#" data-method>Die Methode</a><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a></footer>`;
 function render(){const m=$('#view');if(view.name==='home')m.innerHTML=homeHtml()+FOOT;else if(view.name==='level')m.innerHTML=levelHtml(view.lvl)+FOOT;}
 function lvlStats(c){const st=STORIES.filter(s=>s.lvl===c&&!s.soon);return {n:st.length,done:st.filter(s=>S.stories[s.id]&&S.stories[s.id].done).length};}
 function isDone(s){return !!(s&&S.stories[s.id]&&S.stories[s.id].done);}
-function storyUnlocked(s){if(s.soon)return false;const L=STORIES.filter(x=>x.lvl===s.lvl&&!x.soon);const i=L.indexOf(s);if(i<=0||isDone(s)||isDone(L[i-1]))return true;return L.slice(i+1).some(isDone);}
-function nextStory(){const L=STORIES.filter(s=>!s.soon);let last=-1;L.forEach((s,i)=>{if(isDone(s))last=i;});for(let i=last+1;i<L.length;i++)if(!isDone(L[i]))return L[i];return null;}
+const HIST_REQ={A1:'a1-10'};
+function modeOf(s){return s.mode||'story';}
+function chainOf(s){const md=modeOf(s);return STORIES.filter(x=>x.lvl===s.lvl&&modeOf(x)===md&&!x.soon);}
+function histOpen(lvl){const r=HIST_REQ[lvl];return !!r&&isDone(STORIES.find(s=>s.id===r));}
+function storyUnlocked(s){if(s.soon)return false;const L=chainOf(s);const i=L.indexOf(s);if(isDone(s))return true;if(i===0)return modeOf(s)==='hist'?histOpen(s.lvl):true;if(isDone(L[i-1]))return true;return L.slice(i+1).some(isDone);}
+function nextStory(md){md=md||'story';const L=STORIES.filter(s=>!s.soon&&modeOf(s)===md);if(md==='hist'&&!L.some(s=>storyUnlocked(s)))return null;let last=-1;L.forEach((s,i)=>{if(isDone(s))last=i;});for(let i=last+1;i<L.length;i++)if(!isDone(L[i]))return L[i];return null;}
 function homeHtml(){
   const caught=Object.keys(S.caught).filter(k=>LEX[k]).length,total=Object.keys(LEX).length;
-  let cont='';const ns=(S.last&&STORIES.find(s=>s.id===S.last&&!(S.stories[s.id]&&S.stories[s.id].done)))||nextStory();
-  if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Als Nächstes'} &middot; ${ns.lvl} ${chLabel(ns)}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`;
+  let cont='';const lastSt=S.last&&STORIES.find(s=>s.id===S.last&&!isDone(s));
+  const ns=(lastSt&&modeOf(lastSt)==='story'&&lastSt)||nextStory('story');const nh=(lastSt&&modeOf(lastSt)==='hist'&&lastSt)||nextStory('hist');
+  if(nh)cont+=`<div class="cont hist" data-open="${nh.id}"><div><small>${S.stories[nh.id]?'Weiterlesen':'Als Nächstes'} &middot; Historia de España ${nh.ch}</small><div class="t">${esc(nh.title)}</div></div><span class="btn">Lesen</span></div>`;
+  if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Als Nächstes'} &middot; ${ns.lvl} ${chLabel(ns)}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`+cont;
   const ch=chestsAvail();
   const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
   return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
@@ -3577,7 +4302,8 @@ function homeHtml(){
     <div class="tile-meta">${lk?'Geschichten folgen':`${s.done} / ${s.n} Kapitel`}<div class="bar"><i style="width:${s.n?s.done/s.n*100:0}%"></i></div></div></button>`;}).join('')}</div>`;
 }
 function levelHtml(c){
-  const L=LEVELS.find(l=>l.c===c);const st=STORIES.filter(s=>s.lvl===c);
+  const md=view.mode||'story';const L=LEVELS.find(l=>l.c===c);const hasHist=STORIES.some(s=>s.lvl===c&&modeOf(s)==='hist');
+  const st=STORIES.filter(s=>s.lvl===c&&modeOf(s)===md);
   const items=st.map(s=>{const p=S.stories[s.id]||{};const unlocked=storyUnlocked(s);
     const lem=s.soon?[]:storyLemmas(s);const got=lem.filter(l=>S.caught[l]).length;
     const status=s.soon?'<span class="st">Bald</span>':!unlocked?'<span class="st">Gesperrt</span>':p.done?`<span class="st done">Geschafft ${p.quiz}/4</span>`:p.read?'<span class="st new">Quiz offen</span>':'<span class="st new">Neu</span>';
@@ -3586,10 +4312,13 @@ function levelHtml(c){
       <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} im Wortdex</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}${covChip(s)}`}</div></span>${status}</button>`;}).join('');
   return `<button class="back" data-home>&larr; Übersicht</button>
   <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${L.es}</div><div style="color:var(--mut)">${S.lang==='en'?L.en:L.de}</div></div></div>
+  ${hasHist?`<div class="mtabs"><button class="${md==='story'?'on':''}" data-mode="story"><b>Historia de Mia</b><span>Die Geschichte</span></button><button class="${md==='hist'?'on':''}" data-mode="hist"><b>Historia de España</b><span>Spaniens Geschichte${histOpen(c)?'':' &middot; ab Kapitel 10'}</span></button></div>`:''}
+  ${md==='hist'&&!histOpen(c)?`<div class="histlock">${PEN} <div><b>Joan erzählt dir die Geschichte Spaniens</b><span>Von den ersten Menschen bis zu den Römern, jeden Dienstag eine Geschichte. Schliesse zuerst Kapitel 10 der Historia de Mia ab, damit du genug Wörter kennst.</span></div></div>`:''}
   <div class="chapters">${items||'<p style="color:var(--mut)">Für dieses Niveau folgen bald Geschichten.</p>'}</div>`;
 }
 $('#view').addEventListener('click',e=>{
-  const t=e.target.closest('[data-lvl]');if(t){go({name:'level',lvl:t.dataset.lvl});return;}
+  const t=e.target.closest('[data-lvl]');if(t){go({name:'level',lvl:t.dataset.lvl,mode:(S.lastMode||{})[t.dataset.lvl]||'story'});return;}
+  const mt=e.target.closest('[data-mode]');if(mt){S.lastMode=S.lastMode||{};S.lastMode[view.lvl]=mt.dataset.mode;save();go({name:'level',lvl:view.lvl,mode:mt.dataset.mode});return;}
   const o=e.target.closest('[data-open]');if(o){openReader(o.dataset.open);return;}
   if(e.target.closest('[data-chest]')){openChest();return;}
   if(e.target.closest('[data-train]')){openTrain();return;}
@@ -3605,8 +4334,8 @@ const R={page:0,pages:1,step:0};const rd=$('#reader'),vp=$('#rvp'),ct=$('#rct');
 function openReader(id){R.counted=false;stopTts();
   const st=STORIES.find(s=>s.id===id);if(!st||st.soon)return;curStory=st;S.last=id;markDay();
   const p=S.stories[id]||(S.stories[id]={done:false,quiz:0,read:false,page:0});save();updateHud();
-  $('#rTitle').textContent=st.inter?st.title.replace(/^Diario: /,'Diario · '):`Capítulo ${st.ch} · ${st.title}`;
-  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; ${st.inter?'Diario de Mia':'Capítulo '+st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
+  $('#rTitle').textContent=st.inter?st.title.replace(/^Diario: /,'Diario · '):modeOf(st)==='hist'?`Historia ${st.ch} · ${st.title}`:`Capítulo ${st.ch} · ${st.title}`;
+  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; ${st.inter?'Diario de Mia':modeOf(st)==='hist'?'Historia de España &middot; '+st.ch:'Capítulo '+st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
     st.paras.map(x=>typeof x==='string'?`<p>${markup(x)}</p>`:`<p class="${x.cls}">${markup(x.t)}</p>`).join('')+
     `<div class="endcard"><div class="fin">${st.inter?'Fin del diario':'Fin del capítulo '+st.ch}</div><div class="wc" id="rEndWords"></div><p>Wörter aus diesem Kapitel in deinem Wortdex</p>
      <p id="rEndTxt"></p>
@@ -4207,7 +4936,7 @@ function runTrain(picked,opt){
     $('#tbox').onclick=()=>openBox();$('#tagain').onclick=d?()=>startTrain('due'):()=>closeModal();}
   show();
 }
-function keyWords(st,n){n=n||5;const m=STATS[st.id]||{};const L=STORIES.filter(s=>!s.soon);const idx=L.indexOf(st);const before=new Set();
+function keyWords(st,n){n=n||5;const m=STATS[st.id]||{};const L=chainOf(st);const idx=L.indexOf(st);const before=new Set();
   for(let j=0;j<idx;j++)for(const l in STATS[L[j].id]||{})before.add(l);
   const tot=l=>{let t=0;for(const id in STATS)t+=STATS[id][l]||0;return t;};
   const sc=l=>(before.has(l)?0:1000)+Math.min(tot(l),60)*2+m[l]*5-fachOf(l)*400;
@@ -4219,8 +4948,8 @@ function keyRound(st){const ws=keyWords(st,5);ws.forEach(l=>{if(!S.caught[l])S.c
     <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap"><button class="btn ghost" id="kSkip">Überspringen</button><button class="btn" id="kGo">Los geht's</button></div></div>`);
   $('#kSkip').onclick=()=>chapterDone(st,null);
   $('#kGo').onclick=()=>runTrain(shuffle(ws),{title:'Schlüsselwörter',noType:true,onDone:(sc,r)=>chapterDone(st,{score:sc,n:r.length})});}
-function storyAfter(st){const L=STORIES.filter(s=>!s.soon);return L[L.indexOf(st)+1]||null;}
-function chLabel(s){return s.inter?'Diario de Mia':'Kapitel '+s.ch;}
+function storyAfter(st){const L=chainOf(st);return L[L.indexOf(st)+1]||null;}
+function chLabel(s){return s.inter?'Diario de Mia':modeOf(s)==='hist'?'Historia '+s.ch:'Kapitel '+s.ch;}
 function chapterDone(st,k){const nx=storyAfter(st);const ch=chestsAvail();
   openModal(`<div class="qres"><div class="big" style="font-size:30px">${st.inter?'¡Diario terminado!':'¡Capítulo completado!'}</div>
     ${k?`<p>Schlüsselwörter: <b>${k.score}/${k.n}</b> richtig. Sie sind jetzt in deinem Karteikasten.</p>`:''}
@@ -4228,7 +4957,7 @@ function chapterDone(st,k){const nx=storyAfter(st);const ch=chestsAvail();
     <div class="dacts">${ch?`<button class="btn gold" id="dChest">Truhe öffnen</button>`:''}${nx&&!nx.soon?`<button class="btn" id="dNext">Weiter: ${esc(chLabel(nx))} &rarr;</button>`:''}<button class="btn ghost" id="dList">Kapitelübersicht</button></div></div>`);
   $('#dChest')&&($('#dChest').onclick=()=>{closeAllModals();openChest();});
   $('#dNext')&&($('#dNext').onclick=()=>{closeAllModals();openReader(nx.id);});
-  $('#dList').onclick=()=>{closeAllModals();closeReader();go({name:'level',lvl:st.lvl});};
+  $('#dList').onclick=()=>{closeAllModals();closeReader();go({name:'level',lvl:st.lvl,mode:modeOf(st)});};
   endActs();}
 function endActs(){const box=document.getElementById('rEndActs');if(!box||!curStory)return;const st=curStory,p=S.stories[st.id]||{};const nx=storyAfter(st),ch=chestsAvail();
   const tx=document.getElementById('rEndTxt');if(tx)tx.textContent=p.done?'Geschafft. Weiter geht es mit dem nächsten Text.':'Beantworte mindestens 3 von 4 Fragen richtig. Dann gibt es eine Truhe und den nächsten Text.';
@@ -4408,7 +5137,7 @@ function openQuiz(st){
     const score=res.filter(Boolean).length,pass=score>=3;const p=S.stories[st.id];
     p.quiz=Math.max(p.quiz||0,score);p.read=true;if(pass)p.done=true;markDay();save();
     const gain=xp()-xp0;updateHud();const newCh=chestsAvail()-ch0;
-    const next=storyAfter(st);
+    const next=storyAfter(st);if(pass&&HIST_REQ[st.lvl]===st.id&&!S.histToast){S.histToast=1;setTimeout(()=>toast(`<b>Historia de España freigeschaltet!</b><span>Joan erzählt dir jetzt jeden Dienstag eine Geschichte über Spanien.</span>`,'big',6000),900);}
     openModal(`<div class="qres"><div class="big">${score}/${qs.length}</div>
      <p>${pass?(score===4?'¡Perfecto! Alles richtig.':'¡Muy bien! Bestanden.'):'Fast! Du brauchst 3 von 4. Lies die Geschichte nochmal und versuch es erneut.'}</p>
      ${gain>0?`<div class="xpgain">+${gain} XP</div>`:''}

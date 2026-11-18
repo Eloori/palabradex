@@ -20,6 +20,9 @@ Lernstand pro Wort: Entdeckt, Vertraut, Gefestigt, Gemeistert (10 Begegnungen un
 
 Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien sind gut erforscht, die App selbst wurde nicht in einer eigenen Studie getestet.
 
+### Historia de España
+Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanische Geschichte, im Präsens, wie man Geschichte auf Spanisch oft erzählt. A1 Teil 1 (20 Kapitel) reicht von Atapuerca und Altamira über Iberer, Kelten, Phönizier, Griechen und Karthago bis zu den Römern und Barcino. Freigeschaltet nach Kapitel 10 der Story.
+
 ### Fangen
 Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
 
