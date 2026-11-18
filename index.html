@@ -284,7 +284,8 @@ button.tcg{cursor:pointer}
 .tcg.mini{width:100%;padding:5px;border-radius:11px;box-shadow:0 8px 20px #0008,inset 0 0 0 1px #ffffff55}
 button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .v-normal{--frame:linear-gradient(145deg,#f2f4f9,#a3aabd 40%,#e6e9f1 58%,#7d849a 85%,#c9cedb)}
-.v-holo{--frame:linear-gradient(135deg,#eef4ff,#8fb4ff 25%,#dbe8ff 45%,#6f9cf0 65%,#cfe0ff 85%,#eef4ff);background-size:200% 200%;animation:framemove 6s ease-in-out infinite alternate}
+.tcg.v-holo{box-shadow:0 22px 50px #000b,0 0 28px #3fb4ff99,inset 0 0 0 1px #ffffff99}
+.v-holo{--frame:linear-gradient(135deg,#d6f6ff,#2f9bff 25%,#a8e8ff 45%,#2a62f0 65%,#bfeaff 85%,#d6f6ff);background-size:200% 200%;animation:framemove 6s ease-in-out infinite alternate}
 .v-gold{--frame:linear-gradient(145deg,#fff6c4,#d9a42e 30%,#fff1a3 50%,#a87318 72%,#ffe07a)}
 .v-leg{--frame:conic-gradient(from var(--ang),#ff5d8f,#ffcb3d,#3ddc97,#4da3ff,#c46bff,#ff5d8f);animation:angle 4s linear infinite}
 @keyframes angle{to{--ang:360deg}}
@@ -335,7 +336,7 @@ button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .cardback .tcg-in{background:repeating-conic-gradient(from 0deg at 50% 50%,#ffffff0a 0 10deg,transparent 10deg 20deg),radial-gradient(circle,#3b2a8a,#120a2a);display:grid;place-items:center}
 .cardback .lg{width:40cqw;height:40cqw;border-radius:30%;display:grid;place-items:center;background:conic-gradient(from 200deg,var(--acc),var(--acc2),#7b5cff,var(--acc));font-family:Bungee;font-size:22cqw;color:#111;box-shadow:0 0 12cqw #ff5d8f88}
 .vlabel{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border-radius:999px;padding:4px 10px}
-.vl-holo{background:linear-gradient(90deg,#cfe0ff,#8fb4ff,#cfe0ff);color:#1a1033}
+.vl-holo{background:linear-gradient(90deg,#a8e8ff,#2f9bff,#a8e8ff);color:#1a1033}
 .vl-gold{background:linear-gradient(90deg,#fff1a3,#d9a42e);color:#3a2500}
 .vl-leg{background:linear-gradient(90deg,#ff5d8f,#ffcb3d,#3ddc97,#4da3ff);color:#140a2a}
 .vl-normal{background:#ffffff22;color:#fff}
@@ -3952,7 +3953,7 @@ function drawCard(x,e,v,X,Y,W){
   // frame
   x.save();x.shadowColor='rgba(0,0,0,.6)';x.shadowBlur=8*u;x.shadowOffsetY=3*u;rr(x,X,Y,W,H,6*u);
   let fr;if(v==='leg'&&x.createConicGradient){fr=x.createConicGradient(-.6,X+W/2,Y+H/2);['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff','#ff5d8f'].forEach((c,i)=>fr.addColorStop(i/5,c));}
-  else{fr=x.createLinearGradient(X,Y,X+W,Y+H);({normal:['#f2f4f9','#a3aabd','#e6e9f1','#7d849a','#c9cedb'],holo:['#eef4ff','#8fb4ff','#dbe8ff','#6f9cf0','#cfe0ff'],gold:['#fff6c4','#d9a42e','#fff1a3','#a87318','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff']})[v].forEach((c,i,a)=>fr.addColorStop(i/(a.length-1),c));}
+  else{fr=x.createLinearGradient(X,Y,X+W,Y+H);({normal:['#f2f4f9','#a3aabd','#e6e9f1','#7d849a','#c9cedb'],holo:['#d6f6ff','#2f9bff','#a8e8ff','#2a62f0','#bfeaff'],gold:['#fff6c4','#d9a42e','#fff1a3','#a87318','#ffe07a'],leg:['#ff5d8f','#ffcb3d','#3ddc97','#4da3ff','#c46bff']})[v].forEach((c,i,a)=>fr.addColorStop(i/(a.length-1),c));}
   x.fillStyle=fr;x.fill();x.restore();
   // inner
   x.save();rr(x,IX,IY,IW,IH,3.6*u);x.clip();
@@ -4247,8 +4248,22 @@ function gameFor(l){const e=LEX[l],r=rarity(e);if(r>=3)return has('epicoeasy')?'
 function fangCatch(l,perfect){const sd=(S.seen||{})[l]||{};S.caught[l]={t:Date.now(),ex:sd.ex||'',s:sd.s||'fang'};delete S.seen[l];
   S.fang=S.fang||{};S.fang[l]=Math.max(S.fang[l]||0,perfect?2:1);
   S.srs=S.srs||{};if(!S.srs[l])S.srs[l]={b:1,d:Date.now()+DAY,r:1,c:1};
-  let bonus=null;if(perfect&&Math.random()<.15&&!(S.cards[l]&&S.cards[l].holo)){(S.cards[l]||(S.cards[l]={})).holo=Date.now();bonus='holo';}
+  let bonus=null;if(Math.random()<.25&&!(S.cards[l]&&S.cards[l].holo)){(S.cards[l]||(S.cards[l]={})).holo=Date.now();bonus='holo';}
   markDay();save();refreshW(l);return bonus;}
+function catchReveal(l,v,perfect,onNext){const e=LEX[l];
+  openModal(`<div class="chestwrap fangchest"><div class="rays" id="rays"></div><div class="cglow" id="cglow"></div>${CHEST_SVG}<p class="chint" id="chint">¡Atrapado!</p></div>`,true);
+  modalLock=true;trainKey=null;const ch=$('#chest');ch.classList.add('shake');
+  setTimeout(()=>{ch.classList.remove('shake');ch.classList.add('open');$('#cglow').style.setProperty('--gc',v==='holo'?'#8fb4ff':'#ffcb3d');$('#cglow').classList.add('burst');$('#rays').classList.add('on');},700);
+  setTimeout(()=>{ch.classList.add('gone');},1150);
+  setTimeout(()=>{ch.remove();const ci=$('#chint');if(ci)ci.remove();const w=document.querySelector('.chestwrap');if(!w){modalLock=false;return;}
+    w.insertAdjacentHTML('beforeend',`<div class="flip enter" id="flip"><div class="inner"><div class="face">${tcgHtml(e,v,{tilt:1})}</div><div class="face bk"><div class="tcg cardback"><div class="tcg-in"><div class="lg">P</div></div></div></div></div></div>
+      <div class="rev" id="rev" style="opacity:0;transition:opacity .4s"><span class="vlabel vl-${v==='holo'?'holo':'normal'}">${v==='holo'?'Holo':'Gefangen'}</span>
+      <div class="big">${v==='holo'?'¡Atrapado en holo!':'¡Atrapado!'}</div>
+      <p><b>${esc(e.k)}</b> = ${esc(e[S.lang])}${perfect?' &middot; fehlerfrei':''}. Jetzt in deinem Wortdex und in Fach 1.</p>
+      <div class="acts"><button class="btn" id="fNext">Weiter</button></div></div>`);
+    bindTilt(w);setTimeout(()=>{const f=$('#flip');if(f)f.classList.add('show');},450);
+    setTimeout(()=>{const r=$('#rev');if(r)r.style.opacity=1;if(v==='holo')confetti();modalLock=false;},1200);
+    $('#fNext').onclick=()=>{modalLock=false;onNext();};trainKey=ev=>{if(ev.key==='Enter'&&!modalLock)onNext();};},1450);}
 function openFang(after,only){
   hideTip();let list=only||seenList();
   if(curStory){const sid=curStory.id;list=list.sort((a,b)=>((S.seen[b]||{}).s===sid)-((S.seen[a]||{}).s===sid));}
@@ -4269,6 +4284,7 @@ function runFang(list,after){let i=0;const res=[];
     const h=$('#fHint');if(h)h.remove();speak(e.k);
     $('#qfb').innerHTML=ok?`<span style="color:var(--good)">¡Atrapado! <b>${esc(e.k)}</b> = ${esc(e[S.lang])}</span>${perfect?' <span class="fmove">Fehlerfrei'+(bonus?' &middot; <b style="color:#8fb4ff">Holo-Karte!</b>':'')+'</span>':''}`
       :`<span style="color:var(--bad)">Entwischt. <b>${esc(e.k)}</b> = ${esc(e[S.lang])}</span><span class="fmove">Bleibt gesichtet, nächste Fangzeit nochmal.</span>`;
+    if(ok){trainKey=null;setTimeout(()=>catchReveal(l,bonus||'normal',perfect,next),650);return;}
     $('#qnext').classList.remove('hidden');$('#qnext').onclick=next;trainKey=ev=>{if(ev.key==='Enter')next();};}
   function play(){const l=list[i],e=LEX[l],g=gameFor(l);trainKey=null;let hinted=false,mistakes=0,over=false;
     const sd=(S.seen||{})[l]||{};const ex=sd.ex&&sd.ex.length>e.k.length+12?esc(sd.ex).replace(new RegExp('(^|[^\\p{L}])('+e.k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[\\p{L}]*)','iu'),'$1<b>$2</b>'):'';
