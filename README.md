@@ -20,6 +20,9 @@ Lernstand pro Wort: Entdeckt, Vertraut, Gefestigt, Gemeistert (10 Begegnungen un
 
 Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien sind gut erforscht, die App selbst wurde nicht in einer eigenen Studie getestet.
 
+### Fangen
+Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
+
 ## Features
 
 - **60 Kapitel auf Niveau A1**, eine durchgehende Geschichte in Barcelona, rund 800 Wörter

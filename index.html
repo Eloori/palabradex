@@ -252,6 +252,21 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .kmoved{font-size:14px}
 .kwchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}.kwchip{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--mut)}.kwchip b{display:block;font-family:Literata;font-size:17px;color:var(--txt)}
 @media(max-width:560px){.kfach{min-height:108px}.kcards{height:62px}.kcards i{height:48px}.kfront b{font-size:15px}.kstats{grid-template-columns:repeat(2,1fr)}}
+.w.new.seen{text-decoration-style:dashed;text-decoration-color:#c46bff}
+.w.seen::after{content:'';display:inline-block;width:.3em;height:.3em;border-radius:50%;background:#c46bff;vertical-align:.55em;margin-left:1px}
+.w.due{background:linear-gradient(transparent 60%,#ffcb3d55 60%);border-radius:2px}
+.seentag{background:#c46bff!important;color:#fff!important}.tseen{font-size:12px;color:#d9b8ff;margin-top:6px}
+.tdh{font-size:13px;color:var(--mut);margin:6px 0 2px}.tdb{display:flex;gap:14px;margin-top:4px}.tlink.good{color:#3ddc97}.tlink.bad{color:#ff6b6b}
+.eseen{font-size:.8em;color:#9b5cf0;margin-top:.6em;width:100%}.eseen svg,.btn svg{vertical-align:-2px}
+.fangbar{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin-bottom:14px;padding:12px 16px;border-radius:14px;background:linear-gradient(120deg,#3b1d5a,#22285e);border:1px solid #c46bff55;color:#e9d8ff;text-align:left}
+.fex{font-family:Literata;font-style:italic;color:var(--mut);text-align:center;margin:6px 0 4px;font-size:15px;line-height:1.5}.fex b{color:var(--txt);font-style:normal}
+.lslots{display:flex;gap:6px;justify-content:center;margin:14px 0 10px;flex-wrap:wrap}.lslot{width:36px;height:44px;border-bottom:3px solid #ffffff40;display:grid;place-items:center;font-family:Bungee;font-size:21px;color:#3ddc97}
+.ltiles{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0}
+.ltile{width:46px;height:50px;border-radius:12px;background:linear-gradient(#2f3570,#1e2247);border:1px solid var(--line);font-family:Bungee;font-size:21px;transform:rotate(var(--r));transition:transform .2s,opacity .2s;box-shadow:0 4px 0 #0006}
+.ltile:hover{transform:rotate(0) translateY(-2px)}.ltile.used{opacity:.12;transform:scale(.8)}.ltile.shake{animation:lshk .35s;border-color:#ff6b6b}
+@keyframes lshk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.lmiss{text-align:center;font-size:12px;color:var(--mut);margin-top:6px}.lmiss i,.lmiss s{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:5px;background:#ff6b6b}.lmiss s{background:#ffffff22}
+.membar{height:6px;background:#ffffff14;border-radius:4px;overflow:hidden;margin-top:14px}.membar i{display:block;height:100%;background:var(--acc);animation:memb 3.2s linear forwards}@keyframes memb{from{width:100%}to{width:0}}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -3315,7 +3330,7 @@ function occ(l){let n=0,c=0;for(const id in STATS){if(STATS[id][l]){n+=STATS[id]
    STATE + SPEICHER
    ============================================================ */
 const LS='palabradex.v1';
-function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
+function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},seen:{},fang:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
 let S=defState();
 try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}
 const remote={ref:null,writing:false,pending:false,timer:null};
@@ -3340,6 +3355,8 @@ function merge(a,b){
   o.days=[...new Set([...(a.days||[]),...(b.days||[])])].sort().slice(-120);
   for(const src of [a.mast||{},b.mast||{}])for(const k in src)o.mast[k]=Math.max(o.mast[k]||0,src[k]);
   for(const src of [a.enc||{},b.enc||{}])for(const k in src)o.enc[k]=Math.max(o.enc[k]||0,src[k]);
+  for(const src of [a.seen||{},b.seen||{}])for(const k in src)if(!o.caught[k])o.seen[k]=o.seen[k]||src[k];
+  for(const src of [a.fang||{},b.fang||{}])for(const k in src)o.fang[k]=Math.max(o.fang[k]||0,src[k]);
   for(const src of [a.srs||{},b.srs||{}])for(const k in src){const x=o.srs[k],y=src[k];if(!x||y.d>x.d)o.srs[k]=y;}
   o.opened=Math.max(a.opened||0,b.opened||0);o.empties=Math.max(a.empties||0,b.empties||0);o.spent=Math.max(a.spent||0,b.spent||0);o.bonusXp=Math.max(a.bonusXp||0,b.bonusXp||0);
   o.upd=Math.max(a.upd||0,b.upd||0);return o;
@@ -3370,7 +3387,9 @@ const REWARDS=[
  {lv:4,id:'mar',de:'Lesethema Mediterráneo',sub:'Blau wie das Meer vor Barcelona'},
  {lv:5,id:'nunito',de:'Schrift Moderna',sub:'Runde, moderne Leseschrift'},
  {lv:6,id:'kalam',de:'Schrift Manuscrita',sub:'Liest sich wie ein handgeschriebenes Tagebuch'},
- {lv:7,id:'bonus',de:'Bonuskapitel',sub:'El diario de Mia (in Arbeit)'}
+ {lv:7,id:'pista',de:'Pista',sub:'Ein Tipp pro Wort in der Fangzeit'},
+ {lv:15,id:'rarofree',de:'Raro ohne Minispiel',sub:'Raro-Wörter, die du 3x gelesen hast, fängst du direkt'},
+ {lv:25,id:'epicoeasy',de:'Épico leichter',sub:'Épico fängst du mit dem Bedeutungsspiel statt Tippen'}
 ];
 function has(id){const r=REWARDS.find(r=>r.id===id);return !r||levelOf(xp())>=r.lv;}
 function doneStories(){return STORIES.filter(s=>S.stories[s.id]&&S.stories[s.id].done);}
@@ -3385,6 +3404,7 @@ function quests(e){
   const m=met(e.k);q.push(Q('In 3 Kapiteln gelesen',m,3,3));q.push(Q('In 6 Kapiteln gelesen',m,6,6));
   const tm=(S.mast||{})[e.k]||0;q.push(Q('3x im Training richtig',tm,3,3));
   const c=cardCount(e.k);q.push(Q('Spezialkarte gesammelt',c,1,4));q.push(Q('Alle 3 Spezialkarten',c,3,12));
+  if(rarity(e)>=2&&(!S.caught[e.k]||(S.fang||{})[e.k])){const fg=(S.fang||{})[e.k]||0;q.push(Q('Im Minispiel gefangen',fg?1:0,1,3));q.push(Q('Fehlerfrei gefangen',fg===2?1:0,1,5));}
   const ok=!!S.caught[e.k];q.forEach(x=>x.done=ok&&x.cur>=x.max);return q;
 }
 function questTotals(){let n=0,x=0;for(const k in S.caught){const e=LEX[k];if(!e)continue;for(const q of quests(e))if(q.done){n++;x+=q.x;}}return {n,x};}
@@ -3420,9 +3440,9 @@ const tr=e=>e[S.lang]||e.de;
 const num=n=>'#'+String(n).padStart(3,'0');
 const SENT=[];
 function wcls(k){const f=FORMS[k];if(!f||f.name||!f.l)return '';const e=LEX[f.l];
-  if(!S.caught[f.l])return ' new'+(rarity(e)>=2?' rare':'');
-  const fl=formsList(e);if(fl&&fl.some(x=>x.key===k)&&!(S.forms[f.l]||[]).includes(k))return ' nf';return '';}
-function refreshW(l){document.querySelectorAll(`.w[data-l="${CSS.escape(l)}"]`).forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});}
+  if(!S.caught[f.l])return ' new'+(rarity(e)>=2?' rare':'')+((S.seen||{})[f.l]?' seen':'');
+  let c='';const fl=formsList(e);if(fl&&fl.some(x=>x.key===k)&&!(S.forms[f.l]||[]).includes(k))c=' nf';if(isDue(f.l))c+=' due';return c;}
+function refreshW(l){document.querySelectorAll(`.w[data-l="${CSS.escape(l)}"]`).forEach(w=>{w.classList.remove('new','rare','nf','seen','due');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});}
 function markup(text){
   const parts=text.match(/[^.!?»]+[.!?»]*\s*/g)||[text];
   return parts.map(s=>{const sid=SENT.push(s.trim())-1;let out='',i=0;
@@ -3473,6 +3493,7 @@ function unlockForm(el){
 }
 function catchWord(el){
   const k=el.dataset.k,f=FORMS[k];if(!f||f.name)return false;const l=f.l;
+  if(!S.caught[l]&&needsGame(l)){sight(el,l);return 'seen';}
   const isNew=!S.caught[l];
   if(isNew)S.caught[l]={t:Date.now(),ex:SENT[+el.dataset.s]||'',s:curStory?curStory.id:''};
   else if(!S.caught[l].ex)S.caught[l].ex=SENT[+el.dataset.s]||'';
@@ -3500,15 +3521,18 @@ function showTip(el,isNew){
   else{const e=LEX[f.l];const t=f[S.lang]||e[S.lang];
     tip.innerHTML=`<div class="tw"><span>${esc(el.textContent)}</span><button class="spk" data-say="${esc(el.textContent)}">${SPK}</button></div>
       <div class="tr">${esc(t)}</div>
-      <div class="tl">${f.l.toLowerCase()!==k?'<span>&rarr; '+esc(f.l)+'</span>':''}<span>${(S.lang==='en'?POSEN:POSDE)[e.p]}</span><span>${num(e.n)}</span>${isNew?'<span class="newtag">NEU</span>':''}</div>
+      <div class="tl">${f.l.toLowerCase()!==k?'<span>&rarr; '+esc(f.l)+'</span>':''}<span>${(S.lang==='en'?POSEN:POSDE)[e.p]}</span><span>${num(e.n)}</span>${isNew==='seen'?'<span class="newtag seentag">GESICHTET</span>':isNew?'<span class="newtag">NEU</span>':''}</div>${isNew==='seen'?'<div class="tseen">Selten! Du fängst es am Kapitelende in der Fangzeit.</div>':''}
       <button class="tlink" data-card="${esc(f.l)}">Karte ansehen</button>`;}
+  placeTip(el);
+}
+function placeTip(el){
   tip.style.display='block';tip.classList.remove('show');
   const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
   let x=r.left+r.width/2-tw/2;x=Math.max(8,Math.min(innerWidth-tw-8,x));let y=r.top-th-10;if(y<8)y=r.bottom+10;
   tip.style.left=x+'px';tip.style.top=y+'px';requestAnimationFrame(()=>tip.classList.add('show'));
 }
 function hideTip(){clearTimeout(hideT);tip.classList.remove('show');tip.style.display='none';tipFor=null;document.querySelectorAll('.w.on').forEach(w=>w.classList.remove('on'));}
-function hoverWord(el){const n=catchWord(el);showTip(el,n);}
+function hoverWord(el){const n=catchWord(el);if(n!=='seen'&&el.closest('#rct')&&isDue(el.dataset.l)){dueTip(el);return;}showTip(el,n);}
 document.addEventListener('pointerover',e=>{if(e.pointerType!=='mouse')return;const w=e.target.closest&&e.target.closest('.w');
   if(w){clearTimeout(hideT);clearTimeout(hovT);hovT=setTimeout(()=>hoverWord(w),170);}else if(e.target.closest&&e.target.closest('#tip'))clearTimeout(hideT);});
 document.addEventListener('pointerout',e=>{if(e.pointerType!=='mouse')return;const w=e.target.closest&&(e.target.closest('.w')||e.target.closest('#tip'));
@@ -3517,6 +3541,7 @@ let lastPT='mouse',suppressClick=false;
 document.addEventListener('pointerdown',e=>{lastPT=e.pointerType;if(!e.target.closest('#tip')&&!e.target.closest('.w')&&tipFor&&lastPT!=='mouse'&&!e.target.closest('.rwrap'))hideTip();},true);
 document.addEventListener('click',e=>{
   const say=e.target.closest('[data-say]');if(say){speak(say.dataset.say);return;}
+  const fg=e.target.closest('[data-fang]');if(fg){openFang(null);return;}
   const cd=e.target.closest('[data-card]');if(cd){hideTip();openCard(cd.dataset.card);return;}
   const w=e.target.closest('.w');
   if(w&&lastPT!=='mouse'){if(suppressClick){suppressClick=false;return;}if(tipFor===w){hideTip();return;}hoverWord(w);}
@@ -3543,7 +3568,7 @@ function homeHtml(){
   const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
   return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
   <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div><div class="stat"><b>${Object.keys(S.caught).filter(k=>LEX[k]&&mastery(k)>=4).length}</b><span>Wörter gemeistert</span></div></div>
-  ${chest}${cont}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
+  ${chest}${cont}${seenList().length?`<div class="cont" data-fang style="background:linear-gradient(120deg,#3b1d5a,#22285e)"><div><small>Fangzeit</small><div class="t">${seenList().length} gesichtete ${seenList().length===1?'Wort wartet':'Wörter warten'}</div></div><span class="btn">Fangen</span></div>`:''}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
   <div class="grid">${LEVELS.map(L=>{const s=lvlStats(L.c);const lk=!s.n;
     return `<button class="tile ${lk?'locked':''}" data-lvl="${L.c}" style="--c1:${L.c1};--c2:${L.c2}">${lk?'<span class="lock">PRÓXIMAMENTE</span>':''}
     <div class="tile-code">${L.c}</div><div class="tile-name">${L.es}</div><div class="tile-sub">${S.lang==='en'?L.en:L.de}</div>
@@ -3588,6 +3613,7 @@ function openReader(id){R.counted=false;stopTts();
   R.page=p.page||0;R.pages=1;requestAnimationFrame(()=>layout(false));
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>layout(true));
   endActs();updateReaderWords();
+  if(!p.read&&!(p.page>0)&&dueCount())setTimeout(()=>{if(curStory===st&&$('#modal').classList.contains('hidden'))warmUp(st);},450);
 }
 function closeReader(){stopTts();if(rd.classList.contains('hidden'))return;rd.classList.add('hidden');document.body.style.overflow='';hideTip();curStory=null;render();}
 const FONTS=[['literata','Literata',"Literata"],['garamond','Clásica',"'EB Garamond'"],['nunito','Moderna',"Nunito"],['kalam','Manuscrita',"Kalam"]];
@@ -3705,7 +3731,7 @@ function renderDex(){const _dx=$('#dex'),_st=_dx.scrollTop;requestAnimationFrame
   const nSpecial=caught.reduce((a,e)=>a+cardCount(e.k),0),maxSpecial=all.length*3;
   const d=$('#dex');let body='';
   if(dexTab==='dex'){
-    body=`<div class="dsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="dexQ" type="search" autocomplete="off" placeholder="Suchen: Wort, Form, Übersetzung oder Nummer" value="${esc(dexQ)}"></div>
+    body=`${seenList().length?`<button class="fangbar" data-fang><span>${PAW} <b>${seenList().length}</b> gesichtete seltene Wörter</span><span class="btn">Fangzeit</span></button>`:''}<div class="dsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="dexQ" type="search" autocomplete="off" placeholder="Suchen: Wort, Form, Übersetzung oder Nummer" value="${esc(dexQ)}"></div>
     <label class="dsort">Sortieren <select id="dexS">${SORTS.map(([k,n])=>`<option value="${k}" ${dexSort===k?'selected':''}>${n}</option>`).join('')}</select></label>
     <div class="filters">${FILT.map(([k,n])=>`<button class="chip ${dexFilter===k?'on':''}" data-f="${k}">${n}</button>`).join('')}</div>
     <div class="dgrid" id="dGrid"></div>`;
@@ -4197,10 +4223,119 @@ function chapterDone(st,k){const nx=storyAfter(st);const ch=chestsAvail();
 function endActs(){const box=document.getElementById('rEndActs');if(!box||!curStory)return;const st=curStory,p=S.stories[st.id]||{};const nx=storyAfter(st),ch=chestsAvail();
   const tx=document.getElementById('rEndTxt');if(tx)tx.textContent=p.done?'Geschafft. Weiter geht es mit dem nächsten Text.':'Beantworte mindestens 3 von 4 Fragen richtig. Dann gibt es eine Truhe und den nächsten Text.';
   box.innerHTML=p.done?`${ch?`<button class="btn gold" id="eChest">Truhe öffnen (${ch})</button>`:''}${nx&&!nx.soon?`<button class="btn" id="eNext">Weiter: ${esc(chLabel(nx))} &rarr;</button>`:''}<button class="btn ghost" id="rQuiz">Quiz wiederholen</button>`
-    :`<button class="btn" id="rQuiz">Quiz starten</button>`;
-  $('#rQuiz').onclick=()=>openQuiz(st);
+    :`<button class="btn" id="rQuiz">${seenList().length?'Fangzeit und Quiz':'Quiz starten'}</button>`;
+  const nSeen=seenList().length;if(p.done&&nSeen)box.insertAdjacentHTML('afterbegin',`<button class="btn" id="eFang">${PAW} Fangzeit (${nSeen})</button>`);
+  if(nSeen&&!p.done)box.insertAdjacentHTML('beforeend',`<p class="eseen">${PAW} ${nSeen} ${nSeen===1?'seltenes Wort':'seltene Wörter'} gesichtet</p>`);
+  $('#eFang')&&($('#eFang').onclick=()=>openFang(()=>{closeAllModals();endActs();}));
+  $('#rQuiz').onclick=()=>{if(!p.done&&seenList().length)openFang(()=>openQuiz(st));else openQuiz(st);};
   $('#eChest')&&($('#eChest').onclick=()=>openChest());
   $('#eNext')&&($('#eNext').onclick=()=>openReader(nx.id));}
+
+/* ---------- Sichten und Fangzeit ---------- */
+const PAW='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2"/><circle cx="6" cy="10" r="2.2"/><circle cx="18" cy="10" r="2.2"/><circle cx="9.2" cy="6" r="2.1"/><circle cx="14.8" cy="6" r="2.1"/></svg>';
+function needsGame(l){const e=LEX[l];if(!e||e.p==='prop'||!curStory)return false;const r=rarity(e);if(r<2)return false;
+  if(STORIES.filter(s=>!s.soon)[0]===curStory)return false;
+  if(r===2&&has('rarofree')&&((S.enc||{})[l]||0)>=3)return false;return true;}
+function seenList(){S.seen=S.seen||{};return Object.keys(S.seen).filter(l=>LEX[l]&&!S.caught[l]);}
+function sight(el,l){S.seen=S.seen||{};if(S.seen[l])return false;S.seen[l]={t:Date.now(),ex:SENT[+el.dataset.s]||'',s:curStory?curStory.id:''};markDay();save();refreshW(l);
+  const e=LEX[l],[rn,rc]=RAR[rarity(e)];
+  if(!S.hintSeen){S.hintSeen=1;save();toast(`<b>Seltenes Wort gesichtet!</b><span>${rn}-Wörter fängst du am Kapitelende in der Fangzeit. Lies einfach weiter.</span>`,'big',5200);}
+  else toast(`<span class="gem" style="background:${rc}">${PAW}</span><span><b>${esc(l)}</b> gesichtet</span><span class="x">${rn}</span>`);
+  updateReaderWords();if(curStory)endActs();return true;}
+function gameFor(l){const e=LEX[l],r=rarity(e);if(r>=3)return has('epicoeasy')?'mean':'memory';
+  const k=e.k;return (k.length>=3&&k.length<=10&&!/\s/.test(k)&&(e.n%2===0))?'letters':'mean';}
+function fangCatch(l,perfect){const sd=(S.seen||{})[l]||{};S.caught[l]={t:Date.now(),ex:sd.ex||'',s:sd.s||'fang'};delete S.seen[l];
+  S.fang=S.fang||{};S.fang[l]=Math.max(S.fang[l]||0,perfect?2:1);
+  S.srs=S.srs||{};if(!S.srs[l])S.srs[l]={b:1,d:Date.now()+DAY,r:1,c:1};
+  let bonus=null;if(perfect&&Math.random()<.15&&!(S.cards[l]&&S.cards[l].holo)){(S.cards[l]||(S.cards[l]={})).holo=Date.now();bonus='holo';}
+  markDay();save();refreshW(l);return bonus;}
+function openFang(after,only){
+  hideTip();let list=only||seenList();
+  if(curStory){const sid=curStory.id;list=list.sort((a,b)=>((S.seen[b]||{}).s===sid)-((S.seen[a]||{}).s===sid));}
+  if(!list.length){after&&after();return;}
+  openModal(`<div class="qres fang"><small class="kk">FANGZEIT</small><div class="big" style="font-size:30px;margin:6px 0">${list.length} ${list.length===1?'seltenes Wort':'seltene Wörter'} gesichtet</div>
+    <p>Fange sie mit einem kurzen Spiel. Was nicht klappt, bleibt gesichtet und du versuchst es später nochmal.</p>
+    <div class="kwchips">${list.map(l=>{const [rn,rc]=RAR[rarity(LEX[l])];return `<span class="kwchip" style="border-color:${rc}"><b>${esc(l)}</b>${rn}</span>`;}).join('')}</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">${after?`<button class="btn ghost" id="fLater">Später</button>`:''}<button class="btn" id="fGo">Fangzeit starten</button></div></div>`);
+  $('#fLater')&&($('#fLater').onclick=()=>{closeModal();after();});
+  $('#fGo').onclick=()=>runFang(shuffle(list),after);}
+function runFang(list,after){let i=0;const res=[];
+  const next=()=>{i++;if(i<list.length)play();else done();};
+  function frame(l,inner,sub){const e=LEX[l],[rn,rc]=RAR[rarity(e)];
+    return `<div class="trtitle">Fangzeit &middot; ${i+1} / ${list.length}</div><div class="qprog">${list.map((_,j)=>`<i class="${j<i?(res[j]&&res[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>
+      <div class="trtag"><span class="fchip" style="--fc:${rc}">${rn}</span> <span class="trreps">${sub}</span></div>${inner}
+      <div class="qfoot"><span class="qfb" id="qfb"></span><span style="display:flex;gap:8px">${has('pista')?'<button class="btn ghost" id="fHint">Tipp</button>':''}<button class="btn hidden" id="qnext">${i<list.length-1?'Weiter':'Ergebnis'}</button></span></div>`;}
+  function result(l,ok,hinted,mistakes){const perfect=ok&&!hinted&&!mistakes;const e=LEX[l];let bonus=null;if(ok)bonus=fangCatch(l,perfect);res[i]={l,ok,perfect,bonus};
+    const h=$('#fHint');if(h)h.remove();speak(e.k);
+    $('#qfb').innerHTML=ok?`<span style="color:var(--good)">¡Atrapado! <b>${esc(e.k)}</b> = ${esc(e[S.lang])}</span>${perfect?' <span class="fmove">Fehlerfrei'+(bonus?' &middot; <b style="color:#8fb4ff">Holo-Karte!</b>':'')+'</span>':''}`
+      :`<span style="color:var(--bad)">Entwischt. <b>${esc(e.k)}</b> = ${esc(e[S.lang])}</span><span class="fmove">Bleibt gesichtet, nächste Fangzeit nochmal.</span>`;
+    $('#qnext').classList.remove('hidden');$('#qnext').onclick=next;trainKey=ev=>{if(ev.key==='Enter')next();};}
+  function play(){const l=list[i],e=LEX[l],g=gameFor(l);trainKey=null;let hinted=false,mistakes=0,over=false;
+    const sd=(S.seen||{})[l]||{};const ex=sd.ex&&sd.ex.length>e.k.length+12?esc(sd.ex).replace(new RegExp('(^|[^\\p{L}])('+e.k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[\\p{L}]*)','iu'),'$1<b>$2</b>'):'';
+    if(g==='mean'){const pool=shuffle(Object.keys(LEX).filter(x=>x!==l&&LEX[x].p===e.p&&LEX[x][S.lang]!==e[S.lang])).slice(0,3);const opts=shuffle([l,...pool]);
+      openModal(frame(l,`${ex?`<div class="fex">${ex}</div>`:''}<div class="trq"><span class="trw">${esc(e.k)}</span><button class="spk" data-say="${esc(e.k)}">${SPK}</button></div><div class="trh">Was bedeutet das?</div>
+        <div class="qopts trgrid">${opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(LEX[o][S.lang])}</button>`).join('')}</div>`,'Bedeutung'));
+      const ans=j=>{if(over)return;over=true;const ok=opts[j]===l;document.querySelectorAll('.qopt').forEach(x=>{x.disabled=true;if(opts[+x.dataset.o]===l)x.classList.add('ok');});if(!ok)document.querySelector(`.qopt[data-o="${j}"]`).classList.add('no');result(l,ok,hinted,0);};
+      document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>ans(+b.dataset.o));trainKey=ev=>{if(/^[1-4]$/.test(ev.key))ans(+ev.key-1);};
+      $('#fHint')&&($('#fHint').onclick=()=>{hinted=true;let n=0;document.querySelectorAll('.qopt').forEach(x=>{if(n<2&&opts[+x.dataset.o]!==l){x.disabled=true;x.style.opacity=.3;n++;}});$('#fHint').remove();});}
+    else if(g==='letters'){const word=e.k;const chars=[...word];let pos=0;const tiles=shuffle(chars.map((c,j)=>({c,j})));
+      openModal(frame(l,`${ex?`<div class="fex">${ex.replace(/<b>.*?<\/b>/,'<b>_____</b>')}</div>`:''}<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">Setze das Wort zusammen</div>
+        <div class="lslots">${chars.map((c,j)=>`<span class="lslot" data-j="${j}"></span>`).join('')}</div>
+        <div class="ltiles">${tiles.map((t,j)=>`<button class="ltile" data-t="${j}" style="--r:${(Math.random()*16-8).toFixed(1)}deg">${esc(t.c)}</button>`).join('')}</div>
+        <div class="lmiss" id="lMiss"></div>`,'Buchstaben'));
+      const place=(btn)=>{const t=tiles[+btn.dataset.t];if(over||btn.disabled)return;
+        if(t.c.toLowerCase()===chars[pos].toLowerCase()){btn.disabled=true;btn.classList.add('used');document.querySelector(`.lslot[data-j="${pos}"]`).textContent=chars[pos];pos++;
+          if(pos===chars.length){over=true;result(l,true,hinted,mistakes);}}
+        else{mistakes++;btn.classList.remove('shake');void btn.offsetWidth;btn.classList.add('shake');$('#lMiss').innerHTML='Fehler: '+'<i></i>'.repeat(mistakes)+'<s></s>'.repeat(Math.max(0,3-mistakes));
+          if(mistakes>=3){over=true;document.querySelectorAll('.lslot').forEach((s,j)=>s.textContent=chars[j]);result(l,false,hinted,mistakes);}}};
+      document.querySelectorAll('.ltile').forEach(b=>b.onclick=()=>place(b));
+      trainKey=ev=>{if(ev.key.length===1){const b=[...document.querySelectorAll('.ltile:not(:disabled)')].find(x=>tiles[+x.dataset.t].c.toLowerCase()===ev.key.toLowerCase()&&tiles[+x.dataset.t].c.toLowerCase()===chars[pos].toLowerCase())||[...document.querySelectorAll('.ltile:not(:disabled)')].find(x=>tiles[+x.dataset.t].c.toLowerCase()===ev.key.toLowerCase());if(b)place(b);}};
+      $('#lMiss').innerHTML='Fehler: '+'<s></s>'.repeat(3);
+      $('#fHint')&&($('#fHint').onclick=()=>{hinted=true;const b=[...document.querySelectorAll('.ltile:not(:disabled)')].find(x=>tiles[+x.dataset.t].c.toLowerCase()===chars[pos].toLowerCase());if(b)place(b);$('#fHint').remove();});}
+    else{const art=e.g?(e.g==='m'?'el':'la'):'';
+      openModal(frame(l,`<div class="memshow" id="mShow"><div class="trq"><span class="trw">${esc(e.k)}</span></div><div class="trh">${esc(e[S.lang])} &middot; merk es dir!</div><div class="membar"><i></i></div></div>
+        <div id="mAsk" class="hidden"><div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">Schreib das Wort aus dem Gedächtnis</div>
+        <div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Fangen</button></div>
+        <div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div></div>`,'Gedächtnis'));
+      speak(e.k);const hb=$('#fHint');if(hb)hb.style.visibility='hidden';
+      setTimeout(()=>{if(!document.getElementById('mShow'))return;$('#mShow').remove();$('#mAsk').classList.remove('hidden');if(hb)hb.style.visibility='';const inp=$('#tIn');inp.focus();
+        document.querySelectorAll('.accents [data-ch]').forEach(b=>b.onclick=()=>{inp.value+=b.dataset.ch;inp.focus();});
+        const check=()=>{if(over)return;const v=inp.value.trim().toLowerCase().replace(/^(el|la|los|las)\s+/,'');if(!v)return;over=true;inp.disabled=true;
+          const ok=norm(v)===norm(e.k);result(l,ok,hinted,ok&&v!==e.k.toLowerCase()?1:0);};
+        $('#tOk').onclick=check;trainKey=ev=>{if(ev.key==='Enter'){if(over)next();else check();}};
+        $('#fHint')&&($('#fHint').onclick=()=>{hinted=true;inp.value=e.k[0];inp.focus();$('#fHint').remove();});},3200);}
+  }
+  function done(){trainKey=null;updateHud();render();updateReaderWords();if(!$('#dex').classList.contains('hidden'))renderDex();
+    const got=res.filter(r=>r.ok),left=res.filter(r=>!r.ok);
+    openModal(`<div class="qres"><small class="kk">FANGZEIT</small><div class="big">${got.length}/${res.length}</div><p>${got.length===res.length?'¡Todos atrapados!':got.length?'Gut gefangen!':'Diesmal sind alle entwischt.'}</p>
+      ${got.length?`<div class="kwchips">${got.map(r=>`<button class="kwchip" data-card="${esc(r.l)}"><b>${esc(r.l)}</b>${r.perfect?'fehlerfrei':'gefangen'}${r.bonus?' &middot; Holo':''}</button>`).join('')}</div>`:''}
+      ${left.length?`<p style="font-size:13px;color:var(--mut);margin-top:10px">Noch gesichtet: ${left.map(r=>esc(r.l)).join(', ')}</p>`:''}
+      <p style="font-size:13px">Gefangene Wörter starten direkt in Fach 1 deines Karteikastens.</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap">${left.length?`<button class="btn ghost" id="fAgain">Nochmal versuchen (${left.length})</button>`:''}<button class="btn" id="fDone">${after?'Weiter zum Quiz':'Fertig'}</button></div></div>`);
+    $('#fAgain')&&($('#fAgain').onclick=()=>runFang(shuffle(left.map(r=>r.l)),after));
+    $('#fDone').onclick=()=>{if(after)after();else closeModal();};}
+  play();
+}
+/* Aufwärmen und Wiederholen im Text */
+function warmUp(st,go2){const now=Date.now(),srs=S.srs||{};const due=trainPool().filter(l=>srs[l]&&srs[l].d<=now).sort((a,b)=>srs[a].d-srs[b].d).slice(0,5);
+  if(!due.length){go2&&go2();return;}
+  openModal(`<div class="qres"><small class="kk">AUFWÄRMEN</small><div class="big" style="font-size:28px;margin:6px 0">${due.length} ${due.length===1?'Wort ist':'Wörter sind'} fällig</div>
+    <p>Kurz wiederholen, bevor es losgeht. Dauert keine Minute.</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap"><button class="btn ghost" id="wSkip">Später</button><button class="btn" id="wGo">Los</button></div></div>`);
+  $('#wSkip').onclick=()=>{closeModal();go2&&go2();};
+  $('#wGo').onclick=()=>runTrain(shuffle(due),{title:'Aufwärmen',onDone:(sc,r)=>{closeAllModals();toast(`<b>Aufgewärmt: ${sc}/${r.length}</b><span>Viel Spass beim Lesen!</span>`);refreshDue();go2&&go2();}});}
+function isDue(l){const x=(S.srs||{})[l];return !!(x&&S.caught[l]&&x.d<=Date.now());}
+function refreshDue(){document.querySelectorAll('#rct .w').forEach(w=>w.classList.toggle('due',isDue(w.dataset.l)));}
+function dueTip(el){const l=el.dataset.l,e=LEX[l];tipFor=el;document.querySelectorAll('.w.on').forEach(w=>w.classList.remove('on'));el.classList.add('on');
+  const fc=FACH[fachOf(l)];
+  tip.innerHTML=`<div class="tw"><span>${esc(el.textContent)}</span><button class="spk" data-say="${esc(el.textContent)}">${SPK}</button></div>
+    <div class="tl"><span class="fchip" style="--fc:${fc[1]}">${fc[0]}</span><span>fällig</span></div>
+    <div class="tdq" id="tdq"><div class="tdh">Weisst du es noch?</div><button class="tlink" id="tdShow">Auflösen</button></div>`;
+  placeTip(el);
+  $('#tdShow').onclick=ev=>{ev.stopPropagation();const f=FORMS[el.dataset.k]||{};$('#tdq').innerHTML=`<div class="tr">${esc(f[S.lang]||e[S.lang])}</div><div class="tdb"><button class="tlink bad" id="tdNo">Nicht gewusst</button><button class="tlink good" id="tdYes">Gewusst</button></div>`;placeTip(el);
+    const ans=ok=>ev2=>{ev2.stopPropagation();const mv=srsAnswer(l,ok);if(ok)S.mast[l]=(S.mast[l]||0)+1;markDay();save();refreshDue();
+      toast(ok?`<span class="fchip" style="--fc:${FACH[mv.to][1]}">${FACH[mv.to][0]}</span><span><b>${esc(l)}</b> wieder ${dueTxt(S.srs[l].d)}</span>`:`<span class="fchip" style="--fc:${FACH[1][1]}">Fach 1</span><span><b>${esc(l)}</b> kommt bald wieder</span>`);hideTip();updateHud();};
+    $('#tdYes').onclick=ans(true);$('#tdNo').onclick=ans(false);};}
 
 /* ---------- Vorlesen (Lesen und Hören) ---------- */
 let ttsOn=false,ttsTok=0;
@@ -4265,7 +4400,7 @@ function openQuiz(st){
 /* ============================================================
    START
    ============================================================ */
-function refreshAll(){backfillEnc();updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
+function refreshAll(){backfillEnc();updateHud();render();if(curStory){applyReaderPrefs();document.querySelectorAll('#rct .w').forEach(w=>{w.classList.remove('new','rare','nf','seen','due');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});updateReaderWords();}if(!$('#dex').classList.contains('hidden'))renderDex();}
 try{if(isStandalone())document.documentElement.classList.add('standalone');}catch(e){}
 let installEvt=null;addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();installEvt=ev;});
 function isStandalone(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
