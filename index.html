@@ -274,6 +274,8 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .histlock{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--panel);border:1px dashed var(--line);margin-bottom:14px}
 .histlock b{display:block;margin-bottom:4px}.histlock span{color:var(--mut);font-size:14px;line-height:1.5}
 .cont.hist{background:linear-gradient(120deg,#5a2a12,#2a1d4a)}
+.kday{margin:12px 0 4px;font-size:13px;color:var(--mut)}.kday b{color:var(--txt)}.kbar{height:7px;border-radius:5px;background:#ffffff14;overflow:hidden;margin-top:6px}.kbar i{display:block;height:100%;background:linear-gradient(90deg,#3ddc97,#4da3ff)}
+.cbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.btn.stared{color:#ffcb3d;border-color:#ffcb3d}.btn svg{vertical-align:-2px}
 .dsort{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut);margin:0 0 12px}
 .dsort select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:13px}
 .dsearch{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:12px;color:var(--mut);max-width:520px}
@@ -4051,7 +4053,7 @@ function occ(l){let n=0,c=0;for(const id in STATS){if(STATS[id][l]){n+=STATS[id]
    STATE + SPEICHER
    ============================================================ */
 const LS='palabradex.v1';
-function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},seen:{},fang:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
+function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},seen:{},fang:{},star:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
 let S=defState();
 try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}
 const remote={ref:null,writing:false,pending:false,timer:null};
@@ -4066,7 +4068,7 @@ async function flushRemote(){
 }
 function merge(a,b){
   const o=defState();const newer=(b.upd||0)>(a.upd||0)?b:a;
-  for(const k of ['lang','fs','theme','font','mark','last'])o[k]=newer[k]??o[k];
+  for(const k of ['lang','fs','theme','font','mark','last','lastMode','hintSeen','histToast','daily'])o[k]=newer[k]??o[k];
   o.caught=Object.assign({},b.caught||{},a.caught||{});
   for(const k in (b.caught||{}))if(a.caught&&a.caught[k]&&b.caught[k].t<a.caught[k].t)o.caught[k]=b.caught[k];
   for(const src of [a.forms||{},b.forms||{}])for(const k in src)o.forms[k]=[...new Set([...(o.forms[k]||[]),...src[k]])];
@@ -4077,6 +4079,7 @@ function merge(a,b){
   for(const src of [a.mast||{},b.mast||{}])for(const k in src)o.mast[k]=Math.max(o.mast[k]||0,src[k]);
   for(const src of [a.enc||{},b.enc||{}])for(const k in src)o.enc[k]=Math.max(o.enc[k]||0,src[k]);
   for(const src of [a.seen||{},b.seen||{}])for(const k in src)if(!o.caught[k])o.seen[k]=o.seen[k]||src[k];
+  for(const src of [a.star||{},b.star||{}])for(const k in src)o.star[k]=Math.max(o.star[k]||0,src[k]||0);
   for(const src of [a.fang||{},b.fang||{}])for(const k in src)o.fang[k]=Math.max(o.fang[k]||0,src[k]);
   for(const src of [a.srs||{},b.srs||{}])for(const k in src){const x=o.srs[k],y=src[k];if(!x||y.d>x.d)o.srs[k]=y;}
   o.opened=Math.max(a.opened||0,b.opened||0);o.empties=Math.max(a.empties||0,b.empties||0);o.spent=Math.max(a.spent||0,b.spent||0);o.bonusXp=Math.max(a.bonusXp||0,b.bonusXp||0);
@@ -4162,7 +4165,7 @@ const num=n=>'#'+String(n).padStart(3,'0');
 const SENT=[];
 function wcls(k){const f=FORMS[k];if(!f||f.name||!f.l)return '';const e=LEX[f.l];
   if(!S.caught[f.l])return ' new'+(rarity(e)>=2?' rare':'')+((S.seen||{})[f.l]?' seen':'');
-  let c='';const fl=formsList(e);if(fl&&fl.some(x=>x.key===k)&&!(S.forms[f.l]||[]).includes(k))c=' nf';if(isDue(f.l))c+=' due';return c;}
+  let c='';const fl=formsList(e);if(fl&&fl.some(x=>x.key===k)&&!(S.forms[f.l]||[]).includes(k))c=' nf';return c;}
 function refreshW(l){document.querySelectorAll(`.w[data-l="${CSS.escape(l)}"]`).forEach(w=>{w.classList.remove('new','rare','nf','seen','due');const c=wcls(w.dataset.k).trim();if(c)c.split(' ').forEach(x=>w.classList.add(x));});}
 function markup(text){
   const parts=text.match(/[^.!?»]+[.!?»]*\s*/g)||[text];
@@ -4208,6 +4211,9 @@ function bindTilt(root){root.querySelectorAll('.tcg.tilt').forEach(c=>{
 /* ============================================================
    FANGEN + FORMEN
    ============================================================ */
+function unlockFormsFor(l,k,st){const e=LEX[l];const fl=e&&formsList(e);if(!fl)return;const keys=new Set(fl.map(x=>x.key));const arr=S.forms[l]||(S.forms[l]=[]);
+  const add=x=>{if(x&&keys.has(x)&&!arr.includes(x))arr.push(x);};add(k);
+  if(st)for(const p of st.paras){const t=typeof p==='string'?p:p.t;(t.match(WRE)||[]).forEach(w=>{const f=FORMS[w.toLowerCase()];if(f&&f.l===l)add(w.toLowerCase());});}}
 function unlockForm(el){
   const k=el.dataset.k,f=FORMS[k];if(!f||!f.l)return null;const e=LEX[f.l];const fl=formsList(e);if(!fl)return null;
   if(!fl.some(x=>x.key===k))return null;const arr=S.forms[f.l]||(S.forms[f.l]=[]);if(arr.includes(k))return null;arr.push(k);return k;
@@ -4253,7 +4259,7 @@ function placeTip(el){
   tip.style.left=x+'px';tip.style.top=y+'px';requestAnimationFrame(()=>tip.classList.add('show'));
 }
 function hideTip(){clearTimeout(hideT);tip.classList.remove('show');tip.style.display='none';tipFor=null;document.querySelectorAll('.w.on').forEach(w=>w.classList.remove('on'));}
-function hoverWord(el){const n=catchWord(el);if(n!=='seen'&&el.closest('#rct')&&isDue(el.dataset.l)){dueTip(el);return;}showTip(el,n);}
+function hoverWord(el){const n=catchWord(el);showTip(el,n);}
 document.addEventListener('pointerover',e=>{if(e.pointerType!=='mouse')return;const w=e.target.closest&&e.target.closest('.w');
   if(w){clearTimeout(hideT);clearTimeout(hovT);hovT=setTimeout(()=>hoverWord(w),170);}else if(e.target.closest&&e.target.closest('#tip'))clearTimeout(hideT);});
 document.addEventListener('pointerout',e=>{if(e.pointerType!=='mouse')return;const w=e.target.closest&&(e.target.closest('.w')||e.target.closest('#tip'));
@@ -4295,7 +4301,7 @@ function homeHtml(){
   const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
   return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
   <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div><div class="stat"><b>${Object.keys(S.caught).filter(k=>LEX[k]&&mastery(k)>=4).length}</b><span>Wörter gemeistert</span></div></div>
-  ${chest}${cont}${seenList().length?`<div class="cont" data-fang style="background:linear-gradient(120deg,#3b1d5a,#22285e)"><div><small>Fangzeit</small><div class="t">${seenList().length} gesichtete ${seenList().length===1?'Wort wartet':'Wörter warten'}</div></div><span class="btn">Fangen</span></div>`:''}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
+  ${chest}${cont}${seenList().length?`<div class="cont" data-fang style="background:linear-gradient(120deg,#3b1d5a,#22285e)"><div><small>Fangzeit</small><div class="t">${seenList().length} gesichtete ${seenList().length===1?'Wort wartet':'Wörter warten'}</div></div><span class="btn">Fangen</span></div>`:''}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':daily().rev>=DAILY?'Tagesziel erreicht. Stark!':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
   <div class="grid">${LEVELS.map(L=>{const s=lvlStats(L.c);const lk=!s.n;
     return `<button class="tile ${lk?'locked':''}" data-lvl="${L.c}" style="--c1:${L.c1};--c2:${L.c2}">${lk?'<span class="lock">PRÓXIMAMENTE</span>':''}
     <div class="tile-code">${L.c}</div><div class="tile-name">${L.es}</div><div class="tile-sub">${S.lang==='en'?L.en:L.de}</div>
@@ -4400,7 +4406,7 @@ function pushModal(){const m=$('#modal');if(m.classList.contains('hidden')||!m.f
 function closeAllModals(){mstack=[];modalLock=false;closeModal();}
 function openModal(html,raw){const m=$('#modal');m.innerHTML=raw?html:`<div class="mbox"><button class="mclose" data-close>${XSVG}</button>${html}</div>`;m.classList.remove('hidden');}
 function closeModal(){if(modalLock)return;if(mstack.length){const st=mstack.pop();const m=$('#modal');m.innerHTML='';m.appendChild(st.frag);trainKey=st.trainKey;quizOpen=st.quizOpen;hideTip();return;}trainKey=null;$('#modal').classList.add('hidden');$('#modal').innerHTML='';hideTip();quizOpen=false;}
-$('#modal').addEventListener('click',e=>{if(e.target.id==='modal'||e.target.closest('[data-close]'))closeModal();});
+$('#modal').addEventListener('click',e=>{if(e.target.closest('[data-close]')){closeModal();return;}if(e.target.id==='modal'&&!document.querySelector('#modal .qprog, #modal .qres, #modal .chestwrap, #modal .kwrap'))closeModal();});
 const THEMES=[['papel','Papel','#fbfaf6','#22201c'],['sepia','Sepia','#f4ecd8','#3b2f1e'],['noche','Noche','#111317','#d9d5cc'],['mar','Mar','#e9f3f6','#11324a']];
 function lockTag(id){const r=REWARDS.find(r=>r.id===id);return has(id)?'':`<span class="lv">Nv.${r.lv}</span>`;}
 function themeChips(){return THEMES.map(([id,n,bg,fg])=>`<button class="th ${S.theme===id?'on':''} ${has(id)?'':'lk'}" data-theme="${id}" title="${n}" style="background:${bg};color:${fg}">Aa${lockTag(id)}</button>`).join('');}
@@ -4491,6 +4497,7 @@ function renderDex(){const _dx=$('#dex'),_st=_dx.scrollTop;requestAnimationFrame
   const as=d.querySelector('#albS');if(as){as.onchange=ev=>{albSort=ev.target.value;renderDex();};d.querySelector('#albPdf').onclick=()=>albumPdf();}
   const qi=d.querySelector('#dexQ');if(qi){fillDexGrid();qi.oninput=()=>{dexQ=qi.value;fillDexGrid();};d.querySelector('#dexS').onchange=ev=>{dexSort=ev.target.value;fillDexGrid();};}
 }
+function gl(e){const g=(e[S.lang]||'');const parts=g.split(';').map(x=>x.trim()).filter(x=>x&&!x.includes('='));return parts.length?parts.join('; '):(g.split('=').pop()||g).trim();}
 const norm=t=>String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 function dexMatch(e,q){if(!q)return true;const n=q.replace(/^#/,'');if(/^\d+$/.test(n))return e.n===+n;
   if(!S.caught[e.k])return false;if(norm(e.k).includes(q)||norm(e.de).includes(q)||norm(e.en).includes(q))return true;
@@ -4544,8 +4551,9 @@ function openCard(k,v,opt){
     <div class="cv-card"><div id="cvC">${tcgHtml(e,v,{tilt:1})}</div>
       <div class="vsel">${VORDER.map(x=>{const ok=owned.includes(x);return `<button class="${x===v?'on':''} ${ok?'':'lk buy'}" data-vv="${x}"><i style="background:${VAR[x][1]}"></i>${ok?VAR[x][0]:VAR[x][0]+' &middot; '+PRICE[x]+' P'}</button>`;}).join('')}</div>
       <div class="ptsline">${PCOIN} ${pts()} Puntos${colOf(k)?` &middot; Teil der Colección <b>${esc(colOf(k).title)}</b>`:''}</div>
-      <button class="btn" id="shareB">${SHR} Karte teilen</button></div></div>`,true);
+      <div class="cbtns"><button class="btn ghost ${(S.star||{})[k]?'stared':''}" id="starB" title="In Favoritos legen">${STAR} <span>${(S.star||{})[k]?'Favorit':'Merken'}</span></button><button class="btn" id="shareB">${SHR} Karte teilen</button></div></div></div>`,true);
   let curV=v;$('#shareB').onclick=()=>shareCard(e,curV);
+  $('#starB').onclick=()=>{S.star=S.star||{};S.star[k]=S.star[k]?0:Date.now();save();const on=!!S.star[k];$('#starB').classList.toggle('stared',on);$('#starB span').textContent=on?'Favorit':'Merken';toast(on?`<span class="gem" style="background:#ffcb3d">${STAR}</span><span><b>${esc(k)}</b> in Favoritos</span>`:`<span><b>${esc(k)}</b> aus Favoritos entfernt</span>`);};
   document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('[data-tc]').forEach(x=>x.classList.toggle('hidden',x.dataset.tc!==b.dataset.tab));});
   bindTilt($('#modal'));
   document.querySelectorAll('[data-vv]').forEach(b=>b.onclick=()=>{const vv=b.dataset.vv;if(!owned.includes(vv)){
@@ -4841,15 +4849,23 @@ function openChest(){
    ============================================================ */
 function backfillEnc(){S.enc=S.enc||{};if(Object.keys(S.enc).length)return;for(const id in S.stories){if(!S.stories[id].read)continue;const m=STATS[id]||{};for(const l in m)S.enc[l]=(S.enc[l]||0)+m[l];}}
 const DAY=864e5,SRSI=[0,1,3,7,16,35,90];
-function dueCount(){const now=Date.now();return Object.keys(S.srs||{}).filter(l=>S.caught[l]&&LEX[l]&&S.srs[l].d<=now).length;}
-function newToTrain(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop'&&!(S.srs||{})[l]).length;}
+const DAILY=15,ROUND=15;const FUNC=['art','prep','conj','pron','det','int'];
+function isFunc(e){return FUNC.includes(e.p)||fr(e)<=12;}
+function today(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function daily(){if(!S.daily||S.daily.d!==today())S.daily={d:today(),rev:0};return S.daily;}
+function dueAll(){const now=Date.now(),srs=S.srs||{};return Object.keys(srs).filter(l=>S.caught[l]&&LEX[l]&&LEX[l].p!=='prop'&&!isFunc(LEX[l])&&srs[l].d<=now)
+  .sort((a,b)=>(srs[a].b-srs[b].b)||(fr(LEX[b])-fr(LEX[a])));}
+function dueToday(){return dueAll().slice(0,Math.max(0,DAILY-daily().rev));}
+function dueCount(){return dueToday().length;}
+function newList(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop'&&!isFunc(LEX[l])&&!(S.srs||{})[l]).sort((a,b)=>S.caught[a].t-S.caught[b].t);}
+function newToTrain(){return newList().length;}
 function dueTxt(d){const n=Math.round((d-Date.now())/DAY);return n<=0?'heute':n===1?'morgen':'in '+n+' Tagen';}
 const MLEV=['Neu','Entdeckt','Vertraut','Gefestigt','Gemeistert'];
 function mastery(l){if(!S.caught[l])return 0;const e=(S.enc||{})[l]||0,b=((S.srs||{})[l]||{}).b||0;if(e>=10&&b>=4)return 4;if(e>=10||b>=3)return 3;if(e>=5||b>=2)return 2;return 1;}
 function covOf(st){const m=STATS[st.id]||{};const enc=S.enc||{};let t=0,k=0;for(const l in m){t+=m[l];if(S.caught[l]||enc[l]||(LEX[l]&&LEX[l].p==='prop'))k+=m[l];}return t?k/t:0;}
 function covChip(st){if(STORIES.filter(s=>!s.soon)[0]===st&&!isDone(st))return `<span class="cov" style="--cc:#4da3ff">Einstieg &middot; alles neu</span>`;const c=covOf(st)*100,p=Math.floor(c);const [lab,col]=c>=98?['leicht','#3ddc97']:c>=94?['ideal','#4da3ff']:c>=88?['gut machbar','#ffcb3d']:c>=80?['fordernd','#ff9f1c']:['viel Neues','#ff6b6b'];
   return `<span class="cov" style="--cc:${col}" title="Anteil der Wörter, die du schon gelesen oder gefangen hast. Ideal: 95 bis 98 %">${p}% bekannt &middot; ${lab}</span>`;}
-function srsAnswer(l,ok){S.srs=S.srs||{};const cur=S.srs[l]||{b:0,d:0,r:0,c:0};const from=cur.b||0;const b=ok?Math.min(6,from+1):1;S.srs[l]={b,d:Date.now()+(ok?SRSI[b]*DAY:10*60*1000),r:(cur.r||0)+1,c:(cur.c||0)+(ok?1:0)};return {from,to:b};}
+function srsAnswer(l,ok){S.srs=S.srs||{};const cur=S.srs[l]||{b:0,d:0,r:0,c:0};if(cur.d&&cur.d<=Date.now())daily().rev++;const from=cur.b||0;const b=ok?Math.min(6,from+1):1;S.srs[l]={b,d:Date.now()+(ok?SRSI[b]*DAY:10*60*1000),r:(cur.r||0)+1,c:(cur.c||0)+(ok?1:0)};return {from,to:b};}
 const FACH=[['Neu','#9aa0c3'],['Fach 1','#ff6b6b'],['Fach 2','#ff9f1c'],['Fach 3','#ffcb3d'],['Fach 4','#3ddc97'],['Fach 5','#4da3ff'],['Fach 6','#c46bff']];
 const FACHT=['noch nie geübt','jeden Tag','alle 3 Tage','jede Woche','alle 16 Tage','alle 5 Wochen','alle 3 Monate'];
 function trainPool(){return Object.keys(S.caught).filter(l=>LEX[l]&&LEX[l].p!=='prop');}
@@ -4859,7 +4875,7 @@ function openBox(sel){
   hideTip();const pool=trainPool();
   if(pool.length<4){openModal(`<h2>Karteikasten</h2><p style="color:var(--mut)">Fange zuerst mindestens 4 Wörter in den Geschichten.</p>`);return;}
   const now=Date.now(),srs=S.srs||{};const F=[0,1,2,3,4,5,6].map(f=>pool.filter(l=>fachOf(l)===f));
-  const due=pool.filter(l=>srs[l]&&srs[l].d<=now).length,fresh=F[0].length;
+  const due=dueCount(),fresh=F[0].length;
   const reps=Object.values(srs).reduce((a,x)=>a+(x.r||0),0);
   const fachHtml=F.map((ws,f)=>{const n=ws.length,dn=f?ws.filter(l=>srs[l].d<=now).length:0;const k=Math.min(7,Math.ceil(n/3));
     return `<button class="kfach ${sel===f?'sel':''}" data-f="${f}" style="--fc:${FACH[f][1]}">${dn?`<i class="kdue">${dn}</i>`:''}
@@ -4870,28 +4886,31 @@ function openBox(sel){
     <div class="kbox">${fachHtml}</div>
     <div class="klegend">${[1,2,3,4,5,6].map(f=>`<span><i style="background:${FACH[f][1]}"></i>${f}: ${FACHT[f]}</span>`).join('')}</div>
     <div class="kstats"><div><b>${due}</b><span>heute fällig</span></div><div><b>${fresh}</b><span>neu</span></div><div><b>${reps}</b><span>Wiederholungen</span></div><div><b>${F[6].length}</b><span>in Fach 6</span></div></div>
-    <div class="kacts">${due?`<button class="btn" id="kDue">Fällige wiederholen (${Math.min(due,15)})</button>`:''}${fresh?`<button class="btn ${due?'ghost':''}" id="kNew">Neue Wörter lernen (${Math.min(fresh,10)})</button>`:''}<button class="btn ghost" id="kFree">Freies Training</button></div>
+    <div class="kday"><div><b>Heute ${Math.min(daily().rev,DAILY)} / ${DAILY}</b> Wiederholungen${daily().rev>=DAILY?' &middot; Tagesziel erreicht':''}</div><div class="kbar"><i style="width:${Math.min(100,daily().rev/DAILY*100)}%"></i></div></div>
+    <div class="kacts"><button class="btn" id="kGo">Training starten</button>${stars().length?`<button class="btn ghost" id="kStar">${STAR} Favoritos (${stars().length})</button>`:''}</div>
     <div id="klist">${sel!=null?boxList(F[sel],sel):'<p class="khint">Tippe auf ein Fach, um seine Wörter zu sehen.</p>'}</div></div>`);
   document.querySelectorAll('.kfach').forEach(b=>b.onclick=()=>{const f=+b.dataset.f;document.querySelectorAll('.kfach').forEach(x=>x.classList.toggle('sel',x===b));$('#klist').innerHTML=boxList(F[f],f);});
   const go2=(m)=>()=>startTrain(m);
-  $('#kDue')&&($('#kDue').onclick=go2('due'));$('#kNew')&&($('#kNew').onclick=go2('new'));$('#kFree').onclick=go2('free');
+  $('#kGo').onclick=go2('mix');$('#kStar')&&($('#kStar').onclick=go2('star'));
 }
 function boxList(ws,f){const srs=S.srs||{};if(!ws.length)return `<p class="khint">${f?'Dieses Fach ist leer.':'Keine neuen Wörter. Fange neue in den Geschichten.'}</p>`;
   const now=Date.now();ws=ws.slice().sort((a,b)=>f?srs[a].d-srs[b].d:S.caught[b].t-S.caught[a].t);
   return `<div class="kltitle" style="--fc:${FACH[f][1]}">${FACH[f][0]} &middot; ${FACHT[f]} &middot; ${ws.length} ${ws.length===1?'Wort':'Wörter'}</div><div class="klist">${ws.map(l=>{const x=srs[l],e=LEX[l];
     return `<button class="krow" data-card="${esc(l)}"><span class="kw"><b>${esc(l)}</b><span>${esc(e[S.lang])}</span></span><span class="kr">${x?`<span class="kreps">${x.r||0}&times; geübt</span><span class="${x.d<=now?'kdn':''}">${x.d<=now?'fällig':dueTxt(x.d)}</span>`:'<span>neu</span>'}</span></button>`;}).join('')}</div>`;}
-function startTrain(mode){const pool=trainPool(),now=Date.now(),srs=S.srs||{};let picked;
-  const due=pool.filter(l=>srs[l]&&srs[l].d<=now).sort((a,b)=>srs[a].d-srs[b].d);
-  const fresh=pool.filter(l=>!srs[l]).sort((a,b)=>S.caught[a].t-S.caught[b].t);
-  if(mode==='due')picked=due.slice(0,15);
-  else if(mode==='new')picked=fresh.slice(0,10);
-  else picked=shuffle(pool).sort((a,b)=>fachOf(a)-fachOf(b)).slice(0,10);
+function startTrain(mode){const pool=trainPool(),srs=S.srs||{};let picked=[];
+  if(mode==='star')picked=shuffle(stars()).slice(0,ROUND);
+  else{const due=dueToday();picked=due.slice(0,ROUND);
+    if(picked.length<ROUND)picked=picked.concat(newList().slice(0,Math.min(5,ROUND-picked.length)));
+    if(picked.length<ROUND){const rest=pool.filter(l=>!picked.includes(l));const content=shuffle(rest.filter(l=>!isFunc(LEX[l]))).sort((a,b)=>fachOf(a)-fachOf(b));
+      const func=shuffle(rest.filter(l=>isFunc(LEX[l]))).slice(0,2);picked=picked.concat(content.slice(0,ROUND-picked.length-Math.min(2,func.length)),func).slice(0,ROUND);}}
   if(!picked.length){openBox();return;}
-  runTrain(shuffle(picked),{title:mode==='due'?'Wiederholung':mode==='new'?'Neue Wörter':'Freies Training',free:mode==='free'});}
+  runTrain(shuffle(picked),{title:mode==='star'?'Favoritos':'Training',free:true,mode});}
+function stars(){return Object.keys(S.star||{}).filter(l=>S.star[l]&&S.caught[l]&&LEX[l]);}
+const STAR='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg>';
 function runTrain(picked,opt){
   opt=opt||{};hideTip();const pool=trainPool().concat(picked.filter(l=>!S.caught[l]));const srs=S.srs||{};const now=Date.now();
   const rounds=picked.map(l=>{const e=LEX[l];const box=fachOf(l);const type=box>=3&&!opt.noType;const dir=type?'type':(Math.random()<.5?'es':'tr');
-    const others=shuffle(pool.filter(x=>x!==l&&LEX[x]&&LEX[x][S.lang]!==e[S.lang]&&LEX[x].p!=='prop'));
+    const others=shuffle(pool.filter(x=>x!==l&&LEX[x]&&gl(LEX[x])!==gl(e)&&LEX[x].p!=='prop'));
     const same=others.filter(x=>LEX[x].p===e.p);const ds=[...new Set([...same,...others])].slice(0,3);
     let extra=shuffle(Object.keys(LEX).filter(x=>x!==l&&!ds.includes(x)&&LEX[x].p!=='prop'));while(ds.length<3)ds.push(extra.pop());
     return {l,dir,box,opts:shuffle([l,...ds]),wasDue:!!(srs[l]&&srs[l].d<=now)};});
@@ -4899,9 +4918,9 @@ function runTrain(picked,opt){
   function show(){const R0=rounds[i],e=LEX[R0.l];let done=false;
     const art=e.g?(e.g==='m'?'el':'la'):'';
     const prompt=R0.dir==='es'?`<div class="trq"><span class="trw">${esc(e.k)}</span><button class="spk" data-say="${esc(e.k)}">${SPK}</button></div><div class="trh">Was heisst das?</div>`
-      :`<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">${R0.dir==='type'?'Schreib es auf Spanisch':'Wie heisst das auf Spanisch?'} ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
+      :`<div class="trq"><span class="trt">${esc(gl(e))}</span></div><div class="trh">${R0.dir==='type'?'Schreib es auf Spanisch':'Wie heisst das auf Spanisch?'} ${e.p==='n'?'<small>(Nomen)</small>':''}</div>`;
     const body=R0.dir==='type'?`<div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Prüfen</button></div><div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div>`
-      :`<div class="qopts trgrid">${R0.opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(R0.dir==='es'?LEX[o][S.lang]:o)}</button>`).join('')}</div>`;
+      :`<div class="qopts trgrid">${R0.opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(R0.dir==='es'?gl(LEX[o]):o)}</button>`).join('')}</div>`;
     const fc=FACH[R0.box];
     openModal(`${opt.title?`<div class="trtitle">${esc(opt.title)}</div>`:''}<div class="qprog">${rounds.map((_,j)=>`<i class="${j<i?(rounds[j].ok?'ok':'no'):j===i?'cur':''}"></i>`).join('')}</div>
       <div class="trtag"><span class="fchip" style="--fc:${fc[1]}">${fc[0]}</span>${(srs[R0.l]||{}).r?` <span class="trreps">${srs[R0.l].r}&times; geübt</span>`:''}</div>${prompt}${body}
@@ -4932,16 +4951,17 @@ function runTrain(picked,opt){
     openModal(`<div class="qres"><div class="big">${score}/${rounds.length}</div><p>${score===rounds.length?'¡Perfecto!':score>=rounds.length*.7?'¡Muy bien!':'Weiter üben, das wird!'}</p>
       ${moves.length?`<p class="kmoved"><b style="color:var(--good)">${up}</b> ${up===1?'Wort ist':'Wörter sind'} ein Fach weiter${down?`, <b style="color:var(--bad)">${down}</b> zurück in Fach 1`:''}.</p>`:''}
       ${wrong.length?`<div style="text-align:left;margin:10px 0"><div style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--mut);margin-bottom:6px">KOMMT IN 10 MINUTEN NOCHMAL</div>${[...new Set(wrong)].map(l=>`<button class="quest" style="width:100%" data-card="${esc(l)}"><span class="qt"><b>${esc(l)}</b> &middot; ${esc(LEX[l][S.lang])}</span></button>`).join('')}</div>`:''}
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" id="tbox">Zum Karteikasten</button><button class="btn" id="tagain">${d?'Weiter wiederholen ('+d+')':'Fertig'}</button></div></div>`);
-    $('#tbox').onclick=()=>openBox();$('#tagain').onclick=d?()=>startTrain('due'):()=>closeModal();}
+      <p class="kmoved" style="color:var(--mut)">Heute ${Math.min(daily().rev,DAILY)} / ${DAILY} Wiederholungen${d?', noch '+d+' fällig':daily().rev>=DAILY?', Tagesziel erreicht':''}.</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" id="tbox">Karteikasten</button><button class="btn ghost" data-close>Fertig</button><button class="btn" id="tagain">Nächste Runde</button></div></div>`);
+    $('#tbox').onclick=()=>openBox();$('#tagain').onclick=()=>startTrain(opt.mode||'mix');}
   show();
 }
 function keyWords(st,n){n=n||5;const m=STATS[st.id]||{};const L=chainOf(st);const idx=L.indexOf(st);const before=new Set();
   for(let j=0;j<idx;j++)for(const l in STATS[L[j].id]||{})before.add(l);
   const tot=l=>{let t=0;for(const id in STATS)t+=STATS[id][l]||0;return t;};
-  const sc=l=>(before.has(l)?0:1000)+Math.min(tot(l),60)*2+m[l]*5-fachOf(l)*400;
+  const sc=l=>(before.has(l)?0:1000)+Math.min(tot(l),60)*2+m[l]*5-fachOf(l)*400-(isFunc(LEX[l])?5000:0);
   return Object.keys(m).filter(l=>LEX[l]&&LEX[l].p!=='prop').sort((a,b)=>sc(b)-sc(a)).slice(0,n);}
-function keyRound(st){const ws=keyWords(st,5);ws.forEach(l=>{if(!S.caught[l])S.caught[l]={t:Date.now(),ex:'',s:'key'};});save();
+function keyRound(st){const ws=keyWords(st,5);ws.forEach(l=>{if(!S.caught[l])S.caught[l]={t:Date.now(),ex:'',s:'key'};unlockFormsFor(l,null,st);});save();
   openModal(`<div class="qres"><small class="kk">SCHLÜSSELWÖRTER</small><div class="big" style="font-size:30px;margin:6px 0">Die 5 wichtigsten Wörter</div>
     <p>Diese Wörter kommen in den nächsten Kapiteln oft vor. Übe sie jetzt kurz, dann landen sie in deinem Karteikasten und kommen zur richtigen Zeit wieder.</p>
     <div class="kwchips">${ws.map(l=>`<span class="kwchip"><b>${esc(l)}</b>${esc(LEX[l][S.lang])}</span>`).join('')}</div>
@@ -4976,14 +4996,14 @@ function needsGame(l){const e=LEX[l];if(!e||e.p==='prop'||!curStory)return false
   if(STORIES.filter(s=>!s.soon)[0]===curStory)return false;
   if(r===2&&has('rarofree')&&((S.enc||{})[l]||0)>=3)return false;return true;}
 function seenList(){S.seen=S.seen||{};return Object.keys(S.seen).filter(l=>LEX[l]&&!S.caught[l]);}
-function sight(el,l){S.seen=S.seen||{};if(S.seen[l])return false;S.seen[l]={t:Date.now(),ex:SENT[+el.dataset.s]||'',s:curStory?curStory.id:''};markDay();save();refreshW(l);
+function sight(el,l){S.seen=S.seen||{};if(S.seen[l]){if(!S.seen[l].k)S.seen[l].k=el.dataset.k;return false;}S.seen[l]={t:Date.now(),ex:SENT[+el.dataset.s]||'',s:curStory?curStory.id:'',k:el.dataset.k};markDay();save();refreshW(l);
   const e=LEX[l],[rn,rc]=RAR[rarity(e)];
   if(!S.hintSeen){S.hintSeen=1;save();toast(`<b>Seltenes Wort gesichtet!</b><span>${rn}-Wörter fängst du am Kapitelende in der Fangzeit. Lies einfach weiter.</span>`,'big',5200);}
   else toast(`<span class="gem" style="background:${rc}">${PAW}</span><span><b>${esc(l)}</b> gesichtet</span><span class="x">${rn}</span>`);
   updateReaderWords();if(curStory)endActs();return true;}
 function gameFor(l){const e=LEX[l],r=rarity(e);if(r>=3)return has('epicoeasy')?'mean':'memory';
   const k=e.k;return (k.length>=3&&k.length<=10&&!/\s/.test(k)&&(e.n%2===0))?'letters':'mean';}
-function fangCatch(l,perfect){const sd=(S.seen||{})[l]||{};S.caught[l]={t:Date.now(),ex:sd.ex||'',s:sd.s||'fang'};delete S.seen[l];
+function fangCatch(l,perfect){const sd=(S.seen||{})[l]||{};S.caught[l]={t:Date.now(),ex:sd.ex||'',s:sd.s||'fang'};delete S.seen[l];unlockFormsFor(l,sd.k,STORIES.find(x=>x.id===sd.s));
   S.fang=S.fang||{};S.fang[l]=Math.max(S.fang[l]||0,perfect?2:1);
   S.srs=S.srs||{};if(!S.srs[l])S.srs[l]={b:1,d:Date.now()+DAY,r:1,c:1};
   let bonus=null;if(Math.random()<.25&&!(S.cards[l]&&S.cards[l].holo)){(S.cards[l]||(S.cards[l]={})).holo=Date.now();bonus='holo';}
@@ -5026,14 +5046,14 @@ function runFang(list,after){let i=0;const res=[];
     $('#qnext').classList.remove('hidden');$('#qnext').onclick=next;trainKey=ev=>{if(ev.key==='Enter')next();};}
   function play(){const l=list[i],e=LEX[l],g=gameFor(l);trainKey=null;let hinted=false,mistakes=0,over=false;
     const sd=(S.seen||{})[l]||{};const ex=sd.ex&&sd.ex.length>e.k.length+12?esc(sd.ex).replace(new RegExp('(^|[^\\p{L}])('+e.k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[\\p{L}]*)','iu'),'$1<b>$2</b>'):'';
-    if(g==='mean'){const pool=shuffle(Object.keys(LEX).filter(x=>x!==l&&LEX[x].p===e.p&&LEX[x][S.lang]!==e[S.lang])).slice(0,3);const opts=shuffle([l,...pool]);
+    if(g==='mean'){const pool=shuffle(Object.keys(LEX).filter(x=>x!==l&&LEX[x].p===e.p&&gl(LEX[x])!==gl(e))).slice(0,3);const opts=shuffle([l,...pool]);
       openModal(frame(l,`${ex?`<div class="fex">${ex}</div>`:''}<div class="trq"><span class="trw">${esc(e.k)}</span><button class="spk" data-say="${esc(e.k)}">${SPK}</button></div><div class="trh">Was bedeutet das?</div>
-        <div class="qopts trgrid">${opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(LEX[o][S.lang])}</button>`).join('')}</div>`,'Bedeutung'));
+        <div class="qopts trgrid">${opts.map((o,j)=>`<button class="qopt" data-o="${j}"><b class="kn">${j+1}</b>${esc(gl(LEX[o]))}</button>`).join('')}</div>`,'Bedeutung'));
       const ans=j=>{if(over)return;over=true;const ok=opts[j]===l;document.querySelectorAll('.qopt').forEach(x=>{x.disabled=true;if(opts[+x.dataset.o]===l)x.classList.add('ok');});if(!ok)document.querySelector(`.qopt[data-o="${j}"]`).classList.add('no');result(l,ok,hinted,0);};
       document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>ans(+b.dataset.o));trainKey=ev=>{if(/^[1-4]$/.test(ev.key))ans(+ev.key-1);};
       $('#fHint')&&($('#fHint').onclick=()=>{hinted=true;let n=0;document.querySelectorAll('.qopt').forEach(x=>{if(n<2&&opts[+x.dataset.o]!==l){x.disabled=true;x.style.opacity=.3;n++;}});$('#fHint').remove();});}
     else if(g==='letters'){const word=e.k;const chars=[...word];let pos=0;const tiles=shuffle(chars.map((c,j)=>({c,j})));
-      openModal(frame(l,`${ex?`<div class="fex">${ex.replace(/<b>.*?<\/b>/,'<b>_____</b>')}</div>`:''}<div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">Setze das Wort zusammen</div>
+      openModal(frame(l,`${ex?`<div class="fex">${ex.replace(/<b>.*?<\/b>/,'<b>_____</b>')}</div>`:''}<div class="trq"><span class="trt">${esc(gl(e))}</span></div><div class="trh">Setze das Wort zusammen</div>
         <div class="lslots">${chars.map((c,j)=>`<span class="lslot" data-j="${j}"></span>`).join('')}</div>
         <div class="ltiles">${tiles.map((t,j)=>`<button class="ltile" data-t="${j}" style="--r:${(Math.random()*16-8).toFixed(1)}deg">${esc(t.c)}</button>`).join('')}</div>
         <div class="lmiss" id="lMiss"></div>`,'Buchstaben'));
@@ -5048,7 +5068,7 @@ function runFang(list,after){let i=0;const res=[];
       $('#fHint')&&($('#fHint').onclick=()=>{hinted=true;const b=[...document.querySelectorAll('.ltile:not(:disabled)')].find(x=>tiles[+x.dataset.t].c.toLowerCase()===chars[pos].toLowerCase());if(b)place(b);$('#fHint').remove();});}
     else{const art=e.g?(e.g==='m'?'el':'la'):'';
       openModal(frame(l,`<div class="memshow" id="mShow"><div class="trq"><span class="trw">${esc(e.k)}</span></div><div class="trh">${esc(e[S.lang])} &middot; merk es dir!</div><div class="membar"><i></i></div></div>
-        <div id="mAsk" class="hidden"><div class="trq"><span class="trt">${esc(e[S.lang])}</span></div><div class="trh">Schreib das Wort aus dem Gedächtnis</div>
+        <div id="mAsk" class="hidden"><div class="trq"><span class="trt">${esc(gl(e))}</span></div><div class="trh">Schreib das Wort aus dem Gedächtnis</div>
         <div class="typein">${art?`<span class="tart">${art}</span>`:''}<input id="tIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Antwort eingeben"><button class="btn" id="tOk">Fangen</button></div>
         <div class="accents">${['á','é','í','ó','ú','ñ','ü'].map(c=>`<button data-ch="${c}">${c}</button>`).join('')}</div></div>`,'Gedächtnis'));
       speak(e.k);const hb=$('#fHint');if(hb)hb.style.visibility='hidden';
@@ -5071,7 +5091,7 @@ function runFang(list,after){let i=0;const res=[];
   play();
 }
 /* Aufwärmen und Wiederholen im Text */
-function warmUp(st,go2){const now=Date.now(),srs=S.srs||{};const due=trainPool().filter(l=>srs[l]&&srs[l].d<=now).sort((a,b)=>srs[a].d-srs[b].d).slice(0,5);
+function warmUp(st,go2){const due=dueToday().slice(0,5);
   if(!due.length){go2&&go2();return;}
   openModal(`<div class="qres"><small class="kk">AUFWÄRMEN</small><div class="big" style="font-size:28px;margin:6px 0">${due.length} ${due.length===1?'Wort ist':'Wörter sind'} fällig</div>
     <p>Kurz wiederholen, bevor es losgeht. Dauert keine Minute.</p>
