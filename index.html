@@ -274,7 +274,7 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .histlock{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--panel);border:1px dashed var(--line);margin-bottom:14px}
 .histlock b{display:block;margin-bottom:4px}.histlock span{color:var(--mut);font-size:14px;line-height:1.5}
 .cont.hist{background:linear-gradient(120deg,#5a2a12,#2a1d4a)}
-.kday{margin:12px 0 4px;font-size:13px;color:var(--mut)}.kday b{color:var(--txt)}.kbar{height:7px;border-radius:5px;background:#ffffff14;overflow:hidden;margin-top:6px}.kbar i{display:block;height:100%;background:linear-gradient(90deg,#3ddc97,#4da3ff)}
+.kday{margin:14px 0 22px;font-size:13px;color:var(--mut)}.kday b{color:var(--txt)}.kbar{height:7px;border-radius:5px;background:#ffffff14;overflow:hidden;margin-top:6px}.kbar i{display:block;height:100%;background:linear-gradient(90deg,#3ddc97,#4da3ff)}
 .cbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.btn.stared{color:#ffcb3d;border-color:#ffcb3d}.btn svg{vertical-align:-2px}
 .ph{background:#ffcb3d26;border-radius:4px;box-shadow:0 0 0 2px #ffcb3d26}
 .tph{background:linear-gradient(135deg,#ffcb3d22,#ffcb3d0a);border:1px solid #ffcb3d55;border-radius:10px;padding:8px 10px;margin-bottom:8px}.tph small{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#ffcb3d}.tph div{font-size:14px;margin:2px 0}.tph span{display:block;font-size:12px;color:var(--mut)}
@@ -321,10 +321,26 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .vl-arte{background:linear-gradient(90deg,#111,#d4a73a,#111);color:#fff}
 .arte-sil{--frame:linear-gradient(145deg,#1a1a1a,#000 50%,#2a2a2a)}.arte-sil .tcg-in{background:radial-gradient(circle at 50% 40%,#222,#000);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3cqw}
 .arte-sil .q{font-family:Bungee;font-size:30cqw;color:#d4a73a33}.arte-sil small{font-size:5cqw;letter-spacing:.2em;color:#d4a73a88;font-weight:800}
+.hero{display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--g));border:1px solid #ffffff1f;border-radius:var(--r);padding:20px 22px;cursor:pointer;box-shadow:0 10px 30px #0004}
+.hero .hl{flex:1;min-width:0}.hero small{color:#d8d5ff;font-size:12px;text-transform:uppercase;letter-spacing:1px}.hero .t{font-family:Literata;font-size:23px;margin-top:3px}.hero .hz{color:#ffffffb0;font-size:13.5px;margin-top:5px;line-height:1.4}
+.also{display:flex;gap:8px;overflow-x:auto;margin:10px 0 0;padding-bottom:2px;scrollbar-width:none}
+.also .chip{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:8px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);max-width:240px;text-align:left}
+.also .chip b{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.8px}.also .chip span{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0 26px}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 8px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:transform .15s,border-color .15s}
+.act:hover{transform:translateY(-2px);border-color:#ffffff30}.act b{font-size:14px}.act>span:last-child{font-size:12px;color:var(--mut)}
+.act .aic{position:relative;font-size:26px;line-height:1;margin-bottom:4px}.act.hot{border-color:color-mix(in srgb,var(--acc) 55%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 14%,var(--panel)),var(--panel))}
+.badge{position:absolute;top:-6px;right:-12px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--acc);color:#1a1300;font:800 11px/18px system-ui;font-style:normal}
+.sech{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--mut);margin:0 0 10px;font-weight:700}
+.sers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.ser{display:flex;gap:14px;align-items:flex-start;text-align:left;padding:18px;border-radius:var(--r);background:linear-gradient(130deg,var(--g));border:1px solid #ffffff1a;min-height:112px}
+.ser .sic{font-size:30px;line-height:1}.ser .sbody{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}.ser b{font-family:Literata;font-size:19px}.ser .sbody>span{font-size:13px;color:#ffffffb8}
+.ser .smeta{display:block;margin-top:8px;font-size:12px;color:#ffffffc0}.ser .smeta .bar{display:block;margin-top:5px;height:5px;background:#00000040;border-radius:5px;overflow:hidden}.ser .smeta .bar i{display:block;height:100%;background:#ffffffcc}
+.ser.soon{filter:saturate(.3);opacity:.6;cursor:default}.ser.lk{opacity:.85}.ssoon{margin-top:8px;font-style:normal;font-size:11px;letter-spacing:1.5px;font-weight:800;color:#ffffffa0}
 .cont.duelc{background:linear-gradient(120deg,#5a0f1a,#1d2a5a)}
 .mbox:has(.dk),.mbox:has(.duel){max-width:900px}
 .dkbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 14px;font-size:14px;color:var(--mut)}.dkbar b{color:var(--txt);font-size:16px}
-.dkgrid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));max-height:52vh;overflow:auto;padding:4px}
+.dkgrid{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));max-height:52vh;overflow:auto;padding:4px}
 .dkc{cursor:pointer;border-radius:12px;transition:transform .15s;opacity:.55}.dkc.on{opacity:1;outline:3px solid var(--acc);outline-offset:2px;transform:translateY(-3px)}.dkc:hover{opacity:1}
 .duel{display:flex;flex-direction:column;gap:12px}
 .dhead{display:flex;align-items:center;justify-content:space-between}.dside{display:flex;align-items:center;gap:10px}.dside b{display:block}
@@ -420,7 +436,9 @@ button.tcg.mini:hover{transform:translateY(-4px) rotate(-1deg)}
 .vl-normal{background:#ffffff22;color:#fff}
 
 /* modal */
-#modal{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:#05060ccc;backdrop-filter:blur(6px);animation:fade .2s;overflow:auto}
+html.mopen,html.mopen body{overflow:hidden;overscroll-behavior:none}
+.mbox{overscroll-behavior:contain}
+#modal{overscroll-behavior:contain;position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:#05060ccc;backdrop-filter:blur(6px);animation:fade .2s;overflow:auto}
 @keyframes fade{from{opacity:0}}
 .mbox{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:22px;animation:rise .3s cubic-bezier(.2,1.2,.4,1)}
 @keyframes rise{from{transform:translateY(30px) scale(.96);opacity:0}}
@@ -1912,6 +1930,130 @@ A('fuerte','adj','stark','strong','Gleich für männlich und weiblich.','Same fo
 })();
 F('cientos','ciento','Hunderte','hundreds');F('países','país','Länder','countries');F('excepciones','excepción','Ausnahmen','exceptions');F('pasteles','pastel','Kuchen (Mehrzahl)','cakes');
 (function(){const N={tom:{name:true,de:'Tom, Mitstudent aus London',en:'Tom, classmate from London'},yuki:{name:true,de:'Yuki, Mitstudentin aus Tokio',en:'Yuki, classmate from Tokyo'},carmen:{name:true,de:'Carmen Soler, Spanischlehrerin',en:'Carmen Soler, Spanish teacher'},londres:{name:true,de:'Londres = London',en:'Londres = London'},tokio:{name:true,de:'Tokio = Tokyo',en:'Tokio = Tokyo'},'japón':{name:true,de:'Japón = Japan',en:'Japón = Japan'},inglaterra:{name:true,de:'Inglaterra = England',en:'Inglaterra = England'}};for(const k in N)if(!FORMS[k])FORMS[k]=N[k];})();
+
+/* Wortschatz Descubrimientos A1 */
+(function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;const A=(k,p,de,en,fde,fen,x)=>{if(LEX[k])return;W(k,p,n++,de,en,fde,fen,x);};
+const m=fr=>({g:'m',fr}),f=fr=>({g:'f',fr}),af=o=>Object.assign({af:1},o),C=(a,fr,irr)=>Object.assign({conj:a,fr},irr?{irr}:{});
+A('aire','n','Luft','air','Al aire libre = im Freien.','Al aire libre = outdoors.',m(45));
+A('aliado','n','Verbündeter','ally','Los aliados = die Alliierten.','Los aliados = the Allies.',af({g:'m',fr:70}));
+A('amargo','adj','bitter','bitter','Gegenteil: dulce.','Opposite: dulce.',af({fr:65}));
+A('antibiótico','n','Antibiotikum','antibiotic','Wirkt gegen Bakterien, nicht gegen Viren.','Works against bacteria, not viruses.',m(80));
+A('aparato','n','Gerät','device','Aparato kann fast jede Maschine sein.','Aparato can be almost any machine.',m(60));
+A('apretar','v','drücken','to press, to squeeze','Das e wird zu ie: aprieto.','The e becomes ie: aprieto.',C(['aprieto','aprietas','aprieta','apretamos','apretáis','aprietan'],65,[0,1,2,5]));
+A('asesinato','n','Mord','murder','Un asesino = ein Mörder.','Un asesino = a murderer.',m(70));
+A('asistente','n','Assistent','assistant','Gleich für Mann und Frau: el, la asistente.','Same for both: el, la asistente.',m(60));
+A('astronauta','n','Astronaut','astronaut','Gleich für Mann und Frau: el, la astronauta.','Same for both: el, la astronauta.',m(70));
+A('azteca','n','Azteke; aztekisch','Aztec','Die Hauptstadt der Azteken ist heute Mexiko-Stadt.','The Aztec capital is today Mexico City.',m(80));
+A('bacteria','n','Bakterie','bacterium','Mehrzahl: las bacterias.','Plural: las bacterias.',f(70));
+A('bandera','n','Fahne, Flagge','flag','Die spanische Flagge ist rot und gelb.','The Spanish flag is red and yellow.',f(60));
+A('bastante','adv','ziemlich; genug','quite; enough','Bastante bien = ziemlich gut.','Bastante bien = quite good.',{fr:40});
+A('bombilla','n','Glühbirne','light bulb','Auch: das Metallröhrchen für Mate-Tee.','Also: the metal straw for mate tea.',f(70));
+A('bordo','n','Bord (a bordo)','board (on board)','A bordo = an Bord.','A bordo = on board.',m(70));
+A('bote','n','Boot','boat','Kleiner als ein barco.','Smaller than a barco.',m(65));
+A('botón','n','Knopf','button','Mehrzahl: botones.','Plural: botones.',m(60));
+A('cable','n','Kabel','cable','Männlich: el cable.','Masculine: el cable.',m(60));
+A('cacao','n','Kakao','cocoa','Aus Kakaobohnen macht man Schokolade.','Chocolate is made from cocoa beans.',m(70));
+A('casualidad','n','Zufall','coincidence','Por casualidad = zufällig.','Por casualidad = by chance.',f(60));
+A('churro','n','Churro (Spritzgebäck)','churro','Man taucht sie in heisse Schokolade.','You dip them in hot chocolate.',m(70));
+A('cine','n','Kino','cinema','Ir al cine = ins Kino gehen.','Ir al cine = to go to the cinema.',m(45));
+A('civil','adj','zivil, Bürger-','civil','Guerra civil = Bürgerkrieg.','Guerra civil = civil war.',af({fr:60}));
+A('comunista','adj','kommunistisch','communist','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:70}));
+A('continente','n','Kontinent','continent','Europa, América, África, Asia, Oceanía.','Europe, America, Africa, Asia, Oceania.',m(60));
+A('crimen','n','Verbrechen','crime','Mehrzahl mit Akzent: crímenes.','Plural with accent: crímenes.',m(65));
+A('descubrir','v','entdecken','to discover','Un descubrimiento = eine Entdeckung.','Un descubrimiento = a discovery.',{fr:50});
+A('desordenado','adj','unordentlich','messy','Gegenteil: ordenado.','Opposite: ordenado.',af({fr:65}));
+A('destruido','adj','zerstört','destroyed','Von destruir (zerstören).','From destruir (to destroy).',af({fr:65}));
+A('durar','v','dauern','to last','¿Cuánto dura? = Wie lange dauert es?','¿Cuánto dura? = How long does it last?',{fr:50});
+A('eléctrico','adj','elektrisch','electric','Coche eléctrico = Elektroauto.','Coche eléctrico = electric car.',af({fr:60}));
+A('electricidad','n','Elektrizität, Strom','electricity','Weiblich, wie alle Wörter auf -dad.','Feminine, like all words in -dad.',f(65));
+A('elemento','n','Element','element','Die Tabelle der Elemente = Periodensystem.','The table of elements = periodic table.',m(60));
+A('enamorarse','v','sich verlieben','to fall in love','Enamorarse de alguien = sich in jemanden verlieben.','Enamorarse de alguien = to fall in love with someone.',C(['me enamoro','te enamoras','se enamora','nos enamoramos','os enamoráis','se enamoran'],60));
+A('europeo','adj','europäisch; Europäer','European','Klein geschrieben, anders als im Deutschen.','Lower case, unlike in German.',af({fr:55}));
+A('existir','v','existieren','to exist','Regelmässig auf -ir.','Regular -ir verb.',{fr:55});
+A('física','n','Physik','physics','Ein Physiker: un físico.','A physicist: un físico.',f(65));
+A('fracasar','v','scheitern','to fail','Un fracaso = ein Misserfolg.','Un fracaso = a failure.',{fr:65});
+A('frontera','n','Grenze','border','Spanien hat Grenzen zu Frankreich, Portugal und Andorra.','Spain borders France, Portugal and Andorra.',f(55));
+A('funcionar','v','funktionieren','to work (function)','¡No funciona! = Es geht nicht!','¡No funciona! = It doesn\'t work!',{fr:45});
+A('girar','v','drehen, abbiegen','to turn','Girar a la derecha = rechts abbiegen.','Girar a la derecha = to turn right.',{fr:55});
+A('gobierno','n','Regierung','government','Von gobernar (regieren).','From gobernar (to govern).',m(50));
+A('grabado','adj','aufgenommen','recorded','Von grabar (aufnehmen).','From grabar (to record).',af({fr:70}));
+A('herida','n','Wunde','wound','Herido = verletzt.','Herido = injured.',f(60));
+A('holocausto','n','Holocaust','Holocaust','Im Spanischen klein geschrieben, ausser als Eigenname.','Lower case in Spanish, except as a proper name.',m(80));
+A('hongo','n','Pilz','fungus, mushroom','In Spanien sagt man für essbare Pilze auch seta.','In Spain edible mushrooms are also called seta.',m(70));
+A('huella','n','Spur, Abdruck','footprint, trace','Huella dactilar = Fingerabdruck.','Huella dactilar = fingerprint.',f(65));
+A('humanidad','n','Menschheit','humanity','Von humano.','From humano.',f(60));
+A('hundirse','v','sinken, untergehen','to sink','Hundir = versenken.','Hundir = to sink something.',C(['me hundo','te hundes','se hunde','nos hundimos','os hundís','se hunden'],70));
+A('iceberg','n','Eisberg','iceberg','Englisches Wort, auf Spanisch ausgesprochen: i-se-BERG.','English word, Spanish pronunciation: i-se-BERG.',m(85));
+A('imprenta','n','Buchdruck, Druckerei','printing press','Von imprimir (drucken).','From imprimir (to print).',f(75));
+A('indio','n','Indianer; Inder','Native American; Indian','Kolumbus nannte die Menschen in Amerika indios.','Columbus called the people of America indios.',af({g:'m',fr:65}));
+A('interesar','v','interessieren','to interest','Funktioniert wie gustar: me interesa.','Works like gustar: me interesa.',{fr:45});
+A('interesante','adj','interessant','interesting','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:40}));
+A('inventar','v','erfinden','to invent','Auch: etwas erfinden, lügen.','Also: to make something up.',{fr:55});
+A('invento','n','Erfindung','invention','Von inventar.','From inventar.',m(60));
+A('inventor','n','Erfinder','inventor','Weiblich: la inventora.','Feminine: la inventora.',af({g:'m',fr:65}));
+A('judío','n','Jude; jüdisch','Jew; Jewish','Weiblich: judía.','Feminine: judía.',af({g:'m',fr:65}));
+A('laboratorio','n','Labor','laboratory','Kurz: el labo.','Short: el labo.',m(65));
+A('ley','n','Gesetz','law','Mehrzahl: leyes.','Plural: leyes.',f(50));
+A('manera','n','Art, Weise','way, manner','De esta manera = auf diese Weise.','De esta manera = this way.',f(45));
+A('marinero','n','Seemann','sailor','Von mar.','From mar.',af({g:'m',fr:70}));
+A('martillo','n','Hammer','hammer','Männlich: el martillo.','Masculine: el martillo.',m(70));
+A('matemáticas','n','Mathematik','mathematics','Meist in der Mehrzahl. Kurz: mates.','Usually plural. Short: mates.',f(60));
+A('material','n','Material','material','Mehrzahl: materiales.','Plural: materiales.',m(55));
+A('maya','n','Maya','Maya','Die Maya lebten in Mexiko und Mittelamerika.','The Maya lived in Mexico and Central America.',m(80));
+A('moderno','adj','modern','modern','Gegenteil: antiguo.','Opposite: antiguo.',af({fr:50}));
+A('motor','n','Motor','engine','Männlich: el motor.','Masculine: el motor.',m(60));
+A('mundial','adj','Welt-, weltweit','world, global','El Mundial = die Fussball-WM.','El Mundial = the World Cup.',af({fr:55}));
+A('nación','n','Nation','nation','Las Naciones Unidas = die Vereinten Nationen.','Las Naciones Unidas = the United Nations.',f(60));
+A('naturaleza','n','Natur','nature','Weiblich: la naturaleza.','Feminine: la naturaleza.',f(55));
+A('nave','n','Schiff; Raumschiff','ship; spaceship','Nave espacial = Raumschiff.','Nave espacial = spaceship.',f(65));
+A('nazi','n','Nazi','Nazi','Gleich für männlich und weiblich.','Same for masculine and feminine.',m(75));
+A('neutral','adj','neutral','neutral','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:65}));
+A('objetivo','n','Ziel','goal','Auch Adjektiv: objektiv.','Also an adjective: objective.',m(55));
+A('oír','v','hören','to hear','Unregelmässig: oigo, oyes, oye.','Irregular: oigo, oyes, oye.',C(['oigo','oyes','oye','oímos','oís','oyen'],40,[0,1,2,5]));
+A('paciencia','n','Geduld','patience','Tener paciencia = Geduld haben.','Tener paciencia = to be patient.',f(55));
+A('participar','v','teilnehmen','to take part','Participar en = teilnehmen an.','Participar en = to take part in.',{fr:55});
+A('paz','n','Frieden','peace','Mehrzahl: paces. Weiblich: la paz.','Plural: paces. Feminine: la paz.',f(50));
+A('penicilina','n','Penicillin','penicillin','Das erste Antibiotikum.','The first antibiotic.',f(85));
+A('perseguir','v','verfolgen','to persecute, to chase','Das e wird zu i: persigo.','The e becomes i: persigo.',C(['persigo','persigues','persigue','perseguimos','perseguís','persiguen'],65,[0,1,2,5]));
+A('picante','adj','scharf (Essen)','spicy','No pica = es ist nicht scharf.','No pica = it is not spicy.',af({fr:60}));
+A('premio','n','Preis (Auszeichnung)','prize','Der Preis im Laden heisst precio.','A price in a shop is precio.',m(55));
+A('protesta','n','Protest','protest','Protestar = protestieren.','Protestar = to protest.',f(60));
+A('química','n','Chemie','chemistry','Ein Chemiker: un químico.','A chemist: un químico.',f(65));
+A('realidad','n','Wirklichkeit','reality','En realidad = eigentlich, in Wirklichkeit.','En realidad = actually.',f(50));
+A('recibir','v','bekommen, empfangen','to receive','Regelmässig auf -ir.','Regular -ir verb.',{fr:45});
+A('recoger','v','aufsammeln, abholen','to pick up','Aus g wird j vor o: recojo.','The g becomes j before o: recojo.',C(['recojo','recoges','recoge','recogemos','recogéis','recogen'],55,[0]));
+A('resolver','v','lösen','to solve','Das o wird zu ue: resuelvo.','The o becomes ue: resuelvo.',C(['resuelvo','resuelves','resuelve','resolvemos','resolvéis','resuelven'],60,[0,1,2,5]));
+A('salvar','v','retten','to save, to rescue','Salvavidas = Rettungsring.','Salvavidas = life jacket.',{fr:55});
+A('sal','n','Salz','salt','Weiblich: la sal.','Feminine: la sal.',f(55));
+A('separado','adj','getrennt','separated','Von separar (trennen).','From separar (to separate).',af({fr:60}));
+A('ser2','n','','','','',{});
+A('soviético','adj','sowjetisch','Soviet','La Unión Soviética existiert von 1922 bis 1991.','The Soviet Union exists from 1922 to 1991.',af({fr:75}));
+A('televisión','n','Fernsehen','television','Kurz: la tele.','Short: la tele.',f(50));
+A('terrible','adj','schrecklich','terrible','Gleich für männlich und weiblich.','Same for masculine and feminine.',af({fr:55}));
+A('vacaciones','n','Ferien, Urlaub','holidays','Immer Mehrzahl: las vacaciones.','Always plural: las vacaciones.',f(50));
+A('veintiocho','num','achtundzwanzig','twenty-eight','Zahlen bis 29 schreibt man zusammen.','Numbers up to 29 are written as one word.',{fr:55});
+A('volar','v','fliegen','to fly','Das o wird zu ue: vuelo, vuela.','The o becomes ue: vuelo, vuela.',C(['vuelo','vuelas','vuela','volamos','voláis','vuelan'],55,[0,1,2,5]));
+A('vuelo','n','Flug','flight','Gleiches Wort wie yo vuelo (ich fliege).','Same word as yo vuelo (I fly).',m(55));
+A('contestar','v','antworten','to answer','Contestar el teléfono = ans Telefon gehen.','Contestar el teléfono = to answer the phone.',{fr:45});
+})();
+delete LEX['ser2'];
+F('crímenes','crimen','Verbrechen (Mehrzahl)','crimes');F('leyes','ley','Gesetze','laws');F('seres','ser','Wesen (Mehrzahl)','beings');F('botones','botón','Knöpfe','buttons');F('naciones','nación','Nationen','nations');
+(function(){const N={};const add=(ks,de,en)=>ks.split(' ').forEach(k=>N[k]={name:true,de,en});
+add('cristóbal colón','Cristóbal Colón = Christoph Kolumbus','Christopher Columbus');add('isabel fernando','Isabel und Fernando, die Katholischen Könige','Isabella and Ferdinand, the Catholic Monarchs');
+add('niña pinta','Name eines Schiffs von Kolumbus','name of one of Columbus\'s ships');add('américa','América = Amerika','America');add('india','India = Indien','India');
+add('méxico','México = Mexiko','Mexico');add('alemania','Alemania = Deutschland','Germany');add('johannes gutenberg','Johannes Gutenberg, Erfinder des Buchdrucks','Johannes Gutenberg, inventor of printing');
+add('biblia','Biblia = Bibel','Bible');add('alexander graham bell','Alexander Graham Bell, Erfinder des Telefons','Alexander Graham Bell, inventor of the telephone');add('escocia','Escocia = Schottland','Scotland');
+add('estados unidos','Estados Unidos = USA','United States');add('watson','Thomas Watson, Assistent von Bell','Thomas Watson, Bell\'s assistant');add('ahoy','ahoy, Ruf der Seeleute','ahoy, sailors\' call');
+add('thomas edison','Thomas Edison, Erfinder','Thomas Edison, inventor');add('nueva york','Nueva York = New York','New York');add('wilbur orville wright','Die Brüder Wright, Flugpioniere','The Wright brothers, aviation pioneers');
+add('fleming','Alexander Fleming, entdeckt das Penicillin','Alexander Fleming, discovered penicillin');add('nobel','Nobelpreis','Nobel Prize');add('marie maria pierre curie','Marie und Pierre Curie, Physiker','Marie and Pierre Curie, physicists');
+add('polonia','Polonia = Polen','Poland');add('polonio','Polonium, chemisches Element','polonium');add('irene','Irène Joliot-Curie, Tochter von Marie','Irène Joliot-Curie, Marie\'s daughter');
+add('titanic','Titanic, britisches Passagierschiff','Titanic, British passenger ship');add('adolf hitler','Adolf Hitler, Diktator in Deutschland 1933 bis 1945','Adolf Hitler, dictator of Germany 1933 to 1945');
+add('gran bretaña','Gran Bretaña = Grossbritannien','Great Britain');add('unión','Unión Soviética = Sowjetunion','Soviet Union');add('naciones unidas','Naciones Unidas = Vereinte Nationen','United Nations');
+add('apolo','Apolo 11 = Apollo 11','Apollo 11');add('neil armstrong','Neil Armstrong, erster Mensch auf dem Mond','Neil Armstrong, first man on the Moon');add('buzz aldrin','Buzz Aldrin, zweiter Mensch auf dem Mond','Buzz Aldrin, second man on the Moon');
+add('michael collins','Michael Collins, Pilot von Apollo 11','Michael Collins, Apollo 11 pilot');add('berlín','Berlín = Berlin','Berlin');add('japón','Japón = Japan','Japan');add('santa','Santa María, Schiff von Kolumbus','Santa María, Columbus\'s ship');
+for(const k in N)if(!FORMS[k])FORMS[k]=N[k];})();
+F('sabías','saber','wusstest du','did you know');
+(function(){let n=Math.max(...Object.values(LEX).map(e=>e.n))+1;if(!LEX['polaco'])W('polaco','adj',n,'polnisch','Polish','Von Polonia.','From Polonia.',{af:1,fr:70});})();
 
 Object.assign(LEX.el,{forms:['el','la','los','las']});Object.assign(LEX.un,{forms:['un','una','unos','unas']});Object.assign(LEX.este,{forms:['este','esta','estos','estas']});Object.assign(LEX.mi,{forms:['mi','mi','mis','mis']});Object.assign(LEX.otro,{af:1});Object.assign(LEX.primero,{af:1});
 F('pregunta','pregunta','Frage; fragt','question; asks');F('preguntas','preguntar','du fragst; Fragen','you ask; questions');
@@ -4120,6 +4262,243 @@ const HIST_A1=[
   ]}
 ];
 
+const FACTS_A1=[
+ {ch:1,title:'Un mundo nuevo',diff:1,
+  tz:{de:'1492: Kolumbus sucht einen Weg nach Indien und findet einen Kontinent, den er nicht kennt.',en:'1492: Columbus looks for a route to India and finds a continent he does not know.'},
+  paras:[
+   'Es el año 1492. Un hombre tiene una idea muy grande. Se llama Cristóbal Colón.',
+   'Colón quiere ir a la India. Pero no quiere ir por el este, como todos. Quiere ir por el oeste, por el mar.',
+   'Mucha gente dice: «Es imposible. El mar es muy grande.» Pero Colón cree que la Tierra es redonda. Y tiene razón.',
+   'Los reyes de España, Isabel y Fernando, le dan dinero. Colón tiene tres barcos: la Niña, la Pinta y la Santa María.',
+   'El viaje es largo y difícil. Pasan muchos días. No hay tierra, solo agua. Los hombres tienen miedo y quieren volver a casa.',
+   'Entonces, el 12 de octubre, un hombre grita: «¡Tierra!»',
+   'Colón llega a una isla. Él piensa que está en la India. Por eso llama «indios» a las personas de allí.',
+   'Pero no es la India. Es un continente nuevo para los europeos: América.',
+   'Hoy, el 12 de octubre es un día de fiesta en España y en muchos países de América.',
+   {t:'¿Sabías que...? Colón viaja cuatro veces a América. Y nunca sabe que es un continente nuevo.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Adónde quiere ir Colón?',o:['A la India.','A Suiza.','A la Luna.']},
+   {q:'¿Cuántos barcos tiene Colón?',o:['Tres.','Diez.','Uno.']},
+   {q:'¿Qué grita un hombre el 12 de octubre?',o:['¡Tierra!','¡Agua!','¡Fuego!']},
+   {q:'¿Dónde llega Colón en realidad?',o:['A América.','A la India.','A África.']}
+  ]},
+ {ch:2,title:'El chocolate',diff:1,
+  tz:{de:'Woher kommt Schokolade? Aus Amerika. Und am Anfang ist sie bitter.',en:'Where does chocolate come from? From America. And at first it is bitter.'},
+  paras:[
+   '¿Te gusta el chocolate? A mucha gente le gusta. Pero el chocolate no viene de Europa. Viene de América.',
+   'En México viven los aztecas y los mayas. Ellos tienen un árbol especial: el árbol del cacao.',
+   'Con el cacao hacen una bebida. Pero no es dulce. Es amarga, fría y un poco picante.',
+   'Para los aztecas, el cacao es muy importante. Es la bebida de los reyes. Y también es dinero: con cacao puedes comprar cosas.',
+   'Después de Colón, los españoles llegan a México. Prueban la bebida y dicen: «¡Qué amarga!»',
+   'En el siglo dieciséis, el cacao llega a España. Aquí ponen azúcar en la bebida. Ahora es dulce y caliente. Y todos quieren más.',
+   'Pronto el chocolate caliente es la bebida favorita de las personas ricas de Europa.',
+   'Hoy en España, mucha gente toma chocolate caliente con churros. Sobre todo en invierno.',
+   {t:'¿Sabías que...? La palabra «chocolate» viene de la lengua de los aztecas.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿De dónde viene el chocolate?',o:['De América.','De Suiza.','De España.']},
+   {q:'¿Cómo es la bebida de los aztecas?',o:['Amarga.','Muy dulce.','Fría y azul.']},
+   {q:'¿Qué ponen los españoles en la bebida?',o:['Azúcar.','Sal.','Leche de cabra.']},
+   {q:'¿Con qué toman chocolate en España?',o:['Con churros.','Con paella.','Con queso.']}
+  ]},
+ {ch:3,title:'Libros para todos',diff:1,
+  tz:{de:'Um 1450 erfindet Gutenberg eine Maschine, die die Welt verändert.',en:'Around 1450, Gutenberg invents a machine that changes the world.'},
+  paras:[
+   'Antes, cada libro es especial. Una persona escribe el libro a mano. Página por página.',
+   'Para escribir un libro, una persona necesita meses. A veces, años. Por eso los libros son muy caros. Solo las personas ricas tienen libros.',
+   'En el año 1450, más o menos, un hombre en Alemania tiene una idea. Se llama Johannes Gutenberg.',
+   'Gutenberg hace letras pequeñas de metal. Con las letras forma palabras. Con las palabras forma una página.',
+   'Después pone tinta en las letras y aprieta el papel. Y ya tiene una página. Y otra. Y otra. ¡Muy rápido!',
+   'La máquina se llama imprenta. Con la imprenta, una persona puede hacer cientos de páginas en un día.',
+   'Ahora los libros son más baratos. Más personas pueden leer. Las ideas viajan por toda Europa.',
+   'Muchos historiadores dicen: la imprenta cambia el mundo. Como internet hoy.',
+   {t:'¿Sabías que...? El libro más famoso de Gutenberg es una Biblia. Hoy solo existen unas cincuenta.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Cómo se escribe un libro antes?',o:['A mano.','Con un ordenador.','Con una máquina.']},
+   {q:'¿Quién inventa la imprenta?',o:['Gutenberg.','Colón.','Joan.']},
+   {q:'¿De qué son las letras de Gutenberg?',o:['De metal.','De papel.','De chocolate.']},
+   {q:'¿Qué pasa con los libros después?',o:['Son más baratos.','Son más caros.','Desaparecen.']}
+  ]},
+ {ch:4,title:'¿Hola? ¿Me oyes?',diff:1,
+  tz:{de:'1876 spricht zum ersten Mal ein Mensch durch ein Kabel mit einem anderen.',en:'In 1876, for the first time, a person speaks to another through a wire.'},
+  paras:[
+   'Hoy hablamos por teléfono todos los días. Pero el teléfono es bastante nuevo. Solo tiene unos ciento cincuenta años.',
+   'El inventor se llama Alexander Graham Bell. Vive en Estados Unidos, pero es de Escocia.',
+   'Bell trabaja con personas que no oyen bien. Por eso le interesa mucho el sonido.',
+   'Su idea es simple: llevar la voz por un cable. Pero es muy difícil.',
+   'Es el año 1876. Bell está en una habitación. Su asistente, el señor Watson, está en otra habitación.',
+   'Bell habla al aparato: «Señor Watson, ¡aquí, por favor!»',
+   'En la otra habitación, Watson escucha la voz de Bell. ¡Por el cable! Watson corre a la habitación de Bell. Funciona.',
+   'Pocos años después, hay teléfonos en muchas ciudades. Y hoy casi cada persona lleva un teléfono en el bolsillo.',
+   {t:'¿Sabías que...? Bell quiere usar la palabra «ahoy» para contestar el teléfono, como los marineros.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Quién inventa el teléfono?',o:['Bell.','Gutenberg.','Edison.']},
+   {q:'¿En qué año habla Bell por teléfono?',o:['En 1876.','En 1492.','En 1969.']},
+   {q:'¿Dónde está Watson?',o:['En otra habitación.','En Escocia.','En la Luna.']},
+   {q:'¿Qué lleva hoy casi cada persona?',o:['Un teléfono.','Un cable largo.','Una máquina grande.']}
+  ]},
+ {ch:5,title:'Luz en la noche',diff:2,
+  tz:{de:'Edison probiert tausende Materialien, bis eine Glühbirne endlich lange leuchtet.',en:'Edison tries thousands of materials until a light bulb finally shines for a long time.'},
+  paras:[
+   'Antes, la noche es oscura. Muy oscura. Para tener luz, las personas usan fuego: velas y lámparas de aceite.',
+   'Muchos inventores quieren hacer luz con electricidad. Pero tienen un problema: la luz dura muy poco. Unos minutos, nada más.',
+   'Thomas Edison, en Estados Unidos, quiere resolver el problema. Trabaja día y noche con su equipo.',
+   'Prueba muchos materiales. Cientos, miles. Nada funciona bien.',
+   'Edison no está triste. Dice: «No fracaso. Solo encuentro muchas maneras que no funcionan.»',
+   'En 1879, por fin, encuentra un material bueno. Su bombilla da luz durante muchas horas.',
+   'Pocos años después, las calles de Nueva York tienen luz eléctrica. Las ciudades cambian. La noche ya no es tan oscura.',
+   'Hoy no pensamos en la luz. Tocamos un botón y ya está. Pero detrás hay mucho trabajo y mucha paciencia.',
+   {t:'¿Sabías que...? Edison tiene más de mil inventos. También trabaja en el cine y en la música grabada.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Qué usan las personas antes para tener luz?',o:['Fuego.','Bombillas.','Teléfonos.']},
+   {q:'¿Cuál es el problema de las primeras luces eléctricas?',o:['Duran muy poco.','Son muy grandes.','Son de chocolate.']},
+   {q:'¿Qué dice Edison?',o:['Que encuentra maneras que no funcionan.','Que está muy triste.','Que no quiere trabajar.']},
+   {q:'¿En qué año funciona su bombilla?',o:['En 1879.','En 1492.','En 1912.']}
+  ]},
+ {ch:6,title:'Doce segundos en el aire',diff:2,
+  tz:{de:'1903 fliegt zum ersten Mal ein Flugzeug mit Motor. Der Flug dauert zwölf Sekunden.',en:'In 1903 a motor plane flies for the first time. The flight lasts twelve seconds.'},
+  paras:[
+   'Desde siempre, las personas miran a los pájaros y piensan: «Yo también quiero volar.»',
+   'Wilbur y Orville Wright son dos hermanos de Estados Unidos. Tienen una tienda de bicicletas. Pero su sueño es el cielo.',
+   'Durante años estudian a los pájaros. Hacen pruebas con máquinas sin motor. Muchas veces caen. Pero siempre vuelven a empezar.',
+   'Es el 17 de diciembre de 1903. Hace frío y mucho viento. Están en una playa grande.',
+   'Orville sube a la máquina. El motor empieza. Y de repente... el avión sube. ¡Vuela!',
+   'El vuelo dura solo doce segundos. Y el avión vuela treinta y siete metros. Es muy poco. Pero es la primera vez.',
+   'Ese día hacen cuatro vuelos. El último dura casi un minuto.',
+   'Sesenta y seis años después, una persona camina en la Luna. Todo empieza con doce segundos en una playa.',
+   {t:'¿Sabías que...? El primer vuelo de los Wright es más corto que un avión moderno de hoy.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Qué tienen los hermanos Wright?',o:['Una tienda de bicicletas.','Un bar.','Un barco.']},
+   {q:'¿Cuánto dura el primer vuelo?',o:['Doce segundos.','Una hora.','Un día.']},
+   {q:'¿Dónde vuelan?',o:['En una playa.','En la ciudad.','En una montaña.']},
+   {q:'¿Qué estudian durante años?',o:['Los pájaros.','Los peces.','Las estrellas.']}
+  ]},
+ {ch:7,title:'Una medicina por casualidad',diff:2,
+  tz:{de:'1928 kommt ein Forscher aus den Ferien zurück und findet auf einem schmutzigen Teller ein Wunder.',en:'In 1928 a scientist comes back from holiday and finds a miracle on a dirty dish.'},
+  paras:[
+   'Alexander Fleming es un científico de Londres. Estudia las bacterias: seres muy pequeños que nos ponen enfermos.',
+   'Fleming es un poco desordenado. En verano de 1928 se va de vacaciones. Y deja platos con bacterias en su laboratorio.',
+   'Cuando vuelve, mira los platos. En un plato hay algo verde: un hongo.',
+   'Fleming mira mejor. Alrededor del hongo no hay bacterias. Están muertas.',
+   '«Qué interesante», piensa. El hongo mata las bacterias.',
+   'De este hongo nace una medicina nueva: la penicilina. Es el primer antibiótico.',
+   'Antes, una herida pequeña puede ser peligrosa. Con la penicilina, los médicos pueden salvar a millones de personas.',
+   'Fleming dice después: «No invento la penicilina. La naturaleza la hace. Yo solo la encuentro por casualidad.»',
+   {t:'¿Sabías que...? Fleming recibe el Premio Nobel de Medicina en 1945.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Qué estudia Fleming?',o:['Las bacterias.','Los pájaros.','Las estrellas.']},
+   {q:'¿Qué encuentra en un plato?',o:['Un hongo verde.','Una llave.','Una carta.']},
+   {q:'¿Qué hace el hongo?',o:['Mata las bacterias.','Hace chocolate.','Da luz.']},
+   {q:'¿Cómo se llama la medicina?',o:['Penicilina.','Imprenta.','Bombilla.']}
+  ]},
+ {ch:8,title:'Marie Curie',diff:2,
+  tz:{de:'Eine Frau aus Polen gewinnt als Erste zwei Nobelpreise.',en:'A woman from Poland becomes the first person to win two Nobel Prizes.'},
+  paras:[
+   'Marie Curie nace en Polonia en 1867. Su nombre polaco es Maria. Es muy inteligente y quiere estudiar.',
+   'Pero en su país, las mujeres no pueden ir a la universidad. Por eso se va a París.',
+   'En París, Marie estudia física y matemáticas. Es pobre. A veces no tiene dinero para comer. Pero estudia mucho.',
+   'Allí conoce a Pierre Curie, otro científico. Se enamoran y trabajan juntos.',
+   'Marie y Pierre descubren dos elementos nuevos. Uno se llama polonio, por su país. El otro, radio.',
+   'En 1903 reciben el Premio Nobel de Física. Marie es la primera mujer con un Premio Nobel.',
+   'En 1911 recibe otro Premio Nobel, ahora de Química. Es la primera persona con dos Premios Nobel.',
+   'Marie trabaja toda su vida con materiales peligrosos. Todavía hoy, sus cuadernos son peligrosos. Están en cajas especiales.',
+   {t:'¿Sabías que...? Su hija Irene también recibe un Premio Nobel, en 1935.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿De dónde es Marie Curie?',o:['De Polonia.','De España.','De Suiza.']},
+   {q:'¿Por qué se va a París?',o:['Para estudiar.','Para comer chocolate.','Para ver la Luna.']},
+   {q:'¿Cómo se llama un elemento que descubre?',o:['Polonio.','Penicilina.','Chocolate.']},
+   {q:'¿Cuántos Premios Nobel recibe Marie?',o:['Dos.','Uno.','Cinco.']}
+  ]},
+ {ch:9,title:'El Titanic',diff:2,
+  tz:{de:'Das grösste Schiff der Welt gilt als unsinkbar. Auf seiner ersten Reise trifft es einen Eisberg.',en:'The biggest ship in the world is called unsinkable. On its first voyage it hits an iceberg.'},
+  paras:[
+   'En 1912, el Titanic es el barco más grande del mundo. Es largo, elegante y muy rico.',
+   'Mucha gente dice que el Titanic no puede hundirse. Es imposible, dicen.',
+   'El 10 de abril, el Titanic sale de Inglaterra. Va a Nueva York. Es su primer viaje. Hay más de dos mil personas a bordo.',
+   'Es de noche. Hace mucho frío. El mar está tranquilo y oscuro.',
+   'De repente, un hombre ve algo delante del barco: un iceberg. Una montaña de hielo en el mar.',
+   'El barco intenta girar, pero es tarde. El iceberg toca el barco. El agua entra.',
+   'El problema: no hay botes para todos. Muchas personas no pueden salir.',
+   'Dos horas y media después, el 15 de abril, el Titanic se hunde. Más de mil quinientas personas mueren.',
+   'Después del Titanic, las leyes cambian: cada barco tiene que tener botes para todas las personas.',
+   {t:'¿Sabías que...? El Titanic está a casi cuatro kilómetros bajo el mar. Lo encuentran en 1985.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Adónde va el Titanic?',o:['A Nueva York.','A Barcelona.','A la India.']},
+   {q:'¿Qué ve un hombre delante del barco?',o:['Un iceberg.','Una isla.','Otro barco.']},
+   {q:'¿Cuál es el gran problema?',o:['No hay botes para todos.','No hay comida.','No hay luz.']},
+   {q:'¿Qué cambia después?',o:['Las leyes para los barcos.','El nombre del mar.','Nada.']}
+  ]},
+ {ch:10,title:'La Segunda Guerra Mundial',diff:3,
+  tz:{de:'1939 bis 1945: der grösste Krieg der Geschichte, und was die Welt daraus lernt.',en:'1939 to 1945: the largest war in history, and what the world learns from it.'},
+  paras:[
+   'En 1939 empieza la Segunda Guerra Mundial. Es la guerra más grande de la historia.',
+   'En Alemania manda Adolf Hitler y su partido, los nazis. Hitler quiere más tierra para Alemania. Su ejército ataca Polonia.',
+   'Después, Alemania ataca muchos países de Europa. Italia y Japón están con Alemania.',
+   'Contra ellos luchan los aliados: Gran Bretaña, la Unión Soviética, Estados Unidos y muchos otros países.',
+   'La guerra es terrible. Muchas ciudades están destruidas. Millones de soldados mueren. Y también millones de personas normales.',
+   'Los nazis persiguen y matan a seis millones de judíos. Esto se llama el Holocausto. Es uno de los crímenes más grandes de la historia.',
+   'En 1945, la guerra termina. Alemania pierde en mayo, Japón en septiembre. Más de sesenta millones de personas están muertas.',
+   'Después de la guerra, los países quieren paz. En 1945 nacen las Naciones Unidas. Su objetivo: hablar en lugar de luchar.',
+   'España no participa en la guerra. Pero en España también hay una guerra terrible antes: la Guerra Civil, de 1936 a 1939.',
+   {t:'¿Sabías que...? Suiza tampoco participa en la guerra. Es un país neutral.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Cuándo empieza la guerra?',o:['En 1939.','En 1492.','En 1989.']},
+   {q:'¿Qué país ataca primero Alemania?',o:['Polonia.','España.','Suiza.']},
+   {q:'¿Qué es el Holocausto?',o:['El asesinato de seis millones de judíos.','Una ciudad de Alemania.','Un barco grande.']},
+   {q:'¿Qué nace en 1945?',o:['Las Naciones Unidas.','El teléfono.','La imprenta.']}
+  ]},
+ {ch:11,title:'Un pequeño paso',diff:3,
+  tz:{de:'20. Juli 1969: Zum ersten Mal steht ein Mensch auf dem Mond.',en:'20 July 1969: for the first time a person stands on the Moon.'},
+  paras:[
+   'Es el 20 de julio de 1969. Millones de personas miran la televisión. En todo el mundo.',
+   'Tres astronautas de Estados Unidos viajan a la Luna en una nave: el Apolo 11.',
+   'Se llaman Neil Armstrong, Buzz Aldrin y Michael Collins. El viaje dura cuatro días.',
+   'Collins se queda en la nave, alrededor de la Luna. Armstrong y Aldrin bajan en una nave pequeña.',
+   'Armstrong abre la puerta. Baja despacio. Y pone el pie en la Luna.',
+   'Entonces dice una frase muy famosa: «Es un pequeño paso para un hombre, pero un gran salto para la humanidad.»',
+   'En la Luna no hay aire. No hay viento. Por eso las huellas de los astronautas todavía están allí.',
+   'Los astronautas ponen una bandera, toman fotos y recogen piedras. Después de dos horas y media, vuelven a la nave.',
+   'El 24 de julio vuelven a la Tierra. Caen en el mar con su nave. Son héroes.',
+   {t:'¿Sabías que...? Hasta hoy, solo doce personas caminan en la Luna. La última vez es en 1972.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Cómo se llama la nave?',o:['Apolo 11.','Titanic.','Santa María.']},
+   {q:'¿Quién pone el primer pie en la Luna?',o:['Neil Armstrong.','Michael Collins.','Colón.']},
+   {q:'¿Por qué están las huellas todavía allí?',o:['Porque no hay aire ni viento.','Porque hay mucho hielo.','Porque llueve.']},
+   {q:'¿Cuántas personas caminan en la Luna hasta hoy?',o:['Doce.','Una.','Cien.']}
+  ]},
+ {ch:12,title:'El muro cae',diff:3,
+  tz:{de:'28 Jahre trennt eine Mauer Berlin. In einer Nacht im November 1989 ist sie plötzlich offen.',en:'For 28 years a wall divides Berlin. One night in November 1989 it is suddenly open.'},
+  paras:[
+   'Después de la Segunda Guerra Mundial, Alemania tiene dos partes. Al oeste, un país libre. Al este, un país comunista.',
+   'La ciudad de Berlín también tiene dos partes. Muchas personas del este se van al oeste. Quieren más libertad.',
+   'En 1961, el gobierno del este construye un muro. Un muro alto y largo, en medio de la ciudad.',
+   'De un día para otro, familias y amigos están separados. Una calle, un muro, dos mundos.',
+   'Durante veintiocho años, el muro está allí. Muchas personas intentan pasar. Algunas mueren.',
+   'En 1989, todo cambia. En el este hay grandes protestas. La gente quiere libertad.',
+   'El 9 de noviembre de 1989, el gobierno abre la frontera. Por la noche, miles de personas van al muro.',
+   'Pasan al otro lado. Lloran, ríen, se abrazan. Algunas personas suben al muro con martillos.',
+   'Un año después, en 1990, Alemania es otra vez un solo país.',
+   {t:'¿Sabías que...? Hoy hay trozos del muro de Berlín en muchas ciudades del mundo. También en Barcelona.',cls:'note'}
+  ],
+  quiz:[
+   {q:'¿Cuántas partes tiene Berlín?',o:['Dos.','Tres.','Una.']},
+   {q:'¿Cuándo construyen el muro?',o:['En 1961.','En 1492.','En 1903.']},
+   {q:'¿Qué pasa el 9 de noviembre de 1989?',o:['Abren la frontera.','Construyen otro muro.','Empieza una guerra.']},
+   {q:'¿Qué pasa en 1990?',o:['Alemania es otra vez un solo país.','Berlín desaparece.','Todos se van a España.']}
+  ]}
+];
+
+if(typeof FACTS_A1!=='undefined')STORIES.push(...FACTS_A1.map(s=>Object.assign({id:'f1-'+s.ch,lvl:'A1',mode:'facts'},s)));
 /* Redewendungen: f = Varianten, wie sie im Text stehen */
 const PHR=[
  {id:'quetal',f:['qué tal'],de:'Wie geht\'s? / Wie war\'s?',en:'How are you? / How was it?',x:{de:'Typische Begrüssung. Antwort: bien, muy bien, regular.',en:'Typical greeting. Answer: bien, muy bien, regular.'}},
@@ -4610,8 +4989,8 @@ function today(){return dayKey(new Date());}
 function markDay(){const t=today();if(!S.days.includes(t)){S.days.push(t);S.days=S.days.slice(-120);}}
 function streak(){const set=new Set(S.days);let d=new Date(),n=0;if(!set.has(today()))d.setDate(d.getDate()-1);while(set.has(dayKey(d))){n++;d.setDate(d.getDate()-1);}return n;}
 function bestStreak(){const ds=[...S.days].sort();let best=0,run=0,prev=null;for(const k of ds){const d=new Date(k+'T12:00:00');if(prev&&Math.round((d-prev)/864e5)===1)run++;else run=1;best=Math.max(best,run);prev=d;}return best;}
-function chestSources(){const q=questTotals().n;return {story:doneStories().length,quest:Math.floor(q/10),streak:Math.floor(bestStreak()/3),level:levelOf(xp())-1,qn:q};}
-function chestsAvail(){const c=chestSources();return Math.max(0,c.story+c.quest+c.streak+c.level-(S.opened||0));}
+function chestSources(){const q=questTotals().n;return {exam:S.examChests||0,story:doneStories().length,quest:Math.floor(q/10),streak:Math.floor(bestStreak()/3),level:levelOf(xp())-1,qn:q};}
+function chestsAvail(){const c=chestSources();return Math.max(0,c.exam+c.story+c.quest+c.streak+c.level-(S.opened||0));}
 let lastLevel=null,lastChests=null,lastColsDone=null;
 function updateHud(){
   const x=xp(),l=levelOf(x);const lo=LV[l-1]??0,hi=nextLv(l);
@@ -4755,26 +5134,49 @@ function go(v){view=v;hideTip();render();scrollTo(0,0);
   if(v.name==='level')requestAnimationFrame(()=>{const md=v.mode||'story';const cur=(S.last&&STORIES.find(s=>s.id===S.last&&s.lvl===v.lvl&&modeOf(s)===md&&!isDone(s)))||nextStory(md);const el=cur&&document.getElementById('ch-'+cur.id);
     if(el){el.classList.add('cur');const y=el.getBoundingClientRect().top+scrollY-innerHeight*.28;if(y>0)scrollTo(0,y);}});}
 const FOOT=`<footer class="foot"><span>Ein Prototyp von <b>Eloori Interactive</b></span><a href="mailto:contact@eloori-interactive.com">contact@eloori-interactive.com</a><a href="#" data-method>Die Methode</a><a href="legal.html">Legal Notice</a><a href="privacy.html">Privacy Policy</a></footer>`;
-function render(){const m=$('#view');if(view.name==='home')m.innerHTML=homeHtml()+FOOT;else if(view.name==='level')m.innerHTML=levelHtml(view.lvl)+FOOT;}
+function render(){const m=$('#view');if(view.name==='home')m.innerHTML=homeHtml()+FOOT;else if(view.name==='level')m.innerHTML=levelHtml(view.lvl)+FOOT;else if(view.name==='series')m.innerHTML=seriesHtml(view.lvl)+FOOT;}
 function lvlStats(c){const st=STORIES.filter(s=>s.lvl===c&&!s.soon);return {n:st.length,done:st.filter(s=>S.stories[s.id]&&S.stories[s.id].done).length};}
 function isDone(s){return !!(s&&S.stories[s.id]&&S.stories[s.id].done);}
-const HIST_REQ={A1:'a1-10'};
-function modeOf(s){return s.mode||'story';}
+const HIST_REQ={A1:10};
+function modeOf(s){return s.clase?'clase':s.mode||'story';}
 function chainOf(s){const md=modeOf(s);return STORIES.filter(x=>x.lvl===s.lvl&&modeOf(x)===md&&!x.soon);}
-function histOpen(lvl){const r=HIST_REQ[lvl];return !!r&&isDone(STORIES.find(s=>s.id===r));}
+function histOpen(lvl){const r=HIST_REQ[lvl];return !!r&&STORIES.filter(s=>s.lvl===lvl&&isDone(s)&&modeOf(s)!=='hist'&&!s.inter).length>=r;}
 function storyUnlocked(s){if(s.soon)return false;const L=chainOf(s);const i=L.indexOf(s);if(isDone(s))return true;if(i===0)return modeOf(s)==='hist'?histOpen(s.lvl):true;if(isDone(L[i-1]))return true;return L.slice(i+1).some(isDone);}
-function nextStory(md){md=md||'story';const L=STORIES.filter(s=>!s.soon&&modeOf(s)===md);if(md==='hist'&&!L.some(s=>storyUnlocked(s)))return null;let last=-1;L.forEach((s,i)=>{if(isDone(s))last=i;});for(let i=last+1;i<L.length;i++)if(!isDone(L[i]))return L[i];return null;}
+function nextStory(md){md=md||'story';const L=STORIES.filter(s=>!s.soon&&modeOf(s)===md);if(!L.some(s=>storyUnlocked(s)))return null;let last=-1;L.forEach((s,i)=>{if(isDone(s))last=i;});for(let i=last+1;i<L.length;i++)if(!isDone(L[i]))return L[i];return null;}
+const SERIES=[
+ {md:'facts',es:'Descubrimientos',de:'Sachtexte über grosse Entdeckungen und Ereignisse',en:'Non-fiction about great discoveries and events',c:'#0f4c5c,#1d2a5a',ic:'&#127757;'},
+ {md:'story',es:'Historia de Mia',de:'Eine Schweizerin zieht nach Barcelona',en:'A Swiss woman moves to Barcelona',c:'#2b2160,#162a4a',ic:'&#128214;'},
+ {md:'hist',es:'Historia de España',de:'Joan erzählt Spaniens Geschichte',en:'Joan tells the history of Spain',c:'#5a2a12,#2a1d4a',ic:'&#127984;'},
+ {md:'clase',es:'Clase de español',de:'Grammatik mit Profesora Carmen',en:'Grammar with Profesora Carmen',c:'#14503a,#1d2a5a',ic:'&#127891;'},
+ {md:'krimi',es:'Crimen en Madrid',de:'Ein Krimi zum Mitraten',en:'A mystery to solve',c:'#3a3a3a,#1a1a2a',ic:'&#128269;',soon:1},
+ {md:'comedia',es:'Comedia',de:'Kurze lustige Geschichten',en:'Short funny stories',c:'#5a4a0f,#3a1d4a',ic:'&#127917;',soon:1}];
+function serName(md){const x=SERIES.find(x=>x.md===md);return x?x.es:md;}
+function serStats(lvl,md){const st=STORIES.filter(s=>s.lvl===lvl&&modeOf(s)===md&&!s.soon);return {n:st.length,done:st.filter(isDone).length,st};}
+function seriesHtml(c){const L=LEVELS.find(l=>l.c===c);
+  const tiles=SERIES.map(x=>{const t=serStats(c,x.md);const soon=x.soon||!t.n;const lock=!soon&&x.md==='hist'&&!histOpen(c);
+    return `<button class="ser ${soon?'soon':''} ${lock?'lk':''}" ${soon?'':`data-ser="${x.md}"`} style="--g:${x.c}"><span class="sic">${x.ic}</span><span class="sbody"><b>${x.es}</b><span>${S.lang==='en'?x.en:x.de}</span>
+    ${soon?'<em class="ssoon">Próximamente</em>':`<span class="smeta">${lock?`Ab ${HIST_REQ[c]} gelesenen Kapiteln`:`${t.done} / ${t.n} Kapitel`}<i class="bar"><i style="width:${t.done/t.n*100}%"></i></i></span>`}</span></button>`;}).join('');
+  return `<button class="back" data-home>&larr; Übersicht</button>
+  <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${L.es}</div><div style="color:var(--mut)">Wähle, was du lesen willst</div></div></div>
+  <div class="sers">${tiles}</div>`;}
 function homeHtml(){
   const caught=Object.keys(S.caught).filter(k=>LEX[k]).length,total=Object.keys(LEX).length;
-  let cont='';const lastSt=S.last&&STORIES.find(s=>s.id===S.last&&!isDone(s));
-  const ns=(lastSt&&modeOf(lastSt)==='story'&&lastSt)||nextStory('story');const nh=(lastSt&&modeOf(lastSt)==='hist'&&lastSt)||nextStory('hist');
-  if(nh)cont+=`<div class="cont hist" data-open="${nh.id}"><div><small>${S.stories[nh.id]?'Weiterlesen':'Als Nächstes'} &middot; Historia de España ${nh.ch}</small><div class="t">${esc(nh.title)}</div></div><span class="btn">Lesen</span></div>`;
-  if(ns)cont=`<div class="cont" data-open="${ns.id}"><div><small>${S.stories[ns.id]?'Weiterlesen':'Als Nächstes'} &middot; ${ns.lvl} ${chLabel(ns)}</small><div class="t">${esc(ns.title)}</div></div><span class="btn">Lesen</span></div>`+cont;
-  const ch=chestsAvail();
-  const chest=ch?`<div class="cont gold" data-chest><div><small>Belohnung wartet</small><div class="t">${ch} ${ch===1?'Truhe':'Truhen'} zum Öffnen</div></div><span class="btn">Öffnen</span></div>`:'';
-  return `<div class="hello"><h1>¡Hola!</h1><p>Wähle dein Niveau. Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
+  const lastSt=S.last&&STORIES.find(s=>s.id===S.last&&!isDone(s)&&storyUnlocked(s));
+  const order=['facts','story','hist','clase'];const lastMd=S.last&&STORIES.find(s=>s.id===S.last);
+  const nx=order.map(md=>({md,s:(lastSt&&modeOf(lastSt)===md&&lastSt)||nextStory(md)})).filter(x=>x.s);
+  if(lastMd){const m=modeOf(lastMd);nx.sort((a,b)=>(b.md===m)-(a.md===m));}
+  const hero=nx[0];const more=nx.slice(1);
+  const heroHtml=hero?`<div class="hero" data-open="${hero.s.id}" style="--g:${(SERIES.find(x=>x.md===hero.md)||{}).c}"><div class="hl"><small>${S.stories[hero.s.id]?'Weiterlesen':'Als Nächstes'} &middot; ${serName(hero.md)}</small><div class="t">${esc(hero.s.title)}</div><div class="hz">${esc(tr(hero.s.tz)||'')}</div></div><span class="btn">Lesen</span></div>
+   ${more.length?`<div class="also">${more.map(x=>`<button class="chip" data-open="${x.s.id}"><b>${serName(x.md)}</b><span>${esc(x.s.title)}</span></button>`).join('')}</div>`:''}`:'';
+  const ch=chestsAvail(),sl=seenList().length,d=caught>=4?dueCount():0;
+  const act=(attr,ic,lab,sub,badge,hot)=>`<button class="act ${hot?'hot':''}" ${attr}><span class="aic">${ic}${badge?`<i class="badge">${badge}</i>`:''}</span><b>${lab}</b><span>${sub}</span></button>`;
+  const acts=[act('data-chest','&#127873;','Truhen',ch?ch+' bereit':'Keine offen',ch,ch),
+    act('data-fang','&#128062;','Fangzeit',sl?sl+' gesichtet':'Nichts gesichtet',sl,sl),
+    caught>=4?act('data-train','&#128450;','Karteikasten',d?d+' fällig':daily().rev>=DAILY?'Tagesziel erreicht':'Alles wiederholt',d,d):'',
+    Object.keys(S.caught).length>=8?act('data-duel','&#9876;','Duelo',S.duelW?S.duelW+' '+(S.duelW===1?'Sieg':'Siege'):'Gegen Joan',0,0):''].join('');
+  return `<div class="hello"><h1>¡Hola!</h1><p>Fahre über Wörter, um sie zu übersetzen und in deinen Wortdex zu fangen. <button class="mlink" data-method>So funktioniert die Methode</button></p></div>
   <div class="stats"><div class="stat"><b>${caught} / ${total}</b><span>Wörter gefangen</span></div><div class="stat"><b>${doneStories().length}</b><span>Kapitel geschafft</span></div><div class="stat"><b>${Object.values(S.cards).reduce((a,c)=>a+Object.keys(c).length,0)}</b><span>Spezialkarten</span></div><div class="stat"><b>${streak()}</b><span>Tage in Folge</span></div><div class="stat"><b>${Object.keys(S.caught).filter(k=>LEX[k]&&mastery(k)>=4).length}</b><span>Wörter gemeistert</span></div></div>
-  ${chest}${cont}${Object.keys(S.caught).length>=8?`<div class="cont duelc" data-duel><div><small>Duelo de Palabras</small><div class="t">${S.duelW?`Fordere Joan heraus &middot; ${S.duelW} ${S.duelW===1?'Sieg':'Siege'}`:'Spiel mit deinen Karten gegen Joan'}</div></div><span class="btn">Spielen</span></div>`:''}${seenList().length?`<div class="cont" data-fang style="background:linear-gradient(120deg,#3b1d5a,#22285e)"><div><small>Fangzeit</small><div class="t">${seenList().length} gesichtete ${seenList().length===1?'Wort wartet':'Wörter warten'}</div></div><span class="btn">Fangen</span></div>`:''}${caught>=4?(()=>{const d=dueCount(),nw=newToTrain();return `<div class="cont" data-train style="background:linear-gradient(120deg,#0f3d3a,#1d2a5a)"><div><small>Karteikasten &middot; Spaced Repetition</small><div class="t">${d?d+' '+(d===1?'Wort ist':'Wörter sind')+' heute fällig':daily().rev>=DAILY?'Tagesziel erreicht. Stark!':nw?nw+' neue Wörter zum Einprägen':'Alles wiederholt. Stark!'}</div></div><span class="btn ${d?'':'ghost'}">Start</span></div>`;})():''}
+  ${heroHtml}<div class="acts">${acts}</div><h3 class="sech">Niveaus</h3>
   <div class="grid">${LEVELS.map(L=>{const s=lvlStats(L.c);const lk=!s.n;
     return `<button class="tile ${lk?'locked':''}" data-lvl="${L.c}" style="--c1:${L.c1};--c2:${L.c2}">${lk?'<span class="lock">PRÓXIMAMENTE</span>':''}
     <div class="tile-code">${L.c}</div><div class="tile-name">${L.es}</div><div class="tile-sub">${S.lang==='en'?L.en:L.de}</div>
@@ -4789,14 +5191,16 @@ function levelHtml(c){
     return `<button class="chap ${unlocked?'':'locked'} ${s.inter?'inter':''} ${s.clase?'inter clase':''}" id="ch-${s.id}" ${unlocked?`data-open="${s.id}"`:''} style="--c1:${L.c1};--c2:${L.c2}">
       <span class="num">${s.clase?CAP:s.inter?PEN:s.ch}</span><span style="flex:1;min-width:0"><div class="ttl">${esc(unlocked?s.title:'???')}</div><div class="tz">${esc(unlocked||s.soon?tr(s.tz):'Schliesse das vorherige Kapitel ab.')}</div>
       <div class="meta"><span class="dots">${[1,2,3].map(i=>`<i class="${i<=s.diff?'on':''}"></i>`).join('')}</span>${s.soon?'':`<span>${got} / ${lem.length} im Wortdex</span>${lem.length-got?`<span class="nw">${lem.length-got} neu</span>`:''}${covChip(s)}`}</div></span>${status}</button>`;}).join('');
-  return `<button class="back" data-home>&larr; Übersicht</button>
-  <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${L.es}</div><div style="color:var(--mut)">${S.lang==='en'?L.en:L.de}</div></div></div>
-  ${hasHist?`<div class="mtabs"><button class="${md==='story'?'on':''}" data-mode="story"><b>Historia de Mia</b><span>Die Geschichte</span></button><button class="${md==='hist'?'on':''}" data-mode="hist"><b>Historia de España</b><span>Spaniens Geschichte${histOpen(c)?'':' &middot; ab Kapitel 10'}</span></button></div>`:''}
-  ${md==='hist'&&!histOpen(c)?`<div class="histlock">${PEN} <div><b>Joan erzählt dir die Geschichte Spaniens</b><span>Von den ersten Menschen bis zu den Römern, jeden Dienstag eine Geschichte. Schliesse zuerst Kapitel 10 der Historia de Mia ab, damit du genug Wörter kennst.</span></div></div>`:''}
+  return `<button class="back" data-series>&larr; ${L.c} &middot; Reihen</button>
+  <div class="lvhead" style="--c1:${L.c1};--c2:${L.c2}"><div class="code">${L.c}</div><div><div style="font-weight:800;font-size:20px">${serName(md)}</div><div style="color:var(--mut)">${L.es}</div></div></div>
+  ${false?`<div class="mtabs"><button class="${md==='story'?'on':''}" data-mode="story"><b>Historia de Mia</b><span>Die Geschichte</span></button><button class="${md==='hist'?'on':''}" data-mode="hist"><b>Historia de España</b><span>Spaniens Geschichte${histOpen(c)?'':' &middot; ab Kapitel 10'}</span></button></div>`:''}
+  ${md==='hist'&&!histOpen(c)?`<div class="histlock">${PEN} <div><b>Joan erzählt dir die Geschichte Spaniens</b><span>Von den ersten Menschen bis zu den Römern. Lies zuerst ${HIST_REQ[c]} Kapitel in einer anderen Reihe, damit du genug Wörter kennst.</span></div></div>`:''}
   <div class="chapters">${items||'<p style="color:var(--mut)">Für dieses Niveau folgen bald Geschichten.</p>'}</div>`;
 }
 $('#view').addEventListener('click',e=>{
-  const t=e.target.closest('[data-lvl]');if(t){go({name:'level',lvl:t.dataset.lvl,mode:(S.lastMode||{})[t.dataset.lvl]||'story'});return;}
+  const t=e.target.closest('[data-lvl]');if(t){go({name:'series',lvl:t.dataset.lvl});return;}
+  const sr=e.target.closest('[data-ser]');if(sr){S.lastMode=S.lastMode||{};S.lastMode[view.lvl]=sr.dataset.ser;save();go({name:'level',lvl:view.lvl,mode:sr.dataset.ser});return;}
+  if(e.target.closest('[data-series]')){go({name:'series',lvl:view.lvl});return;}
   const mt=e.target.closest('[data-mode]');if(mt){S.lastMode=S.lastMode||{};S.lastMode[view.lvl]=mt.dataset.mode;save();go({name:'level',lvl:view.lvl,mode:mt.dataset.mode});return;}
   const o=e.target.closest('[data-open]');if(o){openReader(o.dataset.open);return;}
   if(e.target.closest('[data-chest]')){openChest();return;}
@@ -4814,8 +5218,8 @@ const R={page:0,pages:1,step:0};const rd=$('#reader'),vp=$('#rvp'),ct=$('#rct');
 function openReader(id){R.counted=false;stopTts();
   const st=STORIES.find(s=>s.id===id);if(!st||st.soon)return;curStory=st;S.last=id;markDay();
   const p=S.stories[id]||(S.stories[id]={done:false,quiz:0,read:false,page:0});save();updateHud();
-  $('#rTitle').textContent=st.clase?'Clase · '+st.title:st.inter?st.title.replace(/^Diario: /,'Diario · '):modeOf(st)==='hist'?`Historia ${st.ch} · ${st.title}`:`Capítulo ${st.ch} · ${st.title}`;
-  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; ${st.clase?'Clase de español':st.inter?'Diario de Mia':modeOf(st)==='hist'?'Historia de España &middot; '+st.ch:'Capítulo '+st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
+  $('#rTitle').textContent=st.clase?'Clase · '+st.title:st.inter?st.title.replace(/^Diario: /,'Diario · '):modeOf(st)==='hist'?`Historia ${st.ch} · ${st.title}`:modeOf(st)==='facts'?`Descubrimientos ${st.ch} · ${st.title}`:`Capítulo ${st.ch} · ${st.title}`;
+  ct.innerHTML=`<div class="chead"><small>${st.lvl} &middot; ${st.clase?'Clase de español':st.inter?'Diario de Mia':modeOf(st)==='hist'?'Historia de España &middot; '+st.ch:modeOf(st)==='facts'?'Descubrimientos &middot; '+st.ch:'Capítulo '+st.ch}</small><h2>${markup(st.title)}</h2><div class="orn">&middot; &middot; &middot;</div></div>`+
     st.paras.map(x=>typeof x==='string'?`<p>${markup(x)}</p>`:x.gram?`<div class="gram"><small>${S.lang==='en'?'GRAMMAR':'GRAMMATIK'}</small>${x.gram[S.lang]||x.gram.de}</div>`:`<p class="${x.cls}">${markup(x.t)}</p>`).join('')+
     `<div class="endcard"><div class="fin">${st.clase?'Fin de la clase':st.inter?'Fin del diario':'Fin del capítulo '+st.ch}</div><div class="wc" id="rEndWords"></div><p>Wörter aus diesem Kapitel in deinem Wortdex</p>
      <p id="rEndTxt"></p>
@@ -4878,8 +5282,8 @@ let modalLock=false,trainKey=null;
 let mstack=[];
 function pushModal(){const m=$('#modal');if(m.classList.contains('hidden')||!m.firstChild)return;const frag=document.createDocumentFragment();while(m.firstChild)frag.appendChild(m.firstChild);mstack.push({frag,trainKey,quizOpen});trainKey=null;}
 function closeAllModals(){mstack=[];modalLock=false;closeModal();}
-function openModal(html,raw){const m=$('#modal');m.innerHTML=raw?html:`<div class="mbox"><button class="mclose" data-close>${XSVG}</button>${html}</div>`;m.classList.remove('hidden');}
-function closeModal(){if(modalLock)return;if(mstack.length){const st=mstack.pop();const m=$('#modal');m.innerHTML='';m.appendChild(st.frag);trainKey=st.trainKey;quizOpen=st.quizOpen;hideTip();return;}trainKey=null;$('#modal').classList.add('hidden');$('#modal').innerHTML='';hideTip();quizOpen=false;}
+function openModal(html,raw){const m=$('#modal');m.innerHTML=raw?html:`<div class="mbox"><button class="mclose" data-close>${XSVG}</button>${html}</div>`;m.classList.remove('hidden');document.documentElement.classList.add('mopen');}
+function closeModal(){if(modalLock)return;if(mstack.length){const st=mstack.pop();const m=$('#modal');m.innerHTML='';m.appendChild(st.frag);trainKey=st.trainKey;quizOpen=st.quizOpen;hideTip();return;}trainKey=null;$('#modal').classList.add('hidden');$('#modal').innerHTML='';document.documentElement.classList.remove('mopen');hideTip();quizOpen=false;}
 $('#modal').addEventListener('click',e=>{if(e.target.closest('[data-close]')){closeModal();return;}if(e.target.id==='modal'&&!document.querySelector('#modal .qprog, #modal .qres, #modal .chestwrap, #modal .kwrap'))closeModal();});
 const THEMES=[['papel','Papel','#fbfaf6','#22201c'],['sepia','Sepia','#f4ecd8','#3b2f1e'],['noche','Noche','#111317','#d9d5cc'],['mar','Mar','#e9f3f6','#11324a']];
 function lockTag(id){const r=REWARDS.find(r=>r.id===id);return has(id)?'':`<span class="lv">Nv.${r.lv}</span>`;}
@@ -5450,7 +5854,7 @@ function keyRound(st){const ws=keyWords(st,5);ws.forEach(l=>{if(!S.caught[l])S.c
   $('#kSkip').onclick=()=>chapterDone(st,null);
   $('#kGo').onclick=()=>runTrain(shuffle(ws),{title:'Schlüsselwörter',noType:true,onDone:(sc,r)=>chapterDone(st,{score:sc,n:r.length})});}
 function storyAfter(st){const L=chainOf(st);return L[L.indexOf(st)+1]||null;}
-function chLabel(s){return s.clase?'Clase de español':s.inter?'Diario de Mia':modeOf(s)==='hist'?'Historia '+s.ch:'Kapitel '+s.ch;}
+function chLabel(s){return s.clase?'Clase '+(chainOf(s).indexOf(s)+1):modeOf(s)==='facts'?'Descubrimientos '+s.ch:s.inter?'Diario de Mia':modeOf(s)==='hist'?'Historia '+s.ch:'Kapitel '+s.ch;}
 function chapterDone(st,k){const nx=storyAfter(st);const ch=chestsAvail();
   openModal(`<div class="qres"><div class="big" style="font-size:30px">${st.inter?'¡Diario terminado!':'¡Capítulo completado!'}</div>
     ${k?`<p>Schlüsselwörter: <b>${k.score}/${k.n}</b> richtig. Sie sind jetzt in deinem Karteikasten.</p>`:''}
@@ -5474,7 +5878,7 @@ function endActs(){const box=document.getElementById('rEndActs');if(!box||!curSt
 /* ---------- Sichten und Fangzeit ---------- */
 const PAW='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2"/><circle cx="6" cy="10" r="2.2"/><circle cx="18" cy="10" r="2.2"/><circle cx="9.2" cy="6" r="2.1"/><circle cx="14.8" cy="6" r="2.1"/></svg>';
 function needsGame(l){const e=LEX[l];if(!e||e.p==='prop'||!curStory)return false;const r=rarity(e);if(r<2)return false;
-  if(STORIES.filter(s=>!s.soon)[0]===curStory)return false;
+  if(!doneStories().length)return false;
   if(r===2&&has('rarofree')&&((S.enc||{})[l]||0)>=3)return false;return true;}
 function seenList(){S.seen=S.seen||{};return Object.keys(S.seen).filter(l=>LEX[l]&&!S.caught[l]);}
 function sight(el,l){S.seen=S.seen||{};if(S.seen[l]){if(!S.seen[l].k)S.seen[l].k=el.dataset.k;return false;}S.seen[l]={t:Date.now(),ex:SENT[+el.dataset.s]||'',s:curStory?curStory.id:'',k:el.dataset.k};markDay();save();refreshW(l);
@@ -5642,33 +6046,36 @@ function gradeOf(pct){const es=Math.round(pct*100)/10;const lab=GES.find(g=>es>=
   const ch=Math.round((pct*5+1)*2)/2;const de=pct>=.92?'1 (sehr gut)':pct>=.81?'2 (gut)':pct>=.67?'3 (befriedigend)':pct>=.5?'4 (ausreichend)':pct>=.3?'5 (mangelhaft)':'6 (ungenügend)';
   const us=pct>=.9?'A':pct>=.8?'B':pct>=.7?'C':pct>=.6?'D':'F';return {es,lab,ch,de,us};}
 function examScopes(){const out=[];const add=(name,ids,es)=>{const st=ids.map(id=>STORIES.find(s=>s.id===id)).filter(Boolean);if(st.length)out.push({name,st,es});};
-  const story=STORIES.filter(s=>s.lvl==='A1'&&modeOf(s)==='story'&&!s.soon);
-  for(const [a,b] of [[1,20],[21,40],[41,60]])add(`Historia de Mia &middot; Kapitel ${a} bis ${b}`,story.filter(s=>s.ch>=a&&s.ch<=b&&!(s.ch===b&&(s.inter||s.clase))).map(s=>s.id),`Historia de Mia · capítulos ${a} a ${b}`);
-  const hist=STORIES.filter(s=>s.lvl==='A1'&&modeOf(s)==='hist');if(hist.length)add('Historia de España &middot; Teil 1',hist.map(s=>s.id),'Historia de España · primera parte');
+  const ESN={story:'Historia de Mia',facts:'Descubrimientos',hist:'Historia de España',clase:'Clase de español'};
+  for(const md of ['facts','story','hist','clase']){const L=STORIES.filter(s=>s.lvl==='A1'&&modeOf(s)===md&&!s.soon&&!s.inter);if(!L.length)continue;
+    if(L.length<=24)add(ESN[md],L.map(s=>s.id),ESN[md]);
+    else for(let a=0;a<L.length;a+=20){const part=L.slice(a,a+20);add(`${ESN[md]} &middot; Teil ${a/20+1}`,part.map(s=>s.id),`${ESN[md]} · parte ${a/20+1}`);}}
   add('A1 komplett',STORIES.filter(s=>s.lvl==='A1'&&!s.soon).map(s=>s.id),'Nivel A1 completo');
   return out.map(sc=>{const lem=new Set();sc.st.forEach(s=>{for(const l in STATS[s.id]||{})if(LEX[l]&&LEX[l].p!=='prop'&&!isFunc(LEX[l]))lem.add(l);});
-    const known=[...lem].filter(l=>S.caught[l]);const done=sc.st.filter(isDone).length;return Object.assign(sc,{lem:[...lem],known,done,ok:known.length>=25&&done>=Math.min(5,sc.st.length)});});}
+    const known=[...lem].filter(l=>S.caught[l]);const done=sc.st.filter(isDone).length;return Object.assign(sc,{lem:[...lem],known,done,ok:known.length>=30&&done>=Math.min(5,sc.st.length)});});}
 function openExam(){hideTip();const sc=examScopes();const hist=(S.exams||[]).slice(-3).reverse();
   openModal(`<div class="exsetup"><small class="kk">EXAMEN</small><h2>Prüfung ablegen</h2>
-    <p class="klead">20 Aufgaben wie in einer echten Schulprüfung: Wortschatz, Konjugation, Grammatik und Leseverständnis. Feedback gibt es erst am Ende. Danach bekommst du ein Zeugnis mit Note.</p>
-    <div class="exlist">${sc.map((s,i)=>`<button class="exopt" data-x="${i}" ${s.ok?'':'disabled'}><b>${s.name}</b><span>${s.ok?`${s.known.length} gelernte Wörter &middot; ${s.done} Kapitel gelesen`:'Noch nicht genug gelesen (mind. 5 Kapitel und 25 Wörter)'}</span></button>`).join('')}</div>
+    <p class="klead">30 Aufgaben wie in einer echten Schulprüfung: Wortschatz, Konjugation, Grammatik und Leseverständnis. Feedback gibt es erst am Ende. Danach bekommst du ein Zeugnis mit Note. Ab Note 8 gibt es eine Truhe, ab 9,5 zwei.</p>
+    <div class="exlist">${sc.map((s,i)=>`<button class="exopt" data-x="${i}" ${s.ok?'':'disabled'}><b>${s.name}</b><span>${s.ok?`${s.known.length} gelernte Wörter &middot; ${s.done} Kapitel gelesen`:'Noch nicht genug gelesen (mind. 5 Kapitel und 30 Wörter)'}</span></button>`).join('')}</div>
     <label class="exname">Name auf dem Zeugnis <input id="exN" value="${esc(S.name||'')}" placeholder="optional" maxlength="32"></label>
     ${hist.length?`<div class="exhist"><small>LETZTE PRÜFUNGEN</small>${hist.map(h=>`<span><b>${String(h.es).replace('.',',')}</b> ${h.lab} &middot; ${h.scope} &middot; ${new Date(h.d).toLocaleDateString('de-CH')}</span>`).join('')}</div>`:''}</div>`);
   document.querySelectorAll('.exopt').forEach(b=>b.onclick=()=>{S.name=($('#exN').value||'').trim();save();runExam(sc[+b.dataset.x]);});}
 function adjFormsSafe(k){try{return adjForms(k);}catch(e){return null;}}
 function buildExam(sc){const Q=[];const pool=shuffle(sc.known.slice());const pick=(f,n)=>{const r=[];for(const l of pool){if(r.length>=n)break;if(f(LEX[l])&&!Q.some(q=>q.l===l)&&!r.includes(l))r.push(l);}return r;};
   const distr=(l,f)=>shuffle(sc.lem.filter(x=>x!==l&&LEX[x].p===LEX[l].p&&gl(LEX[x])!==gl(LEX[l]))).slice(0,3).map(f);
-  pick(e=>true,6).forEach(l=>Q.push({t:'vocab',l,pts:1,q:`Was bedeutet <b class="exw">${esc(l)}</b>?`,opts:shuffle([gl(LEX[l]),...distr(l,x=>gl(LEX[x]))]),ans:gl(LEX[l])}));
-  pick(e=>e.k.length>=3,4).forEach(l=>{const e=LEX[l];Q.push({t:'write',l,pts:2,q:`Schreib auf Spanisch: <b class="exw">${esc(gl(e))}</b>${e.g?` <small>(${e.g==='m'?'el':'la'} ...)</small>`:''}`,ans:e.k});});
-  const vs=shuffle(sc.known.filter(l=>LEX[l].p==='v'&&conjOf(LEX[l])));const vpool=vs.length>=4?vs:shuffle(sc.lem.filter(l=>LEX[l].p==='v'&&conjOf(LEX[l])));
-  vpool.slice(0,4).forEach(l=>{const pi=[0,1,2,3,5][Math.floor(Math.random()*5)];Q.push({t:'conj',l,pts:2,q:`Konjugiere <b class="exw">${esc(l)}</b> für <b>${esc(PRON[pi])}</b>`,ans:conjOf(LEX[l])[pi]});});
+  pick(e=>true,9).forEach(l=>Q.push({t:'vocab',l,pts:1,q:`Was bedeutet <b class="exw">${esc(l)}</b>?`,opts:shuffle([gl(LEX[l]),...distr(l,x=>gl(LEX[x]))]),ans:gl(LEX[l])}));
+  pick(e=>e.k.length>=3,6).forEach(l=>{const e=LEX[l];Q.push({t:'write',l,pts:2,q:`Schreib auf Spanisch: <b class="exw">${esc(gl(e))}</b>${e.g?` <small>(${e.g==='m'?'el':'la'} ...)</small>`:''}`,ans:e.k});});
+  const vs=shuffle(sc.known.filter(l=>LEX[l].p==='v'&&conjOf(LEX[l])));const vpool=vs.length>=5?vs:shuffle(sc.lem.filter(l=>LEX[l].p==='v'&&conjOf(LEX[l])));
+  vpool.slice(0,5).forEach(l=>{const pi=[0,1,2,3,5][Math.floor(Math.random()*5)];Q.push({t:'conj',l,pts:2,q:`Konjugiere <b class="exw">${esc(l)}</b> für <b>${esc(PRON[pi])}</b>`,ans:conjOf(LEX[l])[pi]});});
   const g=[];const nouns=shuffle(sc.lem.filter(l=>LEX[l].p==='n'&&LEX[l].g));const adjs=shuffle(sc.lem.filter(l=>LEX[l].p==='adj'&&adjFormsSafe(l)));
   if(nouns[0]){const l=nouns[0],a=LEX[l].g==='m'?'el':'la';g.push({t:'gram',pts:1,q:`Welcher Artikel passt? <b class="exw">___ ${esc(l)}</b>`,opts:['el','la','los','las'],ans:a});}
   if(nouns[1]){const l=nouns[1],pl=plural(l);g.push({t:'gram',pts:1,q:`Mehrzahl von <b class="exw">${esc(l)}</b>?`,opts:shuffle([pl,l+'s',l+'es',l.replace(/[aeo]$/,'')+'is'].filter((x,i,a)=>a.indexOf(x)===i)).slice(0,4).concat([]),ans:pl});if(!g[g.length-1].opts.includes(pl))g[g.length-1].opts[0]=pl;}
+  if(nouns[3]){const l=nouns[3],a=LEX[l].g==='m'?'un':'una';g.push({t:'gram',pts:1,q:`Unbestimmter Artikel: <b class="exw">___ ${esc(l)}</b>`,opts:['un','una','unos','unas'],ans:a});}
+  if(adjs[1]&&nouns[4]){const n=nouns[4],af=adjFormsSafe(adjs[1]);if(af&&af[2]){const pl=plural(n);g.push({t:'gram',pts:1,q:`Welche Form passt? <b class="exw">${LEX[n].g==='m'?'los':'las'} ${esc(pl)} ___</b> <small>(${esc(gl(LEX[adjs[1]]))})</small>`,opts:shuffle([...new Set(af)]),ans:af[LEX[n].g==='m'?2:3]});}}
   if(adjs[0]&&nouns[2]){const n=nouns[2],af=adjFormsSafe(adjs[0]);const idx=LEX[n].g==='m'?0:1;g.push({t:'gram',pts:1,q:`Welche Form passt? <b class="exw">${LEX[n].g==='m'?'el':'la'} ${esc(n)} ___</b> <small>(${esc(gl(LEX[adjs[0]]))})</small>`,opts:shuffle([...new Set(af)]),ans:af[idx]});}
-  const cl=STORIES.filter(s=>s.clase&&sc.st.includes(s)&&isDone(s));for(const c of shuffle(cl))for(const q of shuffle(c.quiz.slice())){if(g.length>=5)break;g.push({t:'gram',pts:1,q:esc(q.q),opts:shuffle(q.o.slice()),ans:q.o[0],sp:1});}
-  shuffle(g).slice(0,3).forEach(x=>Q.push(x));
-  const rd=shuffle(sc.st.filter(s=>isDone(s)&&!s.clase));for(const s of rd){if(Q.filter(q=>q.t==='read').length>=3)break;const q=s.quiz[Math.floor(Math.random()*s.quiz.length)];Q.push({t:'read',pts:1,q:`<small class="exsrc">${esc(s.title)}</small>${esc(q.q)}`,opts:shuffle(q.o.slice()),ans:q.o[0],sp:1});}
+  const cl=STORIES.filter(s=>s.clase&&sc.st.includes(s)&&isDone(s));for(const c of shuffle(cl))for(const q of shuffle(c.quiz.slice())){if(g.length>=8)break;g.push({t:'gram',pts:1,q:esc(q.q),opts:shuffle(q.o.slice()),ans:q.o[0],sp:1});}
+  shuffle(g).slice(0,5).forEach(x=>Q.push(x));
+  const rd=shuffle(sc.st.filter(s=>isDone(s)&&!s.clase));for(const s of rd){if(Q.filter(q=>q.t==='read').length>=5)break;const q=s.quiz[Math.floor(Math.random()*s.quiz.length)];Q.push({t:'read',pts:1,q:`<small class="exsrc">${esc(s.title)}</small>${esc(q.q)}`,opts:shuffle(q.o.slice()),ans:q.o[0],sp:1});}
   return Q;}
 function runExam(sc){const Q=buildExam(sc);let i=0;const A=[];
   function show(){const q=Q[i];const typed=!q.opts;
@@ -5685,12 +6092,12 @@ function runExam(sc){const Q=buildExam(sc);let i=0;const A=[];
   function finish(){trainKey=null;const parts={Vocabulario:[0,0],Conjugación:[0,0],Gramática:[0,0],Comprensión:[0,0]};const key={vocab:'Vocabulario',write:'Vocabulario',conj:'Conjugación',gram:'Gramática',read:'Comprensión'};
     let got=0,tot=0;Q.forEach((q,j)=>{const s=score(q,A[j]);q.got=s;got+=s;tot+=q.pts;const p=parts[key[q.t]];p[0]+=s;p[1]+=q.pts;});
     const pct=tot?got/tot:0;const G=gradeOf(pct);const scopeName=sc.name.replace(/&middot;/g,'·');
-    S.exams=S.exams||[];S.exams.push({d:Date.now(),scope:scopeName,pct,es:G.es,lab:G.lab});markDay();save();updateHud();
+    S.exams=S.exams||[];S.exams.push({d:Date.now(),scope:scopeName,pct,es:G.es,lab:G.lab});const exCh=G.es>=9.5?2:G.es>=8?1:0;S.examChests=(S.examChests||0)+exCh;markDay();save();updateHud();
     const cert={name:S.name||'',scope:sc.es||scopeName,G,parts,got,tot,d:new Date()};
     openModal(`<div class="exres"><canvas id="certC" width="1600" height="1130"></canvas>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="btn ghost" id="exRev">Antworten ansehen</button><button class="btn ghost" id="exSave">Als Bild speichern</button><button class="btn" id="exShare">${SHR} Teilen</button></div>
       <div id="exReview" class="hidden"></div></div>`);
-    drawCert($('#certC'),cert);
+    drawCert($('#certC'),cert);if(exCh)setTimeout(()=>toast(`<b>${exCh===2?'Zwei Truhen':'Eine Truhe'} verdient!</b><span>Für deine Note ${String(G.es).replace('.',',')}. Öffne sie auf der Startseite.</span>`,'big',6000),600);
     $('#exSave').onclick=()=>$('#certC').toBlob(b=>saveFile('palabradex-zeugnis.png',b),'image/png');
     $('#exShare').onclick=()=>$('#certC').toBlob(b=>shareBlob(b,'palabradex-zeugnis.png',`Mi nota de español: ${String(G.es).replace('.',',')} (${G.lab}) en Palabradex`),'image/png');
     $('#exRev').onclick=()=>{const r=$('#exReview');r.classList.toggle('hidden');r.innerHTML=Q.map((q,j)=>`<div class="exrow ${q.got>=q.pts?'ok':q.got>0?'half':'no'}"><div>${q.q}</div><div><span>Deine Antwort: <b>${esc(A[j]||'')}</b></span>${q.got<q.pts?`<span>Richtig: <b>${esc(q.ans)}</b></span>`:''}<em>${q.got}/${q.pts}</em></div></div>`).join('');};}
@@ -5871,7 +6278,7 @@ function openQuiz(st){
     const score=res.filter(Boolean).length,need=qs.length<=4?qs.length-1:Math.ceil(qs.length*.66),pass=score>=need;const p=S.stories[st.id];
     p.quiz=Math.max(p.quiz||0,score);p.read=true;if(pass)p.done=true;markDay();save();
     const gain=xp()-xp0;updateHud();const newCh=chestsAvail()-ch0;
-    const next=storyAfter(st);if(pass&&HIST_REQ[st.lvl]===st.id&&!S.histToast){S.histToast=1;setTimeout(()=>toast(`<b>Historia de España freigeschaltet!</b><span>Joan erzählt dir jetzt jeden Dienstag eine Geschichte über Spanien.</span>`,'big',6000),900);}
+    const next=storyAfter(st);if(pass&&histOpen(st.lvl)&&!S.histToast){S.histToast=1;setTimeout(()=>toast(`<b>Historia de España freigeschaltet!</b><span>Joan erzählt dir jetzt die Geschichte Spaniens.</span>`,'big',6000),900);}
     openModal(`<div class="qres"><div class="big">${score}/${qs.length}</div>
      <p>${pass?(score===qs.length?'¡Perfecto! Alles richtig.':'¡Muy bien! Bestanden.'):`Fast! Du brauchst ${need} von ${qs.length}. ${st.clase?'Schau dir die Grammatik nochmal an':'Lies die Geschichte nochmal'} und versuch es erneut.`}</p>
      ${gain>0?`<div class="xpgain">+${gain} XP</div>`:''}

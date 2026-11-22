@@ -20,6 +20,10 @@ Lernstand pro Wort: Entdeckt, Vertraut, Gefestigt, Gemeistert (10 Begegnungen un
 
 Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien sind gut erforscht, die App selbst wurde nicht in einer eigenen Studie getestet.
 
+### Reihen
+
+Jedes Niveau hat mehrere Reihen: **Descubrimientos** (Sachtexte über grosse Entdeckungen und Ereignisse, von Kolumbus bis zum Mauerfall), **Historia de Mia**, **Historia de España** und **Clase de español** (Grammatik als eigene Reihe, unabhängig von der Geschichte). Krimi und Comedia folgen.
+
 ### Historia de España
 Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanische Geschichte, im Präsens, wie man Geschichte auf Spanisch oft erzählt. A1 Teil 1 (20 Kapitel) reicht von Atapuerca und Altamira über Iberer, Kelten, Phönizier, Griechen und Karthago bis zu den Römern und Barcino. Freigeschaltet nach Kapitel 10 der Story.
 
