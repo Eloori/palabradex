@@ -337,6 +337,12 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .ser .sic{font-size:30px;line-height:1}.ser .sbody{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}.ser b{font-family:Literata;font-size:19px}.ser .sbody>span{font-size:13px;color:#ffffffb8}
 .ser .smeta{display:block;margin-top:8px;font-size:12px;color:#ffffffc0}.ser .smeta .bar{display:block;margin-top:5px;height:5px;background:#00000040;border-radius:5px;overflow:hidden}.ser .smeta .bar i{display:block;height:100%;background:#ffffffcc}
 .ser.soon{filter:saturate(.3);opacity:.6;cursor:default}.ser.lk{opacity:.85}.ssoon{margin-top:8px;font-style:normal;font-size:11px;letter-spacing:1.5px;font-weight:800;color:#ffffffa0}
+.drules{background:#ffffff08;border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:6px 0 14px}.drules summary{cursor:pointer;font-weight:700;font-size:14px}
+.dsteps{list-style:none;padding:0;margin:12px 0 8px;display:grid;gap:8px}.dsteps li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--mut)}.dsteps li b{color:var(--txt)}
+.dsteps li>b{flex:0 0 24px;height:24px;border-radius:50%;background:var(--acc);color:#1a1300;display:grid;place-items:center;font-size:12px}
+.dtri{display:flex;flex-wrap:wrap;align-items:center;gap:6px;justify-content:center;margin:10px 0 6px}.dtri span{padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700;background:#ffffff14}.dtri i{font-style:normal;font-size:12px;color:var(--mut)}
+.dtri .t-v{background:#e0484833;color:#ff9b9b}.dtri .t-n{background:#4da3ff33;color:#9ccaff}.dtri .t-adj{background:#3ddc9733;color:#8ff0c4}
+.dtip{font-size:12.5px;color:var(--mut);margin:6px 0 2px;line-height:1.45}
 .cont.duelc{background:linear-gradient(120deg,#5a0f1a,#1d2a5a)}
 .mbox:has(.dk),.mbox:has(.duel){max-width:900px}
 .dkbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 14px;font-size:14px;color:var(--mut)}.dkbar b{color:var(--txt);font-size:16px}
@@ -348,10 +354,21 @@ html.standalone #modal{padding-top:calc(16px + env(safe-area-inset-top))}
 .dpips{display:flex;gap:5px;margin-top:4px}.dpips i{width:14px;height:14px;border-radius:50%;background:#ffffff1a}.dpips i.on{background:var(--acc);box-shadow:0 0 10px var(--acc)}.jo .dpips i.on{background:#ff6b6b;box-shadow:0 0 10px #ff6b6b}
 .dround{font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mut)}
 .darena{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:14px;border-radius:18px;background:radial-gradient(ellipse at center,#2a2160,#0c0b1e);min-height:260px}
-.dslt{display:flex;justify-content:center;align-items:center}.dslt .tcg{flex:none}.dslt .cardback.big{height:auto!important;aspect-ratio:63/88}.notr .tcg-tr,.notr .tcg-fl,.notr .arte-t{visibility:hidden}.dhead{padding-right:40px}.dslt .tcg{width:min(200px,36vw)}.dslt .cardback.big{width:min(170px,32vw)}
+.dslt{display:flex;justify-content:center;align-items:center}.dslt .tcg{flex:none}.dslt .cardback.big{height:auto!important;aspect-ratio:63/88}.notr .tcg-tr,.notr .tcg-fl,.notr .arte-t{visibility:hidden}.dhead{padding-right:40px}.dslt{min-width:0}.dslt .tcg{width:min(200px,36vw)}@media(max-width:520px){.darena{gap:6px;padding:10px}.dslt .tcg{width:min(170px,34vw)}.dvs{font-size:18px}}.dslt .cardback.big{width:min(170px,32vw)}
 .dvs{font-family:Bungee;font-size:26px;color:var(--acc);text-shadow:0 0 18px var(--acc)}
 .dempty{width:min(170px,32vw);aspect-ratio:63/88;border-radius:14px;border:2px dashed #ffffff30;display:grid;place-items:center;color:var(--mut);font-size:13px;text-align:center;padding:10px}
 .dcw{position:relative;animation:lvpop .5s cubic-bezier(.2,1.4,.4,1)}.dcl{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:9;background:#000a;border-radius:99px;padding:2px 10px;font-size:11px;font-weight:800;letter-spacing:1px}
+.stake{margin:2px 0 12px}.stake small{font-size:11px;letter-spacing:1.3px;color:var(--mut);font-weight:700}.stk{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.stk button{display:flex;flex-direction:column;gap:2px;text-align:left;padding:8px 10px;border-radius:12px;background:#ffffff08;border:1px solid var(--line)}.stk button b{font-size:13px}.stk button span{font-size:11px;color:var(--mut);line-height:1.3}
+.stk button.on{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent)}.stk button:disabled{opacity:.45}
+.dpile{justify-content:center}.pile{display:flex;align-items:center;gap:18px;padding:10px 18px;border-radius:16px;background:#ffffff08;border:1px solid var(--line)}
+.pstack{position:relative;width:64px;height:88px}.pstack i{position:absolute;inset:0;border-radius:9px;background:linear-gradient(135deg,#3b2a7a,#1d2a5a);border:2px solid #ffcb3d88;transform:translate(calc(var(--i)*2px),calc(var(--i)*-2px));box-shadow:0 2px 6px #0006}
+.pstack i.fly{transition:transform .38s ease-in,opacity .38s;transform:translate(0,-160px) rotate(-8deg) scale(1.2);opacity:0}
+.plab{display:flex;flex-direction:column;text-align:left;gap:2px}.plab b{font-size:16px}.plab span{font-size:12px;color:var(--mut)}
+.xcalc{display:grid;gap:6px;max-width:420px;margin:0 auto 6px}.xrow{display:grid;grid-template-columns:46px 1fr 50px;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:#ffffff08;text-align:left;font-size:13.5px}
+.xrow.me{border:1px solid #3ddc9744}.xrow .xw{font-weight:700}.xrow b{font-family:Bungee;font-size:20px;text-align:right}.xrow em{font-style:normal;font-size:12px;color:#ff8f8f}.xrow em.up{color:var(--acc)}.xrow s{color:var(--mut)}
+.xwhy{font-size:14px;max-width:420px;margin:6px auto;line-height:1.45}.prize{font-weight:800;color:var(--acc)}.prize.lost{color:#ff8f8f}.przc{width:120px;margin:6px auto 4px;cursor:pointer}
+@media(max-width:520px){.stk{grid-template-columns:1fr}}
 .dhand{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px}.dh{position:relative;flex:none;width:96px;transition:transform .15s}.dh:hover{transform:translateY(-6px)}
 .dht{position:absolute;top:-8px;right:-6px;z-index:9;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#111;border:2px solid var(--line)}.dht svg{width:13px;height:13px}
 .dht.t-v{color:#ef4444}.dht.t-n{color:#22c55e}.dht.t-adj{color:#a855f7}.dht.t-adv{color:#f59e0b}.dht.t-link,.dht.t-num{color:#94a3b8}
@@ -4989,8 +5006,8 @@ function today(){return dayKey(new Date());}
 function markDay(){const t=today();if(!S.days.includes(t)){S.days.push(t);S.days=S.days.slice(-120);}}
 function streak(){const set=new Set(S.days);let d=new Date(),n=0;if(!set.has(today()))d.setDate(d.getDate()-1);while(set.has(dayKey(d))){n++;d.setDate(d.getDate()-1);}return n;}
 function bestStreak(){const ds=[...S.days].sort();let best=0,run=0,prev=null;for(const k of ds){const d=new Date(k+'T12:00:00');if(prev&&Math.round((d-prev)/864e5)===1)run++;else run=1;best=Math.max(best,run);prev=d;}return best;}
-function chestSources(){const q=questTotals().n;return {exam:S.examChests||0,story:doneStories().length,quest:Math.floor(q/10),streak:Math.floor(bestStreak()/3),level:levelOf(xp())-1,qn:q};}
-function chestsAvail(){const c=chestSources();return Math.max(0,c.exam+c.story+c.quest+c.streak+c.level-(S.opened||0));}
+function chestSources(){const q=questTotals().n;return {duel:S.duelChests||0,exam:S.examChests||0,story:doneStories().length,quest:Math.floor(q/10),streak:Math.floor(bestStreak()/3),level:levelOf(xp())-1,qn:q};}
+function chestsAvail(){const c=chestSources();return Math.max(0,c.duel+c.exam+c.story+c.quest+c.streak+c.level-(S.opened||0));}
 let lastLevel=null,lastChests=null,lastColsDone=null;
 function updateHud(){
   const x=xp(),l=levelOf(x);const lo=LV[l-1]??0,hi=nextLv(l);
@@ -6183,27 +6200,35 @@ function autoDeck(){const pool=deckPool().sort((a,b)=>cardPower(b,bestVar(b))-ca
   for(const l of pool){if(out.length>=8)break;if(!out.includes(l))out.push(l);}return out.slice(0,8);}
 function openDeck(){hideTip();const pool=deckPool();
   if(pool.length<8){openModal(`<h2>Duelo de Palabras</h2><p style="color:var(--mut)">Fange zuerst mindestens 8 Wörter, dann kannst du gegen Joan antreten.</p>`);return;}
-  let deck=(S.deck||[]).filter(l=>S.caught[l]&&LEX[l]);if(deck.length!==8)deck=autoDeck();
+  let deck=(S.deck||[]).filter(l=>S.caught[l]&&LEX[l]);if(deck.length!==8)deck=autoDeck();let stake=chestsAvail()<1?'free':(S.stake||'free');
   const draw=()=>{const list=pool.slice().sort((a,b)=>cardPower(b,bestVar(b))-cardPower(a,bestVar(a)));const shown=[...new Set([...deck,...list.slice(0,48)])];
     openModal(`<div class="dk"><small class="kk">DUELO DE PALABRAS</small><h2>Dein Deck gegen Joan</h2>
-      <p class="klead">Wähle 8 Karten. Gespielt wird auf 3 Siege. Deine Karte zählt nur, wenn du sie richtig beantwortest. Seltenheit, Wort-Level und Variante machen sie stärker. <b>Acción</b> schlägt <b>Cosa</b>, <b>Cosa</b> schlägt <b>Cualidad</b>, <b>Cualidad</b> schlägt <b>Acción</b> (+20 %).</p>
+      <details class="drules" ${S.duelW||S.duelL?'':'open'}><summary>So funktioniert das Duell</summary>
+        <ol class="dsteps"><li><b>1</b><span><b>Deck bauen.</b> Wähle 8 deiner Wortkarten. Jede Karte hat eine Stärke (Zahl unten auf der Karte).</span></li>
+        <li><b>2</b><span><b>Karte ziehen.</b> Dein Deck wird verdeckt gemischt. Jede Runde ziehst du die oberste Karte, Joan auch.</span></li>
+        <li><b>3</b><span><b>Richtig beantworten.</b> Du musst dein Wort übersetzen oder konjugieren. Nur wenn die Antwort stimmt, zählt deine Stärke. Sonst hast du 0.</span></li>
+        <li><b>4</b><span><b>Höhere Stärke gewinnt die Runde.</b> Wer zuerst 3 Runden gewinnt, gewinnt das Duell.</span></li></ol>
+        <div class="dtri"><span class="t-v">Acción</span><i>schlägt</i><span class="t-n">Cosa</span><i>schlägt</i><span class="t-adj">Cualidad</span><i>schlägt</i><span class="t-v">Acción</span></div>
+        <p class="dtip">Wenn dein Kartentyp den von Joan schlägt, bekommst du +20 % Stärke. Seltene Wörter, ein hohes Wort-Level (Fach im Karteikasten) und Holo, Oro oder Legendaria machen Karten stärker.</p></details>
       <div class="dkbar"><b>${deck.length} / 8</b> Karten &middot; Stärke ${deck.reduce((a,l)=>a+cardPower(l,bestVar(l)),0)}<span style="margin-left:auto;display:flex;gap:8px"><button class="btn ghost" id="dkAuto">Automatisch</button><button class="btn" id="dkGo" ${deck.length===8?'':'disabled'}>Duell starten</button></span></div>
+      <div class="stake"><small>EINSATZ</small><div class="stk">${[['free','Freundschaftsspiel','Ohne Risiko'],['chest','1 Truhe','Sieg: +1 Truhe &middot; Niederlage: -1 Truhe',chestsAvail()<1],['card','Spezialkarte','Sieg: Holo-Karte von Joan &middot; Niederlage: -1 Truhe',chestsAvail()<1]].map(([k,t,d,dis])=>`<button class="${stake===k?'on':''}" data-stake="${k}" ${dis?'disabled':''}><b>${t}</b><span>${dis?'Du brauchst eine ungeöffnete Truhe':d}</span></button>`).join('')}</div></div>
       <div class="dgrid dkgrid">${shown.map(l=>`<div class="dkc ${deck.includes(l)?'on':''}" data-l="${esc(l)}">${tcgHtml(LEX[l],bestVar(l),{mini:1})}</div>`).join('')}</div>
       ${S.duelW||S.duelL?`<p class="khint">Bilanz gegen Joan: ${S.duelW||0} Siege, ${S.duelL||0} Niederlagen</p>`:''}</div>`);
     document.querySelectorAll('.dkc').forEach(c=>c.onclick=()=>{const l=c.dataset.l;if(deck.includes(l))deck=deck.filter(x=>x!==l);else if(deck.length<8)deck.push(l);else{toast('<span>Dein Deck ist voll. Nimm zuerst eine Karte raus.</span>');return;}draw();});
-    $('#dkAuto').onclick=()=>{deck=autoDeck();draw();};$('#dkGo').onclick=()=>{S.deck=deck.slice();save();startDuel(deck);};};
+    $('#dkAuto').onclick=()=>{deck=autoDeck();draw();};$('#dkGo').onclick=()=>{S.deck=deck.slice();S.stake=stake;save();startDuel(deck,stake);};document.querySelectorAll('[data-stake]').forEach(b=>b.onclick=()=>{stake=b.dataset.stake;draw();});};
   draw();}
-function startDuel(deck){const avg=deck.reduce((a,l)=>a+cardPower(l,bestVar(l)),0)/deck.length;
+function startDuel(deck,stake){stake=stake||'free';if(stake!=='free'&&chestsAvail()<1)stake='free';const avg=deck.reduce((a,l)=>a+cardPower(l,bestVar(l)),0)/deck.length;
   const cand=shuffle(Object.keys(LEX).filter(l=>['v','n','adj'].includes(LEX[l].p)));const opp=[];
   for(const p of ['v','v','v','n','n','n','adj','adj']){const l=cand.find(x=>LEX[x].p===p&&!opp.some(o=>o.l===x));opp.push({l,p:Math.round(avg*(.78+Math.random()*.34))});}
-  const D={hand:deck.slice(),opp:shuffle(opp),me:0,jo:0,round:1,log:[]};board(D);}
+  const D={hand:shuffle(deck.slice()),opp:shuffle(opp),me:0,jo:0,round:1,log:[],stake};board(D);}
 function duelCard(l,v,pw,label,hide){return `<div class="dcw ${hide?'notr':''}">${label?`<span class="dcl">${label}</span>`:''}${tcgHtml(LEX[l],v,{pwr:pw})}</div>`;}
 function board(D,msg){const pips=n=>[0,1,2].map(i=>`<i class="${i<n?'on':''}"></i>`).join('');
   openModal(`<div class="duel"><div class="dhead"><div class="dside jo"><span class="dav">J</span><div><b>Joan</b><span class="dpips">${pips(D.jo)}</span></div></div><div class="dround">Runde ${D.round}</div><div class="dside me"><div style="text-align:right"><b>Du</b><span class="dpips">${pips(D.me)}</span></div><span class="dav me">${esc((S.name||'Tú')[0].toUpperCase())}</span></div></div>
-    <div class="darena" id="dA"><div class="dslt"><div class="tcg cardback big"><div class="tcg-in"><div class="lg">J</div></div></div></div><div class="dvs">VS</div><div class="dslt"><div class="dempty">Wähle eine Karte</div></div></div>
-    ${msg?`<p class="dmsg">${msg}</p>`:''}
-    <div class="dhand">${D.hand.map(l=>{const e=LEX[l];return `<button class="dh" data-l="${esc(l)}"><span class="dht t-${tkey(e)}">${TICO[tkey(e)]}</span>${tcgHtml(e,bestVar(l),{mini:1})}</button>`;}).join('')}</div></div>`);
-  document.querySelectorAll('.dh').forEach(b=>b.onclick=()=>playRound(D,b.dataset.l));}
+    <div class="darena" id="dA"><div class="dslt"><div class="tcg cardback big"><div class="tcg-in"><div class="lg">J</div></div></div></div><div class="dvs">VS</div><div class="dslt"><div class="tcg cardback big"><div class="tcg-in"><div class="lg">?</div></div></div></div></div>
+    ${msg?`<p class="dmsg">${msg}</p>`:D.round===1?'<p class="dmsg">Zieh eine Karte. Danach musst du sie richtig beantworten, damit ihre Stärke zählt.</p>':''}
+    <div class="dhand dpile"><button class="pile" id="dDraw"><span class="pstack">${D.hand.map((_,i)=>`<i style="--i:${i}"></i>`).join('')}</span><span class="plab"><b>Karte ziehen</b><span>${D.hand.length} verdeckte Karten im Stapel${D.stake!=='free'?` &middot; Einsatz: ${D.stake==='chest'?'1 Truhe':'Spezialkarte'}`:''}</span></span></button></div></div>`);
+  $('#dDraw').onclick=()=>{const l=D.hand[0];$('.pstack i:last-child')?.classList.add('fly');setTimeout(()=>playRound(D,l),380);};
+  trainKey=ev=>{if(ev.key==='Enter'||ev.key===' ')$('#dDraw').click();};}
 function playRound(D,l){const e=LEX[l],v=bestVar(l);D.hand=D.hand.filter(x=>x!==l);
   const o=D.opp.sort((a,b)=>b.p-a.p)[Math.random()<.5?0:Math.floor(Math.random()*D.opp.length)];D.opp=D.opp.filter(x=>x!==o);const oe=LEX[o.l];
   const typed=e.p==='v'&&conjOf(e);const pi=[0,1,2,3,5][Math.floor(Math.random()*5)];
@@ -6216,21 +6241,29 @@ function playRound(D,l){const e=LEX[l],v=bestVar(l);D.hand=D.hand.filter(x=>x!==
   const resolve=ok=>{trainKey=null;let my=ok?cardPower(l,v):0,jo=Math.random()<.85?o.p:0;const mt=e.p,ot=oe.p;let note='';
     if(ok&&BEATS[mt]===ot){my=Math.round(my*1.2);note=`${TNAME[mt]} schlägt ${TNAME[ot]}: +20 %`;}if(jo&&BEATS[ot]===mt){jo=Math.round(jo*1.2);note=`${TNAME[ot]} schlägt ${TNAME[mt]}: Joan +20 %`;}
     const win=my>jo?1:my<jo?-1:0;if(win>0)D.me++;else if(win<0)D.jo++;
+    const myBase=cardPower(l,v),joBase=o.p;const myAdv=ok&&BEATS[mt]===ot,joAdv=jo&&BEATS[ot]===mt;
+    const row=(who,base,adv,fin,fail,failTxt,cls)=>`<div class="xrow ${cls}"><span class="xw">${who}</span><span class="xc">${fail?`<s>${base}</s> <em>${failTxt}</em>`:`${base}${adv?' <em class="up">+20 % Typvorteil</em>':''}`}</span><b>${fin}</b></div>`;
+    const why=!ok&&!jo?'Beide Antworten falsch, beide Karten verpuffen.':!ok?'Deine Antwort war falsch, darum zählt deine Karte 0. Joans Karte gewinnt automatisch.':!jo?'Joan hat sich vertan, seine Karte zählt 0. Deine Karte gewinnt.':win>0?`${my} ist mehr als ${jo}. ${myAdv?`Dein Typvorteil (${TNAME[mt]} schlägt ${TNAME[ot]}) hat geholfen.`:'Deine Karte ist stärker.'}`:win<0?`${jo} ist mehr als ${my}. ${joAdv?`Joans Typvorteil (${TNAME[ot]} schlägt ${TNAME[mt]}) hat den Unterschied gemacht.`:'Joans Karte ist diesmal stärker. Höhere Fächer im Karteikasten machen deine Karten stärker.'}`:'Gleiche Stärke, niemand bekommt den Punkt.';
+    note='';
     const ans=typed?conjOf(e)[pi]:gl(e);const mc=document.querySelector('#dMine .dcw');if(mc)mc.classList.remove('notr');
-    $('.dq').innerHTML=`<div class="dres ${win>0?'w':win<0?'l':''}"><div class="dbars"><div><span>Joan</span><i style="--w:${Math.min(100,jo/1.6)}%"></i><b>${jo}</b></div><div><span>Du</span><i class="me" style="--w:${Math.min(100,my/1.6)}%"></i><b>${my}</b></div></div>
-      <p>${ok?'¡Correcto!':`Falsch, deine Karte verpufft. Richtig: <b>${esc(ans)}</b>.`} ${jo===0?'Joan hat sich vertan, seine Karte verpufft. ':''}${note?`<span class="dnote">${note}</span>`:''}</p>
+    $('.dq').innerHTML=`<div class="dres ${win>0?'w':win<0?'l':''}"><div class="xcalc">${row('Du',myBase,myAdv,my,!ok,'falsch beantwortet','me')}${row('Joan',joBase,joAdv,jo,!jo,'Joan lag falsch','jo')}</div><p class="xwhy">${why}</p>
+      <p>${ok?'¡Correcto!':`Richtig wäre: <b>${esc(ans)}</b>.`}</p>
       <div class="big">${win>0?'Runde für dich!':win<0?'Runde für Joan':'Unentschieden'}</div><button class="btn" id="dNext">Weiter</button></div>`;
     speak(e.k);const fin=D.me>=3||D.jo>=3||!D.hand.length||!D.opp.length||D.round>=5;
     $('#dNext').onclick=()=>{if(fin)endDuel(D);else{D.round++;board(D);}};trainKey=ev=>{if(ev.key==='Enter')$('#dNext').click();};};
   if(typed){const inp=$('#tIn');setTimeout(()=>inp.focus(),50);const go2=()=>{const val=inp.value.trim().toLowerCase().replace(/^(yo|tú|él|ella|usted|nosotros|vosotros|ellos|ellas|ustedes)\s+/,'');if(!val)return;const a=conjOf(e)[pi].toLowerCase();resolve(norm(val)===norm(a)||norm(val)===norm(a.split(' ').pop()));};
     $('#tOk').onclick=go2;trainKey=ev=>{if(ev.key==='Enter')go2();};}
   else{const pickO=j=>{document.querySelectorAll('.qopt').forEach(x=>x.disabled=true);resolve(opts[j]===l);};document.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>pickO(+b.dataset.o));trainKey=ev=>{if(/^[1-4]$/.test(ev.key))pickO(+ev.key-1);};}}
-function endDuel(D){trainKey=null;const win=D.me>D.jo;if(win){S.duelW=(S.duelW||0)+1;S.duelStreak=(S.duelStreak||0)+1;}else{S.duelL=(S.duelL||0)+1;S.duelStreak=0;}markDay();save();updateHud();
+function endDuel(D){trainKey=null;const win=D.me>D.jo;let prize='';
+  if(D.stake==='chest'&&D.me!==D.jo){S.duelChests=(S.duelChests||0)+(win?1:-1);prize=win?'<p class="prize">+1 Truhe gewonnen!</p>':'<p class="prize lost">Einsatz verloren: -1 Truhe</p>';}
+  if(D.stake==='card'&&D.me!==D.jo){if(win){const pool=Object.keys(S.caught).filter(k=>LEX[k]&&canVar(k,'holo')&&!(S.cards[k]&&S.cards[k].holo));const k=pool.length?pool[Math.floor(Math.random()*pool.length)]:null;
+      if(k){S.cards[k]=S.cards[k]||{};S.cards[k].holo=Date.now();prize=`<p class="prize">Joan gibt dir eine Holo-Karte:</p><div class="przc" data-card="${esc(k)}">${tcgHtml(LEX[k],'holo',{mini:1})}</div>`;}else{S.duelChests=(S.duelChests||0)+1;prize='<p class="prize">Du hast schon alle Holos. Stattdessen +1 Truhe!</p>';}}
+    else{S.duelChests=(S.duelChests||0)-1;prize='<p class="prize lost">Einsatz verloren: -1 Truhe</p>';}}if(win){S.duelW=(S.duelW||0)+1;S.duelStreak=(S.duelStreak||0)+1;}else{S.duelL=(S.duelL||0)+1;S.duelStreak=0;}markDay();save();updateHud();
   openModal(`<div class="qres"><small class="kk">DUELO DE PALABRAS</small><div class="big">${D.me} : ${D.jo}</div><p>${win?'¡Has ganado! Joan gratuliert dir.':D.me===D.jo?'Unentschieden. Joan will eine Revanche.':'Joan gewinnt diesmal. «Otra vez», sagt er und lacht.'}</p>
     ${win?`<p style="color:var(--acc);font-weight:700">+${PTS_DUEL} Puntos${S.duelStreak>1?` &middot; ${S.duelStreak} Siege in Folge`:''}</p>`:''}
-    <p class="khint">Tipp: Wörter in höheren Fächern sind stärker. Training lohnt sich also auch im Duell.</p>
+    ${prize}<p class="khint">Tipp: Wörter in höheren Fächern sind stärker. Training lohnt sich also auch im Duell.</p>
     <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" id="dDeck">Deck ändern</button><button class="btn" id="dAgain">Revanche</button></div></div>`);
-  $('#dDeck').onclick=openDeck;$('#dAgain').onclick=()=>startDuel(S.deck||autoDeck());}
+  $('#dDeck').onclick=openDeck;$('#dAgain').onclick=()=>startDuel(S.deck||autoDeck(),S.stake);}
 
 /* ---------- Vorlesen (Lesen und Hören) ---------- */
 let ttsOn=false,ttsTok=0;

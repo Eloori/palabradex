@@ -40,6 +40,9 @@ Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanis
 - **Arte:** 16 extrem seltene Kunstkarten mit Vollbild-Illustration (austauschbar über `ARTE[wort].img`).
 - **Duelo de Palabras:** Kartenspiel gegen Joan. Deine Karte zählt nur, wenn du sie richtig übersetzt oder konjugierst.
 
+
+Im Duell wird dein Deck verdeckt gemischt und jede Runde gezogen. Nach jeder Runde zeigt eine Rechnung, warum wer gewonnen hat. Optional spielst du um einen Einsatz: eine Truhe oder eine Holo-Karte von Joan.
+
 ### Fangen
 Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
 
