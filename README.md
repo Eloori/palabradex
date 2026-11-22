@@ -41,7 +41,7 @@ Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanis
 - **Duelo de Palabras:** Kartenspiel gegen Joan. Deine Karte zählt nur, wenn du sie richtig übersetzt oder konjugierst.
 
 
-Im Duell wird dein Deck verdeckt gemischt und jede Runde gezogen. Nach jeder Runde zeigt eine Rechnung, warum wer gewonnen hat. Optional spielst du um einen Einsatz: eine Truhe, oder du setzt eine Holo-, Oro- oder Legendaria-Karte gegen eine gleichwertige Karte von Joan. Jedes Fach im Karteikasten macht eine Karte um 8 Punkte stärker.
+Im Duell wird dein Deck verdeckt gemischt und jede Runde gezogen. Nach jeder Runde zeigt eine Rechnung, warum wer gewonnen hat. Optional spielst du um einen Einsatz: eine Truhe, oder du setzt eine Holo-, Oro- oder Legendaria-Karte gegen eine gleichwertige Karte von Joan. Jedes Fach im Karteikasten macht eine Karte um 8 Punkte stärker. Joan hat pro Einsatz-Stufe eine feste Stärke, die mit jedem Sieg auf dieser Stufe steigt. Jede Truhe enthält 3 Karten.
 
 ### Fangen
 Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
