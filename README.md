@@ -29,6 +29,13 @@ Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanis
 - **Redewendungen:** 50 Ausdrücke wie ¿qué tal? oder tener que werden im Text zusammen markiert und erklärt.
 - **Prüfung:** 20 Aufgaben, spanische Note von 1 bis 10 mit Umrechnung (Schweiz, Deutschland, USA) und Zeugnis als Bild.
 
+### Karten und Duell
+- **Kartentypen:** Acción (Verben), Cosa (Nomen), Cualidad (Adjektive), Modo, Enlace, jeweils mit eigener Farbe, eigenem Muster und Symbol.
+- **Wort-Level:** Der Rahmen ums Wort zeigt das Fach im Karteikasten: Madera, Bronce, Plata, Esmeralda, Zafiro, Diamante.
+- **Varianten:** Holo für alle Wörter, Oro ab Poco común, Legendaria nur für Épico.
+- **Arte:** 16 extrem seltene Kunstkarten mit Vollbild-Illustration (austauschbar über `ARTE[wort].img`).
+- **Duelo de Palabras:** Kartenspiel gegen Joan. Deine Karte zählt nur, wenn du sie richtig übersetzt oder konjugierst.
+
 ### Fangen
 Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
 
