@@ -23,6 +23,12 @@ Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien si
 ### Historia de España
 Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanische Geschichte, im Präsens, wie man Geschichte auf Spanisch oft erzählt. A1 Teil 1 (20 Kapitel) reicht von Atapuerca und Altamira über Iberer, Kelten, Phönizier, Griechen und Karthago bis zu den Römern und Barcino. Freigeschaltet nach Kapitel 10 der Story.
 
+### Lernen über das Lesen hinaus
+- **Clase de español:** 12 Grammatikstunden zwischen den Kapiteln (Artikel, Plural, ser, ser oder estar, Verben auf -ar, -er und -ir, tener, ir a, gustar, Fragewörter, Stammwechsel, reflexive Verben) mit Erklärkästen und Übungen.
+- **Verben konjugieren:** Trainingsmodus im Präsens, unregelmässige Verben häufiger.
+- **Redewendungen:** 50 Ausdrücke wie ¿qué tal? oder tener que werden im Text zusammen markiert und erklärt.
+- **Prüfung:** 20 Aufgaben, spanische Note von 1 bis 10 mit Umrechnung (Schweiz, Deutschland, USA) und Zeugnis als Bild.
+
 ### Fangen
 Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) werden beim Lesen nur gesichtet und am Kapitelende in der Fangzeit mit einem Minispiel gefangen: Bedeutung wählen, Buchstaben ordnen oder aus dem Gedächtnis schreiben. Fällige Wörter aus dem Karteikasten sind im Text markiert und lassen sich direkt beim Lesen wiederholen.
 
