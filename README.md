@@ -48,6 +48,8 @@ Häufige Wörter fängt man mit einem Tippen. Seltene Wörter (Raro, Épico) wer
 
 ## Features
 
+- Oberfläche auf Deutsch oder Englisch (Einstellungen, Übersetzung)
+
 - **60 Kapitel auf Niveau A1**, eine durchgehende Geschichte in Barcelona, rund 800 Wörter
 - **Reader wie ein E-Reader**: Seiten blättern per Wischen, Tippen, Pfeiltasten oder Trackpad
 - **Wörter sammeln** per Hover oder Tippen, mit Übersetzung auf Deutsch oder Englisch
