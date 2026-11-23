@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="description" content="Palabradex: Spanisch lernen mit Kurzgeschichten. Lesen auf dem richtigen Niveau, Spaced Repetition und Sammelkarten. Ein Prototyp von Eloori Interactive.">
 <link rel="stylesheet" href="fonts/fonts.css">
-<script src="vendor/supabase.js"></script>
+<script src="vendor/supabase.js"></script><script>window.PDX_SUPA={"url": "https://fsvpifzogekjqaspqzgj.supabase.co", "key": "sb_publishable_YvYuPRBDgav-FrxniML4_g_YgcUKNQ1"};</script>
 <style>
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
 :root{--bg:#0c0e1a;--panel:#151829;--panel2:#1c2036;--line:#2a2f4a;--txt:#eef0ff;--mut:#9aa0c3;--acc:#ffcb3d;--acc2:#ff5d8f;--good:#3ddc97;--bad:#ff6b6b;--r:18px}
@@ -5070,10 +5070,10 @@ function accHtml(){
   if(ACC.user)return `<div class="acc" id="accBox"><div class="acchd"><span class="accav">${esc((ACC.user.email||'?')[0].toUpperCase())}</span><span><span class="lbl">Konto</span><small>${esc(ACC.user.email||'')}</small></span>${accStHtml()}</div>
     <p class="accp">Dein Fortschritt wird mit diesem Konto auf allen Geräten gleich gehalten.</p>
     <div class="accbt"><button class="btn ghost" id="accOut">Abmelden</button><button class="danger" id="accDel">Konto löschen</button></div></div>`;
-  if(ACC.step==='code')return `<div class="acc" id="accBox"><span class="lbl">Code eingeben</span><p class="accp">Wir haben einen Code an <b>${esc(ACC.email)}</b> geschickt. Schau auch im Spam-Ordner nach.</p>
+  if(ACC.step==='code')return `<div class="acc" id="accBox"><span class="lbl">E-Mail prüfen</span><p class="accp">Wir haben dir eine E-Mail an <b>${esc(ACC.email)}</b> geschickt. Gib den Code ein, oder tippe in der E-Mail auf den Link. Schau auch im Spam-Ordner nach.</p>
     <div class="accf"><input id="accCode" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456"><button class="btn" id="accVer">Anmelden</button></div><p class="accerr" id="accErr"></p>
     <button class="mlink" id="accBack">Andere E-Mail verwenden</button></div>`;
-  if(ACC.step==='email')return `<div class="acc" id="accBox"><span class="lbl">Mit E-Mail anmelden</span><p class="accp">Du bekommst einen Code per E-Mail. Ein Passwort brauchst du nicht.</p>
+  if(ACC.step==='email')return `<div class="acc" id="accBox"><span class="lbl">Mit E-Mail anmelden</span><p class="accp">Du bekommst eine E-Mail zum Anmelden. Ein Passwort brauchst du nicht.</p>
     <div class="accf"><input id="accMail" type="email" autocomplete="email" placeholder="name@beispiel.ch" value="${esc(ACC.email)}"><button class="btn" id="accSend">Code senden</button></div><p class="accerr" id="accErr"></p>
     <button class="mlink" id="accBack">Zurück</button></div>`;
   return `<div class="acc" id="accBox"><span class="lbl">Konto</span><p class="accp">Melde dich an, damit dein Fortschritt auf allen Geräten gleich bleibt. Ohne Konto wird nur in diesem Browser gespeichert.</p>
@@ -5087,7 +5087,7 @@ function accBind(){
   on('accBack',()=>{ACC.step=ACC.step==='code'?'email':'';accUi();});
   on('accSend',async()=>{const m=($('#accMail').value||'').trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)){accErr('Bitte gib eine gültige E-Mail-Adresse ein.');return;}
     const b=$('#accSend');b.disabled=true;b.textContent='Wird gesendet...';
-    try{const {error}=await ACC.sb.auth.signInWithOtp({email:m,options:{shouldCreateUser:true}});if(error)throw error;ACC.email=m;ACC.step='code';accUi();setTimeout(()=>$('#accCode')&&$('#accCode').focus(),50);}
+    try{const {error}=await ACC.sb.auth.signInWithOtp({email:m,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});if(error)throw error;ACC.email=m;ACC.step='code';accUi();setTimeout(()=>$('#accCode')&&$('#accCode').focus(),50);}
     catch(e){b.disabled=false;b.textContent='Code senden';accErr(e&&e.status===429?'Zu viele Versuche. Warte kurz und versuche es nochmal.':'Der Code konnte nicht gesendet werden.');}});
   const mi=$('#accMail');if(mi)mi.onkeydown=ev=>{if(ev.key==='Enter')$('#accSend').click();};
   on('accVer',async()=>{const c=($('#accCode').value||'').replace(/\s/g,'');if(c.length<6){accErr('Der Code hat mindestens 6 Ziffern.');return;}
