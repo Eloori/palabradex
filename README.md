@@ -22,7 +22,7 @@ Palabradex ist ein Lernwerkzeug und ersetzt keinen Sprachkurs. Die Prinzipien si
 
 ### Reihen
 
-Jedes Niveau hat mehrere Reihen: **Descubrimientos** (Sachtexte über grosse Entdeckungen und Ereignisse, von Kolumbus bis zum Mauerfall), **Historia de Mia**, **Historia de España** und **Clase de español** (Grammatik als eigene Reihe, unabhängig von der Geschichte). Krimi und Comedia folgen.
+Jedes Niveau hat mehrere Reihen: **Crimen en la Mercè** (Krimi in 24 Kapiteln: Während der Mercè verschwindet ein Bild aus dem MNAC), **Descubrimientos** (Sachtexte über grosse Entdeckungen und Ereignisse, von Kolumbus bis zum Mauerfall), **Historia de Mia**, **Historia de España** und **Clase de español** (Grammatik als eigene Reihe, unabhängig von der Geschichte). Comedia folgt. Die Clase de español hat 17 Lektionen, darunter Pretérito perfecto, unregelmässige Partizipien, Vergleiche, Demonstrativa und Häufigkeiten.
 
 ### Historia de España
 Ein zweiter Modus pro Niveau: Joan erzählt Mia jeden Dienstag ein Stück spanische Geschichte, im Präsens, wie man Geschichte auf Spanisch oft erzählt. A1 Teil 1 (20 Kapitel) reicht von Atapuerca und Altamira über Iberer, Kelten, Phönizier, Griechen und Karthago bis zu den Römern und Barcino. Freigeschaltet nach Kapitel 10 der Story.

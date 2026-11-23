@@ -1,5 +1,5 @@
 // Palabradex Service Worker: macht die App offline nutzbar.
-const CACHE = 'palabradex-v13';
+const CACHE = 'palabradex-v14';
 const CORE = [
   './', 'index.html', 'legal.html', 'privacy.html', 'manifest.webmanifest', 'favicon.svg',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-180.png', 'fonts/fonts.css', 'vendor/jspdf.umd.min.js', 'vendor/supabase.js',
