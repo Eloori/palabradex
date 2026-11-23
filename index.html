@@ -6705,7 +6705,7 @@ function occ(l){let n=0,c=0;for(const id in STATS){if(STATS[id][l]){n+=STATS[id]
 const LS='palabradex.v1';
 function defState(){return {lang:'de',fs:21,theme:'sepia',font:'literata',mark:true,caught:{},forms:{},cards:{},mast:{},enc:{},srs:{},seen:{},fang:{},star:{},phr:{},exams:[],conjS:{},stories:{},days:[],opened:0,bonusXp:0,empties:0,spent:0,last:null,upd:0};}
 let S=defState();
-try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}
+try{const r=localStorage.getItem(LS);if(r)S=Object.assign(defState(),JSON.parse(r));else{const L=(navigator.languages&&navigator.languages[0])||navigator.language||'de';S.lang=/^de\b/i.test(L)?'de':'en';}}catch(e){}
 const remote={ref:null,writing:false,pending:false,timer:null};
 function saveLocal(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
 /* English UI: German UI strings are translated in the DOM. Exact matches first, then number templates. */
